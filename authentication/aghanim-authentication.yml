@@ -1,0 +1,14 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/aghanim-openapi-original.json
+summary:
+  types:
+  - http
+schemes:
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section
+    for instructions on obtaining an API key and use it as the `Bearer` token.
+  sources:
+  - openapi/aghanim-openapi-original.json
