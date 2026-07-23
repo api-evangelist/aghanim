@@ -1,20 +1,649 @@
 aid: aghanim
 name: Aghanim
-description: Aghanim is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Aghanim is a direct-to-consumer (DTC) enablement platform for mobile games,
+  founded in 2023 by former Xsolla executives. It lets studios launch web-based
+  game hubs and web shops that sell virtual goods, currency packs, battle passes,
+  and subscriptions outside the app stores, and acts as a Merchant of Record —
+  handling worldwide payments, tax compliance, fraud, and chargebacks across 200+
+  territories. Its Server-to-Server API (170 operations) and webhook surface cover
+  catalog/stores, items, orders, players, coupons, promotions, achievements,
+  leaderboards, daily rewards, LiveOps campaigns, segmentation, creators, news,
+  pages, and loyalty programs, with Unity and Android checkout SDKs for the
+  prebuilt checkout page. Added to the API Evangelist network from the a16z
+  portfolio and enriched from Aghanim's public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/aghanim/refs/heads/main/apis.yml
 x-type: company
 x-source: a16z-portfolio
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
 modified: '2026-07-17'
+image: https://static-corp.aghanim.com/og_193da66018.png
 tags:
 - Company
-apis: []
+- Mobile Games
+- Game Publishing
+- Direct-to-Consumer
+- Payments
+- Merchant of Record
+- Web Shop
+- LiveOps
+- Fintech
+- Gaming
+apis:
+- aid: aghanim:aghanim-achievements-api
+  name: Aghanim Achievements API
+  description: The Achievements API from Aghanim — 3 operation(s) for achievements.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Achievements
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-achievements-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-coupons-api
+  name: Aghanim Coupons API
+  description: The Coupons API from Aghanim — 3 operation(s) for coupons.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Coupons
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-coupons-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-creators-api
+  name: Aghanim Creators API
+  description: The Creators API from Aghanim — 4 operation(s) for creators.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Creators
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-creators-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-daily-rewards-api
+  name: Aghanim Daily Rewards API
+  description: The Daily Rewards API from Aghanim — 3 operation(s) for daily rewards.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Daily Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-daily-rewards-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-gdpr-requests-api
+  name: Aghanim GDPR Requests API
+  description: The GDPR Requests API from Aghanim — 1 operation(s) for gdpr requests.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - GDPR Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-gdpr-requests-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-item-categories-api
+  name: Aghanim Item Categories API
+  description: The Item Categories API from Aghanim — 2 operation(s) for item categories.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Item Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-item-categories-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-items-api
+  name: Aghanim Items API
+  description: The Items API from Aghanim — 3 operation(s) for items.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-items-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-leaderboards-api
+  name: Aghanim Leaderboards API
+  description: The Leaderboards API from Aghanim — 5 operation(s) for leaderboards.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Leaderboards
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-leaderboards-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-liveops-api
+  name: Aghanim LiveOps API
+  description: The LiveOps API from Aghanim — 5 operation(s) for liveops.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - LiveOps
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-liveops-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-locales-api
+  name: Aghanim Locales API
+  description: The Locales API from Aghanim — 2 operation(s) for locales.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Locales
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-locales-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-loyalty-program-api
+  name: Aghanim Loyalty Program API
+  description: The Loyalty Program API from Aghanim — 4 operation(s) for loyalty program.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Loyalty Program
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-loyalty-program-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-news-api
+  name: Aghanim News API
+  description: The News API from Aghanim — 2 operation(s) for news.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - News
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-news-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-orders-api
+  name: Aghanim Orders API
+  description: The Orders API from Aghanim — 4 operation(s) for orders.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-orders-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-pages-api
+  name: Aghanim Pages API
+  description: The Pages API from Aghanim — 3 operation(s) for pages.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-pages-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-payments-api
+  name: Aghanim Payments API
+  description: The Payments API from Aghanim — 1 operation(s) for payments.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-payments-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-players-api
+  name: Aghanim Players API
+  description: The Players API from Aghanim — 4 operation(s) for players.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Players
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-players-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-players-marketing-consents-api
+  name: Aghanim Players' Marketing Consents API
+  description: >-
+    The Players' Marketing Consents API from Aghanim — 2 operation(s) for players' marketing consents.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Players' Marketing Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-players-marketing-consents-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-players-subscriptions-api
+  name: Aghanim Players' Subscriptions API
+  description: The Players' Subscriptions API from Aghanim — 3 operation(s) for players' subscriptions.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Players' Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-players-subscriptions-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-price-points-api
+  name: Aghanim Price Points API
+  description: The Price Points API from Aghanim — 1 operation(s) for price points.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Price Points
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-price-points-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-price-templates-api
+  name: Aghanim Price Templates API
+  description: The Price Templates API from Aghanim — 2 operation(s) for price templates.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Price Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-price-templates-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-segmentation-api
+  name: Aghanim Segmentation API
+  description: The Segmentation API from Aghanim — 5 operation(s) for segmentation.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Segmentation
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-segmentation-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-store-promotions-api
+  name: Aghanim Store Promotions API
+  description: The Store Promotions API from Aghanim — 5 operation(s) for store promotions.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Store Promotions
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-store-promotions-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-stores-api
+  name: Aghanim Stores API
+  description: The Stores API from Aghanim — 11 operation(s) for stores.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-stores-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-translation-glossaries-api
+  name: Aghanim Translation Glossaries API
+  description: The Translation Glossaries API from Aghanim — 2 operation(s) for translation glossaries.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Translation Glossaries
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-translation-glossaries-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-users-api
+  name: Aghanim Users API
+  description: The Users API from Aghanim — 5 operation(s) for users.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-videos-api
+  name: Aghanim Videos API
+  description: The Videos API from Aghanim — 2 operation(s) for videos.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Videos
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-videos-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
+- aid: aghanim:aghanim-webhooks-api
+  name: Aghanim Webhooks API
+  description: The Webhooks API from Aghanim — 4 operation(s) for webhooks.
+  humanURL: https://docs.aghanim.com/api-reference/
+  baseURL: https://api.aghanim.com/s2s
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/aghanim-webhooks-api-openapi.yml
+  - type: Authentication
+    url: authentication/aghanim-authentication.yml
+  - type: Webhooks
+    url: asyncapi/aghanim-webhooks.yml
+  - type: ErrorCatalog
+    url: errors/aghanim-problem-types.yml
+  - type: DeclineCodes
+    url: errors/aghanim-decline-codes.yml
+  - type: DataModel
+    url: data-model/aghanim-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: AgenticAccess
+  url: agentic-access/aghanim-agentic-access.yml
+- type: DomainSecurity
+  url: security/aghanim-domain-security.yml
+- type: Authentication
+  url: authentication/aghanim-authentication.yml
+- type: DeveloperPortal
+  url: https://docs.aghanim.com/
+- type: Documentation
+  url: https://docs.aghanim.com/
+- type: APIReference
+  url: https://docs.aghanim.com/api-reference/
+- type: GettingStarted
+  url: https://docs.aghanim.com/getting-started/
+- type: SignUp
+  url: https://dashboard.aghanim.com/onboarding
+- type: Support
+  url: https://support.aghanim.com/en_US/general
+- type: Blog
+  url: https://blog.aghanim.com
+- type: TermsOfService
+  url: https://aghanim.com/general-service
+- type: PrivacyPolicy
+  url: https://aghanim.com/privacy
+- type: StatusPage
+  url: https://status.aghanim.com
+- type: Lifecycle
+  url: lifecycle/aghanim-lifecycle.yml
+- type: Packages
+  url: packages/aghanim-packages.yml
+- type: SDKs
+  url: packages/aghanim-packages.yml
+- type: MCPServer
+  url: mcp/aghanim-mcp.yml
+- type: LLMsTxt
+  url: llms/aghanim-llms.txt
+- type: WellKnown
+  url: well-known/aghanim-well-known.yml
+- type: Conformance
+  url: conformance/aghanim-conformance.yml
+- type: Sandbox
+  url: sandbox/aghanim-sandbox.yml
+- type: Conventions
+  url: conventions/aghanim-conventions.yml
+- type: Idempotency
+  url: conventions/aghanim-conventions.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/aghanim-webhooks.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

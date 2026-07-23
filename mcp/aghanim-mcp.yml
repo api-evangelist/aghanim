@@ -1,0 +1,68 @@
+generated: '2026-07-17'
+method: derived
+status: candidate
+source: openapi/aghanim-openapi-original.json
+notes: >-
+  No official hosted/remote Aghanim MCP server was found (searched docs.aghanim.com,
+  the npm @modelcontextprotocol namespace, and public MCP registries). This is a
+  DERIVED candidate tool surface mapped one-tool-per-operation from the Aghanim
+  Server-to-Server OpenAPI (170 operations across 27 resource families). Aghanim
+  does publish AI Coding Tools (docs.aghanim.com/ai-coding-tools/overview) that
+  scaffold webhook/API integrations, but not an MCP server.
+server:
+  name: aghanim
+  transport: http
+  base: https://api.aghanim.com/s2s
+  auth: bearer
+tools:
+  - name: list_items
+    description: List catalog items
+    source_operation: openapi/aghanim-openapi-original.json#get_items
+  - name: create_item
+    description: Create a catalog item
+    source_operation: openapi/aghanim-openapi-original.json#create_item
+  - name: list_stores
+    description: List stores
+    source_operation: openapi/aghanim-openapi-original.json#get_stores
+  - name: list_store_items
+    description: List items in a store
+    source_operation: openapi/aghanim-openapi-original.json#get_store_items
+  - name: create_order
+    description: Create an order
+    source_operation: openapi/aghanim-openapi-original.json#create_order
+  - name: get_order
+    description: Retrieve a single order
+    source_operation: openapi/aghanim-openapi-original.json#get_order
+  - name: refund_order
+    description: Refund an order
+    source_operation: openapi/aghanim-openapi-original.json#refund_order
+  - name: get_player
+    description: Retrieve a single player
+    source_operation: openapi/aghanim-openapi-original.json#get_player
+  - name: list_coupons
+    description: List coupons
+    source_operation: openapi/aghanim-openapi-original.json#get_coupons
+  - name: create_coupon
+    description: Create a coupon
+    source_operation: openapi/aghanim-openapi-original.json#create_coupon
+  - name: list_achievements
+    description: List achievements
+    source_operation: openapi/aghanim-openapi-original.json#get_achievements
+  - name: unlock_achievement
+    description: Unlock an achievement for a player
+    source_operation: openapi/aghanim-openapi-original.json#unlock_achievement
+  - name: list_leaderboards
+    description: List leaderboards
+    source_operation: openapi/aghanim-openapi-original.json#get_leaderboards
+  - name: list_store_promotions
+    description: List store promotions
+    source_operation: openapi/aghanim-openapi-original.json#get_store_promotions
+  - name: list_daily_rewards
+    description: List daily rewards
+    source_operation: openapi/aghanim-openapi-original.json#get_daily_rewards
+  - name: list_webhooks
+    description: List configured webhooks
+    source_operation: openapi/aghanim-openapi-original.json#get_webhooks
+  - name: create_webhook
+    description: Register a webhook endpoint
+    source_operation: openapi/aghanim-openapi-original.json#create_webhook

@@ -1,0 +1,398 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Price Points API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Price Points
+paths:
+  /v1/price_points:
+    get:
+      tags:
+      - Price Points
+      summary: Get Price Points
+      description: 'Returns price points from price templates for the specified country.
+
+
+        Price templates can be configured in Dashboard -> SKU Management ->
+
+        [Price Templates](https://dashboard.aghanim.com/go/sku/price-templates).
+
+
+        The `locale` parameter is optional and if not provided, it will be resolved
+
+        from the country with the best match available for that country.'
+      operationId: get_price_points
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: country
+        in: query
+        required: true
+        schema:
+          title: Country
+          description: The two-letter country code (ISO 3166-1 alpha-2) for price localization.
+          pattern: ^[A-Z]{2}$
+          type: string
+        description: The two-letter country code (ISO 3166-1 alpha-2) for price localization.
+      - name: locale
+        in: query
+        required: false
+        schema:
+          description: Locale for price formatting (e.g., en, pt-BR, zh-Hant).
+          $ref: '#/components/schemas/Locale'
+        description: Locale for price formatting (e.g., en, pt-BR, zh-Hant).
+      - name: platform
+        in: query
+        required: false
+        schema:
+          description: Platform for platform-specific pricing (e.g., ios, android, any).
+          default: any
+          $ref: '#/components/schemas/Platform'
+        description: Platform for platform-specific pricing (e.g., ios, android, any).
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricePointsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Locale:
+      type: string
+      enum:
+      - cs
+      - de
+      - en
+      - es
+      - fr
+      - fr-CA
+      - hi
+      - id
+      - it
+      - ja
+      - ko
+      - ms
+      - nl
+      - 'no'
+      - pl
+      - pt
+      - pt-BR
+      - ru
+      - sv
+      - th
+      - tr
+      - uk
+      - vi
+      - zh
+      - zh-Hant
+      title: Locale
+      description: Language codes according to ISO 639-1.
+    PricePoint:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: ID of the price template associated with this price point
+        base_price:
+          $ref: '#/components/schemas/PriceAmount'
+          description: Base price
+        local_price:
+          $ref: '#/components/schemas/LocalPriceAmount'
+          description: Localized price
+      type: object
+      required:
+      - id
+      - base_price
+      - local_price
+      title: PricePoint
+    PricePointsResponse:
+      properties:
+        context:
+          $ref: '#/components/schemas/PricePointsContext'
+          description: The context information for the price points
+        price_points:
+          items:
+            $ref: '#/components/schemas/PricePoint'
+          type: array
+          title: Price Points
+          description: The list of available price points
+      type: object
+      required:
+      - context
+      - price_points
+      title: PricePointsResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    Currency:
+      type: string
+      enum:
+      - USD
+      - EUR
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - UYU
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZWG
+      - ZWL
+      - RP
+      - VC
+      title: Currency
+    LocalPriceAmount:
+      properties:
+        amount:
+          type: integer
+          title: Amount
+          description: Price amount in minor currency units
+        amount_decimal:
+          type: number
+          title: Amount Decimal
+          description: Price amount in major currency units
+        display:
+          type: string
+          title: Display
+          description: Formatted price display string
+      type: object
+      required:
+      - amount
+      - amount_decimal
+      - display
+      title: LocalPriceAmount
+    PriceAmount:
+      properties:
+        amount:
+          type: integer
+          title: Amount
+          description: Price amount in minor currency units
+        amount_decimal:
+          type: number
+          title: Amount Decimal
+          description: Price amount in major currency units
+      type: object
+      required:
+      - amount
+      - amount_decimal
+      title: PriceAmount
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PricePointsContext:
+      properties:
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+          description: The country code for price localization
+        base_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The base currency used for pricing
+        local_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The local currency for the player's region
+      type: object
+      required:
+      - country
+      - base_currency
+      - local_currency
+      title: PricePointsContext
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

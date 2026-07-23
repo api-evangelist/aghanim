@@ -1,0 +1,48 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.aghanim.com/webhooks/overview
+spec_type: Webhooks
+notes: >-
+  Aghanim documents a rich webhook event surface but publishes NO machine-readable
+  AsyncAPI document. This captures the documented webhook catalog (event types,
+  signature scheme, and payload envelope) as a Webhooks artifact. Webhooks are
+  also the primary integration path (player.verify / item.add / item.remove
+  handlers on the game server).
+delivery:
+  transport: https-post
+  signature:
+    algorithm: HMAC-SHA256
+    headers:
+      - {name: X-Aghanim-Signature, description: HMAC-SHA256 signature of the event payload}
+      - {name: X-Aghanim-Signature-Timestamp, description: Unix epoch time the event was triggered}
+    secret: Per-webhook secret from Dashboard (Game -> Webhooks -> Add webhook); rotate via expire_webhook_secret
+  payload_envelope:
+    fields: [event_id, game_id, event_type, event_time, event_data, idempotency_key, request_id, sandbox, trigger, transaction_id, context]
+management_operations:
+  - openapi/aghanim-openapi-original.json#get_webhooks
+  - openapi/aghanim-openapi-original.json#create_webhook
+  - openapi/aghanim-openapi-original.json#update_webhook
+  - openapi/aghanim-openapi-original.json#delete_webhook
+  - openapi/aghanim-openapi-original.json#expire_webhook_secret
+  - openapi/aghanim-openapi-original.json#reveal_webhook_secret
+events:
+  - {type: player.verify, description: Verify a player's identity against the game server}
+  - {type: player.lookup, description: Look up a player on the game server}
+  - {type: player.is_idle, description: Check whether a player is idle}
+  - {type: player.marketing_consent.updated, description: Player marketing consent changed}
+  - {type: item.add, description: Grant an item to a player (fulfillment)}
+  - {type: item.remove, description: Remove/revoke an item from a player}
+  - {type: store.get, description: Resolve the store/catalog for a player}
+  - {type: order.created, description: Order created}
+  - {type: order.paid, description: Order paid}
+  - {type: order.canceled, description: Order canceled}
+  - {type: order.refunded, description: Order refunded}
+  - {type: coupon.redeemed, description: Coupon redeemed}
+  - {type: ingame.push, description: In-game push notification trigger}
+  - {type: ingame.popup, description: In-game popup trigger}
+  - {type: campaign.custom, description: Custom LiveOps campaign event}
+  - {type: "analytics.hub.*", description: Game-hub analytics events (sign-up, login, purchase, ...)}
+  - {type: "analytics.checkout.*", description: Checkout interaction analytics events}
+  - {type: "subscription.*", description: Player subscription lifecycle events}
+  - {type: fraud.reported, description: Fraud reported on a payment}
+  - {type: "payment.*", description: Payment lifecycle events (incl. dispute/chargeback)}

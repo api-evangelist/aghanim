@@ -1,0 +1,41 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.aghanim.com/checkout/test-payments
+notes: >-
+  Aghanim is a Merchant-of-Record payments platform. Its sandbox documents test
+  cards that trigger specific decline `Response code`s on card payments. These
+  are the published decline scenarios; the full production decline-code registry
+  is not exhaustively documented, so this captures the documented/testable set.
+  Complements errors/aghanim-problem-types.yml (API-level validation errors).
+envelope_field: response code
+masked_to_buyer: true
+decline_codes:
+  - code: "16"
+    meaning: Payment declined
+    action: Generic decline; ask buyer to retry or use a different payment method.
+    test_card: "4832 2850 6160 9015"
+  - code: "2051"
+    meaning: Insufficient funds
+    action: Buyer's account lacks funds; suggest an alternative card or method.
+    test_card: "4211 1272 6211 2418"
+  - code: "3041"
+    meaning: Lost card
+    action: Card reported lost; do not retry; buyer must use a different card.
+    test_card: "4411 5883 2171 3124"
+  - code: "3043"
+    meaning: Stolen card
+    action: Card reported stolen; do not retry; buyer must use a different card.
+    test_card: "4178 1318 2730 9866"
+  - code: "2054"
+    meaning: Expired card
+    action: Card expired; prompt buyer for a current card.
+    test_card: "4867 0537 1696 5705"
+dispute_scenarios:
+  - status: chargeback
+    trigger: Dispute lost (payment moves from succeeded to chargeback)
+    reason: Fraudulent
+    test_card: "4000 0000 0000 0267"
+  - status: succeeded
+    trigger: Dispute won (payment returns to succeeded)
+    reason: Product not received
+    test_card: "4000 0000 0000 2685"

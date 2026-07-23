@@ -1,0 +1,41 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/aghanim-openapi-original.json + docs.aghanim.com
+notes: >-
+  Standards conformance derived from the OpenAPI and Aghanim docs. Aghanim
+  operates as a Merchant of Record for card payments (implying PCI-DSS handling
+  of card data via its hosted checkout) and documents GDPR data-removal and
+  marketing-consent operations, but publishes no explicit certification page
+  (SOC 2 / ISO 27001 / PCI attestation) — so no `Compliance` pointer is emitted.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: securityScheme is HTTP Bearer (opaque API key token), not oauth2
+  - id: oidc
+    conforms: false
+  - id: http-bearer
+    conforms: true
+    evidence: components.securitySchemes.HTTPBearer type http scheme bearer
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use FastAPI HTTPValidationError (application/json {detail:[{loc,msg,type}]}), not application/problem+json
+  - id: pagination
+    conforms: true
+    evidence: list operations expose limit/offset + sort_field/sort_order/order_by query parameters
+  - id: webhooks
+    conforms: true
+    evidence: documented webhook event surface with HMAC-SHA256 signatures (X-Aghanim-Signature)
+  - id: gdpr
+    conforms: true
+    evidence: POST /v1/gdpr_requests (gdpr_data_removal) + Players' Marketing Consents operations
+  - id: pci-dss
+    conforms: partial
+    evidence: Merchant-of-Record card processing via hosted checkout (docs); no published attestation
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: json-api
+    conforms: false

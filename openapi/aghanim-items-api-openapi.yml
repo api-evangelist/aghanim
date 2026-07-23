@@ -1,0 +1,3838 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Items API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Items
+paths:
+  /v1/items:
+    get:
+      tags:
+      - Items
+      summary: Get Items
+      operationId: get_items
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: A limit on the number of objects to be returned
+          default: 10
+          type: integer
+        description: A limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      - name: state
+        in: query
+        required: false
+        schema:
+          description: Filter by item state
+          $ref: '#/components/schemas/ResourceState'
+        description: Filter by item state
+      - name: search_string
+        in: query
+        required: false
+        schema:
+          title: Search String
+          type: string
+      - name: category_id
+        in: query
+        required: false
+        schema:
+          title: Category Id
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/UnsetType'
+      - name: order_by
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ItemOrderType'
+      - name: rarity_id
+        in: query
+        required: false
+        schema:
+          title: Rarity Id
+          type: string
+      - name: item_stackable_type
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ItemStackableType'
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/SortOrder'
+      - name: with_price
+        in: query
+        required: false
+        schema:
+          title: With Price
+          type: boolean
+      - name: item_price_type
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ItemPriceType'
+      - name: types
+        in: query
+        required: false
+        schema:
+          title: Types
+          description: Optional comma separated list of types
+          type: string
+        description: Optional comma separated list of types
+      - name: ids
+        in: query
+        required: false
+        schema:
+          title: Ids
+          description: Optional comma separated list of ids
+          type: string
+        description: Optional comma separated list of ids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Items
+                type: array
+                items:
+                  anyOf:
+                  - $ref: '#/components/schemas/ItemRead'
+                  - $ref: '#/components/schemas/LootboxRead'
+                  - $ref: '#/components/schemas/aghanim__subscription_item__schemas__SubscriptionRead'
+                  - $ref: '#/components/schemas/VirtualCurrencyRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Items
+      summary: Create Item
+      description: Creates a new item.
+      operationId: create_item
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Create
+              $ref: '#/components/schemas/ItemCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Items
+      summary: Bulk Create Or Update Items
+      description: Creates or updates multiple items.
+      operationId: bulk_create_or_update_items
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Bulk Create Or Update
+              type: array
+              items:
+                $ref: '#/components/schemas/ItemBulkCreateOrUpdate'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - Items
+      summary: Bulk Update Items
+      description: Updates multiple items.
+      operationId: bulk_update_items
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Bulk Update
+              type: array
+              items:
+                $ref: '#/components/schemas/ItemBulkUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Bulk Update Items
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Items
+      summary: Bulk Delete Items
+      description: Deletes multiple items.
+      operationId: bulk_delete_items
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Bulk Delete
+              type: array
+              items:
+                $ref: '#/components/schemas/ItemBulkDelete'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/items/{item_id}:
+    get:
+      tags:
+      - Items
+      summary: Get Item
+      description: Returns a single item.
+      operationId: get_item
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          title: Item Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Items
+      summary: Update Item
+      description: Updates an item.
+      operationId: update_item
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          title: Item Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Update
+              $ref: '#/components/schemas/ItemUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Items
+      summary: Delete Item
+      description: Deletes an item.
+      operationId: delete_item
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          title: Item Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/items/{item_id}/translate:
+    post:
+      tags:
+      - Items
+      summary: Translate Item
+      description: Translates an item.
+      operationId: translate_item
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: item_id
+        in: path
+        required: true
+        schema:
+          title: Item Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Translate
+              $ref: '#/components/schemas/ItemTranslate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    VirtualCurrencySettings:
+      properties:
+        rate:
+          type: number
+          exclusiveMinimum: 0.0
+          title: Rate
+          default: 1.0
+        enabled_for_checkout:
+          type: boolean
+          title: Enabled For Checkout
+          default: false
+        reward_active:
+          type: boolean
+          title: Reward Active
+          default: false
+        reward_percentage:
+          type: number
+          minimum: 0.0
+          title: Reward Percentage
+          default: 0.0
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+        price_source:
+          default: local_price
+          $ref: '#/components/schemas/VCPriceSource'
+        allow_non_secure_auth:
+          type: boolean
+          title: Allow Non Secure Auth
+          default: false
+      type: object
+      title: VirtualCurrencySettings
+    PeriodType:
+      type: string
+      enum:
+      - year
+      - month
+      - week
+      - day
+      - hour
+      - minute
+      - second
+      title: PeriodType
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ItemRarityRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: Name of the item rarity
+        color_background_badge:
+          type: string
+          title: Color Background Badge
+          description: Background color of the badge with this rarity
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - name
+      - id
+      title: ItemRarityRead
+    PitySettings:
+      properties:
+        steps:
+          items:
+            $ref: '#/components/schemas/PityStep'
+          type: array
+          minItems: 1
+          title: Steps
+        repeat_last:
+          type: boolean
+          title: Repeat Last
+          default: true
+      type: object
+      required:
+      - steps
+      title: PitySettings
+    Currency:
+      type: string
+      enum:
+      - USD
+      - EUR
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - UYU
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZWG
+      - ZWL
+      - RP
+      - VC
+      title: Currency
+    ItemRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        model_type:
+          type: string
+          enum:
+          - ItemRead
+          title: Model Type
+          default: ItemRead
+        nested_items_read:
+          items:
+            $ref: '#/components/schemas/ItemRead'
+          type: array
+          title: Nested Items Read
+        fallback_item:
+          $ref: '#/components/schemas/ItemRead'
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      title: ItemRead
+    ItemBulkUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/)
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          exclusiveMinimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          maximum: 1000.0
+          exclusiveMinimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+          deprecated: true
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        meta:
+          type: object
+          title: Meta
+          nullable: true
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: Child items of the bundle
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+      type: object
+      required:
+      - id
+      title: ItemBulkUpdate
+    LootboxSettings:
+      properties:
+        groups:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+            discriminator:
+              propertyName: model_type
+              mapping:
+                LootboxGroup: '#/components/schemas/LootboxGroup'
+                LootboxNestedItem: '#/components/schemas/LootboxNestedItem'
+          type: array
+          title: Groups
+        claim_video_url:
+          type: string
+          title: Claim Video Url
+        claimed_video_url:
+          type: string
+          title: Claimed Video Url
+        claim_video_url_mov:
+          type: string
+          title: Claim Video Url Mov
+        claimed_video_url_mov:
+          type: string
+          title: Claimed Video Url Mov
+        view_type:
+          default: default
+          $ref: '#/components/schemas/LootboxViewType'
+        pity:
+          $ref: '#/components/schemas/PitySettings'
+      type: object
+      required:
+      - groups
+      title: LootboxSettings
+    LootboxGroup:
+      properties:
+        id:
+          type: string
+          title: Id
+        weight:
+          type: integer
+          maximum: 1000000.0
+          minimum: 0.0
+          title: Weight
+        name:
+          type: string
+          title: Name
+        nested_items:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+          type: array
+          title: Nested Items
+        model_type:
+          type: string
+          enum:
+          - LootboxGroup
+          title: Model Type
+          default: LootboxGroup
+      type: object
+      required:
+      - id
+      - weight
+      - name
+      - nested_items
+      title: LootboxGroup
+    ItemBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: ItemBulkDelete
+    ItemUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/)
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          exclusiveMinimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          maximum: 1000.0
+          exclusiveMinimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+          deprecated: true
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        meta:
+          type: object
+          title: Meta
+          nullable: true
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: Child items of the bundle
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+      type: object
+      title: ItemUpdate
+    LootboxGroupRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        weight:
+          type: integer
+          title: Weight
+        nested_items:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/LootboxGroupRead'
+            type: array
+          - items:
+              $ref: '#/components/schemas/LootboxNestedItemRead'
+            type: array
+          title: Nested Items
+      type: object
+      required:
+      - id
+      - name
+      - weight
+      - nested_items
+      title: LootboxGroupRead
+    ItemType:
+      type: string
+      enum:
+      - item
+      - currency
+      - bundle
+      - lootbox
+      - subscription
+      - virtual_currency
+      title: ItemType
+      description: An enumeration.
+    ItemPriceType:
+      type: string
+      enum:
+      - fiat
+      - reward_points
+      - virtual_currency
+      title: ItemPriceType
+      description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ItemBulkCreateOrUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        meta:
+          type: object
+          title: Meta
+          nullable: true
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      title: ItemBulkCreateOrUpdate
+    SubscriptionBillingCycle:
+      properties:
+        period_type:
+          description: The type of billing period (year, month, week, day)
+          $ref: '#/components/schemas/PeriodType'
+        period_value:
+          type: integer
+          title: Period Value
+          description: The number of periods in a billing cycle
+      type: object
+      required:
+      - period_type
+      - period_value
+      title: SubscriptionBillingCycle
+    LootboxNestedItemRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        model_type:
+          type: string
+          enum:
+          - PublicItemRead
+          title: Model Type
+          default: PublicItemRead
+        nested_items_read:
+          items:
+            $ref: '#/components/schemas/PublicItemRead'
+          type: array
+          title: Nested Items Read
+        fallback_item:
+          $ref: '#/components/schemas/PublicItemRead'
+        quantity_after_bonus:
+          type: integer
+          title: Quantity After Bonus
+        quantity_bonus_value:
+          type: integer
+          title: Quantity Bonus Value
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        probability:
+          type: number
+          title: Probability
+          description: The probability of the item appearing
+        weight:
+          type: integer
+          title: Weight
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      - probability
+      - weight
+      title: LootboxNestedItemRead
+    PityStep:
+      properties:
+        threshold:
+          type: integer
+          minimum: 1.0
+          title: Threshold
+        guaranteed_groups:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+          type: array
+          minItems: 1
+          title: Guaranteed Groups
+      type: object
+      required:
+      - threshold
+      - guaranteed_groups
+      title: PityStep
+    SubscriptionOffer:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: The unique key of the offer
+        name:
+          type: string
+          title: Name
+          description: The display name of the offer
+        description:
+          type: string
+          title: Description
+          description: The description of the offer
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: The discount percentage for the offer
+        eligibility_rules:
+          items:
+            $ref: '#/components/schemas/SubscriptionOfferEligibility'
+          type: array
+          description: The list of eligibility rules for the offer
+        grace_extension:
+          type: integer
+          title: Grace Extension
+          description: The grace period extension in days
+        trial_extension:
+          type: integer
+          title: Trial Extension
+          description: The trial period extension in days
+        activation_limits:
+          type: integer
+          title: Activation Limits
+          description: The maximum number of times this offer can be activated
+      type: object
+      required:
+      - key
+      title: SubscriptionOffer
+    NestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        is_featured:
+          type: boolean
+          title: Is Featured
+        meta:
+          type: object
+          title: Meta
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+        view_type:
+          $ref: '#/components/schemas/NestedItemViewType'
+      type: object
+      title: NestedItem
+    LootboxNestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        weight:
+          type: integer
+          maximum: 1000000.0
+          minimum: 0.0
+          title: Weight
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        model_type:
+          type: string
+          enum:
+          - LootboxNestedItem
+          title: Model Type
+          default: LootboxNestedItem
+      type: object
+      required:
+      - id
+      - weight
+      - count
+      - sku
+      title: LootboxNestedItem
+    SubscriptionRenewalType:
+      type: string
+      enum:
+      - auto
+      - no_renew
+      title: SubscriptionRenewalType
+      description: An enumeration.
+    HighlightItem:
+      properties:
+        image_url:
+          type: string
+          title: Image Url
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      title: HighlightItem
+    ItemViewOption:
+      type: string
+      enum:
+      - default
+      - skeleton
+      title: ItemViewOption
+      description: An enumeration.
+    ItemTranslate:
+      properties:
+        name:
+          title: Name
+          description: Mapping of locale to translated name
+          $ref: '#/components/schemas/LocaleMapping'
+        description:
+          title: Description
+          description: Mapping of locale to translated description
+          $ref: '#/components/schemas/LocaleMapping'
+      type: object
+      title: ItemTranslate
+      examples:
+      - name:
+          en: Sword
+          pt: Espada
+    ItemStackableType:
+      type: string
+      enum:
+      - stackable
+      - non_stackable
+      title: ItemStackableType
+      description: An enumeration.
+    VirtualCurrencyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        vc_settings:
+          title: Vc Settings
+          description: The settings of the virtual currency
+          $ref: '#/components/schemas/VirtualCurrencySettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The timestamp of when the virtual currency becomes active
+        end_at:
+          type: integer
+          title: End At
+          description: The timestamp of when the virtual currency expires
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the virtual currency
+        model_type:
+          type: string
+          enum:
+          - VirtualCurrencyRead
+          title: Model Type
+          default: VirtualCurrencyRead
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the virtual currency was archived
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - vc_settings
+      - id
+      title: VirtualCurrencyRead
+    Highlights:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        items:
+          items:
+            $ref: '#/components/schemas/HighlightItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Highlights
+    ItemPropertyConfigString:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - string
+          title: Property Type
+          default: string
+      type: object
+      title: ItemPropertyConfigString
+    ItemPropertyConfigNumber:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - number
+          title: Property Type
+          default: number
+      type: object
+      title: ItemPropertyConfigNumber
+    PublicItemRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        model_type:
+          type: string
+          enum:
+          - PublicItemRead
+          title: Model Type
+          default: PublicItemRead
+        nested_items_read:
+          items:
+            $ref: '#/components/schemas/PublicItemRead'
+          type: array
+          title: Nested Items Read
+        fallback_item:
+          $ref: '#/components/schemas/PublicItemRead'
+        quantity_after_bonus:
+          type: integer
+          title: Quantity After Bonus
+        quantity_bonus_value:
+          type: integer
+          title: Quantity Bonus Value
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      title: PublicItemRead
+    ItemCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        meta:
+          type: object
+          title: Meta
+          nullable: true
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      title: ItemCreate
+    ItemPropertyRelationData:
+      properties:
+        value:
+          anyOf:
+          - type: number
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      title: ItemPropertyRelationData
+    aghanim__subscription_item__schemas__SubscriptionRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        meta:
+          type: object
+          title: Meta
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the subscription
+        model_type:
+          type: string
+          enum:
+          - SubscriptionRead
+          title: Model Type
+          default: SubscriptionRead
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the subscription was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the subscription was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the subscription was archived
+        comment:
+          type: string
+          maxLength: 255
+          title: Comment
+          description: Internal comment for this subscription
+        subscription_settings:
+          title: Subscription Settings
+          description: The settings of the subscription
+          $ref: '#/components/schemas/SubscriptionSettings'
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      - subscription_settings
+      title: SubscriptionRead
+    SubscriptionPlanType:
+      type: string
+      enum:
+      - default
+      - special
+      title: SubscriptionPlanType
+      description: An enumeration.
+    ItemPropertyConfigRange:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - range
+          title: Property Type
+          default: range
+        max:
+          type: integer
+          title: Max
+        min:
+          type: integer
+          title: Min
+          default: 0
+      type: object
+      required:
+      - max
+      title: ItemPropertyConfigRange
+    OrderSourceType:
+      type: string
+      enum:
+      - s2s
+      - hub
+      - sdk
+      - checkout_link
+      title: OrderSourceType
+      description: An enumeration.
+    ItemPropertyRelationRead:
+      properties:
+        property_id:
+          type: string
+          title: Property Id
+        data:
+          $ref: '#/components/schemas/ItemPropertyRelationData'
+        position:
+          type: integer
+          title: Position
+        id:
+          type: string
+          title: Id
+        item_id:
+          type: string
+          title: Item Id
+        item_property:
+          $ref: '#/components/schemas/ItemPropertyRead'
+      type: object
+      required:
+      - property_id
+      - position
+      - id
+      - item_id
+      - item_property
+      title: ItemPropertyRelationRead
+    ResourceState:
+      type: string
+      enum:
+      - active
+      - archived
+      title: ResourceState
+      description: An enumeration.
+    NestedItemViewType:
+      type: string
+      enum:
+      - separated
+      title: NestedItemViewType
+      description: An enumeration.
+    SubscriptionGraceMode:
+      type: string
+      enum:
+      - free_to_paid
+      - paid_to_paid
+      title: SubscriptionGraceMode
+      description: An enumeration.
+    UnsetType:
+      type: string
+      enum:
+      - unset
+      title: UnsetType
+      description: An enumeration.
+    ItemPropertyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the property
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the property
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the property
+        config:
+          oneOf:
+          - $ref: '#/components/schemas/ItemPropertyConfigRange'
+          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
+          - $ref: '#/components/schemas/ItemPropertyConfigString'
+          title: Config
+          description: The config of the property
+          discriminator:
+            propertyName: property_type
+            mapping:
+              range: '#/components/schemas/ItemPropertyConfigRange'
+              number: '#/components/schemas/ItemPropertyConfigNumber'
+              string: '#/components/schemas/ItemPropertyConfigString'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the property
+      type: object
+      required:
+      - name
+      - config
+      - id
+      title: ItemPropertyRead
+    SubscriptionPlan:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: The unique key of the plan
+        name:
+          type: string
+          title: Name
+          description: The display name of the plan
+        billing_cycle:
+          title: Billing Cycle
+          description: The billing cycle configuration
+          $ref: '#/components/schemas/SubscriptionBillingCycle'
+        renewal_type:
+          description: The renewal type of the plan
+          $ref: '#/components/schemas/SubscriptionRenewalType'
+        price:
+          type: integer
+          title: Price
+          description: The price in minor currency units
+        price_point:
+          type: integer
+          title: Price Point
+          description: The price point for local prices
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        currency:
+          description: The currency of the plan
+          default: USD
+          $ref: '#/components/schemas/Currency'
+        grace_period:
+          type: integer
+          title: Grace Period
+          description: The grace period in days before subscription is canceled
+        grace_mode:
+          description: The grace mode for payment transitions
+          $ref: '#/components/schemas/SubscriptionGraceMode'
+        trial_period:
+          type: integer
+          title: Trial Period
+          description: The trial period in days
+        account_lock_duration:
+          type: integer
+          title: Account Lock Duration
+          description: The duration in days to lock account after cancellation
+        change_payment_mode:
+          type: boolean
+          title: Change Payment Mode
+          description: Whether changing payment method is allowed
+        is_downgrade_supported:
+          type: boolean
+          title: Is Downgrade Supported
+          description: Whether downgrading to this plan is supported
+          default: false
+        is_pause_allowed:
+          type: boolean
+          title: Is Pause Allowed
+          description: Whether pausing the subscription is allowed
+          default: false
+        is_reactivation_allowed:
+          type: boolean
+          title: Is Reactivation Allowed
+          description: Whether reactivating the subscription is allowed
+          default: false
+        offers:
+          items:
+            $ref: '#/components/schemas/SubscriptionOffer'
+          type: array
+          title: Offers
+          description: The list of special offers for this plan
+        benefits:
+          items:
+            type: string
+          type: array
+          title: Benefits
+          description: The list of benefit descriptions for this plan
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: Nested items references for this subscription plan
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp when the plan was archived
+        type:
+          description: The type of the plan
+          default: default
+          $ref: '#/components/schemas/SubscriptionPlanType'
+      type: object
+      required:
+      - key
+      - name
+      - billing_cycle
+      - renewal_type
+      title: SubscriptionPlan
+    ItemOrderType:
+      type: string
+      enum:
+      - created_at
+      - modified_at
+      - name
+      - position
+      - price
+      title: ItemOrderType
+      description: An enumeration.
+    SubscriptionOfferEligibility:
+      type: string
+      enum:
+      - new_acquisition
+      - returning
+      title: SubscriptionOfferEligibility
+      description: An enumeration.
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+      title: SortOrder
+      description: An enumeration.
+    LootboxViewType:
+      type: string
+      enum:
+      - default
+      - roulette
+      title: LootboxViewType
+      description: An enumeration.
+    LootboxRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        lootbox_settings:
+          title: Lootbox Settings
+          description: The settings of the lootbox
+          $ref: '#/components/schemas/LootboxSettings'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the lootbox
+        model_type:
+          type: string
+          enum:
+          - LootboxRead
+          title: Model Type
+          default: LootboxRead
+        groups:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroupRead'
+            - $ref: '#/components/schemas/LootboxNestedItemRead'
+          type: array
+          title: Groups
+          description: Groups with nested elements that can be dropped
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the lootbox was archived
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - lootbox_settings
+      - id
+      title: LootboxRead
+    VCPriceSource:
+      type: string
+      enum:
+      - local_price
+      - base_price
+      title: VCPriceSource
+      description: An enumeration.
+    LocaleMapping:
+      properties:
+        cs:
+          type: string
+          title: Cs
+        de:
+          type: string
+          title: De
+        en:
+          type: string
+          title: En
+        es:
+          type: string
+          title: Es
+        fr:
+          type: string
+          title: Fr
+        fr-CA:
+          type: string
+          title: Fr-Ca
+        hi:
+          type: string
+          title: Hi
+        id:
+          type: string
+          title: Id
+        it:
+          type: string
+          title: It
+        ja:
+          type: string
+          title: Ja
+        ko:
+          type: string
+          title: Ko
+        ms:
+          type: string
+          title: Ms
+        nl:
+          type: string
+          title: Nl
+        'no':
+          type: string
+          title: 'No'
+        pl:
+          type: string
+          title: Pl
+        pt:
+          type: string
+          title: Pt
+        pt-BR:
+          type: string
+          title: Pt-Br
+        ru:
+          type: string
+          title: Ru
+        sv:
+          type: string
+          title: Sv
+        th:
+          type: string
+          title: Th
+        tr:
+          type: string
+          title: Tr
+        uk:
+          type: string
+          title: Uk
+        vi:
+          type: string
+          title: Vi
+        zh:
+          type: string
+          title: Zh
+        zh-Hant:
+          type: string
+          title: Zh-Hant
+      type: object
+      title: LocaleMapping
+    SubscriptionSettings:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/SubscriptionPlan'
+          type: array
+          title: Plans
+          description: The subscription plans
+      type: object
+      title: SubscriptionSettings
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

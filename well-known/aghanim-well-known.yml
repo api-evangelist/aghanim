@@ -1,0 +1,30 @@
+generated: '2026-07-17'
+method: searched
+source: live probes of /.well-known/* across Aghanim hosts
+notes: >-
+  Probed the RFC 8615 well-known discovery surface on all three Aghanim hosts.
+  None of the standard discovery documents are published (all 404). Absence is
+  valid, recorded data. No SecurityTxt or WellKnown pointer is emitted because
+  no document was found.
+hosts:
+  - host: https://api.aghanim.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://aghanim.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://docs.aghanim.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}

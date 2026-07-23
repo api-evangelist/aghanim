@@ -1,0 +1,300 @@
+# Aghanim Docs
+
+> Documentation for integrating your game with Aghanim's platform for game hubs, checkout, webhooks, and third-party integrations.
+- [Getting Started](https://docs.aghanim.com/getting-started.md): This guide provides step-by-step instructions for integrating your mobile game with Aghanim.
+
+## Advanced
+
+- [Achievements](https://docs.aghanim.com/advanced/achievements.md): In the game hub, achievements are created to engage and motivate your players by highlighting their milestones, including completed challenges, and special awards.
+- [Passwordless Authorization](https://docs.aghanim.com/advanced/auth-via-game.md): This guide explains how to enable player authorization through your Game App, allowing seamless access to the Game Hub without requiring players to manually enter their user ID.
+- [Automatic Payment Refunds](https://docs.aghanim.com/advanced/auto-refund.md): Aghanim supports automatic payment refunds when your game server rejects a purchase due to expired promotions, insufficient player requirements, or other business logic.
+- [Composite Authorization](https://docs.aghanim.com/advanced/composite-authorization.md): Aghanim provides a method to authorize players using a Composite Authorization, where Player Identity may consists of multiple fields that uniquely identify a player.
+- [Custom Domain](https://docs.aghanim.com/advanced/custom-domain-name.md): During integration, the hub is available at the technical address like
+- [Deep links](https://docs.aghanim.com/advanced/deep-links.md): The deep links is a bridge between your game and the web hub environment you create with the Aghanim.
+- [In-Game Popups](https://docs.aghanim.com/advanced/in-game-popup.md): In-game popups are a direct communication channel between game developers and players, designed to deliver information, promotions, and incentives in a timely manner.
+- [Mobile Pushes](https://docs.aghanim.com/advanced/mobile-push.md): Mobile push notifications boost player engagement, retention, and monetization in mobile games by alerting players to new content, events, and rewards, encouraging frequent returns.
+- [Set up Game-to-Hub authentication](https://docs.aghanim.com/advanced/set-up-game-to-hub-authentication.md): To allow players to log in into the game hub using their Player ID:
+- [Social Authentication on the game hub](https://docs.aghanim.com/advanced/social-auth.md): Aghanim supports multiple social login providers (e.g., Apple, Discord, Facebook, Google) and generic OIDC-compliant providers for player authentication via webhooks.
+
+### Leaderboards
+
+- [Leaderboard Overview](https://docs.aghanim.com/advanced/leaderboards/overview.md): In the game hub, leaderboards are designed to stimulate competition by displaying player rankings and high scores.
+- [Update Leaderboards from S3](https://docs.aghanim.com/advanced/leaderboards/update-leaderboards.md): As an alternative to using Aghanim API calls, you can store your game leaderboards in an S3-compatible bucket.
+
+## Aghanim Connect
+
+- [Aghanim-Apple Login Integration](https://docs.aghanim.com/aghanim-connect/apple-login.md): This guide explains how to integrate Aghanim with Sign in with Apple to enable users to authenticate using their Apple ID credentials when accessing your game hub.
+- [Aghanim-devtodev Integration](https://docs.aghanim.com/aghanim-connect/devtodev.md): This guide explains how to integrate Aghanim with devtodev to streamline player analytics and tracking.
+- [Aghanim-Discord Login Integration](https://docs.aghanim.com/aghanim-connect/discord-login.md): This guide explains how to integrate Aghanim with Discord OAuth2 to enable users to authenticate using their Discord accounts when accessing your game hub.
+- [Aghanim-Facebook Login Integration](https://docs.aghanim.com/aghanim-connect/facebook-login.md): This guide explains how to integrate Aghanim with Facebook Login to allow users to authenticate using their Facebook accounts when accessing your game hub.
+- [Facebook News Plugin](https://docs.aghanim.com/aghanim-connect/facebook-news.md): This guide explains how to use the Facebook News plugin to import posts from Facebook and automatically create news in Aghanim.
+- [Aghanim-Google Analytics for Firebase Integration](https://docs.aghanim.com/aghanim-connect/google-analytics-firebase.md): This guide explains how to integrate Aghanim with Google Analytics for Firebase to track purchase events and user behavior.
+- [Aghanim-Google Analytics Integration](https://docs.aghanim.com/aghanim-connect/google-analytics.md): This guide explains how to integrate Aghanim with Google Analytics, allowing you to track traffic and user interactions on your game hub through a GA4 property.
+- [Aghanim-Google Login Integration](https://docs.aghanim.com/aghanim-connect/google-login.md): This guide explains how to integrate Aghanim with Google Sign-In to enable users to authenticate using their Google accounts when accessing your game hub.
+- [Aghanim-Google Tag Manager Integration](https://docs.aghanim.com/aghanim-connect/google-tag-manager.md): This guide explains how to integrate Aghanim with Google Tag Manager (GTM) to manage and deploy marketing tags (e.g., tracking scripts, pixels) on your game hub without modifying code directly.
+- [Aghanim-Helpshift Integration](https://docs.aghanim.com/aghanim-connect/helpshift.md): This guide explains how to integrate Aghanim with Helpshift to automatically import support articles into your game hub.
+- [Aghanim-Meta Pixel Integration](https://docs.aghanim.com/aghanim-connect/meta-pixel.md): This guide explains how to integrate Aghanim with Meta Pixel (formerly Facebook Pixel) to track user activity and measure the effectiveness of advertising across your game hub.
+- [Aghanim-OIDC Login Integration](https://docs.aghanim.com/aghanim-connect/oidc-login.md): This guide explains how to integrate Aghanim with any OpenID Connect (OIDC)-compliant identity provider to enable users to authenticate when accessing your game hub.
+- [Aghanim-PlayFab Integration](https://docs.aghanim.com/aghanim-connect/playfab.md): This guide explains how to integrate Aghanim with PlayFab to enable automatic player verification and inventory management through PlayFab's Server API.
+- [RSS News Plugin](https://docs.aghanim.com/aghanim-connect/rss-news.md): This guide explains how to use the RSS News plugin to automatically import articles from any RSS feed and publish them as news in your Aghanim game hub.
+- [Aghanim-Slack Integration](https://docs.aghanim.com/aghanim-connect/slack.md): This guide explains how to integrate Aghanim with Slack to receive real-time order updates directly in your Slack workspace.
+- [Aghanim-Telegram Login Integration](https://docs.aghanim.com/aghanim-connect/telegram-login.md): This guide explains how to integrate Aghanim with Telegram to enable user authentication via a Telegram bot.
+- [Aghanim-Twitter News Integration](https://docs.aghanim.com/aghanim-connect/twitter.md): This guide explains how to integrate Aghanim with Twitter (X) to automatically import tweets as news updates in your game hub.
+- [Aghanim-Zendesk Pages Integration](https://docs.aghanim.com/aghanim-connect/zendesk.md): This guide explains how to integrate Aghanim with Zendesk to automatically import articles into your game hub.
+
+## AI Coding Tools
+
+- [Claude Code Plugin](https://docs.aghanim.com/ai-coding-tools/claude-plugin.md): This guide walks you through installing the Aghanim plugin for Claude Code.
+- [Cursor Plugin](https://docs.aghanim.com/ai-coding-tools/cursor-plugin.md): A first-class Aghanim plugin for Cursor is in active development.
+- [Newton MCP](https://docs.aghanim.com/ai-coding-tools/newton-mcp.md): The Newton MCP server gives any MCP-aware AI coding tool direct access to Aghanim's product documentation and OpenAPI spec.
+- [Overview](https://docs.aghanim.com/ai-coding-tools/overview.md): Aghanim ships first-class integrations for AI coding tools so that your agent can search the Aghanim documentation, browse the public API, and scaffold integrations directly in your project — without leaving the editor.
+- [Skills](https://docs.aghanim.com/ai-coding-tools/skills.md): Aghanim Skills are installable playbooks for AI coding agents.
+
+## Best Practices
+
+### Webhooks
+
+- [Handle webhooks](https://docs.aghanim.com/best-practices/webhooks/handle-webhooks.md): Use the code examples of the webhooks’ handling functions for a single endpoint.
+- [Meet Aghanim webhook requirements](https://docs.aghanim.com/best-practices/webhooks/meet-requirements.md): The functions in your webhook system should comply with these requirements for:
+
+## Checkout
+
+- [Android SDK reference](https://docs.aghanim.com/checkout/android-sdk.md): The Aghanim Android SDK that allows you to use the Checkout withing your Android app.
+- [Checkout for web games](https://docs.aghanim.com/checkout/checkout-for-web-games.md): For the web games distributed on the desktop screen, use this page to integrate the Aghanim Checkout via the API and start accepting payments for your game items online through a prebuilt checkout page.
+- [Get to know Checkout](https://docs.aghanim.com/checkout/get-to-know-checkout.md): The Aghanim Checkout is a web-based payment flow that supports 80+ payment methods worldwide.
+- [Test payments](https://docs.aghanim.com/checkout/test-payments.md): The sandbox environment supports card payments only.
+- [Unity SDK reference](https://docs.aghanim.com/checkout/unity-sdk.md): The Aghanim Unity SDK that allows you to use the Checkout within both your Android and iOS apps.
+
+### Integrate
+
+- [Android](https://docs.aghanim.com/checkout/integrate/android.md): Integrate the Aghanim to start accepting payments for your game items online through a prebuilt checkout page.
+- [API](https://docs.aghanim.com/checkout/integrate/api.md): Integrate the Aghanim to start accepting payments for your game items online through a prebuilt checkout page.
+- [Checkout Links](https://docs.aghanim.com/checkout/integrate/checkout-links.md): Integrate the Aghanim to start accepting payments for your game items online through a prebuilt checkout page.
+- [Unity](https://docs.aghanim.com/checkout/integrate/unity.md): Integrate the Aghanim to start accepting payments for your game items online through a prebuilt checkout page.
+
+## Dev Resources
+
+- [Currencies](https://docs.aghanim.com/dev-resources/currencies.md): The Aghanim specifies monetary amounts as decimal integer numbers in minor units.
+- [Game hub Platform Compatibility](https://docs.aghanim.com/dev-resources/game-hub-platform-compatibility.md): This page describes the browser requirements for the Game hub — the direct-to-consumer web experience Aghanim generates for your game.
+- [Locales](https://docs.aghanim.com/dev-resources/locales.md): For internationally distributed games, the Aghanim provides locales to display the Price templates and main texts for the items in a game store, and the game hub content.
+- [Payment and Order State Model](https://docs.aghanim.com/dev-resources/payment-order-state-model.md): This page documents the lifecycle of payments and orders on the Aghanim platform: every status, every transition, and how payment status changes drive order status.
+
+## Gamer Hub
+
+- [Running LiveOps Campaign](https://docs.aghanim.com/gamer-hub/campaigns.md): Aghanim LiveOps Campaign Builder is essentially a set of tools provided to game developers for creating and managing marketing strategies within their games.
+
+## Integrations
+
+- [Aghanim-Adjust Integration](https://docs.aghanim.com/integrations/adjust.md): This guide explains how to integrate Aghanim with Adjust to streamline mobile attribution and analytics.
+- [Aghanim-AppsFlyer Integration](https://docs.aghanim.com/integrations/appsflyer.md): This guide explains how to integrate Aghanim with AppsFlyer to streamline mobile attribution and analytics.
+- [Aghanim-Discord News Integration](https://docs.aghanim.com/integrations/discord.md): This guide explains how to integrate Aghanim with Discord to create news.
+- [Mobile Pushes via Firebase Cloud Messaging](https://docs.aghanim.com/integrations/firebase-cloud-messaging.md): This guide explains how to integrate Aghanim with Firebase Cloud Messaging (FCM) for sending mobile pushes to player devices to boost player engagement, retention, and monetization.
+- [Migrating from Appcharge to Aghanim](https://docs.aghanim.com/integrations/migrate-from-appcharge.md): This guide walks you through the process of migrating from Appcharge to Aghanim, including setting up webhooks and installing necessary plugins.
+- [How to Purchase Items from the Game Client Using Aghanim](https://docs.aghanim.com/integrations/purchase-from-game-client.md): This guide provides a step-by-step process for purchasing items from the in-game hub via a game client using the Aghanim API.
+- [Aghanim-Singular Integration](https://docs.aghanim.com/integrations/singular.md): This guide explains how to integrate Aghanim with Singular to streamline mobile attribution and analytics.
+- [Unity WebGL Integration](https://docs.aghanim.com/integrations/unity-webgl.md): This guide explains how to integrate a Unity WebGL game client with Game Hub, allowing players to access the game from the Game Hub platform.
+
+## S2S API
+
+- [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog.md): - Increased the `sku` maximum length from 100 to 255 characters across catalog items, store items, coupons, daily rewards, and loyalty tiers
+
+### Changelog
+
+### 2026 04 13
+
+- [Virtual currency support](https://docs.aghanim.com/s2s-api/changelog/2026-04-13/virtual-currency-support.md): Coupons, items, store items, and daily rewards now support a new `vc` (virtual currency) type.
+- [Webhook analytics events and batch delivery](https://docs.aghanim.com/s2s-api/changelog/2026-04-13/webhook-analytics-batch.md): Webhooks now support analytics events for checkout and hub interactions, plus a new `batch.ready` event.
+
+### 2026 05 01
+
+- [Highlights field for items](https://docs.aghanim.com/s2s-api/changelog/2026-05-01/highlights-field.md): A new optional `highlights` field has been added to all item types — regular items, lootboxes, subscriptions, and virtual currencies — enabling structured benefit descriptions to be stored and returned alongside each item.
+- [payment_number deprecated, receipt_number added](https://docs.aghanim.com/s2s-api/changelog/2026-05-01/payment-number-deprecation.md): The `payment_number` field in get_payments responses has been deprecated and replaced by a new required `receipt_number` field.
+
+### 2026 05 07
+
+- [Apple-specific image URL fields on items](https://docs.aghanim.com/s2s-api/changelog/2026-05-07/apple-image-urls.md): Five Apple-specific image URL fields are now exposed on item responses across all item-bearing endpoints: `image_url_apple`, `image_url_featured_apple`, `icon_url_apple`, `background_image_url_apple`, and `featured_card_background_image_url_apple`.
+
+### 2026 05 08
+
+- [Unified item schema in order and payment responses](https://docs.aghanim.com/s2s-api/changelog/2026-05-08/order-payment-item-schema.md): Item objects in order and payment responses now share a single `Item` schema.
+- [Page card button text and custom URL](https://docs.aghanim.com/s2s-api/changelog/2026-05-08/page-card-button-and-url.md): Two new optional fields are available on pages: `button_text` (the label shown on the page card button) and `custom_url` (a URL the card links to instead of the page itself).
+
+### 2026 05 21
+
+- [Unified item source enum across catalog and order responses](https://docs.aghanim.com/s2s-api/changelog/2026-05-21/item-source-unification.md): The two per-domain `ItemSource` schemas (one for catalog items, one for order items) have been consolidated into a single shared `ItemSource` enum.
+- [Category templates and video thumbnail toggle on page blocks](https://docs.aghanim.com/s2s-api/changelog/2026-05-21/page-block-extensions.md): Page layouts gain two new authoring options:
+- [Bonus quantity fields on item responses](https://docs.aghanim.com/s2s-api/changelog/2026-05-21/quantity-bonus-fields.md): Public item responses now expose two new optional fields, `quantity_bonus_value` and `quantity_after_bonus`, describing the bonus quantity added on top of an item's base quantity and the resulting total.
+- [Store promotion scheduling fields are now optional and nullable](https://docs.aghanim.com/s2s-api/changelog/2026-05-21/store-promotion-nullable-schedule.md): `start_at` and `end_at` on store promotions are no longer required and may be `null`.
+
+### 2026 05 22
+
+- [Reward eligibility and virtual currency rewards on order responses](https://docs.aghanim.com/s2s-api/changelog/2026-05-22/order-reward-fields.md): Order responses now expose three new optional fields describing the rewards a player is eligible to receive for an order: `eligible_for_reward_points` (integer), `eligible_for_loyalty_points` (integer), and `rewards`, a structured object listing the available virtual currency rewards along with each reward's issue status.
+
+### 2026 05 25
+
+- [RemoveFromSegmentNode for campaign and segment graphs](https://docs.aghanim.com/s2s-api/changelog/2026-05-25/remove-from-segment-node.md): Campaign and segment-group graphs gain a new `RemoveFromSegmentNode` action node, the counterpart to the existing `AddToSegmentNode`.
+
+### 2026 05 27
+
+- [Multi-item coupon rewards](https://docs.aghanim.com/s2s-api/changelog/2026-05-27/coupon-multi-item-rewards.md): Coupons can now grant multiple items in a single redemption.
+
+### 2026 05 29
+
+- [Progressive Web App (PWA) support](https://docs.aghanim.com/s2s-api/changelog/2026-05-29/pwa-support.md): Campaign automation gains end-to-end support for Progressive Web Apps.
+
+### 2026 06 04
+
+- [Creators resource](https://docs.aghanim.com/s2s-api/changelog/2026-06-04/creators-resource.md): A new Creators resource adds full CRUD management for content creators in a creator program.
+
+### 2026 06 08
+
+- [Cashback Rewards resource removed](https://docs.aghanim.com/s2s-api/changelog/2026-06-08/cashback-rewards-removed.md): The Cashback Rewards resource has been removed.
+
+### 2026 06 10
+
+- [Creator annotations](https://docs.aghanim.com/s2s-api/changelog/2026-06-10/creator-annotation.md): Creator responses now include an optional `annotation` object, backed by the new `CreatorAnnotation` schema.
+
+### 2026 06 12
+
+- [Coupon limits for combined store-item discounts and bonuses](https://docs.aghanim.com/s2s-api/changelog/2026-06-12/coupon-store-item-limits.md): Coupons gained two optional fields — `store_item_discount_limit_percent` and `store_item_bonus_limit_percent` — that cap how much a coupon can stack on top of a store item's own discount or bonus.
+
+### 2026 06 13
+
+- [Checkout analytics webhook events](https://docs.aghanim.com/s2s-api/changelog/2026-06-13/checkout-analytics-webhook-events.md): Webhooks now support two new event types — `analytics.checkout.payment_method.select` and `analytics.checkout.payment_method.close` — so you can subscribe to payment-method selection and close analytics events.
+
+### 2026 06 16
+
+- [Legacy single-item coupon fields removed](https://docs.aghanim.com/s2s-api/changelog/2026-06-16/coupon-legacy-item-fields-removed.md): The deprecated single-item coupon fields — `item_id`, `quantity`, and the read-only `item` object — have been removed from the coupon API.
+
+### 2026 06 18
+
+- [Checkout payment-method webhook event renamed](https://docs.aghanim.com/s2s-api/changelog/2026-06-18/checkout-payment-method-event-renamed.md): The webhook event type `analytics.checkout.payment_method.open` has been renamed to `analytics.checkout.payment_method.select`.
+
+### 2026 06 19
+
+- [Checkout payment-method webhook event renamed to `select`](https://docs.aghanim.com/s2s-api/changelog/2026-06-19/checkout-payment-method-event-renamed.md): The webhook event type `analytics.checkout.payment_method.selected` has been renamed to `analytics.checkout.payment_method.select`.
+- [Filter creators by country](https://docs.aghanim.com/s2s-api/changelog/2026-06-19/creator-country-filtering.md): You can now filter creators by country and discover which countries are available.
+
+### 2026 06 20
+
+- [PWA support](https://docs.aghanim.com/s2s-api/changelog/2026-06-20/pwa-support.md): The API now supports Progressive Web App (PWA) tracking.
+
+### 2026 06 26
+
+- [Category filter on the Latest Pages block](https://docs.aghanim.com/s2s-api/changelog/2026-06-26/latest-pages-block-category.md): The Latest Pages layout block (`LatestPagesBlock`) gains an optional `category_id` string.
+
+### 2026 07 01
+
+- [Requirements expressions on News and Pages](https://docs.aghanim.com/s2s-api/changelog/2026-07-01/requirements-expression-targeting.md): News posts and Pages gain an optional `requirements_expression` field.
+- [Campaign origin on store items](https://docs.aghanim.com/s2s-api/changelog/2026-07-01/store-item-campaign-origin.md): Store item responses now expose two optional fields, `created_from_campaign_node_id` and `created_from_campaign_version`, that identify the campaign node and version a store item was generated from.
+
+### 2026 07 07
+
+- [Non-circulating currency codes removed](https://docs.aghanim.com/s2s-api/changelog/2026-07-07/currency-code-cleanup.md): Thirteen non-circulating ISO 4217 codes have been removed from the shared currency enum: the fund codes `BOV`, `CHE`, `CHW`, `CLF`, `COU`, `MXV`, `USN`, `UYI`, and `UYW`; the discontinued currencies `CUC`, `HRK`, and `SLL`; and the IMF Special Drawing Rights code `XDR`.
+
+### 2026 07 10
+
+- [VED and ZWG currency codes added](https://docs.aghanim.com/s2s-api/changelog/2026-07-10/ved-zwg-currency-support.md): The `VED` (Venezuelan bolívar) and `ZWG` (Zimbabwe Gold) codes have been added to the shared currency enum.
+- [XCG currency code added](https://docs.aghanim.com/s2s-api/changelog/2026-07-10/xcg-currency-support.md): The `XCG` code (Caribbean guilder) has been added to the shared currency enum.
+
+### 2026 07 14
+
+- [SKU maximum length increased to 255 characters](https://docs.aghanim.com/s2s-api/changelog/2026-07-14/sku-max-length-increased.md): The `sku` field on catalog objects now accepts up to 255 characters, up from the previous 100-character limit.
+
+## SDK API
+
+- [SDK API Changelog](https://docs.aghanim.com/sdk-api/changelog.md): - Added the `VED` (Venezuelan bolívar) and `ZWG` (Zimbabwe Gold) currency codes to the shared currency enum used across the item, order, and price point endpoints
+
+### Changelog
+
+### 2026 04 13
+
+- [Order request body restructuring](https://docs.aghanim.com/sdk-api/changelog/2026-04-13/order-request-restructuring.md): The request bodies for creating and updating orders have been restructured to use dedicated `OrderCreate` and `OrderUpdate` schemas via `allOf` composition, replacing the previous inline object definitions.
+
+### 2026 05 01
+
+- [Expanded create_order request](https://docs.aghanim.com/sdk-api/changelog/2026-05-01/create-order-expansion.md): The create_order endpoint now explicitly requires `items` and `player_id` in the request body, and gains a range of new optional fields for controlling checkout behavior: locale, platform, pricing, redirect settings, UI customization, metadata, and navigation URLs.
+
+### 2026 06 10
+
+- [Back-to-game redirects on orders](https://docs.aghanim.com/sdk-api/changelog/2026-06-10/back-to-game-redirects.md): Order responses now expose where to send the player after checkout.
+
+### 2026 07 07
+
+- [Non-circulating currency codes removed](https://docs.aghanim.com/sdk-api/changelog/2026-07-07/currency-code-cleanup.md): Thirteen non-circulating ISO 4217 codes have been removed from the shared currency enum: the fund codes `BOV`, `CHE`, `CHW`, `CLF`, `COU`, `MXV`, `USN`, `UYI`, and `UYW`; the discontinued currencies `CUC`, `HRK`, and `SLL`; and the IMF Special Drawing Rights code `XDR`.
+
+### 2026 07 10
+
+- [VED and ZWG currency codes added](https://docs.aghanim.com/sdk-api/changelog/2026-07-10/ved-zwg-currency-support.md): The `VED` (Venezuelan bolívar) and `ZWG` (Zimbabwe Gold) codes have been added to the shared currency enum.
+- [XCG currency code added](https://docs.aghanim.com/sdk-api/changelog/2026-07-10/xcg-currency-support.md): The `XCG` code (Caribbean guilder) has been added to the shared currency enum.
+
+## Tutorials
+
+### Campaigns
+
+- [Distribute redeem codes via email](https://docs.aghanim.com/tutorials/campaigns/distribute-codes-via-email.md): To attract players to the game hub, distribute redeem codes via email.
+- [Engage influencer-driven activations](https://docs.aghanim.com/tutorials/campaigns/engage-influencer-activations.md): Partnership with influencers can enhance the player engagement with your game hub.
+- [Engage players on game hub news](https://docs.aghanim.com/tutorials/campaigns/engage-players-on-game-hub-news.md): Start to draw players to the game hub once it is filled with the game activity information:
+
+### Distribute Codes From Game
+
+- [Distribute redeem codes via notifications](https://docs.aghanim.com/tutorials/campaigns/distribute-codes-from-game/distribute-codes-via-notifications.md): You can distribute the redeem codes via the notification types:
+- [Implement Claim Free Item button within game](https://docs.aghanim.com/tutorials/campaigns/distribute-codes-from-game/implement-claim-button-within-game.md): To engage the players on the game hub via the in-game button with the redeem codes, you should:
+- [Overview](https://docs.aghanim.com/tutorials/campaigns/distribute-codes-from-game/overview.md): To attract players to the game hub, distribute redeem codes for free items right from your game.
+
+## Webhooks
+
+- [Analytics Webhooks](https://docs.aghanim.com/webhooks/analytics-events.md): Aghanim's analytics webhooks notify your game of frontend-only player interactions on the game hub and checkout page.
+- [Webhook Batch Export](https://docs.aghanim.com/webhooks/batching.md): Instead of delivering events directly via webhook requests, Aghanim collects events over a time window, stores them as a JSONL file, and sends a `batch.ready` webhook notification with a pre-signed URL to download the batch.
+- [Webhooks Changelog](https://docs.aghanim.com/webhooks/changelog.md): - Added optional `payment_currency` to order events (order.created, order.paid, order.canceled, order.refunded) — the currency the player was actually charged in
+- [Coupon Redeemed Webhook](https://docs.aghanim.com/webhooks/coupon-redeemed.md): Aghanim offers a coupon redeemed webhook to notify your game when a redeem code for a free item has been used by a player, providing detailed information about the event.
+- [Fraud Reported Webhook](https://docs.aghanim.com/webhooks/fraud.md): When a payment processor reports fraud on a completed payment, Aghanim sends a `fraud.reported` webhook to notify your game.
+- [In-Game Popup Webhook](https://docs.aghanim.com/webhooks/in-game-popup.md): Through Aghanim's LiveOps Builder, developers can trigger in-game popups in response to player actions or interactions within the Aghanim-generated game hub.
+- [Item Add Webhook](https://docs.aghanim.com/webhooks/item-add.md): Aghanim offers a centralized webhook that alerts your game to credit items to a player's account based on their activities within the game hub.
+- [Item Remove Webhook](https://docs.aghanim.com/webhooks/item-remove.md): Aghanim offers a centralized webhook that alerts your game to remove items from a player's account.
+- [Marketing Consent Webhooks](https://docs.aghanim.com/webhooks/marketing-consent.md): Aghanim's marketing consent webhooks notify your game about changes to a player's marketing consent, allowing you to keep your marketing lists in sync.
+- [Mobile Push Webhook](https://docs.aghanim.com/webhooks/mobile-push.md): Through Aghanim's LiveOps Builder, developers can trigger mobile push notifications in response to player actions or interactions within the Aghanim-generated game hub.
+- [Order Canceled Webhook](https://docs.aghanim.com/webhooks/order-canceled.md): Aghanim utilizes an order canceled webhook to inform you of a transaction reversed by a bank or a payment system, providing detailed information about the event.
+- [Order Created Webhook](https://docs.aghanim.com/webhooks/order-created.md): Aghanim's order created webhook notifies your game when a new order is created.
+- [Order Paid Webhook](https://docs.aghanim.com/webhooks/order-paid.md): Aghanim's order paid webhook notifies your game of successfully completed payments on the game hub, providing detailed information about the transaction.
+- [Webhook Overview](https://docs.aghanim.com/webhooks/overview.md): Aghanim uses webhooks to notify your game about player-triggered events within the Aghanim-generated game hub.
+- [Payment Webhooks](https://docs.aghanim.com/webhooks/payment-events.md): When a player attempts to pay for an order, a payment is created.
+- [Order Refunded Webhook](https://docs.aghanim.com/webhooks/refund.md): Aghanim utilizes a refund webhook to inform your game of a refund initiated in the Transactions section of the Aghanim Dashboard, providing detailed information about the event.
+- [Store Get Webhook](https://docs.aghanim.com/webhooks/store-get.md): The `store.get` webhook retrieves a list of items available for a player in the Game Hub store.
+- [Subscription Webhooks](https://docs.aghanim.com/webhooks/subscription.md): Aghanim's subscription webhooks notify your game about subscription lifecycle events, allowing you to manage player access to subscription-based content and services.
+- [Player Update Webhook](https://docs.aghanim.com/webhooks/update-player.md): The `player.update` webhook is triggered when a player's profile is updated on the Game Hub.
+- [Player Verify Webhook](https://docs.aghanim.com/webhooks/verify-player.md): Aghanim utilizes a player verification webhook to inform your game about player logins, requiring confirmation from your webhook server to permit or deny access to the game hub.
+
+### Analytics Events
+
+- [analytics.checkout.back_game](https://docs.aghanim.com/webhooks/analytics-events/checkout-back-game.md): Triggered when a player navigates back to the game from the checkout page.
+- [analytics.checkout.back_store](https://docs.aghanim.com/webhooks/analytics-events/checkout-back-store.md): Triggered when a player navigates back to the store from the checkout page.
+- [analytics.checkout.pageexit](https://docs.aghanim.com/webhooks/analytics-events/checkout-pageexit.md): Triggered when a player exits the checkout page.
+- [analytics.checkout.pagehide](https://docs.aghanim.com/webhooks/analytics-events/checkout-pagehide.md): Triggered when a player navigates away from the checkout page (page goes to background).
+- [analytics.checkout.pageshow](https://docs.aghanim.com/webhooks/analytics-events/checkout-pageshow.md): Triggered when a player returns to the checkout page.
+- [analytics.checkout.pageview](https://docs.aghanim.com/webhooks/analytics-events/checkout-pageview.md): Triggered when a player opens the checkout page.
+- [analytics.checkout.submit_payment_form](https://docs.aghanim.com/webhooks/analytics-events/checkout-submit-payment-form.md): Triggered when a player submits the payment form.
+- [analytics.hub.buy_click](https://docs.aghanim.com/webhooks/analytics-events/hub-buy-click.md): Triggered when a player initiates a purchase on the hub.
+- [analytics.hub.free_item_claimed](https://docs.aghanim.com/webhooks/analytics-events/hub-free-item-claimed.md): Triggered when a player claims a free item on the hub.
+- [analytics.hub.login](https://docs.aghanim.com/webhooks/analytics-events/hub-login.md): Triggered when a player logs in to the hub.
+- [analytics.hub.sign_up](https://docs.aghanim.com/webhooks/analytics-events/hub-sign-up.md): Triggered when a player registers on the hub for the first time.
+- [analytics.checkout.payment_method.close](https://docs.aghanim.com/webhooks/analytics-events/payment-method-close.md): Triggered when a player closes the payment method.
+- [analytics.checkout.payment_method.select](https://docs.aghanim.com/webhooks/analytics-events/payment-method-select.md): Triggered when a player selects a payment method.
+
+### Changelog
+
+### 2026 05 13
+
+- [Richer context on item events](https://docs.aghanim.com/webhooks/changelog/2026-05-13/item-add-more-context.md): Item events carry more attribution context.
+
+### 2026 05 25
+
+- [Multiple items on coupon.redeemed](https://docs.aghanim.com/webhooks/changelog/2026-05-25/coupon-redeemed-multiple-items.md): The `coupon.redeemed` event now returns an `items` array, so a single coupon can grant multiple free items.
+
+### 2026 06 19
+
+- [Error responses for player.verify](https://docs.aghanim.com/webhooks/changelog/2026-06-19/player-verify-error-response.md): Your game may now return a lenient flat error body — `{ status, code, message }` — when it rejects a `player.verify` webhook.
+
+### 2026 06 25
+
+- [Payment currency on order events](https://docs.aghanim.com/webhooks/changelog/2026-06-25/order-payment-currency.md): Order webhook events now include an optional `payment_currency` field — the currency the player was actually charged in, which can differ from the order's base `currency`.

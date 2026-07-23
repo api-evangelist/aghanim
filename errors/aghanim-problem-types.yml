@@ -1,0 +1,29 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/aghanim-openapi-original.json
+format: fastapi-validation
+notes: >-
+  Aghanim's Server-to-Server API is FastAPI-based. The only error response
+  modeled across all 170 operations is 422 (HTTPValidationError). The error
+  envelope is a JSON object with a `detail` array of ValidationError items
+  ({loc, msg, type}) — NOT RFC 9457 application/problem+json. Transport-level
+  4xx/5xx (401 unauthorized, 404 not found, 429 rate limit, 5xx) are returned
+  by the gateway but not enumerated in the spec.
+envelope:
+  content_type: application/json
+  shape: '{ "detail": [ { "loc": [string|int, ...], "msg": string, "type": string } ] }'
+problems:
+  - status: 422
+    title: Validation Error
+    schema: HTTPValidationError
+    description: Request failed schema validation; `detail[]` lists each field location, message, and error type.
+    occurrences: 167
+    source_operation: openapi/aghanim-openapi-original.json (all mutating + parameterized operations)
+  - status: 401
+    title: Unauthorized
+    description: Missing or invalid Bearer API key (documented behavior; not enumerated in spec responses).
+    inferred: true
+  - status: 404
+    title: Not Found
+    description: Referenced resource (item, store, order, player, coupon, ...) does not exist.
+    inferred: true

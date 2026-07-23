@@ -1,0 +1,48 @@
+generated: '2026-07-17'
+method: searched
+source: openapi/aghanim-openapi-original.json + https://docs.aghanim.com
+notes: >-
+  Cross-cutting request/response semantics for the Aghanim Server-to-Server API,
+  derived from the OpenAPI and the docs. Idempotency here is a webhook-delivery
+  contract: Aghanim event payloads carry an `idempotency_key` (and `request_id`)
+  so consumers can safely dedupe redelivered events. The REST API itself does not
+  document a request-level Idempotency-Key header.
+authentication:
+  style: http-bearer
+  header: "Authorization: Bearer <SDK/API key>"
+  key_modes: [sandbox, live]
+  docs: https://docs.aghanim.com/api-reference/
+idempotency:
+  supported: true
+  surface: webhook-delivery
+  field: idempotency_key
+  description: >-
+    Webhook event payloads include `idempotency_key` and `request_id`; consumers
+    dedupe on `idempotency_key` to make webhook handlers safe under redelivery.
+  api_request_idempotency: false
+pagination:
+  style: limit-offset
+  params: [limit, offset]
+  sort_params: [sort_field, sort_order, order_by]
+versioning:
+  style: uri-path
+  current: v1
+error_envelope:
+  content_type: application/json
+  shape: '{ "detail": [ { "loc": [...], "msg": string, "type": string } ] }'
+  standard: fastapi-validation
+  ref: errors/aghanim-problem-types.yml
+request_tracing:
+  webhook_field: request_id
+webhooks:
+  ref: asyncapi/aghanim-webhooks.yml
+  signature: HMAC-SHA256
+  headers: [X-Aghanim-Signature, X-Aghanim-Signature-Timestamp]
+rate_limiting:
+  documented: false
+cross_links:
+  errors: errors/aghanim-problem-types.yml
+  decline_codes: errors/aghanim-decline-codes.yml
+  lifecycle: lifecycle/aghanim-lifecycle.yml
+  authentication: authentication/aghanim-authentication.yml
+  sandbox: sandbox/aghanim-sandbox.yml

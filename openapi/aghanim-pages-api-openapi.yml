@@ -1,0 +1,4608 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Pages API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Pages
+paths:
+  /v1/pages:
+    get:
+      tags:
+      - Pages
+      summary: Get Pages
+      operationId: get_pages
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: parent_id
+        in: query
+        required: false
+        schema:
+          title: Parent Id
+          type: string
+      - name: ignore_parent_id
+        in: query
+        required: false
+        schema:
+          title: Ignore Parent Id
+          default: false
+          type: boolean
+      - name: search_string
+        in: query
+        required: false
+        schema:
+          title: Search String
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: A limit on the number of objects to be returned
+          default: 10
+          type: integer
+        description: A limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      - name: types
+        in: query
+        required: false
+        schema:
+          title: Types
+          description: Optional comma separated list of types
+          type: string
+        description: Optional comma separated list of types
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Pages
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Pages
+      summary: Create Page
+      operationId: create_page
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Create
+              $ref: '#/components/schemas/PageCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Pages
+      summary: Bulk Delete Page
+      description: Deletes multiple pages.
+      operationId: bulk_delete_page
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Bulk Delete
+              type: array
+              items:
+                $ref: '#/components/schemas/PageBulkDelete'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - Pages
+      summary: Bulk Update Page
+      description: Updates multiple pages.
+      operationId: bulk_update_page
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Bulk Update
+              type: array
+              items:
+                $ref: '#/components/schemas/PageBulkUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Bulk Update Page
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pages/{page_id}:
+    get:
+      tags:
+      - Pages
+      summary: Get Page
+      operationId: get_page
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          title: Page Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Pages
+      summary: Update Page
+      operationId: update_page
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          title: Page Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Update
+              $ref: '#/components/schemas/PageUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Pages
+      summary: Delete Page
+      operationId: delete_page
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          title: Page Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pages/{page_id}/translate:
+    post:
+      tags:
+      - Pages
+      summary: Translate Page
+      description: Translates a page.
+      operationId: translate_page
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          title: Page Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Translate
+              $ref: '#/components/schemas/PageTranslate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    CarouselBlockType:
+      type: string
+      enum:
+      - offers
+      title: CarouselBlockType
+      description: An enumeration.
+    DailyRewardsBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - DailyRewardsBlock
+          title: Block
+          default: DailyRewardsBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        variant:
+          default: expanded
+          $ref: '#/components/schemas/DailyRewardsBlockVariant'
+        non_compliance:
+          type: boolean
+          title: Non Compliance
+          default: false
+      type: object
+      title: DailyRewardsBlock
+    PageSeo:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+      type: object
+      title: PageSeo
+    YoutubeBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - YoutubeBlock
+          title: Block
+          default: YoutubeBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        video:
+          $ref: '#/components/schemas/VideoBlockSettings'
+      type: object
+      required:
+      - video
+      title: YoutubeBlock
+    LoyaltyProgramBlockVariant:
+      type: string
+      enum:
+      - standard
+      - expanded
+      - compact
+      title: LoyaltyProgramBlockVariant
+      description: An enumeration.
+    RollingOfferBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - RollingOfferBlock
+          title: Block
+          default: RollingOfferBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        rolling_offer_id:
+          type: string
+          title: Rolling Offer Id
+        max_items_count:
+          type: integer
+          title: Max Items Count
+        scroll_disabled:
+          type: boolean
+          title: Scroll Disabled
+        variant:
+          default: slider
+          $ref: '#/components/schemas/RollingOfferBlockVariant'
+      type: object
+      required:
+      - rolling_offer_id
+      title: RollingOfferBlock
+    ProgressionProgramBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - ProgressionProgramBlock
+          title: Block
+          default: ProgressionProgramBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        program_id:
+          type: string
+          title: Program Id
+        variant:
+          default: standard
+          $ref: '#/components/schemas/LoyaltyProgramBlockVariant'
+        slider_on_mobile:
+          type: boolean
+          title: Slider On Mobile
+          nullable: true
+      type: object
+      required:
+      - program_id
+      title: ProgressionProgramBlock
+    SplitNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - SplitNode
+          title: Model Type
+          default: SplitNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        distribution:
+          items:
+            $ref: '#/components/schemas/SplitInfo'
+          type: array
+          title: Distribution
+        random_value:
+          type: number
+          title: Random Value
+        value_next_node_id:
+          type: string
+          title: Value Next Node Id
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - distribution
+      title: SplitNode
+    HubPopupContentType:
+      type: string
+      enum:
+      - custom
+      - item
+      - event_item
+      - link_all_created_offers
+      title: HubPopupContentType
+      description: An enumeration.
+    CreateCouponNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - CreateCouponNode
+          title: Model Type
+          default: CreateCouponNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        duration:
+          type: integer
+          title: Duration
+        type:
+          $ref: '#/components/schemas/CouponType'
+        item_id:
+          type: string
+          title: Item Id
+        quantity:
+          type: integer
+          title: Quantity
+        use_event_item:
+          type: boolean
+          title: Use Event Item
+          default: false
+        discount_percent:
+          type: integer
+          title: Discount Percent
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+        discount_amount_usd:
+          type: integer
+          title: Discount Amount USD
+          description: The discount amount in USD for the coupon
+        min_amount:
+          type: integer
+          title: Min Amount
+        stackable_bonus_limit:
+          type: integer
+          title: Stackable Bonus Limit
+        stackable_discount_limit:
+          type: integer
+          title: Stackable Discount Limit
+        code_mask:
+          type: string
+          title: Code Mask
+        player_bond:
+          type: boolean
+          title: Player Bond
+        player_bond_type:
+          $ref: '#/components/schemas/CouponPlayerBondType'
+        applicable_item_ids:
+          items:
+            type: string
+          type: array
+          title: Applicable Item Ids
+        payment_method_ids:
+          items:
+            type: string
+          type: array
+          title: Payment Method Ids
+        max_redemptions:
+          type: integer
+          title: Max Redemptions
+        is_stackable_with_bonus_coupons:
+          type: boolean
+          title: Is Stackable With Bonus Coupons
+        stackable_bonus_limit_percent:
+          type: integer
+          title: Stackable Bonus Limit Percent
+        is_stackable_with_discount_coupons:
+          type: boolean
+          title: Is Stackable With Discount Coupons
+        stackable_discount_limit_percent:
+          type: integer
+          title: Stackable Discount Limit Percent
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - type
+      title: CreateCouponNode
+    RemoveFromSegmentNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - RemoveFromSegmentNode
+          title: Model Type
+          default: RemoveFromSegmentNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        segment_slug:
+          type: string
+          title: Segment Slug
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: RemoveFromSegmentNode
+    StoreCardType:
+      type: string
+      enum:
+      - default
+      - featured
+      title: StoreCardType
+      description: An enumeration.
+    RichContentBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - RichContentBlock
+          title: Block
+          default: RichContentBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        html:
+          type: string
+          title: Html
+      type: object
+      required:
+      - html
+      title: RichContentBlock
+    PageRead:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: External unique page identifier
+        title:
+          type: string
+          title: Title
+          description: The title of the page
+        text:
+          type: string
+          title: Text
+        description:
+          type: string
+          title: Description
+          description: The description of the page
+        slug:
+          type: string
+          title: Slug
+          description: The slug of the page
+        layout:
+          title: Layout
+          description: The layout of the page. Define child blocks for the page
+          $ref: '#/components/schemas/PageLayout'
+        html:
+          type: string
+          title: Html
+          description: The HTML content of the page
+        type:
+          description: The type of the page layout
+          $ref: '#/components/schemas/PageLayoutType'
+        parent_id:
+          type: string
+          title: Parent Id
+          description: The ID of the parent page
+          nullable: true
+        date:
+          type: string
+          format: date
+          title: Date
+          nullable: true
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the page
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The date of the page
+          nullable: true
+        featured_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Image Url
+          description: The URL of the featured image for the page
+          nullable: true
+        pinned_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Image Url
+          description: The URL of the pinned image for the page
+          nullable: true
+        pinned_webview_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Webview Image Url
+          description: The URL of the pinned image for the page (in webview)
+          nullable: true
+        published_at:
+          type: integer
+          title: Published At
+          description: The published date of the Page
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          description: The position of the page in the page list
+          nullable: true
+        render_options:
+          title: Render Options
+          description: The additional render options of the page
+          $ref: '#/components/schemas/PageRenderOptions'
+        child_sort_settings:
+          title: Child Sort Settings
+          description: The sort settings for the child pages
+          nullable: true
+          $ref: '#/components/schemas/PageSortSettings'
+        video_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Video Url
+          description: The URL of the video for the page
+          nullable: true
+        is_featured:
+          type: boolean
+          title: Is Featured
+          description: Whether the page is featured
+          nullable: true
+        is_pinned:
+          type: boolean
+          title: Is Pinned
+          description: Whether the page is pinned
+          nullable: true
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Tags for the page
+          nullable: true
+        custom_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Url
+          description: Custom URL that the page card links to instead of the page itself
+          nullable: true
+        button_text:
+          type: string
+          maxLength: 100
+          title: Button Text
+          description: Text for the page card button
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Targeting rules; the page is shown only to matching users
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        id:
+          type: string
+          title: Id
+        parent:
+          $ref: '#/components/schemas/PageBase'
+        seo:
+          $ref: '#/components/schemas/PageSeo'
+      type: object
+      required:
+      - title
+      - text
+      - description
+      - slug
+      - id
+      title: PageRead
+    PageBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: PageBulkDelete
+    CouponPlayerBondType:
+      type: string
+      enum:
+      - all_users
+      - current_user
+      - except_current_user
+      title: CouponPlayerBondType
+      description: An enumeration.
+    LatestNewsBlockVariant:
+      type: string
+      enum:
+      - standard
+      - carousel
+      title: LatestNewsBlockVariant
+      description: An enumeration.
+    SortStoreType:
+      type: string
+      enum:
+      - price
+      - name
+      - discount
+      - position
+      title: SortStoreType
+      description: An enumeration.
+    EmailActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - EmailActionNode
+          title: Model Type
+          default: EmailActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        caption:
+          type: string
+          title: Caption
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: EmailActionNode
+    LocaleMapping:
+      properties:
+        cs:
+          type: string
+          title: Cs
+        de:
+          type: string
+          title: De
+        en:
+          type: string
+          title: En
+        es:
+          type: string
+          title: Es
+        fr:
+          type: string
+          title: Fr
+        fr-CA:
+          type: string
+          title: Fr-Ca
+        hi:
+          type: string
+          title: Hi
+        id:
+          type: string
+          title: Id
+        it:
+          type: string
+          title: It
+        ja:
+          type: string
+          title: Ja
+        ko:
+          type: string
+          title: Ko
+        ms:
+          type: string
+          title: Ms
+        nl:
+          type: string
+          title: Nl
+        'no':
+          type: string
+          title: 'No'
+        pl:
+          type: string
+          title: Pl
+        pt:
+          type: string
+          title: Pt
+        pt-BR:
+          type: string
+          title: Pt-Br
+        ru:
+          type: string
+          title: Ru
+        sv:
+          type: string
+          title: Sv
+        th:
+          type: string
+          title: Th
+        tr:
+          type: string
+          title: Tr
+        uk:
+          type: string
+          title: Uk
+        vi:
+          type: string
+          title: Vi
+        zh:
+          type: string
+          title: Zh
+        zh-Hant:
+          type: string
+          title: Zh-Hant
+      type: object
+      title: LocaleMapping
+    ItemAddData:
+      properties:
+        item_id:
+          type: string
+          title: Item Id
+        quantity:
+          type: integer
+          title: Quantity
+          nullable: true
+      type: object
+      required:
+      - item_id
+      title: ItemAddData
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PlaceBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - PlaceBlock
+          title: Block
+          default: PlaceBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        key:
+          type: string
+          title: Key
+      type: object
+      required:
+      - key
+      title: PlaceBlock
+    SplitInfo:
+      properties:
+        title:
+          type: string
+          title: Title
+          default: ''
+        value:
+          type: integer
+          title: Value
+        next_node_id:
+          type: string
+          title: Next Node Id
+      type: object
+      required:
+      - value
+      title: SplitInfo
+    PageLayoutType:
+      type: string
+      enum:
+      - content
+      - article
+      - news
+      - collection
+      - blocks
+      title: PageLayoutType
+      description: An enumeration.
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    MobilePopupActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - MobilePopupActionNode
+          title: Model Type
+          default: MobilePopupActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        url:
+          type: string
+          title: Url
+        response:
+          type: string
+          title: Response
+        status_code:
+          type: integer
+          title: Status Code
+        image_url:
+          type: string
+          title: Image Url
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: MobilePopupActionNode
+    PageCreate:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: External unique page identifier
+        title:
+          type: string
+          title: Title
+          description: The title of the page
+        text:
+          type: string
+          title: Text
+        description:
+          type: string
+          title: Description
+          description: The description of the page
+        slug:
+          type: string
+          maxLength: 100
+          minLength: 3
+          title: Slug
+          description: The slug of the page
+          unique: true
+        layout:
+          title: Layout
+          description: The layout of the page. Define child blocks for the page
+          $ref: '#/components/schemas/PageLayout'
+        html:
+          type: string
+          title: Html
+          description: The HTML content of the page
+        type:
+          description: The type of the page layout
+          $ref: '#/components/schemas/PageLayoutType'
+        parent_id:
+          type: string
+          title: Parent Id
+          description: The ID of the parent page
+          nullable: true
+        date:
+          type: string
+          format: date
+          title: Date
+          nullable: true
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the page
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The date of the page
+          nullable: true
+        featured_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Image Url
+          description: The URL of the featured image for the page
+          nullable: true
+        pinned_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Image Url
+          description: The URL of the pinned image for the page
+          nullable: true
+        pinned_webview_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Webview Image Url
+          description: The URL of the pinned image for the page (in webview)
+          nullable: true
+        published_at:
+          type: integer
+          title: Published At
+          description: The published date of the Page
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          description: The position of the page in the page list
+          nullable: true
+        render_options:
+          title: Render Options
+          description: The additional render options of the page
+          $ref: '#/components/schemas/PageRenderOptions'
+        child_sort_settings:
+          title: Child Sort Settings
+          description: The sort settings for the child pages
+          nullable: true
+          $ref: '#/components/schemas/PageSortSettings'
+        video_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Video Url
+          description: The URL of the video for the page
+          nullable: true
+        is_featured:
+          type: boolean
+          title: Is Featured
+          description: Whether the page is featured
+          nullable: true
+        is_pinned:
+          type: boolean
+          title: Is Pinned
+          description: Whether the page is pinned
+          nullable: true
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Tags for the page
+          nullable: true
+        custom_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Url
+          description: Custom URL that the page card links to instead of the page itself
+          nullable: true
+        button_text:
+          type: string
+          maxLength: 100
+          title: Button Text
+          description: Text for the page card button
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Targeting rules; the page is shown only to matching users
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+      type: object
+      required:
+      - title
+      - text
+      - description
+      - slug
+      title: PageCreate
+    VerifyPlayerNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - VerifyPlayerNode
+          title: Model Type
+          default: VerifyPlayerNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: VerifyPlayerNode
+    MaxPurchaseLimitPeriodType:
+      type: string
+      enum:
+      - global
+      - personal
+      title: MaxPurchaseLimitPeriodType
+      description: An enumeration.
+    PageSortSettings:
+      properties:
+        sort_by:
+          $ref: '#/components/schemas/PageSortField'
+        sort_order:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+      required:
+      - sort_by
+      - sort_order
+      title: PageSortSettings
+    PageLayout:
+      properties:
+        blocks:
+          items:
+            items:
+              oneOf:
+              - $ref: '#/components/schemas/FullNewsBlock'
+              - $ref: '#/components/schemas/FeaturedNewsBlock'
+              - $ref: '#/components/schemas/TwitchBlock'
+              - $ref: '#/components/schemas/YoutubeBlock'
+              - $ref: '#/components/schemas/TextBlock'
+              - $ref: '#/components/schemas/BannerBlock'
+              - $ref: '#/components/schemas/FeaturedItemBlock'
+              - $ref: '#/components/schemas/RedeemCouponBlock'
+              - $ref: '#/components/schemas/LatestNewsBlock'
+              - $ref: '#/components/schemas/LatestPagesBlock'
+              - $ref: '#/components/schemas/LeaderboardCardBlock'
+              - $ref: '#/components/schemas/LeaderboardFullBlock'
+              - $ref: '#/components/schemas/LeaderboardCollectionBlock'
+              - $ref: '#/components/schemas/StoreBlock'
+              - $ref: '#/components/schemas/LimitedStoreBannerBlock'
+              - $ref: '#/components/schemas/AchievementListBlock'
+              - $ref: '#/components/schemas/FeaturedPageBlock'
+              - $ref: '#/components/schemas/DailyRewardsBlock'
+              - $ref: '#/components/schemas/LoyaltyProgramBlock'
+              - $ref: '#/components/schemas/IFrameBlock'
+              - $ref: '#/components/schemas/ImageBannerBlock'
+              - $ref: '#/components/schemas/RichContentBlock'
+              - $ref: '#/components/schemas/CarouselBlock'
+              - $ref: '#/components/schemas/SequentialOfferBlock'
+              - $ref: '#/components/schemas/RangeOfferBlock'
+              - $ref: '#/components/schemas/ProgressionProgramBlock'
+              - $ref: '#/components/schemas/RollingOfferBlock'
+              - $ref: '#/components/schemas/CarouselNewsBlock'
+              - $ref: '#/components/schemas/PiggyBankOfferBlock'
+              - $ref: '#/components/schemas/PlaceBlock'
+              - $ref: '#/components/schemas/PickOneOfferBlock'
+              - $ref: '#/components/schemas/DynamicBlock'
+              discriminator:
+                propertyName: block
+                mapping:
+                  FullNewsBlock: '#/components/schemas/FullNewsBlock'
+                  FeaturedNewsBlock: '#/components/schemas/FeaturedNewsBlock'
+                  TwitchBlock: '#/components/schemas/TwitchBlock'
+                  YoutubeBlock: '#/components/schemas/YoutubeBlock'
+                  TextBlock: '#/components/schemas/TextBlock'
+                  BannerBlock: '#/components/schemas/BannerBlock'
+                  FeaturedItemBlock: '#/components/schemas/FeaturedItemBlock'
+                  RedeemCouponBlock: '#/components/schemas/RedeemCouponBlock'
+                  LatestNewsBlock: '#/components/schemas/LatestNewsBlock'
+                  LatestPagesBlock: '#/components/schemas/LatestPagesBlock'
+                  LeaderboardCardBlock: '#/components/schemas/LeaderboardCardBlock'
+                  LeaderboardFullBlock: '#/components/schemas/LeaderboardFullBlock'
+                  LeaderboardCollectionBlock: '#/components/schemas/LeaderboardCollectionBlock'
+                  StoreBlock: '#/components/schemas/StoreBlock'
+                  LimitedStoreBannerBlock: '#/components/schemas/LimitedStoreBannerBlock'
+                  AchievementListBlock: '#/components/schemas/AchievementListBlock'
+                  FeaturedPageBlock: '#/components/schemas/FeaturedPageBlock'
+                  DailyRewardsBlock: '#/components/schemas/DailyRewardsBlock'
+                  LoyaltyProgramBlock: '#/components/schemas/LoyaltyProgramBlock'
+                  IFrameBlock: '#/components/schemas/IFrameBlock'
+                  ImageBannerBlock: '#/components/schemas/ImageBannerBlock'
+                  RichContentBlock: '#/components/schemas/RichContentBlock'
+                  CarouselBlock: '#/components/schemas/CarouselBlock'
+                  SequentialOfferBlock: '#/components/schemas/SequentialOfferBlock'
+                  RangeOfferBlock: '#/components/schemas/RangeOfferBlock'
+                  ProgressionProgramBlock: '#/components/schemas/ProgressionProgramBlock'
+                  RollingOfferBlock: '#/components/schemas/RollingOfferBlock'
+                  CarouselNewsBlock: '#/components/schemas/CarouselNewsBlock'
+                  PiggyBankOfferBlock: '#/components/schemas/PiggyBankOfferBlock'
+                  PlaceBlock: '#/components/schemas/PlaceBlock'
+                  PickOneOfferBlock: '#/components/schemas/PickOneOfferBlock'
+                  DynamicBlock: '#/components/schemas/DynamicBlock'
+            type: array
+          type: array
+          title: Blocks
+      type: object
+      title: PageLayout
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    CommunicationItem:
+      properties:
+        item_id:
+          type: string
+          title: Item Id
+        store_item_id:
+          type: string
+          title: Store Item Id
+      type: object
+      required:
+      - item_id
+      - store_item_id
+      title: CommunicationItem
+    PickOneOfferBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - PickOneOfferBlock
+          title: Block
+          default: PickOneOfferBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        pick_one_offer_id:
+          type: string
+          title: Pick One Offer Id
+      type: object
+      required:
+      - pick_one_offer_id
+      title: PickOneOfferBlock
+    PWAPromptActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - PWAPromptActionNode
+          title: Model Type
+          default: PWAPromptActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: PWAPromptActionNode
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+      title: SortOrder
+      description: An enumeration.
+    AchievementListBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - AchievementListBlock
+          title: Block
+          default: AchievementListBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      title: AchievementListBlock
+    ItemBonusSettings:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ItemBonus'
+          type: array
+          title: Items
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      required:
+      - items
+      title: ItemBonusSettings
+    BrowserPushNotificationActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - BrowserPushNotificationActionNode
+          title: Model Type
+          default: BrowserPushNotificationActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        image_url:
+          type: string
+          title: Image Url
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: BrowserPushNotificationActionNode
+    ImageBannerBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - ImageBannerBlock
+          title: Block
+          default: ImageBannerBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        link:
+          type: string
+          title: Link
+        image_url:
+          type: string
+          title: Image Url
+        button_text:
+          type: string
+          title: Button Text
+        title:
+          type: string
+          title: Title
+        text:
+          type: string
+          title: Text
+      type: object
+      required:
+      - image_url
+      title: ImageBannerBlock
+    ViewPort:
+      properties:
+        x:
+          type: number
+          title: X
+        y:
+          type: number
+          title: Y
+        zoom:
+          type: number
+          title: Zoom
+      type: object
+      required:
+      - x
+      - y
+      - zoom
+      title: ViewPort
+    BrowserPopupNotificationActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - BrowserPopupNotificationActionNode
+          title: Model Type
+          default: BrowserPopupNotificationActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        image_url:
+          type: string
+          title: Image Url
+        background_image_url:
+          type: string
+          title: Background Image Url
+        suspend_while_not_read:
+          type: boolean
+          title: Suspend While Not Read
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: BrowserPopupNotificationActionNode
+    PageSortField:
+      type: string
+      enum:
+      - position
+      - datetime
+      title: PageSortField
+      description: An enumeration.
+    PeriodType:
+      type: string
+      enum:
+      - year
+      - month
+      - week
+      - day
+      - hour
+      - minute
+      - second
+      title: PeriodType
+    CreateUserStoreSettingsNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - CreateUserStoreSettingsNode
+          title: Model Type
+          default: CreateUserStoreSettingsNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        store_id:
+          type: string
+          title: Store Id
+        store_ids:
+          items:
+            type: string
+          type: array
+          title: Store Ids
+        item_ids:
+          items:
+            type: string
+          type: array
+          title: Item Ids
+        category_ids:
+          items:
+            type: string
+          type: array
+          title: Category Ids
+        duration:
+          type: integer
+          title: Duration
+        reward_points_percent:
+          type: number
+          title: Reward Points Percent
+        discount_percent:
+          type: number
+          title: Discount Percent
+        bonus_percent:
+          type: number
+          title: Bonus Percent
+        max_purchase_count:
+          type: integer
+          title: Max Purchase Count
+        exclude_items_for_reward_points:
+          type: boolean
+          title: Exclude Items For Reward Points
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+        bonus_item_percent:
+          type: integer
+          title: Bonus Item Percent
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+        bonus_items_settings:
+          $ref: '#/components/schemas/ItemBonusSettings'
+        reward_settings:
+          $ref: '#/components/schemas/ItemRewardSettings'
+        name:
+          type: string
+          title: Name
+        attr_name_for_duration_value:
+          type: string
+          title: Attr Name For Duration Value
+          nullable: true
+        item_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Background Image Url
+        item_featured_card_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Featured Card Background Image Url
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+        custom_badge:
+          type: string
+          title: Custom Badge
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - duration
+      title: CreateUserStoreSettingsNode
+    SetAttributeValuesNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - SetAttributeValuesNode
+          title: Model Type
+          default: SetAttributeValuesNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        values:
+          type: object
+          title: Values
+        values_from_variables:
+          additionalProperties:
+            type: string
+          type: object
+          title: Values From Variables
+        new_values:
+          items:
+            $ref: '#/components/schemas/SetAttributeValue'
+          type: array
+          title: New Values
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - values
+      title: SetAttributeValuesNode
+    CreateVirtualSKUNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - CreateVirtualSKUNode
+          title: Model Type
+          default: CreateVirtualSKUNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        item_id:
+          type: string
+          title: Item Id
+          nullable: true
+        use_event_item:
+          type: boolean
+          title: Use Event Item
+          default: false
+        start_at:
+          type: integer
+          title: Start At
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          nullable: true
+        duration:
+          type: integer
+          title: Duration
+          nullable: true
+        max_purchases:
+          type: integer
+          title: Max Purchases
+          nullable: true
+        min_amount:
+          type: integer
+          title: Min Amount
+          nullable: true
+        max_reward_points_percent:
+          type: integer
+          title: Max Reward Points Percent
+          nullable: true
+        reward_points_percent:
+          type: number
+          title: Reward Points Percent
+          nullable: true
+        reward_points_fixed:
+          type: integer
+          title: Reward Points Fixed
+          nullable: true
+        payment_method_ids:
+          items:
+            type: string
+          type: array
+          title: Payment Method Ids
+          nullable: true
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          nullable: true
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          nullable: true
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          nullable: true
+        is_free_item:
+          type: boolean
+          title: Is Free Item
+          nullable: true
+        max_purchases_period_type:
+          nullable: true
+          $ref: '#/components/schemas/PeriodType'
+        max_purchases_period_value:
+          type: integer
+          title: Max Purchases Period Value
+          nullable: true
+        max_purchases_limit_type:
+          nullable: true
+          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
+        custom_badge:
+          type: string
+          title: Custom Badge
+          nullable: true
+        card_type:
+          nullable: true
+          $ref: '#/components/schemas/StoreCardType'
+        show_first_on_category_list:
+          type: boolean
+          title: Show First On Category List
+          nullable: true
+        item_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Image Url
+          nullable: true
+        item_name:
+          type: string
+          title: Item Name
+          nullable: true
+        item_description:
+          type: string
+          title: Item Description
+          nullable: true
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          nullable: true
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          nullable: true
+        bonus_item_percent:
+          type: integer
+          title: Bonus Item Percent
+          nullable: true
+        bonus_items_settings:
+          title: Bonus Items Settings
+          nullable: true
+          $ref: '#/components/schemas/ItemBonusSettings'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          nullable: true
+        bonus_source:
+          $ref: '#/components/schemas/VirtualSKUBonusSource'
+        loyalty_points_percent:
+          type: integer
+          title: Loyalty Points Percent
+          nullable: true
+        loyalty_points_fixed:
+          type: integer
+          title: Loyalty Points Fixed
+          nullable: true
+        reward_settings:
+          title: Reward Settings
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        attr_name_for_duration_value:
+          type: string
+          title: Attr Name For Duration Value
+          nullable: true
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: CreateVirtualSKUNode
+    RangeOfferBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - RangeOfferBlock
+          title: Block
+          default: RangeOfferBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        range_offer_id:
+          type: string
+          title: Range Offer Id
+      type: object
+      required:
+      - range_offer_id
+      title: RangeOfferBlock
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    VCRewardConfig:
+      properties:
+        type:
+          type: string
+          enum:
+          - virtual_currency
+          title: Type
+          default: virtual_currency
+        name:
+          type: string
+          title: Name
+        virtual_currency_id:
+          type: string
+          title: Virtual Currency Id
+        virtual_currency_sku:
+          type: string
+          title: Virtual Currency SKU
+        reward_percent:
+          type: number
+          title: Reward Percent
+        reward_fixed:
+          type: integer
+          title: Reward Fixed
+      type: object
+      required:
+      - virtual_currency_id
+      title: VCRewardConfig
+    AddUserAchievementNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - AddUserAchievementNode
+          title: Model Type
+          default: AddUserAchievementNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        achievement_id:
+          type: string
+          title: Achievement Id
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - achievement_id
+      title: AddUserAchievementNode
+    LocaleUrlMapping:
+      properties:
+        cs:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Cs
+        de:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: De
+        en:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: En
+        es:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Es
+        fr:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Fr
+        fr-CA:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Fr-Ca
+        hi:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Hi
+        id:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Id
+        it:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: It
+        ja:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Ja
+        ko:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Ko
+        ms:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Ms
+        nl:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Nl
+        'no':
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: 'No'
+        pl:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pl
+        pt:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pt
+        pt-BR:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pt-Br
+        ru:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Ru
+        sv:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Sv
+        th:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Th
+        tr:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Tr
+        uk:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Uk
+        vi:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Vi
+        zh:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Zh
+        zh-Hant:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Zh-Hant
+      type: object
+      title: LocaleUrlMapping
+    CarouselNewsBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - CarouselNewsBlock
+          title: Block
+          default: CarouselNewsBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        delay:
+          type: integer
+          title: Delay
+        loop:
+          type: boolean
+          title: Loop
+        autoplay:
+          type: boolean
+          title: Autoplay
+        show_dots:
+          type: boolean
+          title: Show Dots
+      type: object
+      title: CarouselNewsBlock
+    IFrameBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - IFrameBlock
+          title: Block
+          default: IFrameBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        width:
+          type: string
+          title: Width
+        height:
+          type: string
+          title: Height
+        url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Url
+        requires_auth:
+          type: boolean
+          title: Requires Auth
+        popup_background_image:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Popup Background Image
+        loading_background_image:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Loading Background Image
+        crossplay_disabled:
+          type: boolean
+          title: Crossplay Disabled
+        is_web_game_iframe:
+          type: boolean
+          title: Is Web Game Iframe
+        aspect_ratio:
+          type: number
+          title: Aspect Ratio
+      type: object
+      required:
+      - url
+      title: IFrameBlock
+    PageUpdate:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: External unique page identifier
+          nullable: true
+        title:
+          type: string
+          title: Title
+          description: The title of the page
+        description:
+          type: string
+          title: Description
+          description: The description of the page
+        text:
+          type: string
+          title: Text
+        slug:
+          type: string
+          maxLength: 100
+          minLength: 3
+          title: Slug
+          description: The slug of the page
+          unique: true
+        layout:
+          title: Layout
+          description: The layout of the page. Define child blocks for the page
+          nullable: true
+          $ref: '#/components/schemas/PageLayout'
+        html:
+          type: string
+          title: Html
+          description: The HTML content of the page
+          nullable: true
+        type:
+          description: The type of the page layout
+          nullable: true
+          $ref: '#/components/schemas/PageLayoutType'
+        parent_id:
+          type: string
+          title: Parent Id
+          description: The ID of the parent page
+          nullable: true
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the page
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the page
+          nullable: true
+        featured_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Image Url
+          description: The URL of the featured image for the page
+          nullable: true
+        pinned_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Image Url
+          description: The URL of the pinned image for the page
+          nullable: true
+        pinned_webview_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Webview Image Url
+          description: The URL of the pinned image for the page (in webview)
+          nullable: true
+        published_at:
+          type: integer
+          title: Published At
+          description: The published date of the Page
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          description: The position of the page in the page list
+          nullable: true
+        render_options:
+          title: Render Options
+          description: The additional render options of the page
+          $ref: '#/components/schemas/PageRenderOptions'
+        child_sort_settings:
+          title: Child Sort Settings
+          description: The sort settings for the child pages
+          nullable: true
+          $ref: '#/components/schemas/PageSortSettings'
+        video_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Video Url
+          description: The URL of the video for the page
+          nullable: true
+        is_featured:
+          type: boolean
+          title: Is Featured
+          description: Whether the page is featured
+          nullable: true
+        is_pinned:
+          type: boolean
+          title: Is Pinned
+          description: Whether the page is pinned
+          nullable: true
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Tags for the page
+          nullable: true
+        custom_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Url
+          description: Custom URL that the page card links to instead of the page itself
+          nullable: true
+        button_text:
+          type: string
+          maxLength: 100
+          title: Button Text
+          description: Text for the page card button
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Targeting rules; the page is shown only to matching users
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+      type: object
+      title: PageUpdate
+    DailyRewardsBlockVariant:
+      type: string
+      enum:
+      - expanded
+      - compact
+      - compact_mobile
+      title: DailyRewardsBlockVariant
+      description: An enumeration.
+    FeaturedNewsBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - FeaturedNewsBlock
+          title: Block
+          default: FeaturedNewsBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        news_id:
+          type: string
+          title: News Id
+        hide_date:
+          type: boolean
+          title: Hide Date
+      type: object
+      title: FeaturedNewsBlock
+    LeaderboardFullBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LeaderboardFullBlock
+          title: Block
+          default: LeaderboardFullBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        leaderboard_id:
+          type: string
+          title: Leaderboard Id
+      type: object
+      title: LeaderboardFullBlock
+    CarouselBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - CarouselBlock
+          title: Block
+          default: CarouselBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        type:
+          $ref: '#/components/schemas/CarouselBlockType'
+        delay:
+          type: integer
+          title: Delay
+        loop:
+          type: boolean
+          title: Loop
+        autoplay:
+          type: boolean
+          title: Autoplay
+        show_dots:
+          type: boolean
+          title: Show Dots
+        category_template_id:
+          type: string
+          title: Category Template Id
+      type: object
+      required:
+      - type
+      title: CarouselBlock
+    DynamicBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - DynamicBlock
+          title: Block
+          default: DynamicBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        graph_rules:
+          $ref: '#/components/schemas/GraphRoot'
+      type: object
+      required:
+      - graph_rules
+      title: DynamicBlock
+    SortStoreItemsNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - SortStoreItemsNode
+          title: Model Type
+          default: SortStoreItemsNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        order:
+          $ref: '#/components/schemas/SortOrder'
+        sort_by:
+          $ref: '#/components/schemas/SortStoreType'
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - order
+      - sort_by
+      title: SortStoreItemsNode
+    AddPageBlockNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - AddPageBlockNode
+          title: Model Type
+          default: AddPageBlockNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        page_block:
+          anyOf:
+          - $ref: '#/components/schemas/FullNewsBlock'
+          - $ref: '#/components/schemas/FeaturedNewsBlock'
+          - $ref: '#/components/schemas/TwitchBlock'
+          - $ref: '#/components/schemas/YoutubeBlock'
+          - $ref: '#/components/schemas/TextBlock'
+          - $ref: '#/components/schemas/BannerBlock'
+          - $ref: '#/components/schemas/FeaturedItemBlock'
+          - $ref: '#/components/schemas/RedeemCouponBlock'
+          - $ref: '#/components/schemas/LatestNewsBlock'
+          - $ref: '#/components/schemas/LatestPagesBlock'
+          - $ref: '#/components/schemas/LeaderboardCardBlock'
+          - $ref: '#/components/schemas/LeaderboardFullBlock'
+          - $ref: '#/components/schemas/LeaderboardCollectionBlock'
+          - $ref: '#/components/schemas/StoreBlock'
+          - $ref: '#/components/schemas/LimitedStoreBannerBlock'
+          - $ref: '#/components/schemas/AchievementListBlock'
+          - $ref: '#/components/schemas/FeaturedPageBlock'
+          - $ref: '#/components/schemas/DailyRewardsBlock'
+          - $ref: '#/components/schemas/LoyaltyProgramBlock'
+          - $ref: '#/components/schemas/IFrameBlock'
+          - $ref: '#/components/schemas/ImageBannerBlock'
+          - $ref: '#/components/schemas/RichContentBlock'
+          - $ref: '#/components/schemas/CarouselBlock'
+          - $ref: '#/components/schemas/SequentialOfferBlock'
+          - $ref: '#/components/schemas/RangeOfferBlock'
+          - $ref: '#/components/schemas/ProgressionProgramBlock'
+          - $ref: '#/components/schemas/RollingOfferBlock'
+          - $ref: '#/components/schemas/CarouselNewsBlock'
+          - $ref: '#/components/schemas/PiggyBankOfferBlock'
+          - $ref: '#/components/schemas/PlaceBlock'
+          - $ref: '#/components/schemas/PickOneOfferBlock'
+          title: Page Block
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - page_block
+      title: AddPageBlockNode
+    LatestPagesBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LatestPagesBlock
+          title: Block
+          default: LatestPagesBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        variant:
+          $ref: '#/components/schemas/LatestPagesBlockVariant'
+        collection_id:
+          type: string
+          title: Collection Id
+        category_id:
+          type: string
+          title: Category Id
+        is_featured:
+          type: boolean
+          title: Is Featured
+        is_paginated:
+          type: boolean
+          title: Is Paginated
+        show_all_tab:
+          type: boolean
+          title: Show All Tab
+      type: object
+      title: LatestPagesBlock
+    PiggyBankOfferBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - PiggyBankOfferBlock
+          title: Block
+          default: PiggyBankOfferBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        piggy_bank_offer_id:
+          type: string
+          title: Piggy Bank Offer Id
+      type: object
+      required:
+      - piggy_bank_offer_id
+      title: PiggyBankOfferBlock
+    FeaturedPageBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - FeaturedPageBlock
+          title: Block
+          default: FeaturedPageBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        page_id:
+          type: string
+          title: Page Id
+        is_collection:
+          type: boolean
+          title: Is Collection
+          default: false
+        rotation_period:
+          type: integer
+          title: Rotation Period
+        hide_date:
+          type: boolean
+          title: Hide Date
+      type: object
+      required:
+      - page_id
+      title: FeaturedPageBlock
+    PageBulkUpdate:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: External unique page identifier
+          nullable: true
+        title:
+          type: string
+          title: Title
+          description: The title of the page
+        description:
+          type: string
+          title: Description
+          description: The description of the page
+        text:
+          type: string
+          title: Text
+        slug:
+          type: string
+          maxLength: 100
+          minLength: 3
+          title: Slug
+          description: The slug of the page
+          unique: true
+        layout:
+          title: Layout
+          description: The layout of the page. Define child blocks for the page
+          nullable: true
+          $ref: '#/components/schemas/PageLayout'
+        html:
+          type: string
+          title: Html
+          description: The HTML content of the page
+          nullable: true
+        type:
+          description: The type of the page layout
+          nullable: true
+          $ref: '#/components/schemas/PageLayoutType'
+        parent_id:
+          type: string
+          title: Parent Id
+          description: The ID of the parent page
+          nullable: true
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the page
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the page
+          nullable: true
+        featured_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Image Url
+          description: The URL of the featured image for the page
+          nullable: true
+        pinned_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Image Url
+          description: The URL of the pinned image for the page
+          nullable: true
+        pinned_webview_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Webview Image Url
+          description: The URL of the pinned image for the page (in webview)
+          nullable: true
+        published_at:
+          type: integer
+          title: Published At
+          description: The published date of the Page
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          description: The position of the page in the page list
+          nullable: true
+        render_options:
+          title: Render Options
+          description: The additional render options of the page
+          $ref: '#/components/schemas/PageRenderOptions'
+        child_sort_settings:
+          title: Child Sort Settings
+          description: The sort settings for the child pages
+          nullable: true
+          $ref: '#/components/schemas/PageSortSettings'
+        video_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Video Url
+          description: The URL of the video for the page
+          nullable: true
+        is_featured:
+          type: boolean
+          title: Is Featured
+          description: Whether the page is featured
+          nullable: true
+        is_pinned:
+          type: boolean
+          title: Is Pinned
+          description: Whether the page is pinned
+          nullable: true
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Tags for the page
+          nullable: true
+        custom_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Url
+          description: Custom URL that the page card links to instead of the page itself
+          nullable: true
+        button_text:
+          type: string
+          maxLength: 100
+          title: Button Text
+          description: Text for the page card button
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Targeting rules; the page is shown only to matching users
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the page
+      type: object
+      required:
+      - id
+      title: PageBulkUpdate
+    PageTranslate:
+      properties:
+        title:
+          title: Title
+          description: Mapping of locale to translated title
+          $ref: '#/components/schemas/LocaleMapping'
+        description:
+          title: Description
+          description: Mapping of locale to translated description
+          $ref: '#/components/schemas/LocaleMapping'
+        text:
+          title: Text
+          description: Mapping of locale to translated text
+          $ref: '#/components/schemas/LocaleMapping'
+        html:
+          title: Html
+          description: Mapping of locale to translated html
+          $ref: '#/components/schemas/LocaleMapping'
+        button_text:
+          title: Button Text
+          description: Mapping of locale to translated button text
+          $ref: '#/components/schemas/LocaleMapping'
+        image_url:
+          title: Image Url
+          description: Mapping of locale to translated image URL
+          $ref: '#/components/schemas/LocaleUrlMapping'
+        featured_image_url:
+          title: Featured Image Url
+          description: Mapping of locale to translated featured image URL
+          $ref: '#/components/schemas/LocaleUrlMapping'
+        pinned_image_url:
+          title: Pinned Image Url
+          description: Mapping of locale to translated pinned image URL
+          $ref: '#/components/schemas/LocaleUrlMapping'
+        pinned_webview_image_url:
+          title: Pinned Webview Image Url
+          description: Mapping of locale to translated pinned image URL (in webview)
+          $ref: '#/components/schemas/LocaleUrlMapping'
+      type: object
+      title: PageTranslate
+      examples:
+      - title:
+          en: Home Page
+          pt: Página Inicial
+    WebhookActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - WebhookActionNode
+          title: Model Type
+          default: WebhookActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        url:
+          type: string
+          title: Url
+        response:
+          type: string
+          title: Response
+        status_code:
+          type: integer
+          title: Status Code
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: WebhookActionNode
+    StoreBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - StoreBlock
+          title: Block
+          default: StoreBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        store_id:
+          type: string
+          title: Store Id
+        category_id:
+          type: string
+          title: Category Id
+        featured_category_id:
+          type: string
+          title: Featured Category Id
+        show_sticky_categories:
+          type: boolean
+          title: Show Sticky Categories
+      type: object
+      title: StoreBlock
+    MobilePushActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - MobilePushActionNode
+          title: Model Type
+          default: MobilePushActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        body:
+          type: string
+          title: Body
+        item_id:
+          type: string
+          title: Item Id
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        content_type:
+          $ref: '#/components/schemas/HubPopupContentType'
+        button_text:
+          type: string
+          title: Button Text
+        button_link:
+          type: string
+          title: Button Link
+        items:
+          items:
+            $ref: '#/components/schemas/CommunicationItem'
+          type: array
+          title: Items
+        url:
+          type: string
+          title: Url
+        response:
+          type: string
+          title: Response
+        status_code:
+          type: integer
+          title: Status Code
+        image_url:
+          type: string
+          title: Image Url
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: MobilePushActionNode
+    YoutubeData:
+      properties:
+        video_id:
+          type: string
+          title: Video Id
+          description: The video ID of the YouTube video
+      type: object
+      required:
+      - video_id
+      title: YoutubeData
+    ItemAddNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - ItemAddNode
+          title: Model Type
+          default: ItemAddNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        items:
+          items:
+            $ref: '#/components/schemas/ItemAddData'
+          type: array
+          minItems: 1
+          title: Items
+        show_reward_popup:
+          type: boolean
+          title: Show Reward Popup
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - items
+      title: ItemAddNode
+    CouponType:
+      type: string
+      enum:
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
+      description: An enumeration.
+    LimitedStoreBannerBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LimitedStoreBannerBlock
+          title: Block
+          default: LimitedStoreBannerBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        button:
+          type: string
+          title: Button
+        image_url:
+          type: string
+          title: Image Url
+        background_image_url:
+          type: string
+          title: Background Image Url
+        link:
+          type: string
+          title: Link
+        store_id:
+          type: string
+          title: Store Id
+      type: object
+      title: LimitedStoreBannerBlock
+    BannerBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - BannerBlock
+          title: Block
+          default: BannerBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        description:
+          type: string
+          title: Description
+        image_url:
+          type: string
+          title: Image Url
+        title:
+          type: string
+          title: Title
+        background_image_size:
+          type: string
+          title: Background Image Size
+      type: object
+      title: BannerBlock
+    ItemBonus:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the bonus item that will be given to the user when they purchase this item.
+        sku:
+          type: string
+          title: SKU
+        quantity_fixed:
+          type: integer
+          title: Quantity Fixed
+          description: The fixed quantity of the bonus item
+          nullable: true
+        quantity_percent:
+          type: integer
+          minimum: 0.0
+          title: Quantity Percent
+          description: The user will receive a quantity equivalent to the set percentage of the price_after_discount_usd (in cents) of the purchased item.
+          nullable: true
+      type: object
+      required:
+      - id
+      title: ItemBonus
+    VirtualSKUBonusSource:
+      type: string
+      enum:
+      - custom
+      - event_item
+      title: VirtualSKUBonusSource
+      description: An enumeration.
+    RedeemCouponBlockVariant:
+      type: string
+      enum:
+      - default
+      - block
+      title: RedeemCouponBlockVariant
+      description: An enumeration.
+    LatestPagesBlockVariant:
+      type: string
+      enum:
+      - linear
+      - blur
+      title: LatestPagesBlockVariant
+      description: An enumeration.
+    TwitchData:
+      properties:
+        channel:
+          type: string
+          title: Channel
+          description: The channel of the Twitch video
+      type: object
+      required:
+      - channel
+      title: TwitchData
+    FeaturedItemBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - FeaturedItemBlock
+          title: Block
+          default: FeaturedItemBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        item_id:
+          type: string
+          title: Item Id
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        fallback_store_item_id:
+          type: string
+          title: Fallback Store Item Id
+        fallback_store_id:
+          type: string
+          title: Fallback Store Id
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+        background_image_size:
+          type: string
+          title: Background Image Size
+        category_template_id:
+          type: string
+          title: Category Template Id
+      type: object
+      title: FeaturedItemBlock
+    CreateItemBannerActionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - CreateItemBannerActionNode
+          title: Model Type
+          default: CreateItemBannerActionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        page_id:
+          type: string
+          title: Page Id
+        page_slug:
+          type: string
+          title: Page Slug
+        config:
+          $ref: '#/components/schemas/TranslatableFeaturedBannerConfig'
+        duration:
+          type: integer
+          title: Duration
+        link_created_offer:
+          type: boolean
+          title: Link Created Offer
+        use_event_item:
+          type: boolean
+          title: Use Event Item
+          default: false
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - config
+      title: CreateItemBannerActionNode
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    LatestNewsBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LatestNewsBlock
+          title: Block
+          default: LatestNewsBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        variant:
+          default: standard
+          $ref: '#/components/schemas/LatestNewsBlockVariant'
+        hide_controls:
+          type: boolean
+          title: Hide Controls
+        is_featured:
+          type: boolean
+          title: Is Featured
+      type: object
+      title: LatestNewsBlock
+    LeaderboardCollectionBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LeaderboardCollectionBlock
+          title: Block
+          default: LeaderboardCollectionBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      title: LeaderboardCollectionBlock
+    AddStoreNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - AddStoreNode
+          title: Model Type
+          default: AddStoreNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        store_id:
+          type: string
+          title: Store Id
+        do_not_merge_items:
+          type: boolean
+          title: Do Not Merge Items
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - store_id
+      title: AddStoreNode
+    VideoBlockSettings:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        order_id:
+          type: integer
+          title: Order Id
+          default: 0
+        thumbnail_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Thumbnail Url
+        show_thumbnail:
+          type: boolean
+          title: Show Thumbnail
+          default: true
+        auto_play:
+          type: boolean
+          title: Auto Play
+        platform:
+          $ref: '#/components/schemas/VideoPlatform'
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/YoutubeData'
+          - $ref: '#/components/schemas/TwitchData'
+          title: Data
+      type: object
+      required:
+      - title
+      - description
+      - platform
+      - data
+      title: VideoBlockSettings
+    AddToSegmentNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - AddToSegmentNode
+          title: Model Type
+          default: AddToSegmentNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        segment_id:
+          type: string
+          title: Segment Id
+        segment_slug:
+          type: string
+          title: Segment Slug
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: AddToSegmentNode
+    SequentialOfferBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - SequentialOfferBlock
+          title: Block
+          default: SequentialOfferBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        sequential_offer_id:
+          type: string
+          title: Sequential Offer Id
+      type: object
+      required:
+      - sequential_offer_id
+      title: SequentialOfferBlock
+    PageRenderOptions:
+      properties:
+        is_promo_store:
+          type: boolean
+          title: Is Promo Store
+      type: object
+      title: PageRenderOptions
+    PageBase:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: External unique page identifier
+        title:
+          type: string
+          title: Title
+          description: The title of the page
+        text:
+          type: string
+          title: Text
+        description:
+          type: string
+          title: Description
+          description: The description of the page
+        slug:
+          type: string
+          title: Slug
+          description: The slug of the page
+        layout:
+          title: Layout
+          description: The layout of the page. Define child blocks for the page
+          $ref: '#/components/schemas/PageLayout'
+        html:
+          type: string
+          title: Html
+          description: The HTML content of the page
+        type:
+          description: The type of the page layout
+          $ref: '#/components/schemas/PageLayoutType'
+        parent_id:
+          type: string
+          title: Parent Id
+          description: The ID of the parent page
+          nullable: true
+        date:
+          type: string
+          format: date
+          title: Date
+          nullable: true
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the page
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The date of the page
+          nullable: true
+        featured_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Image Url
+          description: The URL of the featured image for the page
+          nullable: true
+        pinned_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Image Url
+          description: The URL of the pinned image for the page
+          nullable: true
+        pinned_webview_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Pinned Webview Image Url
+          description: The URL of the pinned image for the page (in webview)
+          nullable: true
+        published_at:
+          type: integer
+          title: Published At
+          description: The published date of the Page
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          description: The position of the page in the page list
+          nullable: true
+        render_options:
+          title: Render Options
+          description: The additional render options of the page
+          $ref: '#/components/schemas/PageRenderOptions'
+        child_sort_settings:
+          title: Child Sort Settings
+          description: The sort settings for the child pages
+          nullable: true
+          $ref: '#/components/schemas/PageSortSettings'
+        video_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Video Url
+          description: The URL of the video for the page
+          nullable: true
+        is_featured:
+          type: boolean
+          title: Is Featured
+          description: Whether the page is featured
+          nullable: true
+        is_pinned:
+          type: boolean
+          title: Is Pinned
+          description: Whether the page is pinned
+          nullable: true
+        tags:
+          items:
+            type: string
+          type: array
+          title: Tags
+          description: Tags for the page
+          nullable: true
+        custom_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Url
+          description: Custom URL that the page card links to instead of the page itself
+          nullable: true
+        button_text:
+          type: string
+          maxLength: 100
+          title: Button Text
+          description: Text for the page card button
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Targeting rules; the page is shown only to matching users
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+      type: object
+      required:
+      - title
+      - text
+      - description
+      - slug
+      title: PageBase
+    GraphRoot:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          title: Model Type
+          default: GraphRoot
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        nodes:
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/ConditionNode'
+            - $ref: '#/components/schemas/EmailActionNode'
+            - $ref: '#/components/schemas/MobilePushActionNode'
+            - $ref: '#/components/schemas/MobilePopupActionNode'
+            - $ref: '#/components/schemas/TimerNode'
+            - $ref: '#/components/schemas/BrowserPushNotificationActionNode'
+            - $ref: '#/components/schemas/BrowserPopupNotificationActionNode'
+            - $ref: '#/components/schemas/PWAPromptActionNode'
+            - $ref: '#/components/schemas/WebhookActionNode'
+            - $ref: '#/components/schemas/SplitNode'
+            - $ref: '#/components/schemas/CreateItemBannerActionNode'
+            - $ref: '#/components/schemas/CreateVirtualSKUNode'
+            - $ref: '#/components/schemas/CreateUserStoreSettingsNode'
+            - $ref: '#/components/schemas/SetAttributeValuesNode'
+            - $ref: '#/components/schemas/VerifyPlayerNode'
+            - $ref: '#/components/schemas/AddUserAchievementNode'
+            - $ref: '#/components/schemas/CreateCouponNode'
+            - $ref: '#/components/schemas/ItemAddNode'
+            - $ref: '#/components/schemas/AddToSegmentNode'
+            - $ref: '#/components/schemas/RemoveFromSegmentNode'
+            - $ref: '#/components/schemas/AddStoreNode'
+            - $ref: '#/components/schemas/SortStoreItemsNode'
+            - $ref: '#/components/schemas/AddPageBlockNode'
+            discriminator:
+              propertyName: model_type
+              mapping:
+                ConditionNode: '#/components/schemas/ConditionNode'
+                EmailActionNode: '#/components/schemas/EmailActionNode'
+                MobilePushActionNode: '#/components/schemas/MobilePushActionNode'
+                MobilePopupActionNode: '#/components/schemas/MobilePopupActionNode'
+                TimerNode: '#/components/schemas/TimerNode'
+                BrowserPushNotificationActionNode: '#/components/schemas/BrowserPushNotificationActionNode'
+                BrowserPopupNotificationActionNode: '#/components/schemas/BrowserPopupNotificationActionNode'
+                PWAPromptActionNode: '#/components/schemas/PWAPromptActionNode'
+                WebhookActionNode: '#/components/schemas/WebhookActionNode'
+                SplitNode: '#/components/schemas/SplitNode'
+                CreateItemBannerActionNode: '#/components/schemas/CreateItemBannerActionNode'
+                CreateVirtualSKUNode: '#/components/schemas/CreateVirtualSKUNode'
+                CreateUserStoreSettingsNode: '#/components/schemas/CreateUserStoreSettingsNode'
+                SetAttributeValuesNode: '#/components/schemas/SetAttributeValuesNode'
+                VerifyPlayerNode: '#/components/schemas/VerifyPlayerNode'
+                AddUserAchievementNode: '#/components/schemas/AddUserAchievementNode'
+                CreateCouponNode: '#/components/schemas/CreateCouponNode'
+                ItemAddNode: '#/components/schemas/ItemAddNode'
+                AddToSegmentNode: '#/components/schemas/AddToSegmentNode'
+                RemoveFromSegmentNode: '#/components/schemas/RemoveFromSegmentNode'
+                AddStoreNode: '#/components/schemas/AddStoreNode'
+                SortStoreItemsNode: '#/components/schemas/SortStoreItemsNode'
+                AddPageBlockNode: '#/components/schemas/AddPageBlockNode'
+          type: object
+          title: Nodes
+        view_port:
+          $ref: '#/components/schemas/ViewPort'
+      type: object
+      required:
+      - id
+      - x
+      - y
+      title: GraphRoot
+    TextBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - TextBlock
+          title: Block
+          default: TextBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        text:
+          type: string
+          title: Text
+        title:
+          type: string
+          title: Title
+      type: object
+      title: TextBlock
+    ConditionNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - ConditionNode
+          title: Model Type
+          default: ConditionNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        expression:
+          type: string
+          title: Expression
+        expr:
+          $ref: '#/components/schemas/Expression'
+        true_node_id:
+          type: string
+          title: True Node Id
+        false_node_id:
+          type: string
+          title: False Node Id
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - expr
+      title: ConditionNode
+    TimerNode:
+      properties:
+        id:
+          type: string
+          title: Id
+        next_node_id:
+          type: string
+          title: Next Node Id
+        title:
+          type: string
+          title: Title
+        x:
+          type: integer
+          title: X
+        y:
+          type: integer
+          title: Y
+        result:
+          type: string
+          title: Result
+        model_type:
+          type: string
+          enum:
+          - TimerNode
+          title: Model Type
+          default: TimerNode
+        break_on_error:
+          type: boolean
+          title: Break On Error
+        description:
+          type: string
+          title: Description
+        delay:
+          type: integer
+          title: Delay
+        start_wait:
+          type: integer
+          title: Start Wait
+        end_wait:
+          type: integer
+          title: End Wait
+      type: object
+      required:
+      - id
+      - x
+      - y
+      - delay
+      title: TimerNode
+    VideoPlatform:
+      type: string
+      enum:
+      - youtube
+      - twitch
+      title: VideoPlatform
+      description: An enumeration.
+    FullNewsBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - FullNewsBlock
+          title: Block
+          default: FullNewsBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        news_id:
+          type: string
+          title: News Id
+      type: object
+      title: FullNewsBlock
+    SetAttributeValue:
+      properties:
+        name:
+          type: string
+          title: Name
+        value:
+          title: Value
+        type:
+          $ref: '#/components/schemas/AttributeValueType'
+        add_values_to_list:
+          type: boolean
+          title: Add Values To List
+      type: object
+      required:
+      - name
+      - type
+      title: SetAttributeValue
+    ItemRewardSettings:
+      properties:
+        available:
+          items:
+            $ref: '#/components/schemas/VCRewardConfig'
+          type: array
+          title: Available
+      type: object
+      required:
+      - available
+      title: ItemRewardSettings
+    TranslatableFeaturedBannerConfig:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        image_url:
+          type: string
+          title: Image Url
+        background_image_size:
+          type: string
+          title: Background Image Size
+        featured_item_id:
+          type: string
+          title: Featured Item Id
+        store_item_id:
+          type: string
+          title: Store Item Id
+        store_id:
+          type: string
+          title: Store Id
+        replace_item_block:
+          type: boolean
+          title: Replace Item Block
+        replace_item_block_name:
+          type: string
+          title: Replace Item Block Name
+      type: object
+      title: TranslatableFeaturedBannerConfig
+    RollingOfferBlockVariant:
+      type: string
+      enum:
+      - slider
+      - snake
+      title: RollingOfferBlockVariant
+      description: An enumeration.
+    LoyaltyProgramBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LoyaltyProgramBlock
+          title: Block
+          default: LoyaltyProgramBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        variant:
+          default: standard
+          $ref: '#/components/schemas/LoyaltyProgramBlockVariant'
+        slider_on_mobile:
+          type: boolean
+          title: Slider On Mobile
+          nullable: true
+      type: object
+      title: LoyaltyProgramBlock
+    TwitchBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - TwitchBlock
+          title: Block
+          default: TwitchBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        video:
+          $ref: '#/components/schemas/VideoBlockSettings'
+      type: object
+      required:
+      - video
+      title: TwitchBlock
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
+    AttributeValueType:
+      type: string
+      enum:
+      - custom_attribute
+      - event_attribute
+      - constant
+      - variable
+      title: AttributeValueType
+      description: An enumeration.
+    RedeemCouponBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - RedeemCouponBlock
+          title: Block
+          default: RedeemCouponBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        variant:
+          default: default
+          $ref: '#/components/schemas/RedeemCouponBlockVariant'
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        button_text:
+          type: string
+          title: Button Text
+        background_image_url:
+          type: string
+          title: Background Image Url
+      type: object
+      title: RedeemCouponBlock
+    LeaderboardCardBlock:
+      properties:
+        block:
+          type: string
+          enum:
+          - LeaderboardCardBlock
+          title: Block
+          default: LeaderboardCardBlock
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+        leaderboard_id:
+          type: string
+          title: Leaderboard Id
+      type: object
+      title: LeaderboardCardBlock
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

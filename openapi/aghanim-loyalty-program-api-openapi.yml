@@ -1,0 +1,1336 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Loyalty Program API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Loyalty Program
+paths:
+  /v1/loyalty:
+    get:
+      tags:
+      - Loyalty Program
+      summary: Get Loyalty Settings
+      operationId: get_loyalty_settings
+      responses:
+        '200':
+          description: Program retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltySettingsDashboardRead'
+        '201':
+          description: Program created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltySettingsDashboardRead'
+      security:
+      - HTTPBearer: []
+  /v1/loyalty/{loyalty_settings_id}:
+    put:
+      tags:
+      - Loyalty Program
+      summary: Update Loyalty Settings
+      operationId: update_loyalty_settings
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: loyalty_settings_id
+        in: path
+        required: true
+        schema:
+          title: Loyalty Settings Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Update
+              $ref: '#/components/schemas/LoyaltySettingsUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltySettings'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/loyalty/{loyalty_settings_id}/tiers:
+    get:
+      tags:
+      - Loyalty Program
+      summary: Get Loyalty Tiers
+      operationId: get_loyalty_tiers
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: loyalty_settings_id
+        in: path
+        required: true
+        schema:
+          title: Loyalty Settings Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Loyalty Tiers
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoyaltyTier'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Loyalty Program
+      summary: Update Loyalty Tiers
+      operationId: update_loyalty_tiers
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: loyalty_settings_id
+        in: path
+        required: true
+        schema:
+          title: Loyalty Settings Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Tiers
+              type: array
+              items:
+                $ref: '#/components/schemas/LoyaltyTierCreateUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Update Loyalty Tiers
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoyaltyTier'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/loyalty/{loyalty_settings_id}/issue_points:
+    post:
+      tags:
+      - Loyalty Program
+      summary: Issue Loyalty Points
+      description: Issue loyalty points to a user manually.
+      operationId: issue_loyalty_points
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: loyalty_settings_id
+        in: path
+        required: true
+        schema:
+          title: Loyalty Settings Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Request
+              $ref: '#/components/schemas/aghanim__loyalty__schemas__IssueLoyaltyPointsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ItemRarityRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: Name of the item rarity
+        color_background_badge:
+          type: string
+          title: Color Background Badge
+          description: Background color of the badge with this rarity
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - name
+      - id
+      title: ItemRarityRead
+    Currency:
+      type: string
+      enum:
+      - USD
+      - EUR
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - UYU
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZWG
+      - ZWL
+      - RP
+      - VC
+      title: Currency
+    LoyaltySettingsUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        key:
+          type: string
+          title: Key
+        description:
+          type: string
+          maxLength: 1024
+          title: Description
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+        custom_icon_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Icon Url
+        activated_at:
+          type: integer
+          title: Activated At
+        end_at:
+          type: integer
+          title: End At
+        period:
+          type: integer
+          exclusiveMaximum: 365.0
+          minimum: 0.0
+          title: Period
+        repeatable:
+          type: boolean
+          title: Repeatable
+        requirements_expression:
+          $ref: '#/components/schemas/Expression'
+        points_rate:
+          type: number
+          title: Points Rate
+        price_source:
+          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
+          default: local_price
+          nullable: true
+          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
+          nullable: true
+        show_store_button:
+          type: boolean
+          title: Show Store Button
+      type: object
+      title: LoyaltySettingsUpdate
+    LoyaltySettingsDashboardRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the loyalty program
+        key:
+          type: string
+          title: Key
+          description: External key of the loyalty program
+          nullable: true
+        description:
+          type: string
+          maxLength: 1024
+          title: Description
+          description: A brief description of the loyalty program
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image associated with the loyalty program
+          nullable: true
+        custom_icon_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Icon Url
+          description: Custom icon URL for loyalty points
+          nullable: true
+        activated_at:
+          type: integer
+          title: Activated At
+          description: Timestamp when the program was activated (UNIX time)
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: Timestamp when the program ends (UNIX time)
+          nullable: true
+        period:
+          type: integer
+          title: Period
+          description: The duration of the loyalty program in days
+        repeatable:
+          type: boolean
+          title: Repeatable
+          description: Whether the program is repeatable
+          default: false
+        requirements_expression:
+          title: Requirements Expression
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        points_rate:
+          type: number
+          title: Points Rate
+          description: Exchange rate against the dollar
+        price_source:
+          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
+          default: local_price
+          nullable: true
+          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
+          nullable: true
+        show_store_button:
+          type: boolean
+          title: Show Store Button
+          description: Whether to show the 'Go to Store' button in the loyalty program widget
+          default: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the loyalty tier
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game the accosiated with the loyalty program
+        time_window:
+          $ref: '#/components/schemas/LoyaltyTimeWindow'
+      type: object
+      required:
+      - name
+      - period
+      - points_rate
+      - id
+      - game_id
+      - time_window
+      title: LoyaltySettingsDashboardRead
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    ItemType:
+      type: string
+      enum:
+      - item
+      - currency
+      - bundle
+      - lootbox
+      - subscription
+      - virtual_currency
+      title: ItemType
+      description: An enumeration.
+    LoyaltyTier:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the loyalty tier
+        points:
+          type: integer
+          title: Points
+          description: Points required to reach this tier
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The image URL for this loyalty tier
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the loyalty tier
+        items:
+          items:
+            $ref: '#/components/schemas/LoyaltyItem'
+          type: array
+          title: Items
+          description: Items associated with this loyalty tier
+      type: object
+      required:
+      - name
+      - points
+      - image_url
+      - id
+      - items
+      title: LoyaltyTier
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    NestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        is_featured:
+          type: boolean
+          title: Is Featured
+        meta:
+          type: object
+          title: Meta
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+        view_type:
+          $ref: '#/components/schemas/NestedItemViewType'
+      type: object
+      title: NestedItem
+    LoyaltySettings:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the loyalty program
+        key:
+          type: string
+          title: Key
+          description: External key of the loyalty program
+          nullable: true
+        description:
+          type: string
+          maxLength: 1024
+          title: Description
+          description: A brief description of the loyalty program
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image associated with the loyalty program
+          nullable: true
+        custom_icon_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Icon Url
+          description: Custom icon URL for loyalty points
+          nullable: true
+        activated_at:
+          type: integer
+          title: Activated At
+          description: Timestamp when the program was activated (UNIX time)
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: Timestamp when the program ends (UNIX time)
+          nullable: true
+        period:
+          type: integer
+          title: Period
+          description: The duration of the loyalty program in days
+        repeatable:
+          type: boolean
+          title: Repeatable
+          description: Whether the program is repeatable
+          default: false
+        requirements_expression:
+          title: Requirements Expression
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        points_rate:
+          type: number
+          title: Points Rate
+          description: Exchange rate against the dollar
+        price_source:
+          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
+          default: local_price
+          nullable: true
+          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
+          nullable: true
+        show_store_button:
+          type: boolean
+          title: Show Store Button
+          description: Whether to show the 'Go to Store' button in the loyalty program widget
+          default: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the loyalty tier
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game the accosiated with the loyalty program
+      type: object
+      required:
+      - name
+      - period
+      - points_rate
+      - id
+      - game_id
+      title: LoyaltySettings
+    LoyaltyPointsPriceSource:
+      type: string
+      enum:
+      - local_price
+      - base_price
+      title: LoyaltyPointsPriceSource
+      description: An enumeration.
+    HighlightItem:
+      properties:
+        image_url:
+          type: string
+          title: Image Url
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      title: HighlightItem
+    ItemViewOption:
+      type: string
+      enum:
+      - default
+      - skeleton
+      title: ItemViewOption
+      description: An enumeration.
+    LoyaltyTierCreateUpdate:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        points:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Points
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+        items:
+          items:
+            $ref: '#/components/schemas/LoyaltyItemCreateUpdate'
+          type: array
+          maxItems: 10
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - name
+      - points
+      - image_url
+      - items
+      title: LoyaltyTierCreateUpdate
+    LoyaltyTimeWindow:
+      properties:
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      title: LoyaltyTimeWindow
+    Highlights:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        items:
+          items:
+            $ref: '#/components/schemas/HighlightItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Highlights
+    aghanim__loyalty__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+          description: The unique identifier of the user
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue
+      type: object
+      required:
+      - user_id
+      - amount
+      title: IssueLoyaltyPointsRequest
+    ItemPropertyConfigString:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - string
+          title: Property Type
+          default: string
+      type: object
+      title: ItemPropertyConfigString
+    ItemPropertyConfigNumber:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - number
+          title: Property Type
+          default: number
+      type: object
+      title: ItemPropertyConfigNumber
+    LoyaltyItemCreateUpdate:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        count:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Count
+          description: Optional quantity override for the tier item. If not provided, the item's default quantity is used.
+          nullable: true
+        sku:
+          type: string
+          title: SKU
+      type: object
+      required:
+      - id
+      title: LoyaltyItemCreateUpdate
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    ItemPropertyConfigRange:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - range
+          title: Property Type
+          default: range
+        max:
+          type: integer
+          title: Max
+        min:
+          type: integer
+          title: Min
+          default: 0
+      type: object
+      required:
+      - max
+      title: ItemPropertyConfigRange
+    OrderSourceType:
+      type: string
+      enum:
+      - s2s
+      - hub
+      - sdk
+      - checkout_link
+      title: OrderSourceType
+      description: An enumeration.
+    ItemPropertyRelationRead:
+      properties:
+        property_id:
+          type: string
+          title: Property Id
+        data:
+          $ref: '#/components/schemas/ItemPropertyRelationData'
+        position:
+          type: integer
+          title: Position
+        id:
+          type: string
+          title: Id
+        item_id:
+          type: string
+          title: Item Id
+        item_property:
+          $ref: '#/components/schemas/ItemPropertyRead'
+      type: object
+      required:
+      - property_id
+      - position
+      - id
+      - item_id
+      - item_property
+      title: ItemPropertyRelationRead
+    NestedItemViewType:
+      type: string
+      enum:
+      - separated
+      title: NestedItemViewType
+      description: An enumeration.
+    ItemPropertyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the property
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the property
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the property
+        config:
+          oneOf:
+          - $ref: '#/components/schemas/ItemPropertyConfigRange'
+          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
+          - $ref: '#/components/schemas/ItemPropertyConfigString'
+          title: Config
+          description: The config of the property
+          discriminator:
+            propertyName: property_type
+            mapping:
+              range: '#/components/schemas/ItemPropertyConfigRange'
+              number: '#/components/schemas/ItemPropertyConfigNumber'
+              string: '#/components/schemas/ItemPropertyConfigString'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the property
+      type: object
+      required:
+      - name
+      - config
+      - id
+      title: ItemPropertyRead
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
+    LoyaltyItem:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the item
+          nullable: true
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        count:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Count
+          description: Optional quantity override for the tier item. If not provided, the item's default quantity is used.
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      title: LoyaltyItem
+    ItemPropertyRelationData:
+      properties:
+        value:
+          anyOf:
+          - type: number
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      title: ItemPropertyRelationData
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

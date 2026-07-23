@@ -1,0 +1,48 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.aghanim.com/checkout/test-payments
+notes: >-
+  Aghanim provides an isolated sandbox toggled from the Dashboard (top-right
+  Sandbox switch). Sandbox and live have SEPARATE SDK keys (Integration → API
+  keys). Sandbox supports card payments only; alternative methods (PayPal,
+  wallets, local methods) appear in live only. All values below are published
+  verbatim by Aghanim — never invent test data.
+mode:
+  toggle: Dashboard top-right Sandbox switch (on = sandbox, off = production; live is default)
+  key_separation: true
+  key_location: "Dashboard → Integration → API keys (distinct sandbox vs live SDK keys)"
+  card_only: true
+test_input_rules:
+  cvv: "any 3 digits (Visa/Mastercard/others), any 4 digits (American Express)"
+  expiry: "any future date MM/YY"
+successful_test_cards:
+  - {brand: VISA, number: "4242 4242 4242 4242", country: GB}
+  - {brand: VISA, number: "4315 0818 0830 8748", country: TH}
+  - {brand: VISA, number: "4111 1111 1111 1111", country: PL}
+  - {brand: American Express, number: "3700 0000 0000 002", country: US}
+  - {brand: Mastercard, number: "5436 0310 3060 6378", country: MU}
+  - {brand: China Union Pay, number: "8171 9999 2766 0000", country: CN}
+  - {brand: Maestro, number: "6771 7980 2100 0008", country: AT}
+  - {brand: Discover, number: "6011 1111 1111 1117", country: US}
+  - {brand: JCB, number: "3530 1113 3330 0000", country: JP}
+  - {brand: VISA, number: "4744 0556 6520 4795", country: US}
+  - {brand: VISA, number: "4030 1871 7569 1410", country: CY}
+  - {brand: Mastercard, number: "5490 5290 6876 6884", country: GB}
+  - {brand: Mastercard, number: "5481 6996 4448 6744", country: PT}
+  - {brand: Discover, number: "6556 1386 1040 2565", country: KR}
+declined_test_cards:
+  - {number: "4832 2850 6160 9015", response_code: "16", scenario: Payment declined}
+  - {number: "4211 1272 6211 2418", response_code: "2051", scenario: Insufficient funds}
+  - {number: "4411 5883 2171 3124", response_code: "3041", scenario: Lost card}
+  - {number: "4178 1318 2730 9866", response_code: "3043", scenario: Stolen card}
+  - {number: "4867 0537 1696 5705", response_code: "2054", scenario: Expired card}
+three_ds_test_card:
+  number: "4224 7030 8257 5813"
+  behavior: Redirects to a 3DS emulation page where you complete or fail authentication.
+dispute_test_cards:
+  - {number: "4000 0000 0000 0267", reason: Fraudulent, scenario: Dispute lost -> chargeback status}
+  - {number: "4000 0000 0000 2685", reason: Product not received, scenario: Dispute won -> succeeded status}
+fraud_test_card:
+  number: "4171 6800 0000 0004"
+  behavior: Triggers the Fraud Reported webhook.
+webhook_sandbox_flag: "webhook payloads carry a boolean `sandbox` field distinguishing test from live events"

@@ -1,0 +1,442 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Achievements
+paths:
+  /v1/achievements:
+    get:
+      tags:
+      - Achievements
+      summary: Get Achievements
+      description: Returns a list of achievements.
+      operationId: get_achievements
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: A limit on the number of objects to be returned
+          default: 10
+          type: integer
+        description: A limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AchievementRead'
+                title: Response Get Achievements
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Achievements
+      summary: Create Achievement
+      operationId: create_achievement
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AchievementCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AchievementRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - Achievements
+      summary: Bulk Update Achievement
+      description: Updates multiple store items.
+      operationId: bulk_update_achievement
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AchievementBulkUpdate'
+              title: Bulk Update
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AchievementRead'
+                title: Response Bulk Update Achievement
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/achievements/{achievement_id}:
+    get:
+      tags:
+      - Achievements
+      summary: Get Achievement
+      description: Returns a single achievement.
+      operationId: get_achievement
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: achievement_id
+        in: path
+        required: true
+        schema:
+          title: Achievement Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AchievementRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Achievements
+      summary: Update Achievement
+      description: Updates an achievement.
+      operationId: update_achievement
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: achievement_id
+        in: path
+        required: true
+        schema:
+          title: Achievement Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AchievementUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AchievementRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Achievements
+      summary: Delete Achievement
+      description: Deletes an achievement.
+      operationId: delete_achievement
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: achievement_id
+        in: path
+        required: true
+        schema:
+          title: Achievement Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/achievements/{achievement_type}/unlock:
+    post:
+      tags:
+      - Achievements
+      summary: Unlock Achievement
+      description: Unlock an achievement for a player.
+      operationId: unlock_achievement
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: achievement_type
+        in: path
+        required: true
+        schema:
+          title: Achievement Type
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Unlock
+              $ref: '#/components/schemas/AchievementUnlockRequest'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    AchievementType:
+      type: string
+      enum:
+      - first_visit
+      - first_purchase
+      - regular_visit
+      title: AchievementType
+    AchievementUpdate:
+      properties:
+        name:
+          title: Name
+          description: The name of the achievement
+          type: string
+          maxLength: 255
+          minLength: 1
+        description:
+          title: Description
+          description: The description of the achievement
+          type: string
+          maxLength: 512
+        image_url:
+          title: Image Url
+          description: The URL of the image for the achievement
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          title: Position
+          description: The position of the achievement in the list
+          type: integer
+      type: object
+      title: AchievementUpdate
+    AchievementCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          title: Name
+          description: The name of the achievement
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the achievement
+        image_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Image Url
+          description: The URL of the image for the achievement
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          type: integer
+          title: Position
+          description: The position of the achievement in the list
+      type: object
+      required:
+      - name
+      - description
+      - image_url
+      - type
+      - position
+      title: AchievementCreate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    AchievementUnlockRequest:
+      properties:
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID who unlocked the achievement
+      type: object
+      required:
+      - player_id
+      title: AchievementUnlockRequest
+    AchievementBulkUpdate:
+      properties:
+        name:
+          title: Name
+          description: The name of the achievement
+          type: string
+          maxLength: 255
+          minLength: 1
+        description:
+          title: Description
+          description: The description of the achievement
+          type: string
+          maxLength: 512
+        image_url:
+          title: Image Url
+          description: The URL of the image for the achievement
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          title: Position
+          description: The position of the achievement in the list
+          type: integer
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the achievement
+      type: object
+      required:
+      - id
+      title: AchievementBulkUpdate
+    AchievementRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          title: Name
+          description: The name of the achievement
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the achievement
+        image_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Image Url
+          description: The URL of the image for the achievement
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          type: integer
+          title: Position
+          description: The position of the achievement in the list
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the achievement
+      type: object
+      required:
+      - name
+      - description
+      - image_url
+      - type
+      - position
+      - id
+      title: AchievementRead
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

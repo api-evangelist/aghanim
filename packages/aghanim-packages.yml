@@ -1,0 +1,40 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.aghanim.com/checkout/integrate/unity
+notes: >-
+  Aghanim's first-party client libraries are game-engine / mobile SDKs for its
+  prebuilt Checkout: a Unity SDK and a native Android SDK, documented on
+  docs.aghanim.com. The Android SDK is distributed as a Gradle/Maven dependency
+  (repositories block: android-sdk). npm and PyPI each carry a thinly-published
+  "aghanim" package (JavaScript / Python SDK, v0.0.1, no repository or author
+  metadata) that could not be confirmed as first-party, so they are recorded
+  official: false pending verification.
+packages:
+  - language: csharp
+    platform: unity
+    registry: docs
+    name: Aghanim Unity SDK
+    url: https://docs.aghanim.com/checkout/integrate/unity
+    install: Import the Aghanim Unity SDK package (Unity 2022.3.62f3 LTS+, EDM4U, NewtonJson 3.2.1+)
+    official: true
+  - language: kotlin
+    platform: android
+    registry: maven
+    name: Aghanim Android SDK
+    url: https://docs.aghanim.com/checkout/android-sdk
+    install: Add the android-sdk repository to your Gradle build (Android API level 24+, Android Studio 4.1+)
+    official: true
+  - language: javascript
+    registry: npm
+    name: aghanim
+    url: https://www.npmjs.com/package/aghanim
+    install: npm install aghanim
+    official: false
+    note: "npm description 'Aghanim JavaScript SDK', v0.0.1, no repo/homepage/author metadata — first-party status unverified"
+  - language: python
+    registry: pypi
+    name: aghanim
+    url: https://pypi.org/project/aghanim/
+    install: pip install aghanim
+    official: false
+    note: "PyPI summary 'Aghanim Python SDK', no repo/homepage/author metadata — first-party status unverified"

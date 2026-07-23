@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Aghanim Server-to-Server API
+  version: 1.0.0
+extends: openapi/aghanim-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 4
+      x-apievangelist-notes: >-
+        Aghanim Server-to-Server API — direct-to-consumer enablement for mobile
+        games (game hubs, checkout/payments, LiveOps, catalog, players). 170
+        operations, 405 schemas, HTTP Bearer auth. Merchant-of-Record payments
+        platform with a documented webhook event surface.
+      x-authentication: {type: http, scheme: bearer}
+      x-api-base: https://api.aghanim.com/s2s
+  - target: $.servers
+    update:
+      - url: https://api.aghanim.com/s2s
+        description: Production
+  - target: $
+    update:
+      x-webhooks-catalog: asyncapi/aghanim-webhooks.yml
+      x-sandbox: sandbox/aghanim-sandbox.yml
+      x-conventions: conventions/aghanim-conventions.yml
+      x-error-catalog: errors/aghanim-problem-types.yml
+      x-decline-codes: errors/aghanim-decline-codes.yml

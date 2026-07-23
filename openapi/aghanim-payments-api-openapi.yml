@@ -1,0 +1,505 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Payments API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Payments
+paths:
+  /v1/payments:
+    get:
+      tags:
+      - Payments
+      summary: Get Payments
+      description: Returns a list of payments.
+      operationId: get_payments
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: A limit on the number of objects to be returned
+          default: 10
+          type: integer
+        description: A limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      - name: start_at
+        in: query
+        required: false
+        schema:
+          title: Start At
+          description: Optional start of the time range to filter, in Unix timestamp format (seconds)
+          type: integer
+        description: Optional start of the time range to filter, in Unix timestamp format (seconds)
+      - name: end_at
+        in: query
+        required: false
+        schema:
+          title: End At
+          description: Optional end of the time range to filter. Mandatory if start_at is specified.
+          type: integer
+        description: Optional end of the time range to filter. Mandatory if start_at is specified.
+      - name: field
+        in: query
+        required: false
+        schema:
+          description: Field by which the start_at/end_at range is filtered
+          default: created_at
+          $ref: '#/components/schemas/RangeField'
+        description: Field by which the start_at/end_at range is filtered
+      - name: search_string
+        in: query
+        required: false
+        schema:
+          title: Search String
+          description: Search across order_id, email, receipt_number, payment_id, status, country, user_id.
+          type: string
+        description: Search across order_id, email, receipt_number, payment_id, status, country, user_id.
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          title: User Id
+          type: string
+      - name: order_id
+        in: query
+        required: false
+        schema:
+          title: Order Id
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          title: Status
+          description: Optional comma separated list of status
+          type: string
+        description: Optional comma separated list of status
+      - name: countries
+        in: query
+        required: false
+        schema:
+          title: Countries
+          description: Optional comma separated list of countries
+          type: string
+        description: Optional comma separated list of countries
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Payments
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Coupon:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the coupon.
+        code:
+          type: string
+          title: Code
+          description: The coupon code.
+        name:
+          type: string
+          title: Name
+          description: The name of the coupon.
+        type:
+          description: The type of the coupon.
+          $ref: '#/components/schemas/CouponType'
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: Discount percent for `discount` coupons.
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          description: Bonus percent for `bonus` coupons.
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: Fixed bonus quantity for `bonus` coupons.
+      type: object
+      required:
+      - id
+      - code
+      - name
+      - type
+      title: Coupon
+    ThreeDSecureResult:
+      type: string
+      enum:
+      - not_attempted
+      - authenticated
+      - failed
+      title: ThreeDSecureResult
+      description: An enumeration.
+    CouponType:
+      type: string
+      enum:
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
+      description: An enumeration.
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    RangeField:
+      type: string
+      enum:
+      - created_at
+      - modified_at
+      - status_updated_at
+      title: RangeField
+      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Item:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the item.
+        sku:
+          type: string
+          minLength: 1
+          title: SKU
+          description: Stock Keeping Unit (SKU) identifier.
+        name:
+          type: string
+          title: Name
+          description: The name of the item.
+        source:
+          description: The source of the payment item.
+          $ref: '#/components/schemas/ItemSource'
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+          nullable: true
+        image_url:
+          type: string
+          title: Image Url
+          description: The URL of the image for the item
+        quantity:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Quantity
+          description: The quantity of the item.
+        nested_items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+          title: Nested Items
+          description: Nested items of the bundle.
+      type: object
+      required:
+      - id
+      - sku
+      - name
+      - source
+      - quantity
+      title: Item
+    PaymentStatus:
+      type: string
+      enum:
+      - created
+      - failed
+      - expired
+      - voided
+      - rejected
+      - done
+      - refund_requested
+      - refunded
+      - dispute
+      - chargeback
+      - abandoned
+      - canceled
+      title: PaymentStatus
+      description: An enumeration.
+    SalesChannel:
+      type: string
+      enum:
+      - game_hub
+      - checkout
+      - android_sdk
+      - checkout_link
+      title: SalesChannel
+      description: An enumeration.
+    ThreeDSFlow:
+      type: string
+      enum:
+      - none
+      - challenge
+      - frictionless
+      title: ThreeDSFlow
+      description: An enumeration.
+    PaymentRead:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+          description: The user ID of the payment
+        player_id:
+          type: string
+          title: Player Id
+          description: The player ID of the payment
+        modified_at:
+          type: integer
+          title: Modified At
+          description: The time of the last modification
+        player_name:
+          type: string
+          title: Player Name
+          description: The name of the player
+        item_id:
+          type: string
+          title: Item Id
+          description: 'The ID of the purchased item. Deprecated: use `items` instead.'
+          deprecated: true
+        item_name:
+          type: string
+          title: Item Name
+          description: 'The name of the purchased item. Deprecated: use `items` instead.'
+          deprecated: true
+        items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+          title: Items
+          description: List of items included in the payment
+        payment_method_name:
+          type: string
+          title: Payment Method Name
+          description: The name of the payment method
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/PaymentStatus'
+          - type: string
+          title: Status
+          description: The status of the payment
+        sales_channel:
+          description: Indicates the sales channel
+          $ref: '#/components/schemas/SalesChannel'
+        currency:
+          type: string
+          title: Currency
+          description: The currency of the payment
+        country:
+          type: string
+          title: Country
+          description: The ISO code country of the payment
+        payment_id:
+          type: string
+          title: Payment Id
+          description: The ID of the payment
+        payment_number:
+          type: string
+          title: Payment Number
+          description: The number of the payment in receipt
+          deprecated: true
+        receipt_number:
+          type: string
+          title: Receipt Number
+          description: The number of the payment in receipt
+        checkout_profile_id:
+          type: string
+          title: Checkout Profile Id
+          description: The ID of the user checkout profile
+        order_id:
+          type: string
+          title: Order Id
+          description: The ID of the order
+        card_last_4_digits:
+          type: string
+          title: Card Last 4 Digits
+          description: The last 4 digits of the card
+        card_scheme:
+          type: string
+          title: Card Scheme
+          description: The scheme of the card
+        total:
+          type: integer
+          title: Total
+          description: The total amount of the payment
+        total_usd:
+          type: number
+          title: Total USD
+          description: The payment amount converted at the exchange rate into dollars (Sales or GMV)
+        total_usd_revenue:
+          type: number
+          title: Total USD Revenue
+          description: The profit in dollars, that is total_usd excluding all fees and taxes
+        user_local_price:
+          type: integer
+          title: User Local Price
+          description: The total amount in local currency of the payment before all discounts
+        currency_minor_unit:
+          type: integer
+          title: Currency Minor Unit
+          description: The minor unit of the currency
+        fees:
+          items:
+            type: object
+          type: array
+          title: Fees
+          description: This includes all charges related to a payment, including the payment system fee, Aghanim fee, conversion, etc
+        taxes:
+          items:
+            type: object
+          type: array
+          title: Taxes
+          description: These are the taxes that arise from sales (the Withholding Tax is not included)
+        refund_customer_id:
+          type: string
+          title: Refund Customer Id
+          description: The ID of the refunded customer
+        refund_reason:
+          type: string
+          title: Refund Reason
+          description: The reason of the refund
+        ip:
+          title: Ip
+          description: The IP address of the payment
+        created_at:
+          type: integer
+          title: Created At
+          description: The time of the payment creation
+        fail_reason:
+          type: string
+          title: Fail Reason
+          description: The reason of the payment failure
+        fail_reason_code:
+          type: string
+          title: Fail Reason Code
+          description: The code of the payment failure reason
+        status_updated_at:
+          type: integer
+          title: Status Updated At
+          description: The timestamp of the status update
+        order_field:
+          type: integer
+          title: Order Field
+          description: The transaction's serial number in the status list. Can be used to sort the transaction by the status list
+        metadata:
+          type: object
+          title: Metadata
+          description: The metadata object of the order
+        platform:
+          description: The platform of the order
+          $ref: '#/components/schemas/Platform'
+        three_d_secure_flow:
+          description: 'The 3DS flow type: none, challenge, or frictionless'
+          $ref: '#/components/schemas/ThreeDSFlow'
+        three_d_secure_result:
+          description: 'The 3DS authentication result: not_attempted, authenticated, or failed'
+          $ref: '#/components/schemas/ThreeDSecureResult'
+        applied_reward_points:
+          type: integer
+          title: Applied Reward Points
+          description: The applied reward points for the order that allowed you to receive a discount.
+        coupons:
+          items:
+            $ref: '#/components/schemas/Coupon'
+          type: array
+          title: Coupons
+          description: The list of coupons applied to the order.
+      type: object
+      required:
+      - user_id
+      - payment_method_name
+      - status
+      - currency
+      - payment_number
+      - receipt_number
+      - total
+      - currency_minor_unit
+      - created_at
+      title: PaymentRead
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

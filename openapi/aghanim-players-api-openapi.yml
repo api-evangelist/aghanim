@@ -1,0 +1,648 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Players API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Players
+paths:
+  /v1/players/{player_id}/refresh_store:
+    post:
+      tags:
+      - Players
+      summary: Refresh Store For Single Player
+      description: 'Trigger a store content refresh for a single player.
+
+
+        If the player is on the store page, this will call the `store.get` webhook and
+
+        the store page content will be refreshed immediately for them on the Game Hub.'
+      operationId: refresh_store_for_single_player
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: player_id
+        in: path
+        required: true
+        schema:
+          title: Player Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/players/refresh_store:
+    post:
+      tags:
+      - Players
+      summary: Refresh Store For All Players
+      description: 'Trigger a store content refresh for all players.
+
+
+        All players on the store page will eventually see the updated store content.
+
+        Be aware that this operation will call the `store.get` webhook for all players
+
+        currently on the store page, so your server might experience a high number of
+
+        requests if you have a large number of players on the store page.'
+      operationId: refresh_store_for_all_players
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: player_id
+        in: query
+        required: true
+        schema:
+          title: Player Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/players/{player_id}:
+    post:
+      tags:
+      - Players
+      summary: Update Player
+      description: Update a player
+      operationId: update_player
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: player_id
+        in: path
+        required: true
+        schema:
+          title: Player Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Players
+      summary: Get Player
+      description: Retrieve a player by their player ID.
+      operationId: get_player
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: player_id
+        in: path
+        required: true
+        schema:
+          title: Player Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayerRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/players/{player_id}/issue_loyalty_points:
+    post:
+      tags:
+      - Players
+      summary: Issue Loyalty Points
+      description: Issue loyalty points to a player.
+      operationId: issue_loyalty_points
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: player_id
+        in: path
+        required: true
+        schema:
+          title: Player Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Request
+              $ref: '#/components/schemas/aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    PersistentPlayerAttributes:
+      properties:
+        level:
+          type: integer
+          title: Level
+          default: 0
+          posthog: true
+        platform:
+          $ref: '#/components/schemas/Platform'
+        marketplace:
+          $ref: '#/components/schemas/Marketplace'
+          default: none
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+        tags:
+          title: Tags
+          items:
+            $ref: '#/components/schemas/PlayerTag'
+          type: array
+        soft_currency_amount:
+          type: integer
+          title: Soft Currency Amount
+          default: 0
+        hard_currency_amount:
+          type: integer
+          title: Hard Currency Amount
+          default: 0
+        appsflyer_id:
+          title: Appsflyer Id
+          type: string
+        appsflyer_app_id:
+          title: Appsflyer App Id
+          type: string
+        appsflyer_meta:
+          title: Appsflyer Meta
+          additionalProperties: true
+          type: object
+        appsflyer_event_params:
+          title: Appsflyer Event Params
+          additionalProperties: true
+          type: object
+        appsflyer_customer_user_id:
+          title: Appsflyer Customer User Id
+          type: string
+        adjust_device_id:
+          title: Adjust Device Id
+          additionalProperties:
+            type: string
+          type: object
+        adjust_adid:
+          title: Adjust Adid
+          type: string
+        adjust_app_token:
+          title: Adjust App Token
+          type: string
+        adjust_authorization_token:
+          title: Adjust Authorization Token
+          type: string
+        adjust_purchase_event_token:
+          title: Adjust Purchase Event Token
+          type: string
+        adjust_callback_params:
+          title: Adjust Callback Params
+          additionalProperties:
+            type: string
+          type: object
+        adjust_partner_params:
+          title: Adjust Partner Params
+          additionalProperties:
+            type: string
+          type: object
+        singular_device_id:
+          title: Singular Device Id
+          additionalProperties:
+            type: string
+          type: object
+        singular_app_id:
+          title: Singular App Id
+          type: string
+        devtodev_appid:
+          title: Devtodev Appid
+          type: string
+        devtodev_apikey:
+          title: Devtodev Apikey
+          type: string
+        devtodev_device_id:
+          $ref: '#/components/schemas/DevtodevDeviceIdV2'
+        ga4_client_id:
+          title: Ga4 Client Id
+          description: GA4 web `client_id` from the `_ga` cookie.
+          type: string
+        ga4firebase_app_instance_id:
+          title: Ga4Firebase App Instance Id
+          description: Firebase mobile `app_instance_id` from the SDK.
+          type: string
+        ga4_user_id:
+          title: Ga4 User Id
+          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
+          type: string
+          maxLength: 256
+        saved_ach:
+          type: boolean
+          title: Saved Ach
+          default: false
+        saved_card:
+          type: boolean
+          title: Saved Card
+          default: false
+        game_hub_last_sent_popup_unread:
+          title: Game Hub Last Sent Popup Unread
+          type: integer
+        game_hub_last_sent_popup_read:
+          title: Game Hub Last Sent Popup Read
+          type: integer
+        prev_last_active_at:
+          title: Prev Last Active At
+          type: integer
+        subscriptions:
+          title: Subscriptions
+          additionalProperties:
+            type: integer
+          type: object
+        purchases_count:
+          title: Purchases Count
+          posthog: true
+          type: integer
+        is_pwa_installed:
+          title: Is Pwa Installed
+          type: boolean
+        pwa_visit_at:
+          title: Pwa Visit At
+          type: integer
+        pwa_install_at:
+          title: Pwa Install At
+          type: integer
+        first_pwa_install_at:
+          title: First Pwa Install At
+          type: integer
+        last_period_purchase_stat:
+          title: Last Period Purchase Stat
+          additionalProperties:
+            $ref: '#/components/schemas/PeriodPurchaseStat'
+          type: object
+      type: object
+      title: PersistentPlayerAttributes
+    UserUpdate:
+      properties:
+        name:
+          title: Name
+          type: string
+        email:
+          title: Email
+          type: string
+        country:
+          title: Country
+          type: string
+          pattern: ^[A-Z]{2}$
+        banned:
+          title: Banned
+          type: boolean
+        banned_reason:
+          title: Banned Reason
+          type: string
+        avatar_url:
+          title: Avatar Url
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PersistentPlayerAttributes'
+        custom_attributes:
+          title: Custom Attributes
+          additionalProperties: true
+          type: object
+        segments:
+          title: Segments
+          items:
+            type: string
+          type: array
+        creator_program_id:
+          title: Creator Program Id
+          type: string
+          maxLength: 32
+        registration_marketplace:
+          $ref: '#/components/schemas/Marketplace'
+        balances:
+          title: Balances
+          items:
+            $ref: '#/components/schemas/VirtualCurrencyShort'
+          type: array
+        marketing_consent:
+          $ref: '#/components/schemas/MarketingConsent'
+        custom_attributes_from_deeplink:
+          title: Custom Attributes From Deeplink
+          additionalProperties: true
+          type: object
+      type: object
+      title: UserUpdate
+    PlayerRead:
+      properties:
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user.
+        loyalty_points:
+          type: integer
+          title: Loyalty Points
+          description: The amount of loyalty points the player has.
+      type: object
+      required:
+      - id
+      - player_id
+      title: PlayerRead
+    PlayerAttributes:
+      properties:
+        level:
+          type: integer
+          title: Level
+          default: 0
+          posthog: true
+        platform:
+          $ref: '#/components/schemas/Platform'
+        marketplace:
+          default: none
+          $ref: '#/components/schemas/Marketplace'
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+        tags:
+          items:
+            $ref: '#/components/schemas/PlayerTag'
+          type: array
+        soft_currency_amount:
+          type: integer
+          title: Soft Currency Amount
+          default: 0
+        hard_currency_amount:
+          type: integer
+          title: Hard Currency Amount
+          default: 0
+        appsflyer_id:
+          type: string
+          title: Appsflyer Id
+        appsflyer_app_id:
+          type: string
+          title: Appsflyer App Id
+        appsflyer_meta:
+          type: object
+          title: Appsflyer Meta
+        appsflyer_event_params:
+          type: object
+          title: Appsflyer Event Params
+        appsflyer_customer_user_id:
+          type: string
+          title: Appsflyer Customer User Id
+        adjust_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Device Id
+        adjust_adid:
+          type: string
+          title: Adjust Adid
+        adjust_app_token:
+          type: string
+          title: Adjust App Token
+        adjust_authorization_token:
+          type: string
+          title: Adjust Authorization Token
+        adjust_purchase_event_token:
+          type: string
+          title: Adjust Purchase Event Token
+        adjust_callback_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Callback Params
+        adjust_partner_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Partner Params
+        singular_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Singular Device Id
+        singular_app_id:
+          type: string
+          title: Singular App Id
+        devtodev_appid:
+          type: string
+          title: Devtodev Appid
+        devtodev_apikey:
+          type: string
+          title: Devtodev Apikey
+        devtodev_device_id:
+          $ref: '#/components/schemas/DevtodevDeviceId'
+        ga4_client_id:
+          type: string
+          title: Ga4 Client Id
+          description: GA4 web `client_id` from the `_ga` cookie.
+        ga4firebase_app_instance_id:
+          type: string
+          title: Ga4Firebase App Instance Id
+          description: Firebase mobile `app_instance_id` from the SDK.
+        ga4_user_id:
+          type: string
+          maxLength: 256
+          title: Ga4 User Id
+          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
+      type: object
+      title: PlayerAttributes
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
+    DevtodevDeviceIdV2:
+      properties:
+        deviceId:
+          title: Deviceid
+          type: string
+        devtodevId:
+          title: Devtodevid
+          type: integer
+        userId:
+          title: Userid
+          type: string
+        advertisingId:
+          title: Advertisingid
+          type: string
+      type: object
+      title: DevtodevDeviceId
+    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue.
+      type: object
+      required:
+      - amount
+      title: IssueLoyaltyPointsRequest
+    VirtualCurrencyShort:
+      properties:
+        sku:
+          type: string
+          title: SKU
+        quantity:
+          type: integer
+          title: Quantity
+      type: object
+      required:
+      - sku
+      - quantity
+      title: VirtualCurrencyShort
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    MarketingConsent:
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailConsent'
+      type: object
+      title: MarketingConsent
+    EmailConsent:
+      properties:
+        granted_at:
+          title: Granted At
+          type: integer
+        revoked_at:
+          title: Revoked At
+          type: integer
+      type: object
+      title: EmailConsent
+    PeriodPurchaseStat:
+      properties:
+        start_calc_at:
+          type: integer
+          title: Start Calc At
+        ltv:
+          type: integer
+          title: Ltv
+      type: object
+      required:
+      - start_calc_at
+      - ltv
+      title: PeriodPurchaseStat
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

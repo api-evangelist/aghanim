@@ -1,0 +1,25 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/aghanim-openapi-original.json + conventions/aghanim-conventions.yml
+notes: >-
+  Packaged Agent Skills for the Aghanim Server-to-Server API. Each step is
+  grounded in a real operationId verified against the OpenAPI. No provider-published
+  AGENTS.md / skill files were found; these are generated from the spec + captured
+  conventions.
+skills:
+  - file: aghanim-manage-store-catalog.md
+    name: Build and manage a game store catalog
+    api: openapi/aghanim-openapi-original.json
+    operations: [get_items, create_item, get_stores, create_store, create_store_item, get_store_items]
+  - file: aghanim-achievements-and-daily-rewards.md
+    name: Configure achievements and daily rewards
+    api: openapi/aghanim-openapi-original.json
+    operations: [get_achievements, create_achievement, unlock_achievement, get_daily_rewards, create_daily_reward]
+  - file: aghanim-coupons-and-promotions.md
+    name: Run coupons and store promotions
+    api: openapi/aghanim-openapi-original.json
+    operations: [get_coupons, create_coupon, get_store_promotions, create_store_promotion]
+  - file: aghanim-fulfillment-webhooks.md
+    name: Fulfill purchases via webhooks
+    api: openapi/aghanim-openapi-original.json
+    operations: [create_webhook, get_webhooks, expire_webhook_secret]

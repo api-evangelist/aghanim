@@ -1,0 +1,788 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements News API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: News
+paths:
+  /v1/news:
+    get:
+      tags:
+      - News
+      summary: Get News List
+      description: Returns a list of news posts.
+      operationId: get_news_list
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: category
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NewsCategory'
+      - name: group
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NewsGroup'
+      - name: sort_field
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NewsSortField'
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          default: asc
+          $ref: '#/components/schemas/SortOrder'
+      - name: search_string
+        in: query
+        required: false
+        schema:
+          title: Search String
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: A limit on the number of objects to be returned
+          default: 10
+          type: integer
+        description: A limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      - name: ids
+        in: query
+        required: false
+        schema:
+          title: Ids
+          description: Optional comma separated list of ids
+          type: string
+        description: Optional comma separated list of ids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsRead'
+                title: Response Get News List
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - News
+      summary: Create News
+      description: Creates a new news post.
+      operationId: create_news
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - News
+      summary: Bulk Delete News
+      description: Deletes multiple news.
+      operationId: bulk_delete_news
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewsBulkDelete'
+              title: Bulk Delete
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - News
+      summary: Bulk Update News
+      description: Updates multiple news.
+      operationId: bulk_update_news
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/NewsBulkUpdate'
+              title: Bulk Update
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsRead'
+                title: Response Bulk Update News
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/news/{news_id}:
+    get:
+      tags:
+      - News
+      summary: Get News Post
+      description: Returns a single news post.
+      operationId: get_news_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        schema:
+          title: News Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - News
+      summary: Update News
+      description: Updates a news post.
+      operationId: update_news
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        schema:
+          title: News Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsRead'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - News
+      summary: Delete News
+      description: Deletes a news post.
+      operationId: delete_news
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: news_id
+        in: path
+        required: true
+        schema:
+          title: News Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    MathExpressionSchema-Input:
+      properties:
+        tokens:
+          title: Tokens
+          items:
+            $ref: '#/components/schemas/TokenSchema'
+          type: array
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpressionSchema
+    MathExpressionSchema-Output:
+      properties:
+        tokens:
+          title: Tokens
+          items:
+            $ref: '#/components/schemas/TokenSchema'
+          type: array
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpressionSchema
+    NewsBulkUpdate:
+      properties:
+        slug:
+          title: Slug
+          description: The slug of the news
+          unique: true
+          type: string
+          maxLength: 100
+        title:
+          title: Title
+          description: The title of the news
+          type: string
+          maxLength: 255
+        description:
+          title: Description
+          description: The description of the news
+          type: string
+        text:
+          title: Text
+          description: The text of the news
+          type: string
+          maxLength: 10000
+        html:
+          title: Html
+          description: The html content of the news
+          type: string
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the news
+        tags:
+          title: Tags
+          description: The tags of the news, separated by commas
+          type: string
+        order_id:
+          title: Order Id
+          description: The order ID of the news
+          default: 0
+          type: integer
+        category:
+          description: The category of the news
+          $ref: '#/components/schemas/NewsCategory'
+        published_at:
+          title: Published At
+          description: The published date of the news
+          type: integer
+        datetime:
+          title: Datetime
+          description: The date of the news
+          type: integer
+        render_options:
+          description: The additional render options of the news
+          $ref: '#/components/schemas/NewsRenderOptions'
+        video_url:
+          title: Video Url
+          description: The URL of the video for the news
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+        is_featured:
+          title: Is Featured
+          description: Determines the visibility of the news in the Carousel news block
+          type: boolean
+        requirements_expression:
+          description: Targeting rules; the news is shown only to matching users
+          $ref: '#/components/schemas/ExpressionSchema-Input'
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the news
+      type: object
+      required:
+      - id
+      title: NewsBulkUpdate
+    TokenSchema:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: TokenSchema
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    NewsSortField:
+      type: string
+      enum:
+      - slug
+      - title
+      - description
+      - date
+      - datetime
+      - tags
+      - category
+      title: NewsSortField
+      description: An enumeration.
+    NewsGroup:
+      type: string
+      enum:
+      - event
+      - update
+      - other
+      title: NewsGroup
+      description: An enumeration.
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+      title: SortOrder
+      description: An enumeration.
+    NewsBulkDelete:
+      properties:
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+      type: object
+      required:
+      - id
+      title: NewsBulkDelete
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
+    NewsCategory:
+      type: string
+      enum:
+      - bugfix
+      - company_news
+      - event
+      - maintenance
+      - update
+      title: NewsCategory
+    ExpressionSchema-Output:
+      properties:
+        tokens:
+          title: Tokens
+          items:
+            $ref: '#/components/schemas/TokenSchema'
+          type: array
+        variables:
+          title: Variables
+          items:
+            $ref: '#/components/schemas/MathExpressionSchema-Output'
+          type: array
+      type: object
+      title: ExpressionSchema
+      description: Pydantic v2 mirror of `campaign_user.expr.Expression` for the v2 News API.
+    NewsRead:
+      properties:
+        date:
+          title: Date
+          description: The date of the news
+          type: string
+          format: date
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the news
+        tags:
+          type: string
+          title: Tags
+          description: The tags of the news, separated by commas
+        order_id:
+          type: integer
+          title: Order Id
+          description: The order ID of the news
+          default: 0
+        category:
+          $ref: '#/components/schemas/NewsCategory'
+          description: The category of the news
+        published_at:
+          title: Published At
+          description: The published date of the news
+          type: integer
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the news
+        render_options:
+          description: The additional render options of the news
+          $ref: '#/components/schemas/NewsRenderOptions'
+        video_url:
+          title: Video Url
+          description: The URL of the video for the news
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+        is_featured:
+          title: Is Featured
+          description: Determines the visibility of the news in the Carousel news block
+          type: boolean
+        collection_id:
+          title: Collection Id
+          description: The collection ID this news belongs to
+          type: string
+          maxLength: 32
+        requirements_expression:
+          description: Targeting rules; the news is shown only to matching users
+          $ref: '#/components/schemas/ExpressionSchema-Output'
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the news
+        slug:
+          type: string
+          title: Slug
+          description: The slug of the news
+        title:
+          type: string
+          title: Title
+          description: The title of the news
+        description:
+          title: Description
+          description: The description of the news
+          type: string
+        text:
+          type: string
+          title: Text
+          description: The text of the news
+        html:
+          title: Html
+          description: The html content of the news
+          type: string
+      type: object
+      required:
+      - tags
+      - category
+      - datetime
+      - id
+      - slug
+      - title
+      - text
+      title: NewsRead
+    ExpressionSchema-Input:
+      properties:
+        tokens:
+          title: Tokens
+          items:
+            $ref: '#/components/schemas/TokenSchema'
+          type: array
+        variables:
+          title: Variables
+          items:
+            $ref: '#/components/schemas/MathExpressionSchema-Input'
+          type: array
+      type: object
+      title: ExpressionSchema
+      description: Pydantic v2 mirror of `campaign_user.expr.Expression` for the v2 News API.
+    NewsCreate:
+      properties:
+        date:
+          title: Date
+          description: The date of the news
+          type: string
+          format: date
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the news
+        tags:
+          type: string
+          title: Tags
+          description: The tags of the news, separated by commas
+        order_id:
+          type: integer
+          title: Order Id
+          description: The order ID of the news
+          default: 0
+        category:
+          $ref: '#/components/schemas/NewsCategory'
+          description: The category of the news
+        published_at:
+          title: Published At
+          description: The published date of the news
+          type: integer
+        datetime:
+          type: integer
+          title: Datetime
+          description: The date of the news
+        render_options:
+          description: The additional render options of the news
+          $ref: '#/components/schemas/NewsRenderOptions'
+        video_url:
+          title: Video Url
+          description: The URL of the video for the news
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+        is_featured:
+          title: Is Featured
+          description: Determines the visibility of the news in the Carousel news block
+          type: boolean
+        collection_id:
+          title: Collection Id
+          description: The collection ID this news belongs to
+          type: string
+          maxLength: 32
+        requirements_expression:
+          description: Targeting rules; the news is shown only to matching users
+          $ref: '#/components/schemas/ExpressionSchema-Input'
+        slug:
+          type: string
+          maxLength: 100
+          title: Slug
+          description: The slug of the news
+          nullable: false
+          unique: true
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+          description: The title of the news
+        description:
+          type: string
+          title: Description
+          description: The description of the news
+        text:
+          type: string
+          maxLength: 10000
+          title: Text
+          description: The text of the news
+        html:
+          title: Html
+          description: The html content of the news
+          type: string
+      type: object
+      required:
+      - tags
+      - category
+      - datetime
+      - slug
+      - title
+      - description
+      - text
+      title: NewsCreate
+    NewsRenderOptions:
+      properties:
+        is_promo_store:
+          title: Is Promo Store
+          type: boolean
+      type: object
+      title: NewsRenderOptions
+    NewsUpdate:
+      properties:
+        slug:
+          title: Slug
+          description: The slug of the news
+          unique: true
+          type: string
+          maxLength: 100
+        title:
+          title: Title
+          description: The title of the news
+          type: string
+          maxLength: 255
+        description:
+          title: Description
+          description: The description of the news
+          type: string
+        text:
+          title: Text
+          description: The text of the news
+          type: string
+          maxLength: 10000
+        html:
+          title: Html
+          description: The html content of the news
+          type: string
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the news
+        tags:
+          title: Tags
+          description: The tags of the news, separated by commas
+          type: string
+        order_id:
+          title: Order Id
+          description: The order ID of the news
+          default: 0
+          type: integer
+        category:
+          description: The category of the news
+          $ref: '#/components/schemas/NewsCategory'
+        published_at:
+          title: Published At
+          description: The published date of the news
+          type: integer
+        datetime:
+          title: Datetime
+          description: The date of the news
+          type: integer
+        render_options:
+          description: The additional render options of the news
+          $ref: '#/components/schemas/NewsRenderOptions'
+        video_url:
+          title: Video Url
+          description: The URL of the video for the news
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+        is_featured:
+          title: Is Featured
+          description: Determines the visibility of the news in the Carousel news block
+          type: boolean
+        requirements_expression:
+          description: Targeting rules; the news is shown only to matching users
+          $ref: '#/components/schemas/ExpressionSchema-Input'
+      type: object
+      title: NewsUpdate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

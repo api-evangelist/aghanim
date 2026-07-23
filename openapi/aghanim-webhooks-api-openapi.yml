@@ -1,0 +1,528 @@
+openapi: 3.1.0
+info:
+  title: Aghanim Server-to-Server Achievements Webhooks API
+  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  contact:
+    name: Aghanim
+    email: integration@aghanim.com
+  version: 2026.07.14
+servers:
+- url: https://api.aghanim.com/s2s
+  description: Production
+tags:
+- name: Webhooks
+paths:
+  /v1/webhooks:
+    get:
+      tags:
+      - Webhooks
+      summary: Get Webhooks
+      description: Returns a list of webhooks.
+      operationId: get_webhooks
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          title: Limit
+          description: The limit on the number of objects to be returned
+          default: 300
+          type: integer
+        description: The limit on the number of objects to be returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          title: Offset
+          description: The number of objects to skip
+          type: integer
+        description: The number of objects to skip
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                title: Response Get Webhooks
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookRedacted'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Webhooks
+      summary: Create Webhook
+      description: Creates a new webhook.
+      operationId: create_webhook
+      security:
+      - HTTPBearer: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Create
+              $ref: '#/components/schemas/WebhookCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRevealed'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/webhooks/{webhook_id}:
+    get:
+      tags:
+      - Webhooks
+      summary: Get Webhook
+      description: Returns a single webhook.
+      operationId: get_webhook
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          title: Webhook Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRedacted'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - Webhooks
+      summary: Update Webhook
+      description: Updates a webhook.
+      operationId: update_webhook
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          title: Webhook Id
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              title: Update
+              $ref: '#/components/schemas/WebhookUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRedacted'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Webhooks
+      summary: Delete Webhook
+      description: Deletes a webhook.
+      operationId: delete_webhook
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          title: Webhook Id
+          type: string
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/webhooks/{webhook_id}/expire_secret:
+    post:
+      tags:
+      - Webhooks
+      summary: Expire Webhook Secret
+      description: Expires the secret of a webhook.
+      operationId: expire_webhook_secret
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          title: Webhook Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRevealed'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/webhooks/{webhook_id}/reveal:
+    post:
+      tags:
+      - Webhooks
+      summary: Reveal Webhook Secret
+      description: Reveals the secret of a webhook.
+      operationId: reveal_webhook_secret
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          title: Webhook Id
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRevealed'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    WebhookRedacted:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+        secret_redacted:
+          type: string
+          title: Secret Redacted
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the webhook.
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game.
+      type: object
+      required:
+      - events
+      - url
+      - method
+      - secret_redacted
+      - id
+      - game_id
+      title: WebhookRedacted
+    WebhookEventType:
+      type: string
+      enum:
+      - player.verify
+      - item.add
+      - item.remove
+      - analytics.checkout.payment_method.select
+      - analytics.checkout.submit_payment_form
+      - analytics.checkout.back_store
+      - analytics.checkout.back_game
+      - analytics.checkout.pageview
+      - analytics.checkout.pageshow
+      - analytics.checkout.pagehide
+      - analytics.checkout.pageexit
+      - analytics.checkout.payment_method.close
+      - analytics.hub.sign_up
+      - analytics.hub.login
+      - analytics.hub.buy_click
+      - analytics.hub.free_item_claimed
+      - batch.ready
+      - order.*
+      - order.created
+      - order.paid
+      - order.canceled
+      - order.refunded
+      - payment.*
+      - payment.succeeded
+      - payment.abandoned
+      - payment.canceled
+      - payment.chargeback
+      - payment.declined
+      - payment.dispute
+      - payment.expired
+      - payment.pending
+      - payment.refunded
+      - payment.rejected
+      - payment.voided
+      - fraud.reported
+      - subscription.activated
+      - subscription.updated
+      - subscription.renewed
+      - subscription.deactivated
+      - coupon.redeemed
+      - ingame.push
+      - ingame.popup
+      - campaign.custom
+      - player.is_idle
+      - player.lookup
+      - player.marketing_consent.updated
+      - store.get
+      title: WebhookEventType
+      description: An enumeration.
+    WebhookUpdate:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable player context.
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery mode.
+      type: object
+      title: WebhookUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WebhookMethod:
+      type: string
+      enum:
+      - GET
+      - POST
+      title: WebhookMethod
+      description: An enumeration.
+    WebhookCreate:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+      type: object
+      required:
+      - events
+      - url
+      - method
+      title: WebhookCreate
+    WebhookRevealed:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the webhook.
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game.
+        secret:
+          type: string
+          title: Secret
+          description: The secret used to sign the webhook.
+      type: object
+      required:
+      - events
+      - url
+      - method
+      - id
+      - game_id
+      - secret
+      title: WebhookRevealed
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+      description: Refer to the [Authentication](https://docs.aghanim.com/api-reference/) section for instructions on obtaining an API key and use it as the `Bearer` token.

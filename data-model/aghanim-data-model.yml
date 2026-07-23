@@ -1,0 +1,67 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/aghanim-openapi-original.json
+notes: >-
+  Entity-relationship graph derived from the Aghanim S2S OpenAPI (405 schemas,
+  27 resource families). Relationships are inferred from id-reference fields
+  (`*_id`) observed across request/response schemas. `via` is the field carrying
+  the reference.
+entities:
+  - {name: Store, resource: Stores}
+  - {name: StoreItem, resource: Stores}
+  - {name: Item, resource: Items}
+  - {name: ItemCategory, resource: Item Categories}
+  - {name: PriceTemplate, resource: Price Templates}
+  - {name: PricePoint, resource: Price Points}
+  - {name: Order, resource: Orders}
+  - {name: Player, resource: Players}
+  - {name: PlayerSubscription, resource: Players' Subscriptions}
+  - {name: MarketingConsent, resource: Players' Marketing Consents}
+  - {name: Coupon, resource: Coupons}
+  - {name: Achievement, resource: Achievements}
+  - {name: Leaderboard, resource: Leaderboards}
+  - {name: LeaderboardMember, resource: Leaderboards}
+  - {name: DailyReward, resource: Daily Rewards}
+  - {name: StorePromotion, resource: Store Promotions}
+  - {name: Creator, resource: Creators}
+  - {name: Campaign, resource: LiveOps}
+  - {name: CampaignNode, resource: LiveOps}
+  - {name: Segment, resource: Segmentation}
+  - {name: News, resource: News}
+  - {name: Page, resource: Pages}
+  - {name: Video, resource: Videos}
+  - {name: LoyaltyProgram, resource: Loyalty Program}
+  - {name: Game, resource: platform}
+relationships:
+  - {from: StoreItem, to: Store, kind: belongs_to, via: store_id}
+  - {from: StoreItem, to: Item, kind: belongs_to, via: item_id}
+  - {from: StoreItem, to: PriceTemplate, kind: belongs_to, via: price_template_id}
+  - {from: StoreItem, to: Item, kind: has_one, via: bonus_item_id, role: bonus}
+  - {from: StoreItem, to: Item, kind: has_one, via: fallback_item_id, role: fallback}
+  - {from: StoreItem, to: StorePromotion, kind: has_one, via: applied_store_promotion_id}
+  - {from: Item, to: ItemCategory, kind: belongs_to, via: category_id}
+  - {from: Item, to: PriceTemplate, kind: belongs_to, via: price_template_id}
+  - {from: ItemCategory, to: ItemCategory, kind: belongs_to, via: parent_id, role: parent-category}
+  - {from: Order, to: Player, kind: belongs_to, via: player_id}
+  - {from: Order, to: StoreItem, kind: has_many, via: store_item_id}
+  - {from: PlayerSubscription, to: Player, kind: belongs_to, via: player_id}
+  - {from: MarketingConsent, to: Player, kind: belongs_to, via: player_id}
+  - {from: CampaignNode, to: CampaignNode, kind: has_one, via: next_node_id, role: next}
+  - {from: CampaignNode, to: Campaign, kind: belongs_to, via: campaign_id}
+  - {from: DailyReward, to: Item, kind: has_one, via: bonus_item_id}
+  - {from: Leaderboard, to: LeaderboardMember, kind: has_many, via: member_id}
+  - {from: StorePromotion, to: Store, kind: belongs_to, via: store_id}
+  - {from: Creator, to: CreatorTierGroup, kind: belongs_to, via: creator_tier_group_id}
+  - {from: Item, to: VirtualCurrency, kind: has_one, via: virtual_currency_id}
+  - {from: Segment, to: SegmentGroup, kind: belongs_to, via: segment_group_id}
+id_reference_fields:
+  - {field: store_id, schemas: 16}
+  - {field: item_id, schemas: 19}
+  - {field: price_template_id, schemas: 23}
+  - {field: player_id, schemas: 10}
+  - {field: order_id, schemas: 11}
+  - {field: next_node_id, schemas: 25}
+  - {field: bonus_item_id, schemas: 14}
+  - {field: store_item_id, schemas: 10}
+  - {field: category_id, schemas: 7}
+  - {field: campaign_id, schemas: 6}
