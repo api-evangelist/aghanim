@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Locales API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Locales",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/locales",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to skip"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of locales."
+        },
+        {
+          "info": {
+            "name": "Create Locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/locales",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new locale."
+        },
+        {
+          "info": {
+            "name": "Get Locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/locales/:locale_id",
+            "params": [
+              {
+                "name": "locale_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a single locale."
+        },
+        {
+          "info": {
+            "name": "Update Locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/locales/:locale_id",
+            "params": [
+              {
+                "name": "locale_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a locale."
+        },
+        {
+          "info": {
+            "name": "Delete Locale",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/locales/:locale_id",
+            "params": [
+              {
+                "name": "locale_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a locale."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

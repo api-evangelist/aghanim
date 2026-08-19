@@ -1,0 +1,1571 @@
+{
+  "item": [
+    {
+      "id": "c80262f3-8bec-47bd-a838-71c1adf1e90e",
+      "name": "Store Promotions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e6c422d6-bb0f-4f45-9988-b75d8b95750f",
+          "name": "Get User Promotions",
+          "request": {
+            "name": "Get User Promotions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                "user",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c7a6de3-e845-4026-8051-eda3d1214bbe",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"created_at\": 2500,\n    \"current_purchase_count\": 3972,\n    \"name\": \"string\",\n    \"start_at\": 6977,\n    \"end_at\": 959,\n    \"discount_percent\": 34,\n    \"bonus_percent\": 3115,\n    \"max_purchase_count\": 4031,\n    \"max_purchase_count_per_user\": 4848,\n    \"reward_points_percent\": 3.628345176443204,\n    \"reward_points_fixed\": 8632,\n    \"loyalty_points_percent\": 75,\n    \"loyalty_points_fixed\": 9006,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 6821.148263860237,\n          \"reward_fixed\": 8257\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 5383.243579065648,\n          \"reward_fixed\": 6992\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": false,\n    \"bonus_item_percent\": 5454,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 7644,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 3858,\n          \"quantity_percent\": 817\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 6156,\n          \"quantity_percent\": 7023\n        }\n      ],\n      \"start_at\": 183,\n      \"end_at\": 6615\n    },\n    \"item_background_image_url\": \"http://v.gwM0TdLBOofwV90SlPQ8DfTqWtZTiqXsqLLXAGqsSCJ89w8MZlQMR4B5QeKTk2nVphG,8OvwRv42J+UHZ8NtVZM\",\n    \"item_featured_card_background_image_url\": \"https://OWMPjHteUPmOnAeuyRTl.jgmM74s++UQF9vNhGWizRIwnuZkG0j\",\n    \"active\": true,\n    \"archived_at\": 3527,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": false\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"rolling\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"created_at\": 7358,\n    \"current_purchase_count\": 8507,\n    \"name\": \"string\",\n    \"start_at\": 6057,\n    \"end_at\": 5223,\n    \"discount_percent\": 5,\n    \"bonus_percent\": 8957,\n    \"max_purchase_count\": 4674,\n    \"max_purchase_count_per_user\": 8478,\n    \"reward_points_percent\": 36.19507362443252,\n    \"reward_points_fixed\": 6455,\n    \"loyalty_points_percent\": 99,\n    \"loyalty_points_fixed\": 3786,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 403.95587641992137,\n          \"reward_fixed\": 5259\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 8744.902922914018,\n          \"reward_fixed\": 7682\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": true,\n    \"bonus_item_percent\": 442,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 5483,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 7419,\n          \"quantity_percent\": 3428\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 9012,\n          \"quantity_percent\": 5518\n        }\n      ],\n      \"start_at\": 9757,\n      \"end_at\": 5099\n    },\n    \"item_background_image_url\": \"https://YeQXNrtke.sfZ9Oz6UQ5\",\n    \"item_featured_card_background_image_url\": \"http://mRclq.xnssrlgPtfmA+xzSlRsYbg19WNgsUVTNA6M3vq\",\n    \"active\": false,\n    \"archived_at\": 5067,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": false\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": false,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"pick_one\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fff30e6-0e2d-4754-9a58-799d39f45e21",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17fa3d00-d057-42fb-8c3d-0311b242e6e7",
+          "name": "Delete Store Promotion Of User",
+          "request": {
+            "name": "Delete Store Promotion Of User",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                "user",
+                ":user_id",
+                ":store_promotion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_promotion_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e86d709-0e12-451d-84e2-7a72a0d6b867",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    "user",
+                    ":user_id",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f18343c-0bab-4818-8ab2-56fbb2e95560",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    "user",
+                    ":user_id",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f764481-7349-48c7-9ad4-142366c7e767",
+          "name": "Delete Store Promotion",
+          "request": {
+            "name": "Delete Store Promotion",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                ":store_promotion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_promotion_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c738da49-700c-408c-9b12-f408a1794163",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e40e6f8-2e76-445a-833b-2c5f44fe8f0d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7f2dbaa-76d6-4aa2-8c69-715112f1435f",
+          "name": "Get Store Promotion",
+          "request": {
+            "name": "Get Store Promotion",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                ":store_promotion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_promotion_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59c76557-0ba2-4a0e-8557-fe3e9c26b237",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created_at\": 1707,\n  \"current_purchase_count\": 8495,\n  \"name\": \"string\",\n  \"start_at\": 176,\n  \"end_at\": 2581,\n  \"discount_percent\": 39,\n  \"bonus_percent\": 5433,\n  \"max_purchase_count\": 8747,\n  \"max_purchase_count_per_user\": 7775,\n  \"reward_points_percent\": 9.369290793166861,\n  \"reward_points_fixed\": 6947,\n  \"loyalty_points_percent\": 66,\n  \"loyalty_points_fixed\": 7460,\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 2224.8398497603284,\n        \"reward_fixed\": 573\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 988.9119196479778,\n        \"reward_fixed\": 996\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_items_for_reward_points\": true,\n  \"bonus_item_percent\": 3443,\n  \"bonus_item_id\": \"string\",\n  \"bonus_item_quantity\": 139,\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 2636,\n        \"quantity_percent\": 7157\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 8887,\n        \"quantity_percent\": 3009\n      }\n    ],\n    \"start_at\": 7123,\n    \"end_at\": 4262\n  },\n  \"item_background_image_url\": \"http://movIuFpouJQLPiEscGByAexys.yumoYlPTh\",\n  \"item_featured_card_background_image_url\": \"http://EVbxvh.eunzMtoHjlggw8WW1IHAR6HQgwAhgGlAh2R492Nvei.weS9+pkMg9iYP+WfLebRk7kUnNFm22jB1.9twX\",\n  \"active\": false,\n  \"archived_at\": 2327,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": false\n  },\n  \"bonus_badge\": \"string\",\n  \"custom_badge\": \"string\",\n  \"apply_to_free_items\": false,\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"rolling\",\n        \"id\": \"string\"\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"user_campaign_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf39d655-f188-4c06-b007-d3809c83698a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f26bf871-6e93-43ed-8b7b-49a7b04614e4",
+          "name": "Update Store Promotion",
+          "request": {
+            "name": "Update Store Promotion",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                ":store_promotion_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_promotion_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"<string>\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"<string>\",\n        \"virtual_currency_sku\": \"<string>\",\n        \"reward_percent\": \"<number>\",\n        \"reward_fixed\": \"<integer>\"\n      },\n      {\n        \"virtual_currency_id\": \"<string>\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"<string>\",\n        \"virtual_currency_sku\": \"<string>\",\n        \"reward_percent\": \"<number>\",\n        \"reward_fixed\": \"<integer>\"\n      }\n    ]\n  },\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"quantity_fixed\": \"<integer>\",\n        \"quantity_percent\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"quantity_fixed\": \"<integer>\",\n        \"quantity_percent\": \"<integer>\"\n      }\n    ],\n    \"start_at\": \"<integer>\",\n    \"end_at\": \"<integer>\"\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"requires_payment_method_save\": \"<boolean>\"\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"<string>\",\n        \"id\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8aeb437b-5b88-4ee2-ad27-3197a26484b0",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 8046.765399174203,\n        \"reward_fixed\": 5799\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 7856.603652167711,\n        \"reward_fixed\": 4997\n      }\n    ]\n  },\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 3876,\n        \"quantity_percent\": 7518\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 9549,\n        \"quantity_percent\": 5166\n      }\n    ],\n    \"start_at\": 610,\n    \"end_at\": 8063\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": true\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"range\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created_at\": 1707,\n  \"current_purchase_count\": 8495,\n  \"name\": \"string\",\n  \"start_at\": 176,\n  \"end_at\": 2581,\n  \"discount_percent\": 39,\n  \"bonus_percent\": 5433,\n  \"max_purchase_count\": 8747,\n  \"max_purchase_count_per_user\": 7775,\n  \"reward_points_percent\": 9.369290793166861,\n  \"reward_points_fixed\": 6947,\n  \"loyalty_points_percent\": 66,\n  \"loyalty_points_fixed\": 7460,\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 2224.8398497603284,\n        \"reward_fixed\": 573\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 988.9119196479778,\n        \"reward_fixed\": 996\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_items_for_reward_points\": true,\n  \"bonus_item_percent\": 3443,\n  \"bonus_item_id\": \"string\",\n  \"bonus_item_quantity\": 139,\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 2636,\n        \"quantity_percent\": 7157\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 8887,\n        \"quantity_percent\": 3009\n      }\n    ],\n    \"start_at\": 7123,\n    \"end_at\": 4262\n  },\n  \"item_background_image_url\": \"http://movIuFpouJQLPiEscGByAexys.yumoYlPTh\",\n  \"item_featured_card_background_image_url\": \"http://EVbxvh.eunzMtoHjlggw8WW1IHAR6HQgwAhgGlAh2R492Nvei.weS9+pkMg9iYP+WfLebRk7kUnNFm22jB1.9twX\",\n  \"active\": false,\n  \"archived_at\": 2327,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": false\n  },\n  \"bonus_badge\": \"string\",\n  \"custom_badge\": \"string\",\n  \"apply_to_free_items\": false,\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"rolling\",\n        \"id\": \"string\"\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"user_campaign_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ba24bbc-3b12-46b4-b05f-fb41f5e6ea3d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 8046.765399174203,\n        \"reward_fixed\": 5799\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 7856.603652167711,\n        \"reward_fixed\": 4997\n      }\n    ]\n  },\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 3876,\n        \"quantity_percent\": 7518\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 9549,\n        \"quantity_percent\": 5166\n      }\n    ],\n    \"start_at\": 610,\n    \"end_at\": 8063\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": true\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"range\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a0ef630-ec06-4238-9567-3a3fae274230",
+          "name": "Get Store Promotions",
+          "request": {
+            "name": "Get Store Promotions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_string",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94e968ac-6a38-4e63-95d3-0368c74082df",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_state",
+                      "value": "archived"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"created_at\": 6335,\n    \"current_purchase_count\": 2638,\n    \"name\": \"string\",\n    \"start_at\": 8720,\n    \"end_at\": 8889,\n    \"discount_percent\": 79,\n    \"bonus_percent\": 4046,\n    \"max_purchase_count\": 5268,\n    \"max_purchase_count_per_user\": 5453,\n    \"reward_points_percent\": 16.481299941388116,\n    \"reward_points_fixed\": 1517,\n    \"loyalty_points_percent\": 89,\n    \"loyalty_points_fixed\": 2900,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 5414.763618879362,\n          \"reward_fixed\": 8040\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 2010.4312974602956,\n          \"reward_fixed\": 4553\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": true,\n    \"bonus_item_percent\": 5577,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 5718,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 6656,\n          \"quantity_percent\": 1045\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 8066,\n          \"quantity_percent\": 8243\n        }\n      ],\n      \"start_at\": 5645,\n      \"end_at\": 9474\n    },\n    \"item_background_image_url\": \"https://OhgKoaP.vitdKvT\",\n    \"item_featured_card_background_image_url\": \"http://OfKJKbZiJqsw.ofgaqtaL8DDMDnk3Oo5PlAvNgr7kphxX3\",\n    \"active\": false,\n    \"archived_at\": 8940,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"number\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"sequential\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"created_at\": 6774,\n    \"current_purchase_count\": 9314,\n    \"name\": \"string\",\n    \"start_at\": 5808,\n    \"end_at\": 5493,\n    \"discount_percent\": 55,\n    \"bonus_percent\": 7337,\n    \"max_purchase_count\": 1439,\n    \"max_purchase_count_per_user\": 2718,\n    \"reward_points_percent\": 66.11042942115614,\n    \"reward_points_fixed\": 3973,\n    \"loyalty_points_percent\": 5,\n    \"loyalty_points_fixed\": 871,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 4821.084215334661,\n          \"reward_fixed\": 6063\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 6786.571851484801,\n          \"reward_fixed\": 3875\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": false,\n    \"bonus_item_percent\": 9343,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 8917,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 2823,\n          \"quantity_percent\": 7872\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 2004,\n          \"quantity_percent\": 9943\n        }\n      ],\n      \"start_at\": 1003,\n      \"end_at\": 8031\n    },\n    \"item_background_image_url\": \"http://TXsn.fjpcgMGyAtaWel8QTLJprbIfoR\",\n    \"item_featured_card_background_image_url\": \"http://iZIVehFSGlONbFvIgPOTriGsjkrfiSrA.vjnx+eVavaE2-xhXrH+6c+xMvb\",\n    \"active\": true,\n    \"archived_at\": 4567,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"virtual_currency\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": false\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"pick_one\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1539e3e-f613-4cb1-a074-3e6f86a57a02",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_state",
+                      "value": "archived"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d1bcb1b-52e7-423e-bb4e-7dc912c2c3d8",
+          "name": "Create Store Promotion",
+          "request": {
+            "name": "Create Store Promotion",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"<string>\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"<string>\",\n        \"virtual_currency_sku\": \"<string>\",\n        \"reward_percent\": \"<number>\",\n        \"reward_fixed\": \"<integer>\"\n      },\n      {\n        \"virtual_currency_id\": \"<string>\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"<string>\",\n        \"virtual_currency_sku\": \"<string>\",\n        \"reward_percent\": \"<number>\",\n        \"reward_fixed\": \"<integer>\"\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"quantity_fixed\": \"<integer>\",\n        \"quantity_percent\": \"<integer>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"quantity_fixed\": \"<integer>\",\n        \"quantity_percent\": \"<integer>\"\n      }\n    ],\n    \"start_at\": \"<integer>\",\n    \"end_at\": \"<integer>\"\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"requires_payment_method_save\": \"<boolean>\"\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"<string>\",\n        \"id\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6157045c-6bd6-48d3-bc4f-93964efcadad",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 8704.115416290868,\n        \"reward_fixed\": 2502\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 7483.604566381277,\n        \"reward_fixed\": 1246\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 961,\n        \"quantity_percent\": 4462\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 595,\n        \"quantity_percent\": 1003\n      }\n    ],\n    \"start_at\": 756,\n    \"end_at\": 8201\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": true\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"range\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created_at\": 1707,\n  \"current_purchase_count\": 8495,\n  \"name\": \"string\",\n  \"start_at\": 176,\n  \"end_at\": 2581,\n  \"discount_percent\": 39,\n  \"bonus_percent\": 5433,\n  \"max_purchase_count\": 8747,\n  \"max_purchase_count_per_user\": 7775,\n  \"reward_points_percent\": 9.369290793166861,\n  \"reward_points_fixed\": 6947,\n  \"loyalty_points_percent\": 66,\n  \"loyalty_points_fixed\": 7460,\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 2224.8398497603284,\n        \"reward_fixed\": 573\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 988.9119196479778,\n        \"reward_fixed\": 996\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_items_for_reward_points\": true,\n  \"bonus_item_percent\": 3443,\n  \"bonus_item_id\": \"string\",\n  \"bonus_item_quantity\": 139,\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 2636,\n        \"quantity_percent\": 7157\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 8887,\n        \"quantity_percent\": 3009\n      }\n    ],\n    \"start_at\": 7123,\n    \"end_at\": 4262\n  },\n  \"item_background_image_url\": \"http://movIuFpouJQLPiEscGByAexys.yumoYlPTh\",\n  \"item_featured_card_background_image_url\": \"http://EVbxvh.eunzMtoHjlggw8WW1IHAR6HQgwAhgGlAh2R492Nvei.weS9+pkMg9iYP+WfLebRk7kUnNFm22jB1.9twX\",\n  \"active\": false,\n  \"archived_at\": 2327,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": false\n  },\n  \"bonus_badge\": \"string\",\n  \"custom_badge\": \"string\",\n  \"apply_to_free_items\": false,\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"rolling\",\n        \"id\": \"string\"\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"user_campaign_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec301cf6-f420-4cfc-84f5-444cc4477786",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"max_purchase_count\": \"<integer>\",\n  \"max_purchase_count_per_user\": \"<integer>\",\n  \"reward_points_percent\": \"<number>\",\n  \"reward_points_fixed\": \"<integer>\",\n  \"loyalty_points_percent\": \"<integer>\",\n  \"loyalty_points_fixed\": \"<integer>\",\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 8704.115416290868,\n        \"reward_fixed\": 2502\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 7483.604566381277,\n        \"reward_fixed\": 1246\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_items_for_reward_points\": \"<boolean>\",\n  \"bonus_item_percent\": \"<integer>\",\n  \"bonus_item_id\": \"<string>\",\n  \"bonus_item_quantity\": \"<integer>\",\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 961,\n        \"quantity_percent\": 4462\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 595,\n        \"quantity_percent\": 1003\n      }\n    ],\n    \"start_at\": 756,\n    \"end_at\": 8201\n  },\n  \"item_background_image_url\": \"<uri>\",\n  \"item_featured_card_background_image_url\": \"<uri>\",\n  \"active\": \"<boolean>\",\n  \"archived_at\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": true\n  },\n  \"bonus_badge\": \"<string>\",\n  \"custom_badge\": \"<string>\",\n  \"apply_to_free_items\": \"<boolean>\",\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"range\",\n        \"id\": \"string\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64e268c5-3503-426e-8969-95a76f69e397",
+          "name": "Bulk Update Store Promotions",
+          "request": {
+            "name": "Bulk Update Store Promotions",
+            "description": {
+              "content": "Updates multiple items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"start_at\": \"<integer>\",\n    \"end_at\": \"<integer>\",\n    \"discount_percent\": \"<integer>\",\n    \"bonus_percent\": \"<integer>\",\n    \"max_purchase_count\": \"<integer>\",\n    \"max_purchase_count_per_user\": \"<integer>\",\n    \"reward_points_percent\": \"<number>\",\n    \"reward_points_fixed\": \"<integer>\",\n    \"loyalty_points_percent\": \"<integer>\",\n    \"loyalty_points_fixed\": \"<integer>\",\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"<string>\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"<string>\",\n          \"virtual_currency_sku\": \"<string>\",\n          \"reward_percent\": \"<number>\",\n          \"reward_fixed\": \"<integer>\"\n        },\n        {\n          \"virtual_currency_id\": \"<string>\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"<string>\",\n          \"virtual_currency_sku\": \"<string>\",\n          \"reward_percent\": \"<number>\",\n          \"reward_fixed\": \"<integer>\"\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": \"<boolean>\",\n    \"store_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"item_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"category_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bonus_item_percent\": \"<integer>\",\n    \"bonus_item_id\": \"<string>\",\n    \"bonus_item_quantity\": \"<integer>\",\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"quantity_fixed\": \"<integer>\",\n          \"quantity_percent\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"quantity_fixed\": \"<integer>\",\n          \"quantity_percent\": \"<integer>\"\n        }\n      ],\n      \"start_at\": \"<integer>\",\n      \"end_at\": \"<integer>\"\n    },\n    \"item_background_image_url\": \"<uri>\",\n    \"item_featured_card_background_image_url\": \"<uri>\",\n    \"active\": \"<boolean>\",\n    \"archived_at\": \"<integer>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"requires_payment_method_save\": \"<boolean>\"\n    },\n    \"bonus_badge\": \"<string>\",\n    \"custom_badge\": \"<string>\",\n    \"apply_to_free_items\": \"<boolean>\",\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"start_at\": \"<integer>\",\n    \"end_at\": \"<integer>\",\n    \"discount_percent\": \"<integer>\",\n    \"bonus_percent\": \"<integer>\",\n    \"max_purchase_count\": \"<integer>\",\n    \"max_purchase_count_per_user\": \"<integer>\",\n    \"reward_points_percent\": \"<number>\",\n    \"reward_points_fixed\": \"<integer>\",\n    \"loyalty_points_percent\": \"<integer>\",\n    \"loyalty_points_fixed\": \"<integer>\",\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"<string>\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"<string>\",\n          \"virtual_currency_sku\": \"<string>\",\n          \"reward_percent\": \"<number>\",\n          \"reward_fixed\": \"<integer>\"\n        },\n        {\n          \"virtual_currency_id\": \"<string>\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"<string>\",\n          \"virtual_currency_sku\": \"<string>\",\n          \"reward_percent\": \"<number>\",\n          \"reward_fixed\": \"<integer>\"\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": \"<boolean>\",\n    \"store_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"item_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"category_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"bonus_item_percent\": \"<integer>\",\n    \"bonus_item_id\": \"<string>\",\n    \"bonus_item_quantity\": \"<integer>\",\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"quantity_fixed\": \"<integer>\",\n          \"quantity_percent\": \"<integer>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"quantity_fixed\": \"<integer>\",\n          \"quantity_percent\": \"<integer>\"\n        }\n      ],\n      \"start_at\": \"<integer>\",\n      \"end_at\": \"<integer>\"\n    },\n    \"item_background_image_url\": \"<uri>\",\n    \"item_featured_card_background_image_url\": \"<uri>\",\n    \"active\": \"<boolean>\",\n    \"archived_at\": \"<integer>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"requires_payment_method_save\": \"<boolean>\"\n    },\n    \"bonus_badge\": \"<string>\",\n    \"custom_badge\": \"<string>\",\n    \"apply_to_free_items\": \"<boolean>\",\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2d3befe-8281-46b0-b410-d3398b65282b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"start_at\": 2534,\n    \"end_at\": 9122,\n    \"discount_percent\": 54,\n    \"bonus_percent\": 6659,\n    \"max_purchase_count\": 6260,\n    \"max_purchase_count_per_user\": 3614,\n    \"reward_points_percent\": 74.04313991037503,\n    \"reward_points_fixed\": 3165,\n    \"loyalty_points_percent\": 69,\n    \"loyalty_points_fixed\": 5417,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 3973.3557090714476,\n          \"reward_fixed\": 4554\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 3018.4825831933326,\n          \"reward_fixed\": 1288\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": false,\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"bonus_item_percent\": 2076,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 4977,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 2708,\n          \"quantity_percent\": 7334\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 3716,\n          \"quantity_percent\": 7655\n        }\n      ],\n      \"start_at\": 6661,\n      \"end_at\": 880\n    },\n    \"item_background_image_url\": \"http://GChJEbVJFEWcufypBOAGJppcZNYHjxR.apr\",\n    \"item_featured_card_background_image_url\": \"https://jjROuzUnwSxX.iwjJi.IizP,NIfLH4uZfWqQuEz4zgkJGnCuSO0ONhqJ9NBPqPByxjr5HeWN6v5OlUme\",\n    \"active\": false,\n    \"archived_at\": 6194,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"sequential\",\n          \"id\": \"string\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"start_at\": 6648,\n    \"end_at\": 698,\n    \"discount_percent\": 93,\n    \"bonus_percent\": 3959,\n    \"max_purchase_count\": 8094,\n    \"max_purchase_count_per_user\": 9624,\n    \"reward_points_percent\": 56.48000560160204,\n    \"reward_points_fixed\": 7404,\n    \"loyalty_points_percent\": 53,\n    \"loyalty_points_fixed\": 1078,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 293.1514042295924,\n          \"reward_fixed\": 1748\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 7376.815337224618,\n          \"reward_fixed\": 9772\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": true,\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"bonus_item_percent\": 9673,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 6311,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 1764,\n          \"quantity_percent\": 7788\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 890,\n          \"quantity_percent\": 892\n        }\n      ],\n      \"start_at\": 7756,\n      \"end_at\": 4907\n    },\n    \"item_background_image_url\": \"https://UWdnlCvwZTJhrWnmgTPPGK.jkbNqPWyVlZIOm-tcqr\",\n    \"item_featured_card_background_image_url\": \"https://zsvC.xpnl-yj10Of1vNaWg6AMqvJBiRxPO3Vtqep5GhO\",\n    \"active\": false,\n    \"archived_at\": 8835,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": false,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"piggy_bank\",\n          \"id\": \"string\"\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"created_at\": 1447,\n    \"current_purchase_count\": 4473,\n    \"name\": \"string\",\n    \"start_at\": 8200,\n    \"end_at\": 8046,\n    \"discount_percent\": 62,\n    \"bonus_percent\": 4619,\n    \"max_purchase_count\": 6442,\n    \"max_purchase_count_per_user\": 6062,\n    \"reward_points_percent\": 29.14045328949807,\n    \"reward_points_fixed\": 5261,\n    \"loyalty_points_percent\": 0,\n    \"loyalty_points_fixed\": 1700,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 6037.610303239431,\n          \"reward_fixed\": 804\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 3304.564182856309,\n          \"reward_fixed\": 5041\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": false,\n    \"bonus_item_percent\": 3296,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 5079,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 7854,\n          \"quantity_percent\": 9392\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 7686,\n          \"quantity_percent\": 2020\n        }\n      ],\n      \"start_at\": 8513,\n      \"end_at\": 749\n    },\n    \"item_background_image_url\": \"http://PCVGsQZopFNxUNXmZ.nyaVG-CXtsGIiBZlDFPEEgXNp9Qd3AGJRe9Ugndw8lnXAMkY8I-dozKF+C.NaBW3qtzBxV0oEhMa4z\",\n    \"item_featured_card_background_image_url\": \"http://GrKHMzFXYmiYKInfuuyPlmLZTQZpSmxk.zsdeYv0q\",\n    \"active\": false,\n    \"archived_at\": 8394,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_event_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": false,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"rolling\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"created_at\": 9501,\n    \"current_purchase_count\": 44,\n    \"name\": \"string\",\n    \"start_at\": 5588,\n    \"end_at\": 322,\n    \"discount_percent\": 63,\n    \"bonus_percent\": 6879,\n    \"max_purchase_count\": 2138,\n    \"max_purchase_count_per_user\": 4465,\n    \"reward_points_percent\": 12.538575689457065,\n    \"reward_points_fixed\": 114,\n    \"loyalty_points_percent\": 65,\n    \"loyalty_points_fixed\": 8312,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 7512.976554599965,\n          \"reward_fixed\": 9551\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 8260.442217112797,\n          \"reward_fixed\": 3719\n        }\n      ]\n    },\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_items_for_reward_points\": true,\n    \"bonus_item_percent\": 2366,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 6845,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 9392,\n          \"quantity_percent\": 8194\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 7791,\n          \"quantity_percent\": 5499\n        }\n      ],\n      \"start_at\": 9611,\n      \"end_at\": 4757\n    },\n    \"item_background_image_url\": \"https://XNvsbM.ept\",\n    \"item_featured_card_background_image_url\": \"http://PnHAIdGZIxBN.iouFTSOeZLgHF4aKtvC7eArb7nBmlMPUlX+rx25vPkiA0\",\n    \"active\": true,\n    \"archived_at\": 7074,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"rolling\",\n          \"id\": \"string\"\n        }\n      ]\n    },\n    \"user_id\": \"string\",\n    \"campaign_id\": \"string\",\n    \"user_campaign_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "303cfe9e-f57b-498b-aea5-9136f8e0c45a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"start_at\": 2534,\n    \"end_at\": 9122,\n    \"discount_percent\": 54,\n    \"bonus_percent\": 6659,\n    \"max_purchase_count\": 6260,\n    \"max_purchase_count_per_user\": 3614,\n    \"reward_points_percent\": 74.04313991037503,\n    \"reward_points_fixed\": 3165,\n    \"loyalty_points_percent\": 69,\n    \"loyalty_points_fixed\": 5417,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 3973.3557090714476,\n          \"reward_fixed\": 4554\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 3018.4825831933326,\n          \"reward_fixed\": 1288\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": false,\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"bonus_item_percent\": 2076,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 4977,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 2708,\n          \"quantity_percent\": 7334\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 3716,\n          \"quantity_percent\": 7655\n        }\n      ],\n      \"start_at\": 6661,\n      \"end_at\": 880\n    },\n    \"item_background_image_url\": \"http://GChJEbVJFEWcufypBOAGJppcZNYHjxR.apr\",\n    \"item_featured_card_background_image_url\": \"https://jjROuzUnwSxX.iwjJi.IizP,NIfLH4uZfWqQuEz4zgkJGnCuSO0ONhqJ9NBPqPByxjr5HeWN6v5OlUme\",\n    \"active\": false,\n    \"archived_at\": 6194,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": true,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"sequential\",\n          \"id\": \"string\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"start_at\": 6648,\n    \"end_at\": 698,\n    \"discount_percent\": 93,\n    \"bonus_percent\": 3959,\n    \"max_purchase_count\": 8094,\n    \"max_purchase_count_per_user\": 9624,\n    \"reward_points_percent\": 56.48000560160204,\n    \"reward_points_fixed\": 7404,\n    \"loyalty_points_percent\": 53,\n    \"loyalty_points_fixed\": 1078,\n    \"reward_settings\": {\n      \"available\": [\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 293.1514042295924,\n          \"reward_fixed\": 1748\n        },\n        {\n          \"virtual_currency_id\": \"string\",\n          \"type\": \"virtual_currency\",\n          \"name\": \"string\",\n          \"virtual_currency_sku\": \"string\",\n          \"reward_percent\": 7376.815337224618,\n          \"reward_fixed\": 9772\n        }\n      ]\n    },\n    \"exclude_items_for_reward_points\": true,\n    \"store_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"bonus_item_percent\": 9673,\n    \"bonus_item_id\": \"string\",\n    \"bonus_item_quantity\": 6311,\n    \"bonus_items_settings\": {\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 1764,\n          \"quantity_percent\": 7788\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"quantity_fixed\": 890,\n          \"quantity_percent\": 892\n        }\n      ],\n      \"start_at\": 7756,\n      \"end_at\": 4907\n    },\n    \"item_background_image_url\": \"https://UWdnlCvwZTJhrWnmgTPPGK.jkbNqPWyVlZIOm-tcqr\",\n    \"item_featured_card_background_image_url\": \"https://zsvC.xpnl-yj10Of1vNaWg6AMqvJBiRxPO3Vtqep5GhO\",\n    \"active\": false,\n    \"archived_at\": 8835,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"payment_limits\": {\n      \"requires_payment_methods\": [\n        \"string\",\n        \"string\"\n      ],\n      \"requires_payment_method_save\": true\n    },\n    \"bonus_badge\": \"string\",\n    \"custom_badge\": \"string\",\n    \"apply_to_free_items\": false,\n    \"offers\": {\n      \"offers\": [\n        {\n          \"type\": \"piggy_bank\",\n          \"id\": \"string\"\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0012b89-16a8-4908-979c-f1ec224c4fdf",
+          "name": "Copy Store Promotion",
+          "request": {
+            "name": "Copy Store Promotion",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "store_promotions",
+                ":store_promotion_id",
+                "copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "store_promotion_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78911f3c-6d86-4942-9ca0-8a5f46cff445",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created_at\": 1707,\n  \"current_purchase_count\": 8495,\n  \"name\": \"string\",\n  \"start_at\": 176,\n  \"end_at\": 2581,\n  \"discount_percent\": 39,\n  \"bonus_percent\": 5433,\n  \"max_purchase_count\": 8747,\n  \"max_purchase_count_per_user\": 7775,\n  \"reward_points_percent\": 9.369290793166861,\n  \"reward_points_fixed\": 6947,\n  \"loyalty_points_percent\": 66,\n  \"loyalty_points_fixed\": 7460,\n  \"reward_settings\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 2224.8398497603284,\n        \"reward_fixed\": 573\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"virtual_currency_sku\": \"string\",\n        \"reward_percent\": 988.9119196479778,\n        \"reward_fixed\": 996\n      }\n    ]\n  },\n  \"store_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_items_for_reward_points\": true,\n  \"bonus_item_percent\": 3443,\n  \"bonus_item_id\": \"string\",\n  \"bonus_item_quantity\": 139,\n  \"bonus_items_settings\": {\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 2636,\n        \"quantity_percent\": 7157\n      },\n      {\n        \"id\": \"string\",\n        \"sku\": \"string\",\n        \"quantity_fixed\": 8887,\n        \"quantity_percent\": 3009\n      }\n    ],\n    \"start_at\": 7123,\n    \"end_at\": 4262\n  },\n  \"item_background_image_url\": \"http://movIuFpouJQLPiEscGByAexys.yumoYlPTh\",\n  \"item_featured_card_background_image_url\": \"http://EVbxvh.eunzMtoHjlggw8WW1IHAR6HQgwAhgGlAh2R492Nvei.weS9+pkMg9iYP+WfLebRk7kUnNFm22jB1.9twX\",\n  \"active\": false,\n  \"archived_at\": 2327,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"payment_limits\": {\n    \"requires_payment_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"requires_payment_method_save\": false\n  },\n  \"bonus_badge\": \"string\",\n  \"custom_badge\": \"string\",\n  \"apply_to_free_items\": false,\n  \"offers\": {\n    \"offers\": [\n      {\n        \"type\": \"rolling\",\n        \"id\": \"string\"\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"campaign_id\": \"string\",\n  \"user_campaign_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa53887c-556d-4b6d-83d2-ab28d2798cd0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "store_promotions",
+                    ":store_promotion_id",
+                    "copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "store_promotion_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c2ec62d7-200a-4e4d-895d-1c2f42b09a39",
+    "name": "Aghanim Server-to-Server Achievements Store Promotions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

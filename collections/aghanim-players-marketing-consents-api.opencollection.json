@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Players' Marketing Consents API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Players' Marketing Consents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Grant Email Marketing Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/marketing_consent/email/grant",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Grant email marketing consent for a player."
+        },
+        {
+          "info": {
+            "name": "Revoke Email Marketing Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/marketing_consent/email/revoke",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Revoke email marketing consent for a player."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1255 @@
+{
+  "item": [
+    {
+      "id": "ba44b9fc-6726-4665-bcbf-18b454488151",
+      "name": "News",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afd87b5e-3766-498c-8f93-4060add25ff6",
+          "name": "Get News List",
+          "request": {
+            "name": "Get News List",
+            "description": {
+              "content": "Returns a list of news posts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "group",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_field",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "asc"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_string",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Optional comma separated list of ids"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8c6192f-1252-4746-836d-abc294c2d5e2",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "event"
+                    },
+                    {
+                      "key": "group",
+                      "value": "other"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "category"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"tags\": \"string\",\n    \"category\": \"bugfix\",\n    \"datetime\": 5882,\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"date\": \"1952-02-07\",\n    \"image_url\": \"https://uxhshdfeVVUwZxvTiVTM.jyEnRdaHqdvxQd-Qy\",\n    \"order_id\": 0,\n    \"published_at\": 1306,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"http://yRXASjbjXghjwOapezeIasWVdl.tecqvKmR1T2,rrIN73PL\",\n    \"is_featured\": true,\n    \"collection_id\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"number\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"html\": \"string\"\n  },\n  {\n    \"tags\": \"string\",\n    \"category\": \"update\",\n    \"datetime\": 9085,\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"date\": \"2007-06-02\",\n    \"image_url\": \"https://VUMVoYN.jmgxt7kOr8,pEIxfdxFMzqekODg33nAJLlzKr\",\n    \"order_id\": 0,\n    \"published_at\": 8018,\n    \"render_options\": {\n      \"is_promo_store\": true\n    },\n    \"video_url\": \"https://C.dftqvIcsgfy63z3sVu.\",\n    \"is_featured\": false,\n    \"collection_id\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"operator\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"html\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50bd1471-1d25-4775-aa5b-cb3c73748655",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "event"
+                    },
+                    {
+                      "key": "group",
+                      "value": "other"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "category"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06851dfb-2729-468c-8070-86daf08caf92",
+          "name": "Create News",
+          "request": {
+            "name": "Create News",
+            "description": {
+              "content": "Creates a new news post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": \"<string>\",\n  \"category\": \"<string>\",\n  \"datetime\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"date\": \"<date>\",\n  \"image_url\": \"<uri>\",\n  \"order_id\": 0,\n  \"published_at\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": \"<boolean>\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"collection_id\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"html\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b369992a-f610-4cca-8934-aaaa62e04b08",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": \"<string>\",\n  \"category\": \"maintenance\",\n  \"datetime\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"date\": \"<date>\",\n  \"image_url\": \"<uri>\",\n  \"order_id\": 0,\n  \"published_at\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"collection_id\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"html\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": \"string\",\n  \"category\": \"bugfix\",\n  \"datetime\": 4271,\n  \"id\": \"string\",\n  \"slug\": \"string\",\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"date\": \"1995-03-10\",\n  \"image_url\": \"https://rPkdjJNmQQeZnEjUMsXq.paoL9lp6HjFtr,ToaN1yV7vLfEHx\",\n  \"order_id\": 0,\n  \"published_at\": 8235,\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"https://GQJRlaIqUzdUcihDBZtrHsKoUTpuk.jaqmAY8DVnS86xhHdKERqzognvNzQvxhfy8uvcUgYWrjjKaTZ93Ldvq,JZC0Cp\",\n  \"is_featured\": true,\n  \"collection_id\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"list\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"description\": \"string\",\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "757e8681-04cc-495b-942a-0b2875f2ea3b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": \"<string>\",\n  \"category\": \"maintenance\",\n  \"datetime\": \"<integer>\",\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"date\": \"<date>\",\n  \"image_url\": \"<uri>\",\n  \"order_id\": 0,\n  \"published_at\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"collection_id\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"html\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07998ab7-3f53-4891-84a0-bac2cf8bdd35",
+          "name": "Bulk Delete News",
+          "request": {
+            "name": "Bulk Delete News",
+            "description": {
+              "content": "Deletes multiple news.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85797dae-580a-4e0c-99a7-ee75581ea89b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\"\n  },\n  {\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "835a665c-f21d-4613-8cb2-3e4b6084d429",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\"\n  },\n  {\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cecf29c-01bd-46db-a3b6-26a17a892b92",
+          "name": "Bulk Update News",
+          "request": {
+            "name": "Bulk Update News",
+            "description": {
+              "content": "Updates multiple news.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"text\": \"<string>\",\n    \"html\": \"<string>\",\n    \"image_url\": \"<uri>\",\n    \"tags\": \"<string>\",\n    \"order_id\": 0,\n    \"category\": \"<string>\",\n    \"published_at\": \"<integer>\",\n    \"datetime\": \"<integer>\",\n    \"render_options\": {\n      \"is_promo_store\": \"<boolean>\"\n    },\n    \"video_url\": \"<uri>\",\n    \"is_featured\": \"<boolean>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"text\": \"<string>\",\n    \"html\": \"<string>\",\n    \"image_url\": \"<uri>\",\n    \"tags\": \"<string>\",\n    \"order_id\": 0,\n    \"category\": \"<string>\",\n    \"published_at\": \"<integer>\",\n    \"datetime\": \"<integer>\",\n    \"render_options\": {\n      \"is_promo_store\": \"<boolean>\"\n    },\n    \"video_url\": \"<uri>\",\n    \"is_featured\": \"<boolean>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1309059b-ab43-4243-97de-31e78aef6b5e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"html\": \"string\",\n    \"image_url\": \"https://Gtrha.rwNLz,L8ILiXA4,agh+1JtXrbmkt1c0+8GgH0B3NFvJe4iADPvd,MuFx+feTuJ7RcIZ,KbmKtbc\",\n    \"tags\": \"string\",\n    \"order_id\": 0,\n    \"category\": \"maintenance\",\n    \"published_at\": 9525,\n    \"datetime\": 3087,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"http://fgdlSkHwEAkkzwkPnKXvGZvS.zsmhibcpjRDQc86BQzqYApGgpry\",\n    \"is_featured\": true,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"operator\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"html\": \"string\",\n    \"image_url\": \"https://GpilaK.dee6VfszSuxbDqKiS2DeC7N-KNFNScNA,TGLbTwfr1++6aXjseHKPsD6TP\",\n    \"tags\": \"string\",\n    \"order_id\": 0,\n    \"category\": \"event\",\n    \"published_at\": 3034,\n    \"datetime\": 8989,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"http://fJFGZqzH.seyN1rFbRx6fYF7rNXytqyenFoAFRAJoo,ec+kz\",\n    \"is_featured\": true,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"tags\": \"string\",\n    \"category\": \"event\",\n    \"datetime\": 463,\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"date\": \"1948-10-19\",\n    \"image_url\": \"http://cRK.cpephudBoSHrtpzwzDrJEqKiloQj7kdMb-6UI11MBcgU1vr\",\n    \"order_id\": 0,\n    \"published_at\": 9955,\n    \"render_options\": {\n      \"is_promo_store\": true\n    },\n    \"video_url\": \"https://uUClmxFcJEhmqqIekRnmkEvwBRbeFpsTc.rirJCGltJbqf8zjDohEGiMMHy+OOT7a9bcLYtXemD3XsRmidp\",\n    \"is_featured\": true,\n    \"collection_id\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"virtual_currency\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"virtual_currency\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"html\": \"string\"\n  },\n  {\n    \"tags\": \"string\",\n    \"category\": \"update\",\n    \"datetime\": 4548,\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"date\": \"2010-12-19\",\n    \"image_url\": \"https://yyrLoBzF.ffvkTMcBfwvg3AfgaHIpfxR0anxEBXJ7hdNUURbjX+\",\n    \"order_id\": 0,\n    \"published_at\": 9203,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"https://HdfI.asLUOL6LcuuaHOa6Zgx9xrKsC5Fp,pPDW4QKvsgkn9WJ1Kx\",\n    \"is_featured\": false,\n    \"collection_id\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"variable\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"html\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d89ae95-360f-4205-a767-44db8ec9361d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"html\": \"string\",\n    \"image_url\": \"https://Gtrha.rwNLz,L8ILiXA4,agh+1JtXrbmkt1c0+8GgH0B3NFvJe4iADPvd,MuFx+feTuJ7RcIZ,KbmKtbc\",\n    \"tags\": \"string\",\n    \"order_id\": 0,\n    \"category\": \"maintenance\",\n    \"published_at\": 9525,\n    \"datetime\": 3087,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"http://fgdlSkHwEAkkzwkPnKXvGZvS.zsmhibcpjRDQc86BQzqYApGgpry\",\n    \"is_featured\": true,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"operator\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"slug\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"html\": \"string\",\n    \"image_url\": \"https://GpilaK.dee6VfszSuxbDqKiS2DeC7N-KNFNScNA,TGLbTwfr1++6aXjseHKPsD6TP\",\n    \"tags\": \"string\",\n    \"order_id\": 0,\n    \"category\": \"event\",\n    \"published_at\": 3034,\n    \"datetime\": 8989,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"video_url\": \"http://fJFGZqzH.seyN1rFbRx6fYF7rNXytqyenFoAFRAJoo,ec+kz\",\n    \"is_featured\": true,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1c6ccb8-1654-4c13-9a84-a413122dbe24",
+          "name": "Get News Post",
+          "request": {
+            "name": "Get News Post",
+            "description": {
+              "content": "Returns a single news post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news",
+                ":news_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "news_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3734412-bea7-4510-ab50-7263786a46ee",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": \"string\",\n  \"category\": \"bugfix\",\n  \"datetime\": 4271,\n  \"id\": \"string\",\n  \"slug\": \"string\",\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"date\": \"1995-03-10\",\n  \"image_url\": \"https://rPkdjJNmQQeZnEjUMsXq.paoL9lp6HjFtr,ToaN1yV7vLfEHx\",\n  \"order_id\": 0,\n  \"published_at\": 8235,\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"https://GQJRlaIqUzdUcihDBZtrHsKoUTpuk.jaqmAY8DVnS86xhHdKERqzognvNzQvxhfy8uvcUgYWrjjKaTZ93Ldvq,JZC0Cp\",\n  \"is_featured\": true,\n  \"collection_id\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"list\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"description\": \"string\",\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a565062-da62-489d-bf26-2f20ebe58ba1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37f07637-1b37-4c9d-a994-535de6ecb12b",
+          "name": "Update News",
+          "request": {
+            "name": "Update News",
+            "description": {
+              "content": "Updates a news post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news",
+                ":news_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "news_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"html\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"tags\": \"<string>\",\n  \"order_id\": 0,\n  \"category\": \"<string>\",\n  \"published_at\": \"<integer>\",\n  \"datetime\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": \"<boolean>\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "762747f6-00ca-45db-bdf8-fc204972a487",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"html\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"tags\": \"<string>\",\n  \"order_id\": 0,\n  \"category\": \"maintenance\",\n  \"published_at\": \"<integer>\",\n  \"datetime\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": \"string\",\n  \"category\": \"bugfix\",\n  \"datetime\": 4271,\n  \"id\": \"string\",\n  \"slug\": \"string\",\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"date\": \"1995-03-10\",\n  \"image_url\": \"https://rPkdjJNmQQeZnEjUMsXq.paoL9lp6HjFtr,ToaN1yV7vLfEHx\",\n  \"order_id\": 0,\n  \"published_at\": 8235,\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"https://GQJRlaIqUzdUcihDBZtrHsKoUTpuk.jaqmAY8DVnS86xhHdKERqzognvNzQvxhfy8uvcUgYWrjjKaTZ93Ldvq,JZC0Cp\",\n  \"is_featured\": true,\n  \"collection_id\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"list\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"description\": \"string\",\n  \"html\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e7ed575-bdb9-4844-80c1-c70c473753d4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"html\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"tags\": \"<string>\",\n  \"order_id\": 0,\n  \"category\": \"maintenance\",\n  \"published_at\": \"<integer>\",\n  \"datetime\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a468a5e-3ec8-496b-a235-dfaa4a0c263e",
+          "name": "Delete News",
+          "request": {
+            "name": "Delete News",
+            "description": {
+              "content": "Deletes a news post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "news",
+                ":news_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "news_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8b658ba-bf43-4c8e-9552-040ba7c657e1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e28d7343-1a31-4c89-9f4e-c15c6d233b1e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "news",
+                    ":news_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "news_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "662c9dd7-df68-4074-92d4-108e8b4738ce",
+    "name": "Aghanim Server-to-Server Achievements News API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

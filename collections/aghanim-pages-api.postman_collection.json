@@ -1,0 +1,1405 @@
+{
+  "item": [
+    {
+      "id": "980e7e47-8634-429e-81d9-2000e7857fe2",
+      "name": "Pages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9eb9eab0-f029-40ec-b28f-bbf15034b5d1",
+          "name": "Get Pages",
+          "request": {
+            "name": "Get Pages",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parent_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ignore_parent_id",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_string",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Optional comma separated list of types"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f89c0a39-3cd0-4f6f-837d-6b73ef5e4b42",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ignore_parent_id",
+                      "value": "false"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"article\",\n    \"parent_id\": \"string\",\n    \"date\": \"2012-10-04\",\n    \"datetime\": 8597,\n    \"image_url\": \"http://RWPt.attcIN.4XqyHN3Gg,y5iCV4gocEDiNbfw1YMbyjJ0xtlwd,hFBeDAhyV.meVtAjXbHRiMY\",\n    \"featured_image_url\": \"http://NEDPfsx.gcjPKKZTsralbhmNyRFl5Im\",\n    \"pinned_image_url\": \"https://Z.hypzzGPtH\",\n    \"pinned_webview_image_url\": \"http://rOEziWHdnCLzjgXNArLQbJpavap.aevcEDnNuYUnZXlC,QzRDXZnXvwFjCGS5kYXNb\",\n    \"published_at\": 1294,\n    \"position\": 8223,\n    \"render_options\": {\n      \"is_promo_store\": true\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://G.hsbtoUs5L8kx2FReR9jjJ,H5oEd3k.iE0e27wRJdUuOL19Kz2l9AuE4v6DshDQUy3j6vUyv0fFkhOFc2eQ\",\n    \"is_featured\": false,\n    \"is_pinned\": false,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"http://aBdzbbLYjScCeNdoS.bhqhII5mcU3URVLAf6SwDt-j3Kmw7\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"parent\": {\n      \"title\": \"string\",\n      \"text\": \"string\",\n      \"description\": \"string\",\n      \"slug\": \"string\",\n      \"key\": \"string\",\n      \"layout\": {\n        \"blocks\": [\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        ]\n      },\n      \"html\": \"string\",\n      \"type\": \"news\",\n      \"parent_id\": \"string\",\n      \"date\": \"2012-04-03\",\n      \"datetime\": 6041,\n      \"image_url\": \"http://nFVKDqOVgqdWy.ysO,s0UrV.WhSwa2H+FL2okMgIanK9-zPglIkEgE0WOoc8Rg3fYsr\",\n      \"featured_image_url\": \"https://wVPzMXEin.daj-Z\",\n      \"pinned_image_url\": \"https://RtyhyAALzUKafvz.zbA54dxTNvZpHIogz4+Pgc0e2eVm9HfemzH,jNxmiWj,NVabj9waGcG5S2\",\n      \"pinned_webview_image_url\": \"https://gqwKgGtwUnQYWXzyXpUHZgdmInOtObZam.rqiKardqIyT2FLTwQ4prSp1,J,LNe\",\n      \"published_at\": 2906,\n      \"position\": 2664,\n      \"render_options\": {\n        \"is_promo_store\": false\n      },\n      \"child_sort_settings\": {\n        \"sort_by\": \"position\",\n        \"sort_order\": \"asc\"\n      },\n      \"video_url\": \"http://MEkvGdGunWGIJnluUmAHb.pchPsxvcqKIot7KU.S7HkgR..kiGCpbHBVFMPQIAt1vK6a0R+xDFLwgmq3cQmbe8Oj\",\n      \"is_featured\": false,\n      \"is_pinned\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"custom_url\": \"https://aKgkMwIliSVSOGS.ymno0nMObbOdvwuf4yy82Q7i.Ap6WNxtI+HMfcNOGVuawkI3l35cB.T1H+lLMJLGxjRAjdx\",\n      \"button_text\": \"string\",\n      \"requirements_expression\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"seo\": {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"http://BtORMCoIczi.tcxtjZk3LH6IwOVs9v54,qCfULu\"\n    }\n  },\n  {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"article\",\n    \"parent_id\": \"string\",\n    \"date\": \"2026-05-31\",\n    \"datetime\": 4468,\n    \"image_url\": \"http://qDG.esTkv-0QJkxiP0f-40BnfGP+uJ9m170ufKbmkA4SMmapK+GcJ6mCWUp\",\n    \"featured_image_url\": \"http://uKYCT.olbylKwnms2AKiOuDscUHRKlVhyR\",\n    \"pinned_image_url\": \"https://gMVNhkoCgsklHGdYrCUCwGVTJZAM.dplT+BGpeR1OdYR..T4eDNL8lrvLRgnD\",\n    \"pinned_webview_image_url\": \"https://srMIReEsqRMpv.yum2mXS18-CyF2PATYx\",\n    \"published_at\": 8393,\n    \"position\": 2073,\n    \"render_options\": {\n      \"is_promo_store\": true\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"position\",\n      \"sort_order\": \"asc\"\n    },\n    \"video_url\": \"http://PYeotTAaUCSdbXircQewThoA.vpzfDoF9dejr5ZGFBwwIWu97jEL8KeOsgTb6h7U\",\n    \"is_featured\": false,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"http://laydAiMkdsAQDJlFMLGKstWb.vsjF1TpaZwNJneJru,pwcE2BMQzMfBJXVT+fPcpHDZAhH-3MK8cmlKjFOk\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_event_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"parent\": {\n      \"title\": \"string\",\n      \"text\": \"string\",\n      \"description\": \"string\",\n      \"slug\": \"string\",\n      \"key\": \"string\",\n      \"layout\": {\n        \"blocks\": [\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        ]\n      },\n      \"html\": \"string\",\n      \"type\": \"content\",\n      \"parent_id\": \"string\",\n      \"date\": \"1990-11-20\",\n      \"datetime\": 2075,\n      \"image_url\": \"http://PeERdPfskXgWYvfTvqBrfUzegxhjC.nmvcXYyz9LG\",\n      \"featured_image_url\": \"https://QymbVBwkuPifjPXBZEblyO.mqp\",\n      \"pinned_image_url\": \"http://HqAledeHwPJhFUfFVTWzHmLZ.mqwbTrP4pSiR3j78SXI\",\n      \"pinned_webview_image_url\": \"https://owfAtPtqcxQzIorxluebOJypz.ovV3AL.oMBQMuRFq6YKdmCZAM.Ae1gixYMWNUKlSto0w6-CiMlnoAEtbQIPD55voo3oMZYEUTJEJQ5\",\n      \"published_at\": 3530,\n      \"position\": 283,\n      \"render_options\": {\n        \"is_promo_store\": true\n      },\n      \"child_sort_settings\": {\n        \"sort_by\": \"datetime\",\n        \"sort_order\": \"asc\"\n      },\n      \"video_url\": \"http://CJBLkuXEiMBoIV.ypZo1g7oN\",\n      \"is_featured\": true,\n      \"is_pinned\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"custom_url\": \"https://PkaiSgreZIRhuPyBFNejkqTphKtH.ayqhYpj9pl2bh2ph5nKeXWDa1oBuvNnR2pnqIX4lhftBauf15lBns4dHYIoht\",\n      \"button_text\": \"string\",\n      \"requirements_expression\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"seo\": {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"https://OGJJbd.xaqFLijctagfj0814Oi8u.yWiA01rEo+\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c610df1f-4422-4d92-a4d1-792e880df2fa",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ignore_parent_id",
+                      "value": "false"
+                    },
+                    {
+                      "key": "search_string",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ff1de0e-9603-4886-ac16-42b9ff15c08e",
+          "name": "Create Page",
+          "request": {
+            "name": "Create Page",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"key\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"<string>\",\n  \"parent_id\": \"<string>\",\n  \"date\": \"<date>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": \"<boolean>\"\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"<string>\",\n    \"sort_order\": \"<string>\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "269260e6-1545-42b9-91f8-194dd6fb2ae1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"key\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 6401,\n          \"end_at\": 8691,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 687,\n          \"end_at\": 1893,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 2374,\n          \"end_at\": 5245,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 294,\n          \"end_at\": 9446,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"news\",\n  \"parent_id\": \"<string>\",\n  \"date\": \"<date>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"desc\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"description\": \"string\",\n  \"slug\": \"string\",\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 572,\n          \"end_at\": 8342,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9068,\n          \"end_at\": 4299,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 7950,\n          \"end_at\": 8446,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9804,\n          \"end_at\": 3549,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"string\",\n  \"type\": \"article\",\n  \"parent_id\": \"string\",\n  \"date\": \"1994-07-23\",\n  \"datetime\": 7367,\n  \"image_url\": \"https://zVuatsHPPa.wgrKnKlVvi8T3peFYRuausoSdCW5KB+R2AtwpIKLhtQ\",\n  \"featured_image_url\": \"http://qfiPYQwqpLNiGZgieXitUhauFvXiW.jtkg59RZX8OH5FRomptmtlijqizS545i,oaKn3iIAp4.8EgbYsWBw\",\n  \"pinned_image_url\": \"https://AaoRhlZlGiVCSCzFCToTMIxfDzltcisi.ukuxR3aFU+c50d71kHcXESs5TK5ZRSXSQg+ZgkRGzJLZ61gDxQkx0BPiL3xyT7\",\n  \"pinned_webview_image_url\": \"http://AMCDTQKoloKflqtntisE.vflL7c4FEmpBRGcuAF3yEFTLmB7ApCc\",\n  \"published_at\": 8530,\n  \"position\": 7967,\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"asc\"\n  },\n  \"video_url\": \"http://fiDsQ.mhuKT6Q2HqweClhePGKRjfXyDNTcssxeMxWGrPgli5stOZm8XYH05WlBZOHh\",\n  \"is_featured\": false,\n  \"is_pinned\": true,\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"custom_url\": \"http://PqJY.okkYhOQIU7gWk2Vmqj5R,3NcaBu05k\",\n  \"button_text\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"parent\": {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"date\": \"1962-11-14\",\n    \"datetime\": 7306,\n    \"image_url\": \"http://AfPNFCeChCquoaFwvRQyV.mbzfB8zSfMOueaHoDIVxL8eipUQCe840xILY292bgmqHRXvOzKl\",\n    \"featured_image_url\": \"http://gGIUBjzkEkJasntDAuIUDjZZYGADhKNy.huYzee.qzdh48X8mKJnzAlTYePCnn4kFI\",\n    \"pinned_image_url\": \"http://vZp.gcbmnnSQkIDZtIeIQxBXaqYe7zWBgKU4KOmBePT8\",\n    \"pinned_webview_image_url\": \"https://wpuIpBeuuNAZZzCXxtDuzplQgxMhNEqIa.ehhH04zE-uF5RE5yg85wtT8bgoKAdZf4vWYSxrM,DbMvDBMwo3FKjbEKTV1jd.zugGLlGYRsIw5\",\n    \"published_at\": 7168,\n    \"position\": 6685,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://VDYPCzZmjvrPmGtyaoMeeN.hqgtDDremgb+CPkeSrktt17C\",\n    \"is_featured\": false,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://ftcBoDOHa.fsuidrFFyu1hiL+,CnGgRAiLH2+2.LgxJUt4.umSfIxi.oUvB3Lucopq-RB\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"seo\": {\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"image_url\": \"http://kQLeQBrVrC.ydxyFcdjwH+-\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ae97c4-fc59-4749-b14a-2dd8fbf04e36",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"text\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"key\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 6401,\n          \"end_at\": 8691,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 687,\n          \"end_at\": 1893,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 2374,\n          \"end_at\": 5245,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 294,\n          \"end_at\": 9446,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"news\",\n  \"parent_id\": \"<string>\",\n  \"date\": \"<date>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": false\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"desc\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"event_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2102d2e5-8099-4c52-b2b8-e4e60edc2d9d",
+          "name": "Bulk Delete Page",
+          "request": {
+            "name": "Bulk Delete Page",
+            "description": {
+              "content": "Deletes multiple pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2df833c6-8dae-4832-9dcb-f69e87d3304b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\"\n  },\n  {\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d80ef3b-2ac1-4d89-8361-08dbeafc8774",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\"\n  },\n  {\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed4eb2b6-2798-4831-baa4-a18e28907b5d",
+          "name": "Bulk Update Page",
+          "request": {
+            "name": "Bulk Update Page",
+            "description": {
+              "content": "Updates multiple pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"key\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"text\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"<string>\",\n    \"type\": \"<string>\",\n    \"parent_id\": \"<string>\",\n    \"datetime\": \"<integer>\",\n    \"image_url\": \"<uri>\",\n    \"featured_image_url\": \"<uri>\",\n    \"pinned_image_url\": \"<uri>\",\n    \"pinned_webview_image_url\": \"<uri>\",\n    \"published_at\": \"<integer>\",\n    \"position\": \"<integer>\",\n    \"render_options\": {\n      \"is_promo_store\": \"<boolean>\"\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"<string>\",\n      \"sort_order\": \"<string>\"\n    },\n    \"video_url\": \"<uri>\",\n    \"is_featured\": \"<boolean>\",\n    \"is_pinned\": \"<boolean>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"custom_url\": \"<uri>\",\n    \"button_text\": \"<string>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"key\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"text\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"<string>\",\n    \"type\": \"<string>\",\n    \"parent_id\": \"<string>\",\n    \"datetime\": \"<integer>\",\n    \"image_url\": \"<uri>\",\n    \"featured_image_url\": \"<uri>\",\n    \"pinned_image_url\": \"<uri>\",\n    \"pinned_webview_image_url\": \"<uri>\",\n    \"published_at\": \"<integer>\",\n    \"position\": \"<integer>\",\n    \"render_options\": {\n      \"is_promo_store\": \"<boolean>\"\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"<string>\",\n      \"sort_order\": \"<string>\"\n    },\n    \"video_url\": \"<uri>\",\n    \"is_featured\": \"<boolean>\",\n    \"is_pinned\": \"<boolean>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"custom_url\": \"<uri>\",\n    \"button_text\": \"<string>\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9b78aec-2045-4e67-afa8-63bdae1caf6a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"slug\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"blocks\",\n    \"parent_id\": \"string\",\n    \"datetime\": 7437,\n    \"image_url\": \"https://ALMZbzHGhdulgPPzSVf.nrwyouqhYraI3owxUIsmJ3LwxWTMP6\",\n    \"featured_image_url\": \"https://iGAKFqzZSJa.ovidv5FSO2DlFBhqf\",\n    \"pinned_image_url\": \"https://aHQkdjbAV.lhNBDEpgwQIIbEPHcFEO\",\n    \"pinned_webview_image_url\": \"http://iDWdBJnftHsTHAKsoKebCcKWiS.dpduDc4ovvuLAdIxHJ6Ad5tg2+0mCUEKybiDesx1aY6TTxfD8qHvjKfo\",\n    \"published_at\": 6271,\n    \"position\": 9152,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"position\",\n      \"sort_order\": \"asc\"\n    },\n    \"video_url\": \"http://rUBVoxWIDMetGIQFBOALEmaJwKiSQA.vvemKSFcMsjV\",\n    \"is_featured\": true,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"http://TlrvRcpmPovsWjbEIoEbGe.ekxqD+GV,nqjlxebqLRQU2FwmALkVXr1Os-\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"slug\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"datetime\": 9656,\n    \"image_url\": \"http://CfrnGK.admpV-3fpXS4TnaR3s+FJKaQJcv5dxYLoXNAU\",\n    \"featured_image_url\": \"https://M.nmuc5wL-bOi5YAKq4SZjZEXJ+0VkyCmBDWrH02aznljMr24oNFcJKFaPlZgH3\",\n    \"pinned_image_url\": \"https://GAtRzcNkwVdXEFmBWHxPxIO.opglHcx5+9mY7v5Iusjgg7giophq1IoIrNkt2Qb4sYPLuEQDoEhHb-kfJx7-nO8\",\n    \"pinned_webview_image_url\": \"http://WijApayFPxnvNPWOawBJedxrmYgloTQv.lafswvA++vdv56cTiRuGwRHOI8puzSabeod7kzuyc7zDZ-GH.Xd9oPfBy4ckA51h\",\n    \"published_at\": 6353,\n    \"position\": 8204,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"http://DcWcVznk.qbyIXws55v\",\n    \"is_featured\": false,\n    \"is_pinned\": false,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://icmYcnHlOxVAuLVLV.quI6wz3-oJvEA\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"event_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"date\": \"1980-07-24\",\n    \"datetime\": 8278,\n    \"image_url\": \"https://YkTVrsUz.nkpzCLOwvTNPo\",\n    \"featured_image_url\": \"http://ToYffufYdGutkKGQM.jmpoLgiwh6Vjo5MBOAS2Kmkp1wAfBK5reHS8CcARscqgn6Z7s8ibpdj\",\n    \"pinned_image_url\": \"https://JaNHJeXKeVSMs.cavQjzMoNP7,.\",\n    \"pinned_webview_image_url\": \"https://EHxKRaiCjVLaFPG.epZY6nF4S-rkve\",\n    \"published_at\": 8265,\n    \"position\": 358,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://FNPnc.vysyxpZ\",\n    \"is_featured\": true,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"http://mIbTCoEKjIWxOqhVXQDfvN.yxjyJa7DYjV\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"event_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"parent\": {\n      \"title\": \"string\",\n      \"text\": \"string\",\n      \"description\": \"string\",\n      \"slug\": \"string\",\n      \"key\": \"string\",\n      \"layout\": {\n        \"blocks\": [\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        ]\n      },\n      \"html\": \"string\",\n      \"type\": \"content\",\n      \"parent_id\": \"string\",\n      \"date\": \"2000-10-05\",\n      \"datetime\": 7598,\n      \"image_url\": \"https://IxLWqYbvrWoAyJRvOgn.ihhjwd0zYmSd43d+5ZaSDQy7l389G4UuF-18ubaVr3Z3VxazfLheSWmhpJojIf2sytnvsNloROoewmS.UAkBzWNGT+xt\",\n      \"featured_image_url\": \"https://yyxLNXc.hfR0+AKYgG96ZZ8VX9OgSsRC8HzbSBTnDkkVzNhQrL7MkjIGA-\",\n      \"pinned_image_url\": \"http://TICnfuDpjQkRIZLIrjEHemPmnBG.wdelfSbXESReCew3He64gqqTOx9tZtC8AlVp4lTQnzkL.-32kLEEualSK\",\n      \"pinned_webview_image_url\": \"http://ePSfczwswqmbIGZZrzp.flikxsqWouFa-uKU2\",\n      \"published_at\": 147,\n      \"position\": 2527,\n      \"render_options\": {\n        \"is_promo_store\": false\n      },\n      \"child_sort_settings\": {\n        \"sort_by\": \"datetime\",\n        \"sort_order\": \"asc\"\n      },\n      \"video_url\": \"https://MVQIavBfvzgAcxRMBAnHaTVf.ehFbJnrQgdI\",\n      \"is_featured\": false,\n      \"is_pinned\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"custom_url\": \"http://bGtJe.jpjSVtZ\",\n      \"button_text\": \"string\",\n      \"requirements_expression\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"seo\": {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"https://YzVAVqWzfrudBswpDIdwUOTAVpVo.fxwociNxu,hJEX6Agtk--r0B4WmQr8h0sFwYv2NOccRqFE27knOSHg\"\n    }\n  },\n  {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"content\",\n    \"parent_id\": \"string\",\n    \"date\": \"1983-06-13\",\n    \"datetime\": 7798,\n    \"image_url\": \"http://QMusHhsuGbkCxnsOgXVTfx.ihdURvQoohxSnaQy8KL2U4,QSr6Do1X7\",\n    \"featured_image_url\": \"http://KMLepzumFSvFxhSLXnyikxFhGxbW.bttXC.5n4gewGSS-.aUbiAErlrQg+-m\",\n    \"pinned_image_url\": \"https://ELoCZYdGB.dhxMd1rXor82Bw\",\n    \"pinned_webview_image_url\": \"https://ixfFnxvjOYlsGrKhKhWXOKtTnJG.mbrYduKWNsuOQ,9BN9o3w+5rhWRe0H54uw\",\n    \"published_at\": 414,\n    \"position\": 321,\n    \"render_options\": {\n      \"is_promo_store\": true\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://wgFNiVoDCELFtpdWXDjMjPNqR.vsjLE-b40vYs3w1fp6I\",\n    \"is_featured\": false,\n    \"is_pinned\": false,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://fzvqAnJxKHNZijtBEMYLxFHuQMdlXB.zhhiktIewlLyocq4.vTkDaENC+\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"parent\": {\n      \"title\": \"string\",\n      \"text\": \"string\",\n      \"description\": \"string\",\n      \"slug\": \"string\",\n      \"key\": \"string\",\n      \"layout\": {\n        \"blocks\": [\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        ]\n      },\n      \"html\": \"string\",\n      \"type\": \"blocks\",\n      \"parent_id\": \"string\",\n      \"date\": \"2000-07-10\",\n      \"datetime\": 2178,\n      \"image_url\": \"http://qrNMzoFPGUAzXkFXSTsQGqakmKpu.pkhHBsWNNp+-OKDIAmiSBOX+Mc516Djv\",\n      \"featured_image_url\": \"https://EkkOUZJKSToVdSHMFekAODLjr.iaB-tlstouV,HeUC59SSFpwIhl3vCtXk4avt12NTIL6jMLqDuXXm2lX83zOg0SfxcD5kTyLZ\",\n      \"pinned_image_url\": \"http://OXsGB.cxadlB-e\",\n      \"pinned_webview_image_url\": \"http://JwR.rkmRvZRU\",\n      \"published_at\": 8853,\n      \"position\": 7852,\n      \"render_options\": {\n        \"is_promo_store\": false\n      },\n      \"child_sort_settings\": {\n        \"sort_by\": \"position\",\n        \"sort_order\": \"desc\"\n      },\n      \"video_url\": \"http://ygfbZInUJzA.seTgoeeIk3MILy62H1mBOngzE3dJCfDOjb-XPv2uCzQbk1Gu\",\n      \"is_featured\": true,\n      \"is_pinned\": false,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"custom_url\": \"https://op.uojTo-uCXnx7YPSJ0vVW5B\",\n      \"button_text\": \"string\",\n      \"requirements_expression\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"seo\": {\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"image_url\": \"https://hngNEqlDZAunLozCsIpaYAXuLPEgD.nidMieIG.NefwTSVkVmpYC.lTnULtZlOBl3d\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d709ca7c-c7ba-46a3-a1a1-442a4e61842e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"slug\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"blocks\",\n    \"parent_id\": \"string\",\n    \"datetime\": 7437,\n    \"image_url\": \"https://ALMZbzHGhdulgPPzSVf.nrwyouqhYraI3owxUIsmJ3LwxWTMP6\",\n    \"featured_image_url\": \"https://iGAKFqzZSJa.ovidv5FSO2DlFBhqf\",\n    \"pinned_image_url\": \"https://aHQkdjbAV.lhNBDEpgwQIIbEPHcFEO\",\n    \"pinned_webview_image_url\": \"http://iDWdBJnftHsTHAKsoKebCcKWiS.dpduDc4ovvuLAdIxHJ6Ad5tg2+0mCUEKybiDesx1aY6TTxfD8qHvjKfo\",\n    \"published_at\": 6271,\n    \"position\": 9152,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"position\",\n      \"sort_order\": \"asc\"\n    },\n    \"video_url\": \"http://rUBVoxWIDMetGIQFBOALEmaJwKiSQA.vvemKSFcMsjV\",\n    \"is_featured\": true,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"http://TlrvRcpmPovsWjbEIoEbGe.ekxqD+GV,nqjlxebqLRQU2FwmALkVXr1Os-\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"text\": \"string\",\n    \"slug\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"datetime\": 9656,\n    \"image_url\": \"http://CfrnGK.admpV-3fpXS4TnaR3s+FJKaQJcv5dxYLoXNAU\",\n    \"featured_image_url\": \"https://M.nmuc5wL-bOi5YAKq4SZjZEXJ+0VkyCmBDWrH02aznljMr24oNFcJKFaPlZgH3\",\n    \"pinned_image_url\": \"https://GAtRzcNkwVdXEFmBWHxPxIO.opglHcx5+9mY7v5Iusjgg7giophq1IoIrNkt2Qb4sYPLuEQDoEhHb-kfJx7-nO8\",\n    \"pinned_webview_image_url\": \"http://WijApayFPxnvNPWOawBJedxrmYgloTQv.lafswvA++vdv56cTiRuGwRHOI8puzSabeod7kzuyc7zDZ-GH.Xd9oPfBy4ckA51h\",\n    \"published_at\": 6353,\n    \"position\": 8204,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"http://DcWcVznk.qbyIXws55v\",\n    \"is_featured\": false,\n    \"is_pinned\": false,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://icmYcnHlOxVAuLVLV.quI6wz3-oJvEA\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"event_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "168033c2-c398-4faf-b303-bc5dfe4ab857",
+          "name": "Get Page",
+          "request": {
+            "name": "Get Page",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "pages",
+                ":page_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "page_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "79cf99c8-3b5f-47ed-9db8-89cf3bd290b3",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"description\": \"string\",\n  \"slug\": \"string\",\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 572,\n          \"end_at\": 8342,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9068,\n          \"end_at\": 4299,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 7950,\n          \"end_at\": 8446,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9804,\n          \"end_at\": 3549,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"string\",\n  \"type\": \"article\",\n  \"parent_id\": \"string\",\n  \"date\": \"1994-07-23\",\n  \"datetime\": 7367,\n  \"image_url\": \"https://zVuatsHPPa.wgrKnKlVvi8T3peFYRuausoSdCW5KB+R2AtwpIKLhtQ\",\n  \"featured_image_url\": \"http://qfiPYQwqpLNiGZgieXitUhauFvXiW.jtkg59RZX8OH5FRomptmtlijqizS545i,oaKn3iIAp4.8EgbYsWBw\",\n  \"pinned_image_url\": \"https://AaoRhlZlGiVCSCzFCToTMIxfDzltcisi.ukuxR3aFU+c50d71kHcXESs5TK5ZRSXSQg+ZgkRGzJLZ61gDxQkx0BPiL3xyT7\",\n  \"pinned_webview_image_url\": \"http://AMCDTQKoloKflqtntisE.vflL7c4FEmpBRGcuAF3yEFTLmB7ApCc\",\n  \"published_at\": 8530,\n  \"position\": 7967,\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"asc\"\n  },\n  \"video_url\": \"http://fiDsQ.mhuKT6Q2HqweClhePGKRjfXyDNTcssxeMxWGrPgli5stOZm8XYH05WlBZOHh\",\n  \"is_featured\": false,\n  \"is_pinned\": true,\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"custom_url\": \"http://PqJY.okkYhOQIU7gWk2Vmqj5R,3NcaBu05k\",\n  \"button_text\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"parent\": {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"date\": \"1962-11-14\",\n    \"datetime\": 7306,\n    \"image_url\": \"http://AfPNFCeChCquoaFwvRQyV.mbzfB8zSfMOueaHoDIVxL8eipUQCe840xILY292bgmqHRXvOzKl\",\n    \"featured_image_url\": \"http://gGIUBjzkEkJasntDAuIUDjZZYGADhKNy.huYzee.qzdh48X8mKJnzAlTYePCnn4kFI\",\n    \"pinned_image_url\": \"http://vZp.gcbmnnSQkIDZtIeIQxBXaqYe7zWBgKU4KOmBePT8\",\n    \"pinned_webview_image_url\": \"https://wpuIpBeuuNAZZzCXxtDuzplQgxMhNEqIa.ehhH04zE-uF5RE5yg85wtT8bgoKAdZf4vWYSxrM,DbMvDBMwo3FKjbEKTV1jd.zugGLlGYRsIw5\",\n    \"published_at\": 7168,\n    \"position\": 6685,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://VDYPCzZmjvrPmGtyaoMeeN.hqgtDDremgb+CPkeSrktt17C\",\n    \"is_featured\": false,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://ftcBoDOHa.fsuidrFFyu1hiL+,CnGgRAiLH2+2.LgxJUt4.umSfIxi.oUvB3Lucopq-RB\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"seo\": {\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"image_url\": \"http://kQLeQBrVrC.ydxyFcdjwH+-\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1666098a-85e1-452f-87b5-4edfdda8ed2e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e452bbf-524f-44bf-9ca0-8c034aa57d2d",
+          "name": "Update Page",
+          "request": {
+            "name": "Update Page",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "pages",
+                ":page_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "page_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"start_at\": \"<integer>\",\n          \"end_at\": \"<integer>\",\n          \"news_id\": \"<string>\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"<string>\",\n  \"parent_id\": \"<string>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": \"<boolean>\"\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"<string>\",\n    \"sort_order\": \"<string>\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c1f80bd-2201-4171-8116-83ad71bc70fd",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 4983,\n          \"end_at\": 8701,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 6261,\n          \"end_at\": 1963,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 5683,\n          \"end_at\": 308,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 5629,\n          \"end_at\": 9296,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"news\",\n  \"parent_id\": \"<string>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"position\",\n    \"sort_order\": \"desc\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"number\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"description\": \"string\",\n  \"slug\": \"string\",\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 572,\n          \"end_at\": 8342,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9068,\n          \"end_at\": 4299,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 7950,\n          \"end_at\": 8446,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9804,\n          \"end_at\": 3549,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"string\",\n  \"type\": \"article\",\n  \"parent_id\": \"string\",\n  \"date\": \"1994-07-23\",\n  \"datetime\": 7367,\n  \"image_url\": \"https://zVuatsHPPa.wgrKnKlVvi8T3peFYRuausoSdCW5KB+R2AtwpIKLhtQ\",\n  \"featured_image_url\": \"http://qfiPYQwqpLNiGZgieXitUhauFvXiW.jtkg59RZX8OH5FRomptmtlijqizS545i,oaKn3iIAp4.8EgbYsWBw\",\n  \"pinned_image_url\": \"https://AaoRhlZlGiVCSCzFCToTMIxfDzltcisi.ukuxR3aFU+c50d71kHcXESs5TK5ZRSXSQg+ZgkRGzJLZ61gDxQkx0BPiL3xyT7\",\n  \"pinned_webview_image_url\": \"http://AMCDTQKoloKflqtntisE.vflL7c4FEmpBRGcuAF3yEFTLmB7ApCc\",\n  \"published_at\": 8530,\n  \"position\": 7967,\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"asc\"\n  },\n  \"video_url\": \"http://fiDsQ.mhuKT6Q2HqweClhePGKRjfXyDNTcssxeMxWGrPgli5stOZm8XYH05WlBZOHh\",\n  \"is_featured\": false,\n  \"is_pinned\": true,\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"custom_url\": \"http://PqJY.okkYhOQIU7gWk2Vmqj5R,3NcaBu05k\",\n  \"button_text\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"parent\": {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"date\": \"1962-11-14\",\n    \"datetime\": 7306,\n    \"image_url\": \"http://AfPNFCeChCquoaFwvRQyV.mbzfB8zSfMOueaHoDIVxL8eipUQCe840xILY292bgmqHRXvOzKl\",\n    \"featured_image_url\": \"http://gGIUBjzkEkJasntDAuIUDjZZYGADhKNy.huYzee.qzdh48X8mKJnzAlTYePCnn4kFI\",\n    \"pinned_image_url\": \"http://vZp.gcbmnnSQkIDZtIeIQxBXaqYe7zWBgKU4KOmBePT8\",\n    \"pinned_webview_image_url\": \"https://wpuIpBeuuNAZZzCXxtDuzplQgxMhNEqIa.ehhH04zE-uF5RE5yg85wtT8bgoKAdZf4vWYSxrM,DbMvDBMwo3FKjbEKTV1jd.zugGLlGYRsIw5\",\n    \"published_at\": 7168,\n    \"position\": 6685,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://VDYPCzZmjvrPmGtyaoMeeN.hqgtDDremgb+CPkeSrktt17C\",\n    \"is_featured\": false,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://ftcBoDOHa.fsuidrFFyu1hiL+,CnGgRAiLH2+2.LgxJUt4.umSfIxi.oUvB3Lucopq-RB\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"seo\": {\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"image_url\": \"http://kQLeQBrVrC.ydxyFcdjwH+-\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d473d0d-5f5a-4500-b67c-0b36b325348f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"text\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 4983,\n          \"end_at\": 8701,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 6261,\n          \"end_at\": 1963,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 5683,\n          \"end_at\": 308,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 5629,\n          \"end_at\": 9296,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"<string>\",\n  \"type\": \"news\",\n  \"parent_id\": \"<string>\",\n  \"datetime\": \"<integer>\",\n  \"image_url\": \"<uri>\",\n  \"featured_image_url\": \"<uri>\",\n  \"pinned_image_url\": \"<uri>\",\n  \"pinned_webview_image_url\": \"<uri>\",\n  \"published_at\": \"<integer>\",\n  \"position\": \"<integer>\",\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"position\",\n    \"sort_order\": \"desc\"\n  },\n  \"video_url\": \"<uri>\",\n  \"is_featured\": \"<boolean>\",\n  \"is_pinned\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"custom_url\": \"<uri>\",\n  \"button_text\": \"<string>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"number\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"boolean\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31e8f76d-775a-486f-8aae-0a41a36d7041",
+          "name": "Delete Page",
+          "request": {
+            "name": "Delete Page",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "pages",
+                ":page_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "page_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c9d5be6-fef0-4ab2-9c21-619513477240",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3c36902-59e0-4fe8-aa3d-acfa95f8712e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0b734b1-f39e-4ee5-a653-2ffdda7b7b89",
+          "name": "Translate Page",
+          "request": {
+            "name": "Translate Page",
+            "description": {
+              "content": "Translates a page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "pages",
+                ":page_id",
+                "translate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "page_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": {\n    \"cs\": \"<string>\",\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"fr-CA\": \"<string>\",\n    \"hi\": \"<string>\",\n    \"id\": \"<string>\",\n    \"it\": \"<string>\",\n    \"ja\": \"<string>\",\n    \"ko\": \"<string>\",\n    \"ms\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"no\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"pt-BR\": \"<string>\",\n    \"ru\": \"<string>\",\n    \"sv\": \"<string>\",\n    \"th\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"uk\": \"<string>\",\n    \"vi\": \"<string>\",\n    \"zh\": \"<string>\",\n    \"zh-Hant\": \"<string>\"\n  },\n  \"description\": {\n    \"cs\": \"<string>\",\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"fr-CA\": \"<string>\",\n    \"hi\": \"<string>\",\n    \"id\": \"<string>\",\n    \"it\": \"<string>\",\n    \"ja\": \"<string>\",\n    \"ko\": \"<string>\",\n    \"ms\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"no\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"pt-BR\": \"<string>\",\n    \"ru\": \"<string>\",\n    \"sv\": \"<string>\",\n    \"th\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"uk\": \"<string>\",\n    \"vi\": \"<string>\",\n    \"zh\": \"<string>\",\n    \"zh-Hant\": \"<string>\"\n  },\n  \"text\": {\n    \"cs\": \"<string>\",\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"fr-CA\": \"<string>\",\n    \"hi\": \"<string>\",\n    \"id\": \"<string>\",\n    \"it\": \"<string>\",\n    \"ja\": \"<string>\",\n    \"ko\": \"<string>\",\n    \"ms\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"no\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"pt-BR\": \"<string>\",\n    \"ru\": \"<string>\",\n    \"sv\": \"<string>\",\n    \"th\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"uk\": \"<string>\",\n    \"vi\": \"<string>\",\n    \"zh\": \"<string>\",\n    \"zh-Hant\": \"<string>\"\n  },\n  \"html\": {\n    \"cs\": \"<string>\",\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"fr-CA\": \"<string>\",\n    \"hi\": \"<string>\",\n    \"id\": \"<string>\",\n    \"it\": \"<string>\",\n    \"ja\": \"<string>\",\n    \"ko\": \"<string>\",\n    \"ms\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"no\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"pt-BR\": \"<string>\",\n    \"ru\": \"<string>\",\n    \"sv\": \"<string>\",\n    \"th\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"uk\": \"<string>\",\n    \"vi\": \"<string>\",\n    \"zh\": \"<string>\",\n    \"zh-Hant\": \"<string>\"\n  },\n  \"button_text\": {\n    \"cs\": \"<string>\",\n    \"de\": \"<string>\",\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"fr\": \"<string>\",\n    \"fr-CA\": \"<string>\",\n    \"hi\": \"<string>\",\n    \"id\": \"<string>\",\n    \"it\": \"<string>\",\n    \"ja\": \"<string>\",\n    \"ko\": \"<string>\",\n    \"ms\": \"<string>\",\n    \"nl\": \"<string>\",\n    \"no\": \"<string>\",\n    \"pl\": \"<string>\",\n    \"pt\": \"<string>\",\n    \"pt-BR\": \"<string>\",\n    \"ru\": \"<string>\",\n    \"sv\": \"<string>\",\n    \"th\": \"<string>\",\n    \"tr\": \"<string>\",\n    \"uk\": \"<string>\",\n    \"vi\": \"<string>\",\n    \"zh\": \"<string>\",\n    \"zh-Hant\": \"<string>\"\n  },\n  \"image_url\": {\n    \"cs\": \"<uri>\",\n    \"de\": \"<uri>\",\n    \"en\": \"<uri>\",\n    \"es\": \"<uri>\",\n    \"fr\": \"<uri>\",\n    \"fr-CA\": \"<uri>\",\n    \"hi\": \"<uri>\",\n    \"id\": \"<uri>\",\n    \"it\": \"<uri>\",\n    \"ja\": \"<uri>\",\n    \"ko\": \"<uri>\",\n    \"ms\": \"<uri>\",\n    \"nl\": \"<uri>\",\n    \"no\": \"<uri>\",\n    \"pl\": \"<uri>\",\n    \"pt\": \"<uri>\",\n    \"pt-BR\": \"<uri>\",\n    \"ru\": \"<uri>\",\n    \"sv\": \"<uri>\",\n    \"th\": \"<uri>\",\n    \"tr\": \"<uri>\",\n    \"uk\": \"<uri>\",\n    \"vi\": \"<uri>\",\n    \"zh\": \"<uri>\",\n    \"zh-Hant\": \"<uri>\"\n  },\n  \"featured_image_url\": {\n    \"cs\": \"<uri>\",\n    \"de\": \"<uri>\",\n    \"en\": \"<uri>\",\n    \"es\": \"<uri>\",\n    \"fr\": \"<uri>\",\n    \"fr-CA\": \"<uri>\",\n    \"hi\": \"<uri>\",\n    \"id\": \"<uri>\",\n    \"it\": \"<uri>\",\n    \"ja\": \"<uri>\",\n    \"ko\": \"<uri>\",\n    \"ms\": \"<uri>\",\n    \"nl\": \"<uri>\",\n    \"no\": \"<uri>\",\n    \"pl\": \"<uri>\",\n    \"pt\": \"<uri>\",\n    \"pt-BR\": \"<uri>\",\n    \"ru\": \"<uri>\",\n    \"sv\": \"<uri>\",\n    \"th\": \"<uri>\",\n    \"tr\": \"<uri>\",\n    \"uk\": \"<uri>\",\n    \"vi\": \"<uri>\",\n    \"zh\": \"<uri>\",\n    \"zh-Hant\": \"<uri>\"\n  },\n  \"pinned_image_url\": {\n    \"cs\": \"<uri>\",\n    \"de\": \"<uri>\",\n    \"en\": \"<uri>\",\n    \"es\": \"<uri>\",\n    \"fr\": \"<uri>\",\n    \"fr-CA\": \"<uri>\",\n    \"hi\": \"<uri>\",\n    \"id\": \"<uri>\",\n    \"it\": \"<uri>\",\n    \"ja\": \"<uri>\",\n    \"ko\": \"<uri>\",\n    \"ms\": \"<uri>\",\n    \"nl\": \"<uri>\",\n    \"no\": \"<uri>\",\n    \"pl\": \"<uri>\",\n    \"pt\": \"<uri>\",\n    \"pt-BR\": \"<uri>\",\n    \"ru\": \"<uri>\",\n    \"sv\": \"<uri>\",\n    \"th\": \"<uri>\",\n    \"tr\": \"<uri>\",\n    \"uk\": \"<uri>\",\n    \"vi\": \"<uri>\",\n    \"zh\": \"<uri>\",\n    \"zh-Hant\": \"<uri>\"\n  },\n  \"pinned_webview_image_url\": {\n    \"cs\": \"<uri>\",\n    \"de\": \"<uri>\",\n    \"en\": \"<uri>\",\n    \"es\": \"<uri>\",\n    \"fr\": \"<uri>\",\n    \"fr-CA\": \"<uri>\",\n    \"hi\": \"<uri>\",\n    \"id\": \"<uri>\",\n    \"it\": \"<uri>\",\n    \"ja\": \"<uri>\",\n    \"ko\": \"<uri>\",\n    \"ms\": \"<uri>\",\n    \"nl\": \"<uri>\",\n    \"no\": \"<uri>\",\n    \"pl\": \"<uri>\",\n    \"pt\": \"<uri>\",\n    \"pt-BR\": \"<uri>\",\n    \"ru\": \"<uri>\",\n    \"sv\": \"<uri>\",\n    \"th\": \"<uri>\",\n    \"tr\": \"<uri>\",\n    \"uk\": \"<uri>\",\n    \"vi\": \"<uri>\",\n    \"zh\": \"<uri>\",\n    \"zh-Hant\": \"<uri>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46613871-2ac7-4553-9cab-73560d5ba028",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id",
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": {\n    \"en\": \"Home Page\",\n    \"pt\": \"Página Inicial\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"text\": \"string\",\n  \"description\": \"string\",\n  \"slug\": \"string\",\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"layout\": {\n    \"blocks\": [\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 572,\n          \"end_at\": 8342,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9068,\n          \"end_at\": 4299,\n          \"news_id\": \"string\"\n        }\n      ],\n      [\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 7950,\n          \"end_at\": 8446,\n          \"news_id\": \"string\"\n        },\n        {\n          \"block\": \"FullNewsBlock\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"start_at\": 9804,\n          \"end_at\": 3549,\n          \"news_id\": \"string\"\n        }\n      ]\n    ]\n  },\n  \"html\": \"string\",\n  \"type\": \"article\",\n  \"parent_id\": \"string\",\n  \"date\": \"1994-07-23\",\n  \"datetime\": 7367,\n  \"image_url\": \"https://zVuatsHPPa.wgrKnKlVvi8T3peFYRuausoSdCW5KB+R2AtwpIKLhtQ\",\n  \"featured_image_url\": \"http://qfiPYQwqpLNiGZgieXitUhauFvXiW.jtkg59RZX8OH5FRomptmtlijqizS545i,oaKn3iIAp4.8EgbYsWBw\",\n  \"pinned_image_url\": \"https://AaoRhlZlGiVCSCzFCToTMIxfDzltcisi.ukuxR3aFU+c50d71kHcXESs5TK5ZRSXSQg+ZgkRGzJLZ61gDxQkx0BPiL3xyT7\",\n  \"pinned_webview_image_url\": \"http://AMCDTQKoloKflqtntisE.vflL7c4FEmpBRGcuAF3yEFTLmB7ApCc\",\n  \"published_at\": 8530,\n  \"position\": 7967,\n  \"render_options\": {\n    \"is_promo_store\": true\n  },\n  \"child_sort_settings\": {\n    \"sort_by\": \"datetime\",\n    \"sort_order\": \"asc\"\n  },\n  \"video_url\": \"http://fiDsQ.mhuKT6Q2HqweClhePGKRjfXyDNTcssxeMxWGrPgli5stOZm8XYH05WlBZOHh\",\n  \"is_featured\": false,\n  \"is_pinned\": true,\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"custom_url\": \"http://PqJY.okkYhOQIU7gWk2Vmqj5R,3NcaBu05k\",\n  \"button_text\": \"string\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"parent\": {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"description\": \"string\",\n    \"slug\": \"string\",\n    \"key\": \"string\",\n    \"layout\": {\n      \"blocks\": [\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        [\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"start_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"news_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      ]\n    },\n    \"html\": \"string\",\n    \"type\": \"collection\",\n    \"parent_id\": \"string\",\n    \"date\": \"1962-11-14\",\n    \"datetime\": 7306,\n    \"image_url\": \"http://AfPNFCeChCquoaFwvRQyV.mbzfB8zSfMOueaHoDIVxL8eipUQCe840xILY292bgmqHRXvOzKl\",\n    \"featured_image_url\": \"http://gGIUBjzkEkJasntDAuIUDjZZYGADhKNy.huYzee.qzdh48X8mKJnzAlTYePCnn4kFI\",\n    \"pinned_image_url\": \"http://vZp.gcbmnnSQkIDZtIeIQxBXaqYe7zWBgKU4KOmBePT8\",\n    \"pinned_webview_image_url\": \"https://wpuIpBeuuNAZZzCXxtDuzplQgxMhNEqIa.ehhH04zE-uF5RE5yg85wtT8bgoKAdZf4vWYSxrM,DbMvDBMwo3FKjbEKTV1jd.zugGLlGYRsIw5\",\n    \"published_at\": 7168,\n    \"position\": 6685,\n    \"render_options\": {\n      \"is_promo_store\": false\n    },\n    \"child_sort_settings\": {\n      \"sort_by\": \"datetime\",\n      \"sort_order\": \"desc\"\n    },\n    \"video_url\": \"https://VDYPCzZmjvrPmGtyaoMeeN.hqgtDDremgb+CPkeSrktt17C\",\n    \"is_featured\": false,\n    \"is_pinned\": true,\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_url\": \"https://ftcBoDOHa.fsuidrFFyu1hiL+,CnGgRAiLH2+2.LgxJUt4.umSfIxi.oUvB3Lucopq-RB\",\n    \"button_text\": \"string\",\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"seo\": {\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"image_url\": \"http://kQLeQBrVrC.ydxyFcdjwH+-\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3085050-920d-4caa-8651-b4f7e82413a4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "pages",
+                    ":page_id",
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "page_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": {\n    \"en\": \"Home Page\",\n    \"pt\": \"Página Inicial\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3664523c-b83c-49cd-94f1-009a0012bc9a",
+    "name": "Aghanim Server-to-Server Achievements Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements News API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "News",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get News List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/news",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_field",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search_string",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to skip"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated list of ids"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of news posts."
+        },
+        {
+          "info": {
+            "name": "Create News",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/news",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new news post."
+        },
+        {
+          "info": {
+            "name": "Bulk Update News",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aghanim.com/s2s/v1/news",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates multiple news."
+        },
+        {
+          "info": {
+            "name": "Bulk Delete News",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/news",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes multiple news."
+        },
+        {
+          "info": {
+            "name": "Get News Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/news/:news_id",
+            "params": [
+              {
+                "name": "news_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a single news post."
+        },
+        {
+          "info": {
+            "name": "Update News",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/news/:news_id",
+            "params": [
+              {
+                "name": "news_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a news post."
+        },
+        {
+          "info": {
+            "name": "Delete News",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/news/:news_id",
+            "params": [
+              {
+                "name": "news_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a news post."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

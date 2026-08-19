@@ -1,0 +1,1258 @@
+{
+  "item": [
+    {
+      "id": "c31e25a0-4d42-4256-846d-994bcfe51098",
+      "name": "Coupons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32f4da85-a1d8-4099-b303-18a6dc872391",
+          "name": "Get User Coupons",
+          "request": {
+            "name": "Get User Coupons",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "coupons",
+                "user",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38c46954-bbae-4471-9ec4-c180a58fa33f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"vc\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 5354\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 4986\n        }\n      ]\n    },\n    \"discount_percent\": 52,\n    \"bonus_percent\": 356,\n    \"bonus_fixed\": 9506,\n    \"discount_amount_usd\": 7004,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"boolean\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"number\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 3629,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 4934,\n    \"max_redemptions\": 7232,\n    \"max_redemptions_per_user\": 117,\n    \"is_stackable_with_bonus_coupons\": true,\n    \"stackable_bonus_limit_percent\": 5848,\n    \"is_stackable_with_discount_coupons\": false,\n    \"stackable_discount_limit_percent\": 4658,\n    \"store_item_discount_limit_percent\": 29,\n    \"store_item_bonus_limit_percent\": 342,\n    \"start_at\": 3523,\n    \"end_at\": 6384,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 17,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 5710,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"NAD\",\n        \"sku\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 2807.0903135914714,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 966,\n        \"price_point\": 2674809,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 9719,\n        \"image_url\": \"https://UcseSzGStuo.wituV1fIRlEipLIX6ybLDQaCh.ZN.HKmbI9mU1YGF8nke4aI4Fsvke1bi,W\",\n        \"image_url_apple\": \"https://kSKwEwDQdmSjUcqRzCVJORkukNhFDQ.rbzSvMowkX1xe2amW3cv\",\n        \"icon_url\": \"https://GtdMniSTvCM.ldawC8297btNW5\",\n        \"icon_url_apple\": \"http://poNTyQ.yekKFL9949d\",\n        \"image_url_featured\": \"https://XHvramZDuszgMLNCnULyyTKhwwgtwjJe.iyxiftQ\",\n        \"image_url_featured_apple\": \"https://pObVvMjRqSpTTLocigvrWJpHr.xlbwH+inB1sH5NtF8HLTDVyFiKNtrtrfbP,Ig\",\n        \"background_image_url\": \"http://PbEf.pxRCoiOb27h8Do653JYwuWP5voT\",\n        \"background_image_url_apple\": \"http://qkNseYykVQJ.ojswuZEd7bDg-Bvnk7aLmWWyQjrrW\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://NgO.nukK5M,R7ULARC6NNpVd0pjvfKHYKpbrlOtp,7gsh5YNJfLFf+,4,\",\n        \"featured_card_background_image_url_apple\": \"http://gWnbEExrWPzqEtwoQSeEEomw.ofQ8gk,6p9Cg-1fNkgOwd4YP9x5RHv5avlNFqAPJlz3Aqh-J6.VXBza7fqCd-UMuJoY.M\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 2257,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 3440,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 7309,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://QHNKolvXNsZViyBYgaRHrzFdEweFMMX.ijgkNt20CJr2XlYytOD\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 792,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://JKkCGTMZCHpRfliyTLcb.okHdjfJbGavSkCns6vx7mgPhzbnrxms4btzOdivMFzM7ZW\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 4084,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 3115,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 13,\n        \"bonus_percent\": 8048,\n        \"is_custom\": false,\n        \"modified_at\": 1647.306163597102,\n        \"archived_at\": 4355.846683353962,\n        \"price_minor_unit\": 4220,\n        \"price_decimal\": 1368.095464484187,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 5678,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"GIP\",\n        \"sku\": \"string\",\n        \"type\": \"item\",\n        \"is_stackable\": true,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 1961.3652941351688,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 5568,\n        \"price_point\": 341637,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 3843,\n        \"image_url\": \"http://NixsAUIyNEm.hiRqjO0ovxhcWRMumK+R7B0sRo5j\",\n        \"image_url_apple\": \"https://aNEkPMUlWOcGtz.amsb8xFnJQ2JpB7jIG8CBm6,KylwAOgc-IiuwpkU.qw,LPOfP5KAdWlF-.+.vkm5\",\n        \"icon_url\": \"http://UhBqAzenaoNUKPns.doyeQeL5vTt+FQDKt5ikDqW5,BboULeSQXNjrHHymK1O\",\n        \"icon_url_apple\": \"http://IdWMZuqALvncwpykaDCSbhLkDlA.vhQ74.z9sD8ewCSYgpQ2WqtmNpI3SMDETYct.xb-AC\",\n        \"image_url_featured\": \"http://Bq.cqknlqMQenSUINtRLCwwpfMtrTdSgq\",\n        \"image_url_featured_apple\": \"https://zxpkiDAUUse.qfNIY0DFCmyTAm\",\n        \"background_image_url\": \"https://VhzBDNGbkRrhPFPJAcR.xbopZdy8OkWc4+a5fccoT.aqvCljn+TxBkeVNwtBKmckUcv7lTTc-FcdGnariMX-Fp9CYO0.RFiE938vs\",\n        \"background_image_url_apple\": \"http://mwgssavqgLaVnVyTuq.roZpR5B.p+u-87+\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://dDnJypNFUOFrArZoZJxTBMeJF.pceSVOCfAwv9hpg0+jnFFxlsWrFSPQ.yULlbcfoKPUMl4An,3rdc-jdPlp\",\n        \"featured_card_background_image_url_apple\": \"http://Zcwwm.bqzE.1yLYc22oezbH\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 1545,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 8965,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 6587,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://vKDgyCqBLuoUino.dlhzQwJEclkLj2nr+GzzUAEN7e9KpnBjr8S,WBuupqSRdaOBR.k\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 7845,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://QAgAzKqdRSklirX.lumH5hpYYdTkPWk+UOVF9fM.klDxxQk3Asub0GmoBrUKL-E4Zzt0ahN-nbECRwlth1YhLUED-MJt\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 3973,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 2329,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 78,\n        \"bonus_percent\": 7227,\n        \"is_custom\": false,\n        \"modified_at\": 680.8885737894054,\n        \"archived_at\": 2596.492096880869,\n        \"price_minor_unit\": 359,\n        \"price_decimal\": 7595.061361660377,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 5846,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      }\n    ],\n    \"redeemed_at\": 9592,\n    \"order_item_id\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"vc\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 6669\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 2906\n        }\n      ]\n    },\n    \"discount_percent\": 23,\n    \"bonus_percent\": 700,\n    \"bonus_fixed\": 764,\n    \"discount_amount_usd\": 9566,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 3864,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 3382,\n    \"max_redemptions\": 9911,\n    \"max_redemptions_per_user\": 4268,\n    \"is_stackable_with_bonus_coupons\": false,\n    \"stackable_bonus_limit_percent\": 1093,\n    \"is_stackable_with_discount_coupons\": true,\n    \"stackable_discount_limit_percent\": 4816,\n    \"store_item_discount_limit_percent\": 10,\n    \"store_item_bonus_limit_percent\": 172,\n    \"start_at\": 9001,\n    \"end_at\": 2237,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 7,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 6603,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"SVC\",\n        \"sku\": \"string\",\n        \"type\": \"item\",\n        \"is_stackable\": false,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 7503.602003711059,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 2889,\n        \"price_point\": 77477,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 7327,\n        \"image_url\": \"http://RpxWWjKUicAyKahGp.ahdbfM6LNunWQ0FyRcyZInuBgkgRJfn9IzzKb4aMNeblt4DPNz\",\n        \"image_url_apple\": \"http://IBFXqirZythNVoIrzM.xsqbu+8AUQsTz.pvrqMU04jp95vkEaKvc7eMrYJCsr7LIRStLQZni\",\n        \"icon_url\": \"http://LqAihLcPknsHqFvofHGHAKOWNJKMyGM.pksuviwM5-TZkB6DMrfjNbNALdhMB1DqysEQzvl\",\n        \"icon_url_apple\": \"https://JQdDsKSwKCNukc.agB06oBllGt1KzA8+kTxlAsZxfNB2ZHCnUE\",\n        \"image_url_featured\": \"https://WnvmaE.tgloXdOOwYrG4tiK-GZ,-F7xxk,hPjIaKvw-s7JZ1vmh,aD6rZVACUJ+SKyRumoCRc6Flmo5Fxg570\",\n        \"image_url_featured_apple\": \"http://zKsVxjDUBsqmyOfRf.jgmPmllrYQEhCXFS52g-JO.,-2Xd-TiREyZacQeJSPpWyvhDG\",\n        \"background_image_url\": \"http://SHMgmhACaArQZjZJxvTC.ieoH9,+m\",\n        \"background_image_url_apple\": \"http://JYAkUDpzj.cyeZEw,qsw7W\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://oZmxdMrGYbvrUayfIHKPRGVdqSJwInesX.cfiuYdn8do,brN8g2vZLX.ysHQzPDGmdn2wy2GawGhVLtVBZQ\",\n        \"featured_card_background_image_url_apple\": \"http://qbVKEcNmEUuywsSLGydwjHVUVugIEh.neuYBVj1npP3tr1n7vlZ2xqr42Ex0V14Mt5Rpo.IEOpnkyK9bMrkRZXVV0Ynwfc\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 6447,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 9492,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 8801,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://t.qduP-Z-T8kkFsI0mJSRhyy1Au3CXWkkvxuBTyVc.einW-\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 4941,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://rJDMfFAlzuVLtVdrmFQAfTQshOfECTsZn.kvjJvoHOQXEaZO-B7aZrlvnz5B5,hgVujiUBGkRKbrm3zbm3PuPq6RB\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 1601,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 3574,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 50,\n        \"bonus_percent\": 779,\n        \"is_custom\": false,\n        \"modified_at\": 9795.023680812154,\n        \"archived_at\": 4482.802188370889,\n        \"price_minor_unit\": 4307,\n        \"price_decimal\": 7255.660585743479,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 985,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"MVR\",\n        \"sku\": \"string\",\n        \"type\": \"lootbox\",\n        \"is_stackable\": true,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 1209.08589834427,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 7591,\n        \"price_point\": 4137661,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 2014,\n        \"image_url\": \"http://UaOduWmhrZrjHoEfhWFAdSCmvXOhIAN.apnXEwqtZhgPv,DP9,jI7vFp6G8c3-takvgfV\",\n        \"image_url_apple\": \"https://FEFRjcpkHRoS.lovdQiBZ\",\n        \"icon_url\": \"http://cwlMWDQAVJxqYCFixMajwSBJNCdNhx.qmxnCCN0YwgivjaUuP5tYNlQpiI85Q5QF.ijJcragCuU7+AwePfM.FziVWSJbUnBhWPxXypekihB\",\n        \"icon_url_apple\": \"http://swXixsgXNkIZjgOxuiAgtbBBkEDmk.pvmgYK3xmsYKjNqiikQZTRmGDvKBbP\",\n        \"image_url_featured\": \"https://YYa.ihxyb-OqutK6Jrf.fQT9Xt890wOlDPTPQFLuXQCmzbjjkMyQA2MWrNzdjRotSAF-Dn4cOzE8tQEPuQ2fkl\",\n        \"image_url_featured_apple\": \"https://ccjIwnonCtkAnZmrhTPGachApbyjhUXpZ.jewSlEBfbJbkVqPVidLsI2kPbdYvrohC9KCIBUMt9EqDalN7EdX4oHFfdUO\",\n        \"background_image_url\": \"https://vNrDDjpHKEJSUmKkrINDsBTqezQlxT.ibwY6rk4cF5uMTvxtKAlDukIp\",\n        \"background_image_url_apple\": \"http://dRcvcePxVvMhGbokiPNCx.uzjofpNd,jcJiDGeGphO+JRMefTiRuGwtXNBHBF62,6,4q7sC\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://vnQvLObmADYmq.xcSlExswj6QGySPl5xp4Ivufb8oPv9d\",\n        \"featured_card_background_image_url_apple\": \"https://PE.mjgsCDAzCE70oLuJGl3fVrv0DwO0-kPInnGPMfxYToIgNfB5y6zYmgLQ,yalxzBwr5E\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 1630,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 2132,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 4273,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://ccQikJKBGjCeIetnOpEJpsaBbp.gtlbj5gckYaG-tCNjiG34ZfsOLL.3+8LBbX+uNiGE2a1kILnnLO4wGF\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 3684,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://fBjVnopjUyHmNM.zazwBCm6Z2PGLH59J0L+XRpNoK+ghgW4CY9P2vxiZ.V6PvFsFv3y+U+0+E5NWv\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5384,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 8335,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 11,\n        \"bonus_percent\": 8918,\n        \"is_custom\": false,\n        \"modified_at\": 5795.30828083247,\n        \"archived_at\": 9595.26434625177,\n        \"price_minor_unit\": 857,\n        \"price_decimal\": 1685.430256522965,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 3952,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      }\n    ],\n    \"redeemed_at\": 3434,\n    \"order_item_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6549b4a-9899-45d9-9847-f8ebdefa3bf4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    "user",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a955e987-3b0c-442c-9847-f340ce5276e2",
+          "name": "Get Coupons",
+          "request": {
+            "name": "Get Coupons",
+            "description": {
+              "content": "Returns a list of coupons.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "category_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "generated_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1dd66e9-e0ea-4629-b9c1-73052e1b2bf1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "bonus"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "generated_type",
+                      "value": "receipt"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"discount_reward_point\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 7038\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 1224\n        }\n      ]\n    },\n    \"discount_percent\": 67,\n    \"bonus_percent\": 145,\n    \"bonus_fixed\": 229,\n    \"discount_amount_usd\": 3692,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"list\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"operator\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 6737,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 3155,\n    \"max_redemptions\": 9338,\n    \"max_redemptions_per_user\": 2947,\n    \"is_stackable_with_bonus_coupons\": false,\n    \"stackable_bonus_limit_percent\": 1837,\n    \"is_stackable_with_discount_coupons\": true,\n    \"stackable_discount_limit_percent\": 4160,\n    \"store_item_discount_limit_percent\": 80,\n    \"store_item_bonus_limit_percent\": 541,\n    \"start_at\": 7078,\n    \"end_at\": 3609,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 75,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 1377,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"INR\",\n        \"sku\": \"string\",\n        \"type\": \"bundle\",\n        \"is_stackable\": false,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 8044.631435104687,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 1636,\n        \"price_point\": 210264,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 5044,\n        \"image_url\": \"http://XMFLETnUFKseFhvJvtmpeYFcrcQYVGOz.rtadDVZ-mu,dMmLmtcGP.xYPZFHGnObZYZ9\",\n        \"image_url_apple\": \"https://VGZUJGkMQgCcfIi.okrbYht0w\",\n        \"icon_url\": \"http://NVkegRB.keduKl3qk,aszkxbR1aPWLzlzyd0uYo07Vv1gx.O3Sl9neifFjgUpBrpUJNHy7vuUuzHzTwE\",\n        \"icon_url_apple\": \"http://XAgvVGdSxheNYqPffyQlCskIaLxG.cbgfct-IUFJ2Znd0.ngF6MvtHpKhCw,xFgUEUYWnui9jIeX,-a,b7Qw1nIMq8omSYWYe9IS3n7NdK\",\n        \"image_url_featured\": \"https://KoIKiAHGCCWEA.oxgep+FaMOIV35jJ0jf7ZJZy15LJi0N9lIdR\",\n        \"image_url_featured_apple\": \"https://zc.vxeyJh4owyO1ZpM5LhDWtjZ+kJN3-cof6JDTD3epmh0HPJyEdP-9zbH4\",\n        \"background_image_url\": \"https://DLhPkqBVkIFZwwDxIziYSnl.cvrfstbB9vWnLD4ke1ROykBXIIxLNk5iUdlFwMdaVGB,BwulJdTtCCEM\",\n        \"background_image_url_apple\": \"https://IYThs.ywEdRquQaSW\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://qQxZJnQyJczfklFOxfSnVFia.vgixYPS6wXrBK4\",\n        \"featured_card_background_image_url_apple\": \"http://eXZZSBUbwqxhMxjfGwishGbIjQjIw.xzs3,LOnckP8gl.q0MNuSyOiEOkZ.PF0fV+MlGYg,pOF\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 8174,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 5972,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 1344,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://IhtUkIZpDMuUpLMolTGiGcwG.hfihJXqyOjLXbK-B6Fz6bXlAcC75gd3,vYO88aQJdfYR93mcTqRmD5W53sBXn5rnGHTLzXs\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 322,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://CPoCqg.nsjtyajLc+vERX167ubDLOX6hzW5MaBHsJtWcgDrf6Zy4V-a8Ug6Iq,HCm.AfR8LW\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5144,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 5201,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 40,\n        \"bonus_percent\": 2206,\n        \"is_custom\": false,\n        \"modified_at\": 5646.510985115003,\n        \"archived_at\": 6319.990271197955,\n        \"price_minor_unit\": 5918,\n        \"price_decimal\": 4675.004002506228,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 7710,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": false\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"SZL\",\n        \"sku\": \"string\",\n        \"type\": \"bundle\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 7701.7712909455895,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 9457,\n        \"price_point\": 1093984,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 2436,\n        \"image_url\": \"http://RfYIcRsKaMJBJQAPdxVYwqpR.nvwnNk8Yvz\",\n        \"image_url_apple\": \"https://XKjgIEMjxHGcz.ogwObhJ8NJfeJtDm3RvVs.J6YM1GPILGWh58l81+imHuj-GKVEV,PDjkoFeRpHBHKD\",\n        \"icon_url\": \"http://MwgPOxvLaSJflLtJGQtwPQXvqaSAmc.rtgvx\",\n        \"icon_url_apple\": \"http://AaxlmZ.hexenx4zPphk\",\n        \"image_url_featured\": \"http://LOIsRbqdBEpupTSqdPnc.yycItHyrnWITGx7X93-gSu-nNpGcoMVQjjrRgywY\",\n        \"image_url_featured_apple\": \"http://DGsfPGuXfKMpNukfMvKHAfgUcnRKdZIz.jtwBlo0I1Gp4jOztvxKgN7ob+.+28eu2VUqP2PPABLSf\",\n        \"background_image_url\": \"http://nutbUApeCbknGqObPydRbZwmSlPPc.ygzxejLNH0G5m.ZibundcHedn\",\n        \"background_image_url_apple\": \"https://AZNtKBpLZTIYvEiBgnXdRNZpzW.yxgKQk,OI79umVzlD3sCHaeS,A\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://WkBfWQbmCAZDZaOwPpAQxEqLzGMEjBUgv.jaubsAW.DRu\",\n        \"featured_card_background_image_url_apple\": \"https://gsdNFDwmeXliINO.whlHr65VSYAbQXoWIzQN4f0Uw+qfjn6NqviKTkbaIhwHAATcF,p9qT2X-sOKZ+J+G4zBMIC61nKIjd+t\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 9023,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 1597,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 5090,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://iDEFbm.opBl7RYflCprGd7X1uLi\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 5431,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://CSlIIXtnPCZvIIwmUqWNoHL.owokpHEdknP5Y,jtu4lJNQS6Q3PPe\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 6764,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 4832,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 75,\n        \"bonus_percent\": 3280,\n        \"is_custom\": false,\n        \"modified_at\": 8315.904476794527,\n        \"archived_at\": 6532.095484088456,\n        \"price_minor_unit\": 7274,\n        \"price_decimal\": 2147.558866345658,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 566,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"discount_fixed\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 7216\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 3641\n        }\n      ]\n    },\n    \"discount_percent\": 96,\n    \"bonus_percent\": 465,\n    \"bonus_fixed\": 3906,\n    \"discount_amount_usd\": 1093,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"number\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_event_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 1882,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 9171,\n    \"max_redemptions\": 8473,\n    \"max_redemptions_per_user\": 5919,\n    \"is_stackable_with_bonus_coupons\": false,\n    \"stackable_bonus_limit_percent\": 4646,\n    \"is_stackable_with_discount_coupons\": true,\n    \"stackable_discount_limit_percent\": 1400,\n    \"store_item_discount_limit_percent\": 82,\n    \"store_item_bonus_limit_percent\": 233,\n    \"start_at\": 2472,\n    \"end_at\": 2373,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 50,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 8884,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"MUR\",\n        \"sku\": \"string\",\n        \"type\": \"currency\",\n        \"is_stackable\": false,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 6161.367491319432,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 6149,\n        \"price_point\": 4287512,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 3440,\n        \"image_url\": \"http://YbSGjNsXOPZxMe.sgcHMrP9dOtrDhK49BAmFqHTe6,3PoOOqlZ5VVvVkPOw2sloCiZmqovodiOa\",\n        \"image_url_apple\": \"https://fRKYRFgeIzhEFuirwdUpdIsCycJqUmTyn.dhwpYwPQj3Pz0wn2aHrTBNCKbcNaZaVHlnk+E,9fXJ-tt\",\n        \"icon_url\": \"https://dgvCu.gas-cM6wSmq.ep.2IpY6F+zsQ\",\n        \"icon_url_apple\": \"http://kKijFcrURBAgWzauL.orX.ZW2kSbNRrwdCDP-psWac,ouzRomAo6NsanOrgA4IlNZPmG5Chp0\",\n        \"image_url_featured\": \"http://XQWVTSQZsxtqc.amczH-KsF5Dg5clhdZmYqWxLirdVl5XpAJRfGFv\",\n        \"image_url_featured_apple\": \"http://dcJBdoYzCnzNepSUiDQEBPsqqZgU.ibati\",\n        \"background_image_url\": \"https://VQNYAIyYnRYfI.htcaiFJRuX6499HTnajw5eTWaiEowWEgziePCJjyyGiG-oy40eUwCPqGFn0x8\",\n        \"background_image_url_apple\": \"https://FKqOPLfNXcJZriRJbXKJGraFPIHKxDyzQ.zorzybro2s00yajkGs6snpAN3tay.dkD4DRSHRU\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://zJLvewJzYeaWFiofpEAeDE.hqrnFFZ.fdFRYM76dIdZsM57vG1a+FK7FV8+K-mYV-W03ujKYdbd\",\n        \"featured_card_background_image_url_apple\": \"https://CGmECgsTAXhhCrQtzwUfuKbvMpPIgCE.owq0D+us4jRcvTie10qucnZiYb.YjW-dcXLNCWViCQocrk7Ic3T5wug,OZ+SfHabOQ\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 1391,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 7884,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 6141,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://o.zypWsEve37Os9MAXeXrn8HoO0qwT.OGEEwi4N72bCHiR+\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 3936,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://O.rvqfIAcC3xxanmZyW0v8il49h.MsMc3B1N2O9rU.IbsN0YBKQzGn3if2.hgPgQqRJn\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 2771,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 9804,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 31,\n        \"bonus_percent\": 5907,\n        \"is_custom\": false,\n        \"modified_at\": 9412.828209217618,\n        \"archived_at\": 3059.4822817527565,\n        \"price_minor_unit\": 8748,\n        \"price_decimal\": 529.4837441148459,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 2545,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"STN\",\n        \"sku\": \"string\",\n        \"type\": \"item\",\n        \"is_stackable\": false,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 1933.6108472291812,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 4172,\n        \"price_point\": 2213677,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 4057,\n        \"image_url\": \"https://vDLFwTNzZfBJcVID.njuiUeYCL1,zlljPVeCwFLj5egdapS-rP-9vL5UuuUirI\",\n        \"image_url_apple\": \"http://xh.adsje7ayu5WM4YywwxjZMHMwrJM9KoNjSEcImtIyzw36M-V4WFL6rLmhDo0Rb\",\n        \"icon_url\": \"https://Cc.msjoXt4oQKZmcK4Ap6CXiE6dsmKf\",\n        \"icon_url_apple\": \"https://JlHgIdBbYYihPplEjpzHPvtG.lexY8VBpGglgxaSPpPuRnbLJQaj3J4GRCqm\",\n        \"image_url_featured\": \"https://JgzEwzdAfXiCNKoZQaPpgcnZ.bshmA899MmYjMBiUi3tyhKUSt9+jD\",\n        \"image_url_featured_apple\": \"http://FLfdLARBdTXlKpY.iplxo1RLAItd2PppLZAOUQff\",\n        \"background_image_url\": \"http://BdFU.sxvR6nxCJuPCrlJ4..cLsqdX1HJ5.GjaFW,2W.\",\n        \"background_image_url_apple\": \"http://WrNVpPLPaZOWqNmC.gtpZcVLBXPYM8TgAO4iiq10Hth6QZZj,sxberYa7F.ORjtHHvGUcV3cKOPjoaKRJk0j4ltid+\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://JSDrUbasXLprANvoKpFC.jeHCWeyQS-EoSifU5,,hc3gSAU7\",\n        \"featured_card_background_image_url_apple\": \"https://UgJSUVjPltpj.afygyRcCJHneL6VPmZOsDIwI+A\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 3226,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 2456,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 1331,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://YzrizMiAOgoTsUnk.wzls,KNSO-mycwJeS2O7E5vK-kG+gAdEjxOovCtzJ-lp\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 501,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://wLjAaLL.ojlrVV2yyXN2nVwIBFnSo9IhPyDkbtU.jwJH3W5BUCsAI-AkHt+WstREwSdCSDuhA\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 6309,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 6430,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 84,\n        \"bonus_percent\": 7918,\n        \"is_custom\": false,\n        \"modified_at\": 8023.859278057704,\n        \"archived_at\": 8295.974454108253,\n        \"price_minor_unit\": 7356,\n        \"price_decimal\": 1701.8141140048083,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 2390,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9d4f092-68dd-4f2d-8596-e98ef1235e8f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "bonus"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "generated_type",
+                      "value": "receipt"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "773da2f5-b890-4e59-ba07-4cb3badeaa97",
+          "name": "Create Coupon",
+          "request": {
+            "name": "Create Coupon",
+            "description": {
+              "content": "Creates a new coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      },\n      {\n        \"item_id\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"<string>\",\n    \"reward\": \"<integer>\",\n    \"verbal_terms\": \"<string>\",\n    \"message\": \"<string>\",\n    \"inherits_from_tier\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7ce1dfb-0440-4f08-bf88-50af89c96241",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"discount\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 7185\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 6664\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"string\",\n    \"reward\": 75,\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"inherits_from_tier\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"type\": \"discount_reward_point\",\n  \"id\": \"string\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 8276\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 6486\n      }\n    ]\n  },\n  \"discount_percent\": 99,\n  \"bonus_percent\": 426,\n  \"bonus_fixed\": 174,\n  \"discount_amount_usd\": 9257,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": 5786,\n  \"applicable_item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_id\": \"string\",\n  \"min_amount\": 7318,\n  \"max_redemptions\": 1004,\n  \"max_redemptions_per_user\": 2979,\n  \"is_stackable_with_bonus_coupons\": true,\n  \"stackable_bonus_limit_percent\": 5522,\n  \"is_stackable_with_discount_coupons\": false,\n  \"stackable_discount_limit_percent\": 1313,\n  \"store_item_discount_limit_percent\": 50,\n  \"store_item_bonus_limit_percent\": 87,\n  \"start_at\": 8394,\n  \"end_at\": 6064,\n  \"player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"string\",\n    \"reward\": 8,\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"inherits_from_tier\": false\n  },\n  \"current_balance_usd\": 8176,\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"currency\": \"EGP\",\n      \"sku\": \"string\",\n      \"type\": \"lootbox\",\n      \"is_stackable\": false,\n      \"is_currency\": false,\n      \"id\": \"string\",\n      \"created_at\": 4075.1138492900172,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 9795,\n      \"price_point\": 476396,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 1359,\n      \"image_url\": \"http://maeuCWyHqcEXhSRlWfnAiFq.sgemkpjYxN-81XTt40UG,vOPawGCq7\",\n      \"image_url_apple\": \"https://N.exkrgTLhPioxVUzSAE.3X32n,vs1N2Z.j1wsXvwNv.rw4q-ysKzXE1+cahvyTnhWraSBo9CdY\",\n      \"icon_url\": \"https://pyHBDzDdPcnCtgTRGfTWYFDt.ruqnGDt.RXwHSFro.BZP.LnARJInjunDwu1px-E5gObgbVEong5mRrAf\",\n      \"icon_url_apple\": \"http://jzrUauGYuwvyQosHcZAXBAVL.wldJKHsC4gr5BvlNWq9ipkF8+vyhYLrGT8IPw9kiPLUh\",\n      \"image_url_featured\": \"http://dJvEvSDmajWtkJImVEHEHzz.ehRtaD4hq9K7B+F0UdzmvP-\",\n      \"image_url_featured_apple\": \"https://eUzvnJnYU.hujqG4Q-MzUOkh9PNfCuoybMZ7vuwM41UKO\",\n      \"background_image_url\": \"http://xoLuv.enV+yGS1Frk,uN9fD9jAcyUFgqe-7eFbss19Glo\",\n      \"background_image_url_apple\": \"https://TDEaxYISQaXyMS.weprMgYDoYV9XaHb4cCmXg3seDzcL63Mtw2ampALAULgqihLRZbGLHCux0ORWS\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"https://omYd.kohWkU3ILDjf4Q,z76OEMsHMSAg2Q6,TFex9wBAW.N\",\n      \"featured_card_background_image_url_apple\": \"https://vVCBHk.dlnlbPvKkFZC4sLAQMOFpSOMNq2OJAlWHN2E15PBz5\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 7047,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 6013,\n      \"enable_reward_points_redemption\": false,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1746,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"http://KkwYgfyEmDPBsUIJwhKumsZG.pvH5pZ4b5FXM,mT8yrlpKZk+TCdpDh7KBy1jPWJ9PrAKORCYa+dDrP\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 1641,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"http://WiJruTgMbPzwDQdej.xoY.Zy6oGtKPKo2zCselXan-D7xh,J-uhlxibbxvTb-bLpkjVyF,SQ4GA++RHrl.2B5E\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6575,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 7350,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 51,\n      \"bonus_percent\": 5915,\n      \"is_custom\": false,\n      \"modified_at\": 5129.808184620998,\n      \"archived_at\": 790.265083504702,\n      \"price_minor_unit\": 5255,\n      \"price_decimal\": 4135.197222716996,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 4032,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": true\n    },\n    {\n      \"name\": \"string\",\n      \"currency\": \"ZMW\",\n      \"sku\": \"string\",\n      \"type\": \"virtual_currency\",\n      \"is_stackable\": true,\n      \"is_currency\": true,\n      \"id\": \"string\",\n      \"created_at\": 6454.9306306042,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 5534,\n      \"price_point\": 4240550,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 354,\n      \"image_url\": \"https://nGRNzSfUSsbMbCPYrFgPbnJZlUr.wihQ.TbR6KTmT4T,W-DWIKaKDrgUQirAfdHzixGxXd\",\n      \"image_url_apple\": \"http://hTtWrNrZQwtLecJVjWFSkR.cyDTmgzt2Tx8bn-AnkpY5UTZwgODIT22AKRaTsUbLdDy\",\n      \"icon_url\": \"http://cbPrYemYI.sgmOxSDmXY09OEYNxJmdxmMgrGx1q3ZrIVYiPfD65F.2hggrVr+WybjzRf5VAMcVjfiNybZ\",\n      \"icon_url_apple\": \"https://VxLxlCwDEtzCkCdsgvGIhCoBUfreTmqwh.oxkBd2Mwd.D47ooyN5.V-v80oKgbMf.SclxdlmRfDuhU-Ta+nmbWUMNxo3RAu0xmcddymTwCcTKo\",\n      \"image_url_featured\": \"https://irVkYjlsBAhwmNrOmFRZ.hmfdX05\",\n      \"image_url_featured_apple\": \"https://nVPwZsQE.ooky,3jqFKKTTMUh,\",\n      \"background_image_url\": \"https://gPCj.wloygp9MdNy.mtDj3QHpU,aakUEKf3ejx\",\n      \"background_image_url_apple\": \"https://fcqGco.iqQcdCH,5FlNcaNEcNjsVyvuxep3++9R-4hziFEfg\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"http://YDHr.pfcjYeE.qgCDK\",\n      \"featured_card_background_image_url_apple\": \"https://ZmroYQBhJNMeTMSWvphiGxaLFvCLaSdr.ezzlF\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 1280,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 570,\n      \"enable_reward_points_redemption\": true,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1136,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"https://xpZbdWqmwiDkixIdQCRacUQn.kagt+askpvtJp\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 3881,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"https://UvNocoDlekPqLxXgwcjRrkUL.cfDkT1spu1Pvv,X4C,BynJzrJAE,9DMfgYR8ClwavUpzwOUFTzd-yBTqcqyKN3VTwM\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6127,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 1790,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 27,\n      \"bonus_percent\": 1107,\n      \"is_custom\": false,\n      \"modified_at\": 3784.605970341662,\n      \"archived_at\": 808.9252720062645,\n      \"price_minor_unit\": 7657,\n      \"price_decimal\": 3061.763309413278,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 8926,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c66efe11-8336-4b32-a8a0-4494ba700f89",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"type\": \"discount\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 7185\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 6664\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"virtual_currency\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"string\",\n    \"reward\": 75,\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"inherits_from_tier\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20ffd2e7-a566-4f33-832e-ac833bcf9f7d",
+          "name": "Bulk Update Coupon",
+          "request": {
+            "name": "Bulk Update Coupon",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "coupons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"category_id\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"category_id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d36ef68-4485-434c-943a-50ee450d2fe2",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"category_id\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"category_id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"vc\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 6631\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 9406\n        }\n      ]\n    },\n    \"discount_percent\": 59,\n    \"bonus_percent\": 696,\n    \"bonus_fixed\": 5014,\n    \"discount_amount_usd\": 24,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"custom_attribute\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_event_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 5970,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 8764,\n    \"max_redemptions\": 602,\n    \"max_redemptions_per_user\": 7256,\n    \"is_stackable_with_bonus_coupons\": false,\n    \"stackable_bonus_limit_percent\": 9379,\n    \"is_stackable_with_discount_coupons\": true,\n    \"stackable_discount_limit_percent\": 8821,\n    \"store_item_discount_limit_percent\": 79,\n    \"store_item_bonus_limit_percent\": 629,\n    \"start_at\": 4023,\n    \"end_at\": 1143,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 33,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 2821,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"CVE\",\n        \"sku\": \"string\",\n        \"type\": \"subscription\",\n        \"is_stackable\": false,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 20.846566022038047,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 7553,\n        \"price_point\": 3204309,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 7924,\n        \"image_url\": \"http://lOxpc.hwivXIEazoJT+kEY0hdOlk6d-vzLvIPguj\",\n        \"image_url_apple\": \"https://SeoIDCttWwKhygpAUmxSeLZuaRxgx.wzyvRdx7NhSPfzmsS63,otfKEi0SXHoKsHM3\",\n        \"icon_url\": \"https://zJuust.bltpyfE4E-HPl52Lp0o8a+0Z85M23\",\n        \"icon_url_apple\": \"https://HfGdMyRqO.zatn+3cw9axo4mLlLNfunimzaNSiVgq-3yGDth\",\n        \"image_url_featured\": \"http://TzbKzRNcvgANqSzakKvhKadmiqXz.vimEoNQ2iBd99kcOer0HJ\",\n        \"image_url_featured_apple\": \"http://fcYxKfEQxJFMok.dxfD9l0CRisMMVUgQp\",\n        \"background_image_url\": \"https://UCEqkpyapi.jshrllC16pwXJx-NHL0WBhdovLcEo5L\",\n        \"background_image_url_apple\": \"http://dEqg.kedu2P4MVUnicKYr.eF+IL0XfWmDOItR7bYut.1AETbhx0S1HBGU,\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://lFtXYAZzuXbdjKbFEKtZvUiRaVdw.yyqnHOZu7Nk1jbx1SIPWUFYXIeWRAiBhox+LnksIXxoIPnfB+RAes\",\n        \"featured_card_background_image_url_apple\": \"http://KqqXRlIuYbGTWnnfHiYyYIQfSeDo.zqruAPR6BvaySJgOfDvzR1MLhx7KSjPkGnDQX+bb2HRAws2lyEG9\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 7933,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 8345,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 2735,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://jBgBXtMAdesUJSR.uril-\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 2418,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://ApXDhEXsXoedfA.qludIGE-yf0Vl6hCmTQStxdy7q7jku9FjUdCF\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 6935,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 1896,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 82,\n        \"bonus_percent\": 4890,\n        \"is_custom\": false,\n        \"modified_at\": 5365.508620742361,\n        \"archived_at\": 4821.2779312508665,\n        \"price_minor_unit\": 2143,\n        \"price_decimal\": 5672.725474014356,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 5913,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": false\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"MWK\",\n        \"sku\": \"string\",\n        \"type\": \"lootbox\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 2688.4302083440834,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 4642,\n        \"price_point\": 1193731,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 9040,\n        \"image_url\": \"https://JhUSrMCaJFCJ.tbbCJ-zXb0EDlnjBeJiPxUYK12Hn8lS0RbzzgtBW,A0B\",\n        \"image_url_apple\": \"https://xfFEARoLgHUxL.wocjwM0TyZlkgxYePANzYIATJITDa5RPF\",\n        \"icon_url\": \"https://OzNJAvODxVzLsZQPMAyivvaX.ywf3TNMMiP2HvPVAoHAtLMv\",\n        \"icon_url_apple\": \"https://ctPGsVvQAIitWurkHLyfFdr.uaji3nXM6JXHb7g.TmF6VyBMfmwW9cQT7nWBUoGmSwDHanNWEVtbIsG-LpxP\",\n        \"image_url_featured\": \"https://HNDHWNLwN.uqskGwv.8L.N,8PBhEQxzbWpRLWmkOTh5p\",\n        \"image_url_featured_apple\": \"https://BBgAGFgEjzvhjsfQTtsrXCvEqHRbijW.kswLnp\",\n        \"background_image_url\": \"https://XxSbVFTpgNLRSmJNEbSZ.qmztfyrq5qorlx6taXeZX6E6\",\n        \"background_image_url_apple\": \"https://gCVbvUWfPO.muHoX4B1t-nKPNe0iRUVlZXBRoUYsSDbqB7duDYDNsAlpkN7vawjRamZe+,fm1VL7emS9eG0R,7\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://nllSizbDnsTx.fwcVFOkW5EUl4hmjysmxNKj-FsX,xKy3le\",\n        \"featured_card_background_image_url_apple\": \"https://JsNhTnVOvbuxTCemKwz.njhaFmdzLsde+u.E,T2rYJbPENHH4SiuDDQvTP\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 2670,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 3465,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 9243,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://QCOumETVS.mokxfli1\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 6019,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://roDChCXrTBvLJmxfFl.btxQoK8BFh\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5563,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 8677,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 69,\n        \"bonus_percent\": 5521,\n        \"is_custom\": false,\n        \"modified_at\": 7277.12892431598,\n        \"archived_at\": 9720.10424123145,\n        \"price_minor_unit\": 9257,\n        \"price_decimal\": 7585.780131459208,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 4013,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": false\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"code\": \"string\",\n    \"type\": \"non_benefit\",\n    \"id\": \"string\",\n    \"free_items\": {\n      \"items\": [\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 7574\n        },\n        {\n          \"item_id\": \"string\",\n          \"quantity\": 4323\n        }\n      ]\n    },\n    \"discount_percent\": 23,\n    \"bonus_percent\": 401,\n    \"bonus_fixed\": 2792,\n    \"discount_amount_usd\": 3479,\n    \"requirements_expression\": {\n      \"tokens\": [\n        {\n          \"type\": \"date\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"custom_event_attribute\",\n          \"value\": {}\n        }\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"expires_at\": 9875,\n    \"applicable_item_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"category_id\": \"string\",\n    \"min_amount\": 5506,\n    \"max_redemptions\": 6416,\n    \"max_redemptions_per_user\": 9284,\n    \"is_stackable_with_bonus_coupons\": true,\n    \"stackable_bonus_limit_percent\": 5367,\n    \"is_stackable_with_discount_coupons\": false,\n    \"stackable_discount_limit_percent\": 1928,\n    \"store_item_discount_limit_percent\": 7,\n    \"store_item_bonus_limit_percent\": 717,\n    \"start_at\": 2690,\n    \"end_at\": 7332,\n    \"player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"exclude_player_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"creator_program\": {\n      \"creator_id\": \"string\",\n      \"reward\": 98,\n      \"verbal_terms\": \"string\",\n      \"message\": \"string\",\n      \"inherits_from_tier\": false\n    },\n    \"current_balance_usd\": 2251,\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"MKD\",\n        \"sku\": \"string\",\n        \"type\": \"bundle\",\n        \"is_stackable\": true,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 7217.946575972744,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 6526,\n        \"price_point\": 2831124,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 7154,\n        \"image_url\": \"http://Gs.tmjXukwfUHcGN\",\n        \"image_url_apple\": \"http://XksfWHwfE.dvclSXl0rmAbECHDopbZr,rFQqxN41AlQRe8Yx9Uxg\",\n        \"icon_url\": \"http://GLesdyLOOfGYmdUCFHdVUBkKfx.pwNw7D9+\",\n        \"icon_url_apple\": \"https://SPKEESNgwHSQYNknTZGVcTusTsF.awwaPQ4xgpPVCYyHzJF7CQMMu2u,BuW1CWEm6cn6utf1\",\n        \"image_url_featured\": \"https://ARZffxNZJx.fwIUopFqm2J-hz2wIW+qnrBY8MFfCBzPjQNM3Mepz-AzSEgPA5Resyf9z3oUKbK9Ceq7\",\n        \"image_url_featured_apple\": \"https://osHpn.jkithXmlQFeiGTxzCifCj0uxAKMAF8cGe3v-MUyy--jhIV\",\n        \"background_image_url\": \"http://xdGNhaRloazwcEVShgVYovhnWsErErT.qlmrhyyInJXw33R1lEG\",\n        \"background_image_url_apple\": \"https://BzSMienhYCX.izmyhsIuj+5uUVslD\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://ApRqZmeDSsoQrykTUxLNPKQnPedjKwAwF.ttph1fhuBHKPsrTAmNGx8c+TxCipAL8GQFJrZcF0Mn,CGPWu-ku0EpkosdoykoaRp9893lLra8f0lAzn53pMesAydv0mm7AZ5lm\",\n        \"featured_card_background_image_url_apple\": \"https://otcGTMwbhztQXgkWniolIdP.gptgzhIsZl97P7zMeZA89JDEtUMwO6Vpaj0tV5OPI-ipYn\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 8122,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 9676,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 3694,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://SvZvipMtj.rfYdPHNvq\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 7639,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://oPEDLHAOxBlmeFvsiBcPXIZNSZMR.fnmO3R60EInrRnlJW1rHlMg+aRMLJOVZmIe\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 1279,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 4535,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 57,\n        \"bonus_percent\": 6794,\n        \"is_custom\": false,\n        \"modified_at\": 4098.559126955407,\n        \"archived_at\": 850.7501425228048,\n        \"price_minor_unit\": 401,\n        \"price_decimal\": 4633.161550962996,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 9204,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": false\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"OMR\",\n        \"sku\": \"string\",\n        \"type\": \"lootbox\",\n        \"is_stackable\": false,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 6466.288519418236,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 7773,\n        \"price_point\": 2873708,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 6228,\n        \"image_url\": \"http://IOKyrnEloTWthgXIfQcwIUEWSsW.udjiMTzczI,0KzuKhnZ,TAg7nsqBYcWaHZzCPibH5e\",\n        \"image_url_apple\": \"https://YzvglvPBQG.rybH9u,JVCbFZYbmbExf,e\",\n        \"icon_url\": \"https://k.zbnk2hddjQfumFiouBfyjeLjjJBkXqbRZu6\",\n        \"icon_url_apple\": \"https://tTCFwwyJygKTRppDXUqydZE.ehdu-gTzCyzbRoHk5z.w\",\n        \"image_url_featured\": \"http://NhlXtVhMmFHLEeuRdeaGrAXZlQTBv.aiEgrHBXlz1V1MJe3aAxckp6Ei0\",\n        \"image_url_featured_apple\": \"https://kqBqXKbhVeQUowS.qyu6-gKHyej24MS0XSwyJWoINh6xcTTuS,,xIVaB5WyAtkefN1qWS\",\n        \"background_image_url\": \"https://mhkidVHsEWYF.cyK0M+-1lv5POzEXh5tG1mD7LP+z7NFB92N5-0D8fusj+qZjFzTE3bOvlBBu453GELERFn8RIjRBp1ySv\",\n        \"background_image_url_apple\": \"http://BCawXicpYgOcuFsOqFQJAfGkZCGLw.cfuxHXpbeYA9XnRXoLdho64rLShJgGP\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://JlPShvcbuc.vsnfBnu\",\n        \"featured_card_background_image_url_apple\": \"https://D.vjzlNU3KcBPlhqmaMYEjKOu0aqDfCUxJFJzupdj-n,QC4MdVZfZA4bnQ3Lc38jGIH.8LiH\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 1264,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 2326,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 8867,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"https://koEbcuHOixZbtyrHGKzl.lud.lJmcfa,h7f0dHc+e\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 1350,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"http://fchQlWteavzNWTRuIdEwJ.pffr1tMmEBvat7h.x+wNE\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5709,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 1691,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 74,\n        \"bonus_percent\": 1241,\n        \"is_custom\": false,\n        \"modified_at\": 3004.589425807259,\n        \"archived_at\": 7104.729912737173,\n        \"price_minor_unit\": 4885,\n        \"price_decimal\": 8606.954408061009,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 9411,\n        \"meta\": {},\n        \"model_type\": \"ItemRead\",\n        \"nested_items_read\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n          }\n        ],\n        \"fallback_item\": {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        \"comment\": \"string\",\n        \"is_system\": true\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ce5d278-f2b4-491c-a262-ded47b666ac9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"category_id\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"category_id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a464242-c764-4540-b9d5-5ae9a464e421",
+          "name": "Get Coupon",
+          "request": {
+            "name": "Get Coupon",
+            "description": {
+              "content": "Returns a single coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "coupons",
+                ":coupon_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coupon_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a119d67-bb40-476f-b7df-610f324915f8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"type\": \"discount_reward_point\",\n  \"id\": \"string\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 8276\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 6486\n      }\n    ]\n  },\n  \"discount_percent\": 99,\n  \"bonus_percent\": 426,\n  \"bonus_fixed\": 174,\n  \"discount_amount_usd\": 9257,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": 5786,\n  \"applicable_item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_id\": \"string\",\n  \"min_amount\": 7318,\n  \"max_redemptions\": 1004,\n  \"max_redemptions_per_user\": 2979,\n  \"is_stackable_with_bonus_coupons\": true,\n  \"stackable_bonus_limit_percent\": 5522,\n  \"is_stackable_with_discount_coupons\": false,\n  \"stackable_discount_limit_percent\": 1313,\n  \"store_item_discount_limit_percent\": 50,\n  \"store_item_bonus_limit_percent\": 87,\n  \"start_at\": 8394,\n  \"end_at\": 6064,\n  \"player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"string\",\n    \"reward\": 8,\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"inherits_from_tier\": false\n  },\n  \"current_balance_usd\": 8176,\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"currency\": \"EGP\",\n      \"sku\": \"string\",\n      \"type\": \"lootbox\",\n      \"is_stackable\": false,\n      \"is_currency\": false,\n      \"id\": \"string\",\n      \"created_at\": 4075.1138492900172,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 9795,\n      \"price_point\": 476396,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 1359,\n      \"image_url\": \"http://maeuCWyHqcEXhSRlWfnAiFq.sgemkpjYxN-81XTt40UG,vOPawGCq7\",\n      \"image_url_apple\": \"https://N.exkrgTLhPioxVUzSAE.3X32n,vs1N2Z.j1wsXvwNv.rw4q-ysKzXE1+cahvyTnhWraSBo9CdY\",\n      \"icon_url\": \"https://pyHBDzDdPcnCtgTRGfTWYFDt.ruqnGDt.RXwHSFro.BZP.LnARJInjunDwu1px-E5gObgbVEong5mRrAf\",\n      \"icon_url_apple\": \"http://jzrUauGYuwvyQosHcZAXBAVL.wldJKHsC4gr5BvlNWq9ipkF8+vyhYLrGT8IPw9kiPLUh\",\n      \"image_url_featured\": \"http://dJvEvSDmajWtkJImVEHEHzz.ehRtaD4hq9K7B+F0UdzmvP-\",\n      \"image_url_featured_apple\": \"https://eUzvnJnYU.hujqG4Q-MzUOkh9PNfCuoybMZ7vuwM41UKO\",\n      \"background_image_url\": \"http://xoLuv.enV+yGS1Frk,uN9fD9jAcyUFgqe-7eFbss19Glo\",\n      \"background_image_url_apple\": \"https://TDEaxYISQaXyMS.weprMgYDoYV9XaHb4cCmXg3seDzcL63Mtw2ampALAULgqihLRZbGLHCux0ORWS\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"https://omYd.kohWkU3ILDjf4Q,z76OEMsHMSAg2Q6,TFex9wBAW.N\",\n      \"featured_card_background_image_url_apple\": \"https://vVCBHk.dlnlbPvKkFZC4sLAQMOFpSOMNq2OJAlWHN2E15PBz5\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 7047,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 6013,\n      \"enable_reward_points_redemption\": false,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1746,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"http://KkwYgfyEmDPBsUIJwhKumsZG.pvH5pZ4b5FXM,mT8yrlpKZk+TCdpDh7KBy1jPWJ9PrAKORCYa+dDrP\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 1641,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"http://WiJruTgMbPzwDQdej.xoY.Zy6oGtKPKo2zCselXan-D7xh,J-uhlxibbxvTb-bLpkjVyF,SQ4GA++RHrl.2B5E\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6575,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 7350,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 51,\n      \"bonus_percent\": 5915,\n      \"is_custom\": false,\n      \"modified_at\": 5129.808184620998,\n      \"archived_at\": 790.265083504702,\n      \"price_minor_unit\": 5255,\n      \"price_decimal\": 4135.197222716996,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 4032,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": true\n    },\n    {\n      \"name\": \"string\",\n      \"currency\": \"ZMW\",\n      \"sku\": \"string\",\n      \"type\": \"virtual_currency\",\n      \"is_stackable\": true,\n      \"is_currency\": true,\n      \"id\": \"string\",\n      \"created_at\": 6454.9306306042,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 5534,\n      \"price_point\": 4240550,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 354,\n      \"image_url\": \"https://nGRNzSfUSsbMbCPYrFgPbnJZlUr.wihQ.TbR6KTmT4T,W-DWIKaKDrgUQirAfdHzixGxXd\",\n      \"image_url_apple\": \"http://hTtWrNrZQwtLecJVjWFSkR.cyDTmgzt2Tx8bn-AnkpY5UTZwgODIT22AKRaTsUbLdDy\",\n      \"icon_url\": \"http://cbPrYemYI.sgmOxSDmXY09OEYNxJmdxmMgrGx1q3ZrIVYiPfD65F.2hggrVr+WybjzRf5VAMcVjfiNybZ\",\n      \"icon_url_apple\": \"https://VxLxlCwDEtzCkCdsgvGIhCoBUfreTmqwh.oxkBd2Mwd.D47ooyN5.V-v80oKgbMf.SclxdlmRfDuhU-Ta+nmbWUMNxo3RAu0xmcddymTwCcTKo\",\n      \"image_url_featured\": \"https://irVkYjlsBAhwmNrOmFRZ.hmfdX05\",\n      \"image_url_featured_apple\": \"https://nVPwZsQE.ooky,3jqFKKTTMUh,\",\n      \"background_image_url\": \"https://gPCj.wloygp9MdNy.mtDj3QHpU,aakUEKf3ejx\",\n      \"background_image_url_apple\": \"https://fcqGco.iqQcdCH,5FlNcaNEcNjsVyvuxep3++9R-4hziFEfg\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"http://YDHr.pfcjYeE.qgCDK\",\n      \"featured_card_background_image_url_apple\": \"https://ZmroYQBhJNMeTMSWvphiGxaLFvCLaSdr.ezzlF\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 1280,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 570,\n      \"enable_reward_points_redemption\": true,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1136,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"https://xpZbdWqmwiDkixIdQCRacUQn.kagt+askpvtJp\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 3881,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"https://UvNocoDlekPqLxXgwcjRrkUL.cfDkT1spu1Pvv,X4C,BynJzrJAE,9DMfgYR8ClwavUpzwOUFTzd-yBTqcqyKN3VTwM\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6127,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 1790,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 27,\n      \"bonus_percent\": 1107,\n      \"is_custom\": false,\n      \"modified_at\": 3784.605970341662,\n      \"archived_at\": 808.9252720062645,\n      \"price_minor_unit\": 7657,\n      \"price_decimal\": 3061.763309413278,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 8926,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "053d900e-4445-4bca-a7d6-8f92be735cf9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dcb3035-93ec-43cb-804d-1ff7c9e4f715",
+          "name": "Update Coupon",
+          "request": {
+            "name": "Update Coupon",
+            "description": {
+              "content": "Updates a coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "coupons",
+                ":coupon_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coupon_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      },\n      {\n        \"item_id\": \"<string>\",\n        \"quantity\": \"<integer>\"\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"creator_program\": {\n    \"verbal_terms\": \"<string>\",\n    \"message\": \"<string>\",\n    \"reward\": \"<integer>\",\n    \"inherits_from_tier\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bad4e03-91b6-4862-a996-0dff2d147495",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 3130\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 1870\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"operator\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"creator_program\": {\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"reward\": 94,\n    \"inherits_from_tier\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"code\": \"string\",\n  \"type\": \"discount_reward_point\",\n  \"id\": \"string\",\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 8276\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 6486\n      }\n    ]\n  },\n  \"discount_percent\": 99,\n  \"bonus_percent\": 426,\n  \"bonus_fixed\": 174,\n  \"discount_amount_usd\": 9257,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": 5786,\n  \"applicable_item_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"category_id\": \"string\",\n  \"min_amount\": 7318,\n  \"max_redemptions\": 1004,\n  \"max_redemptions_per_user\": 2979,\n  \"is_stackable_with_bonus_coupons\": true,\n  \"stackable_bonus_limit_percent\": 5522,\n  \"is_stackable_with_discount_coupons\": false,\n  \"stackable_discount_limit_percent\": 1313,\n  \"store_item_discount_limit_percent\": 50,\n  \"store_item_bonus_limit_percent\": 87,\n  \"start_at\": 8394,\n  \"end_at\": 6064,\n  \"player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exclude_player_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"creator_program\": {\n    \"creator_id\": \"string\",\n    \"reward\": 8,\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"inherits_from_tier\": false\n  },\n  \"current_balance_usd\": 8176,\n  \"items\": [\n    {\n      \"name\": \"string\",\n      \"currency\": \"EGP\",\n      \"sku\": \"string\",\n      \"type\": \"lootbox\",\n      \"is_stackable\": false,\n      \"is_currency\": false,\n      \"id\": \"string\",\n      \"created_at\": 4075.1138492900172,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 9795,\n      \"price_point\": 476396,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 1359,\n      \"image_url\": \"http://maeuCWyHqcEXhSRlWfnAiFq.sgemkpjYxN-81XTt40UG,vOPawGCq7\",\n      \"image_url_apple\": \"https://N.exkrgTLhPioxVUzSAE.3X32n,vs1N2Z.j1wsXvwNv.rw4q-ysKzXE1+cahvyTnhWraSBo9CdY\",\n      \"icon_url\": \"https://pyHBDzDdPcnCtgTRGfTWYFDt.ruqnGDt.RXwHSFro.BZP.LnARJInjunDwu1px-E5gObgbVEong5mRrAf\",\n      \"icon_url_apple\": \"http://jzrUauGYuwvyQosHcZAXBAVL.wldJKHsC4gr5BvlNWq9ipkF8+vyhYLrGT8IPw9kiPLUh\",\n      \"image_url_featured\": \"http://dJvEvSDmajWtkJImVEHEHzz.ehRtaD4hq9K7B+F0UdzmvP-\",\n      \"image_url_featured_apple\": \"https://eUzvnJnYU.hujqG4Q-MzUOkh9PNfCuoybMZ7vuwM41UKO\",\n      \"background_image_url\": \"http://xoLuv.enV+yGS1Frk,uN9fD9jAcyUFgqe-7eFbss19Glo\",\n      \"background_image_url_apple\": \"https://TDEaxYISQaXyMS.weprMgYDoYV9XaHb4cCmXg3seDzcL63Mtw2ampALAULgqihLRZbGLHCux0ORWS\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"https://omYd.kohWkU3ILDjf4Q,z76OEMsHMSAg2Q6,TFex9wBAW.N\",\n      \"featured_card_background_image_url_apple\": \"https://vVCBHk.dlnlbPvKkFZC4sLAQMOFpSOMNq2OJAlWHN2E15PBz5\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 7047,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 6013,\n      \"enable_reward_points_redemption\": false,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1746,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"http://KkwYgfyEmDPBsUIJwhKumsZG.pvH5pZ4b5FXM,mT8yrlpKZk+TCdpDh7KBy1jPWJ9PrAKORCYa+dDrP\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 1641,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"http://WiJruTgMbPzwDQdej.xoY.Zy6oGtKPKo2zCselXan-D7xh,J-uhlxibbxvTb-bLpkjVyF,SQ4GA++RHrl.2B5E\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6575,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 7350,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 51,\n      \"bonus_percent\": 5915,\n      \"is_custom\": false,\n      \"modified_at\": 5129.808184620998,\n      \"archived_at\": 790.265083504702,\n      \"price_minor_unit\": 5255,\n      \"price_decimal\": 4135.197222716996,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 4032,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": true\n    },\n    {\n      \"name\": \"string\",\n      \"currency\": \"ZMW\",\n      \"sku\": \"string\",\n      \"type\": \"virtual_currency\",\n      \"is_stackable\": true,\n      \"is_currency\": true,\n      \"id\": \"string\",\n      \"created_at\": 6454.9306306042,\n      \"description\": \"string\",\n      \"highlights\": {\n        \"items\": [\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"image_url\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\"\n          }\n        ],\n        \"title\": \"string\",\n        \"description\": \"string\"\n      },\n      \"price\": 5534,\n      \"price_point\": 4240550,\n      \"price_template_id\": \"string\",\n      \"reward_points_price\": 354,\n      \"image_url\": \"https://nGRNzSfUSsbMbCPYrFgPbnJZlUr.wihQ.TbR6KTmT4T,W-DWIKaKDrgUQirAfdHzixGxXd\",\n      \"image_url_apple\": \"http://hTtWrNrZQwtLecJVjWFSkR.cyDTmgzt2Tx8bn-AnkpY5UTZwgODIT22AKRaTsUbLdDy\",\n      \"icon_url\": \"http://cbPrYemYI.sgmOxSDmXY09OEYNxJmdxmMgrGx1q3ZrIVYiPfD65F.2hggrVr+WybjzRf5VAMcVjfiNybZ\",\n      \"icon_url_apple\": \"https://VxLxlCwDEtzCkCdsgvGIhCoBUfreTmqwh.oxkBd2Mwd.D47ooyN5.V-v80oKgbMf.SclxdlmRfDuhU-Ta+nmbWUMNxo3RAu0xmcddymTwCcTKo\",\n      \"image_url_featured\": \"https://irVkYjlsBAhwmNrOmFRZ.hmfdX05\",\n      \"image_url_featured_apple\": \"https://nVPwZsQE.ooky,3jqFKKTTMUh,\",\n      \"background_image_url\": \"https://gPCj.wloygp9MdNy.mtDj3QHpU,aakUEKf3ejx\",\n      \"background_image_url_apple\": \"https://fcqGco.iqQcdCH,5FlNcaNEcNjsVyvuxep3++9R-4hziFEfg\",\n      \"background_image_color\": \"string\",\n      \"featured_card_background_image_url\": \"http://YDHr.pfcjYeE.qgCDK\",\n      \"featured_card_background_image_url_apple\": \"https://ZmroYQBhJNMeTMSWvphiGxaLFvCLaSdr.ezzlF\",\n      \"view_option\": \"default\",\n      \"quantity\": 1,\n      \"position\": 1280,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"duration\": 570,\n      \"enable_reward_points_redemption\": true,\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"count\": 1136,\n          \"sku\": \"string\",\n          \"is_featured\": true,\n          \"meta\": {},\n          \"image_url\": \"https://xpZbdWqmwiDkixIdQCRacUQn.kagt+askpvtJp\",\n          \"view_type\": \"separated\"\n        },\n        {\n          \"id\": \"string\",\n          \"count\": 3881,\n          \"sku\": \"string\",\n          \"is_featured\": false,\n          \"meta\": {},\n          \"image_url\": \"https://UvNocoDlekPqLxXgwcjRrkUL.cfDkT1spu1Pvv,X4C,BynJzrJAE,9DMfgYR8ClwavUpzwOUFTzd-yBTqcqyKN3VTwM\",\n          \"view_type\": \"separated\"\n        }\n      ],\n      \"properties\": [\n        {\n          \"property_id\": \"string\",\n          \"position\": 6127,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"property_id\": \"string\",\n          \"position\": 1790,\n          \"id\": \"string\",\n          \"item_id\": \"string\",\n          \"item_property\": {\n            \"name\": \"string\",\n            \"config\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"string\",\n            \"description\": \"string\",\n            \"icon_url\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"data\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"source\": \"order\",\n      \"rarity_id\": \"string\",\n      \"item_rarity\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"color_background_badge\": \"string\"\n      },\n      \"discount_percent\": 27,\n      \"bonus_percent\": 1107,\n      \"is_custom\": false,\n      \"modified_at\": 3784.605970341662,\n      \"archived_at\": 808.9252720062645,\n      \"price_minor_unit\": 7657,\n      \"price_decimal\": 3061.763309413278,\n      \"fallback_item_id\": \"string\",\n      \"fallback_item_quantity\": 8926,\n      \"meta\": {},\n      \"model_type\": \"ItemRead\",\n      \"nested_items_read\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n        }\n      ],\n      \"fallback_item\": {\n        \"value\": \"<Circular reference to #/components/schemas/ItemRead detected>\"\n      },\n      \"comment\": \"string\",\n      \"is_system\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1335bac2-da38-412f-9085-6069cd88824f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"free_items\": {\n    \"items\": [\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 3130\n      },\n      {\n        \"item_id\": \"string\",\n        \"quantity\": 1870\n      }\n    ]\n  },\n  \"discount_percent\": \"<integer>\",\n  \"bonus_percent\": \"<integer>\",\n  \"bonus_fixed\": \"<integer>\",\n  \"discount_amount_usd\": \"<integer>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"variable\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"operator\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"expires_at\": \"<integer>\",\n  \"applicable_item_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category_id\": \"<string>\",\n  \"min_amount\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"max_redemptions_per_user\": \"<integer>\",\n  \"is_stackable_with_bonus_coupons\": \"<boolean>\",\n  \"stackable_bonus_limit_percent\": \"<integer>\",\n  \"is_stackable_with_discount_coupons\": \"<boolean>\",\n  \"stackable_discount_limit_percent\": \"<integer>\",\n  \"store_item_discount_limit_percent\": \"<integer>\",\n  \"store_item_bonus_limit_percent\": \"<integer>\",\n  \"start_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_player_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"creator_program\": {\n    \"verbal_terms\": \"string\",\n    \"message\": \"string\",\n    \"reward\": 94,\n    \"inherits_from_tier\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56b890a9-a234-452f-b660-ce24d3b36a31",
+          "name": "Delete Coupon",
+          "request": {
+            "name": "Delete Coupon",
+            "description": {
+              "content": "Deletes a coupon.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "coupons",
+                ":coupon_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coupon_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "15a8b4ee-1d91-4ce1-a24c-f1e86d96e702",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "833721fe-01cc-413f-b37d-4d25003f3571",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "coupons",
+                    ":coupon_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coupon_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70722710-cd83-4cd0-b516-217d329c3f42",
+    "name": "Aghanim Server-to-Server Achievements Coupons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

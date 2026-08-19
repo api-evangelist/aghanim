@@ -1,0 +1,884 @@
+{
+  "item": [
+    {
+      "id": "03d66020-ae7a-4ade-931e-77c4405a2cb1",
+      "name": "Loyalty Program",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a34f56da-b7be-4135-acb1-94f160a70e30",
+          "name": "Get Loyalty Settings",
+          "request": {
+            "name": "Get Loyalty Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "loyalty"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41410171-f2ae-4aec-9bb8-87578b52943b",
+              "name": "Program retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"period\": 5384,\n  \"points_rate\": 2416.797674203891,\n  \"id\": \"string\",\n  \"game_id\": \"string\",\n  \"time_window\": {\n    \"start_at\": 4946,\n    \"end_at\": 2118\n  },\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"https://OvnIkGiMmoslVf.tiFhMedyLy9L,j.pPNMLoeNs24M2j\",\n  \"custom_icon_url\": \"http://xhbRSAFvgPuqYbL.uzzgSorPeo,rFAt7IGlXW2BhWcJK0-voNui2M3WKOlZ\",\n  \"activated_at\": 9209,\n  \"end_at\": 5227,\n  \"repeatable\": false,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"operator\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"checkout_link\",\n    \"s2s\"\n  ],\n  \"show_store_button\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fa1ba62-1958-4f92-9e0a-1c3905d75da7",
+              "name": "Program created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"period\": 5384,\n  \"points_rate\": 2416.797674203891,\n  \"id\": \"string\",\n  \"game_id\": \"string\",\n  \"time_window\": {\n    \"start_at\": 4946,\n    \"end_at\": 2118\n  },\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"https://OvnIkGiMmoslVf.tiFhMedyLy9L,j.pPNMLoeNs24M2j\",\n  \"custom_icon_url\": \"http://xhbRSAFvgPuqYbL.uzzgSorPeo,rFAt7IGlXW2BhWcJK0-voNui2M3WKOlZ\",\n  \"activated_at\": 9209,\n  \"end_at\": 5227,\n  \"repeatable\": false,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"operator\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"checkout_link\",\n    \"s2s\"\n  ],\n  \"show_store_button\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a347a443-d88c-44bd-abbf-caac557d9ca3",
+          "name": "Update Loyalty Settings",
+          "request": {
+            "name": "Update Loyalty Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "loyalty",
+                ":loyalty_settings_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"key\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"custom_icon_url\": \"<uri>\",\n  \"activated_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"period\": \"<integer>\",\n  \"repeatable\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"points_rate\": \"<number>\",\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"show_store_button\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2eb008a1-3c5e-440c-87d1-c519f924db53",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"key\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"custom_icon_url\": \"<uri>\",\n  \"activated_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"period\": \"<integer>\",\n  \"repeatable\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"points_rate\": \"<number>\",\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"sdk\",\n    \"hub\"\n  ],\n  \"show_store_button\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"period\": 8546,\n  \"points_rate\": 2175.147755680862,\n  \"id\": \"string\",\n  \"game_id\": \"string\",\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"image_url\": \"http://srZnHYJaSoPAIOoDinBahRVD.cnjYpjG-1YHVX7bYMg+Pkd8b0oOu1POsfcozY7pzeTsigA\",\n  \"custom_icon_url\": \"https://asUhbBAYus.ctfrc86.-X7DkgHWPECqv9b.wdPeVAPf3w2ajQ\",\n  \"activated_at\": 5790,\n  \"end_at\": 5369,\n  \"repeatable\": false,\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"number\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"operator\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"checkout_link\",\n    \"checkout_link\"\n  ],\n  \"show_store_button\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fdd494b-dd31-40d8-8bd1-8e4d738ae126",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"key\": \"<string>\",\n  \"description\": \"<string>\",\n  \"image_url\": \"<uri>\",\n  \"custom_icon_url\": \"<uri>\",\n  \"activated_at\": \"<integer>\",\n  \"end_at\": \"<integer>\",\n  \"period\": \"<integer>\",\n  \"repeatable\": \"<boolean>\",\n  \"requirements_expression\": {\n    \"tokens\": [\n      {\n        \"type\": \"custom_attribute\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"custom_event_attribute\",\n        \"value\": {}\n      }\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ]\n  },\n  \"points_rate\": \"<number>\",\n  \"price_source\": \"local_price\",\n  \"excluded_sales_channels\": [\n    \"sdk\",\n    \"hub\"\n  ],\n  \"show_store_button\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6137f12-93c3-4edb-9509-a07f47fe4384",
+          "name": "Get Loyalty Tiers",
+          "request": {
+            "name": "Get Loyalty Tiers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "loyalty",
+                ":loyalty_settings_id",
+                "tiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2455cc17-77f7-4721-acb1-4fdcc75232e3",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"points\": 6741,\n    \"image_url\": \"http://pgqJMlGTFlFRrHfDQeWzqsPMhC.qnnnpKvHD-h4SWHOJDyKowp\",\n    \"id\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"PYG\",\n        \"sku\": \"string\",\n        \"type\": \"subscription\",\n        \"is_stackable\": false,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 6387.717892817517,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 1771,\n        \"price_point\": 1159573,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 5337,\n        \"image_url\": \"https://NGzshVJsBYlXSkXJuXqXTpevLJJ.zpDS36iCh8i-\",\n        \"image_url_apple\": \"http://ftSYvAGOvoDuyKvPkzKZfbcZAaAzmIICS.eoiuo63dbOjoGLrNnvI0Tr\",\n        \"icon_url\": \"https://oiXFtfvgqJhuNHmLunZ.dnyVSTSWb9YqKT24uIcqlauiJ5HKOK+JYQ4o5IkrxibL0D+FcewAunX7vWUJ\",\n        \"icon_url_apple\": \"http://dAOzByj.bgqkp61uYoY\",\n        \"image_url_featured\": \"http://yICCGZchdfpXLVUxRtOVCbuHiWyPH.kfsOWTDoOV,JPkQWmW10n1dA2Wg2qXpV-77jQS\",\n        \"image_url_featured_apple\": \"http://XZeGQn.odPP1v-0iYbqSbeR26YEQe,rNTnFOzvWqifq.w71vjZdnVdlrStJqIidcgj\",\n        \"background_image_url\": \"https://CpnNDNRZbpmrqWFMxPYJpVSKay.mqigArKu.UPZRbX4bu-\",\n        \"background_image_url_apple\": \"http://qLFCpKPAKXzbOvRFpouN.vie3DvdN1rbDrCRH51i216xrvxcvuIbmUfZU4aBFyUcs\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"https://zpvbdSbWaPGrDNnNztsBHS.skukuHjxyuyoCTEmjFjO4J7fwvfelIygSYMOFNWLgjn\",\n        \"featured_card_background_image_url_apple\": \"http://WQlPwOamTr.yozS1IlV,7kD+iRjV-ZV2PixAvRBcFoPKjnrOuAGm\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 8666,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 8912,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 5299,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://KPCl.xizobOSL0k+FlXFQNjyXRwnaqgcgMz7F0A\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 9761,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://VgqXiSaOglHwLgXngTyita.vnuGkPnp7PisahfU\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5840,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 2721,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 0,\n        \"bonus_percent\": 7135,\n        \"is_custom\": false,\n        \"modified_at\": 1518.5829992139843,\n        \"archived_at\": 8747.881804244205,\n        \"price_minor_unit\": 1632,\n        \"price_decimal\": 3137.6669226691856,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 9022,\n        \"meta\": {},\n        \"count\": 613\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"BYN\",\n        \"sku\": \"string\",\n        \"type\": \"item\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 2903.682603166957,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 756,\n        \"price_point\": 4168759,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 1868,\n        \"image_url\": \"https://YLNLyWWxWqDS.nhwMwa27dgwBTyu-FwKePtx494Z0tOuYAmHOd4BVLHauzkKL+vOM\",\n        \"image_url_apple\": \"https://TttPpRwlCuoJF.wwnhIRTyV-E.y7PuLE.23Qu,aRfTUXvLvUDe7yMr5e\",\n        \"icon_url\": \"https://JhJHDcHdHmmndMdgUy.xgwAgltIKDnNdxntTDrdv8V+oFwp5YNo-b7dILgQNo,uKE5IA\",\n        \"icon_url_apple\": \"http://lwSruLGveRRAk.bxyoJvAGUiNm\",\n        \"image_url_featured\": \"http://nrkrjiTYVjvxiNGiXK.fnlKIFXsQxzjj4D8pQSTYu-Gy1Z.cygQHjWGRusxlGhynqs+SEDcDo-w\",\n        \"image_url_featured_apple\": \"https://NqlsCeVLPwIUQxRWTmmEap.xoLLxFLyLgqIQnLjTENpdsVZ1Wy9uGnIRCKzQzCvQyhCAzoJQ.mkMZcMaVjm\",\n        \"background_image_url\": \"https://ZgiyqiuyqxDLsprCUWuSSJjZhceQ.mmuq-ky.igENWCCGv5IfjM2QTb\",\n        \"background_image_url_apple\": \"https://j.nvabXgVJ5BTr8rXVIOoia+qeUpTyPaYJIAEIpp5RfnKDJE9p76pmNU1G\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://vEbEaadimZyZvkrq.ljnh-HYElky-y-V,fBd6ywkvW\",\n        \"featured_card_background_image_url_apple\": \"https://tobUxqvYpAVeFqjyauNO.fkrfocn1HKUVD2zPfsCxmSVjMu,ohK6ZRoE9yWJSj9rf-u1RNC2MLTr-Bwqfj\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 8321,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 6950,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 5437,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://roUJkOdkWYldPQkWmUfJhXSHCezyLcU.uzykWPoRNWsKxquqBNXsaKah0AyzzTIs5vxOZpBwtxRQp2\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 8572,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://UVomdbY.eksLo1nt46FdnYh+p0oToYqhoKL-xnXu+PfDch-to6\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5444,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 45,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 45,\n        \"bonus_percent\": 2627,\n        \"is_custom\": false,\n        \"modified_at\": 9121.21321999774,\n        \"archived_at\": 6124.1863222982765,\n        \"price_minor_unit\": 9872,\n        \"price_decimal\": 8515.732746258585,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 6877,\n        \"meta\": {},\n        \"count\": 9621\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"points\": 7717,\n    \"image_url\": \"https://sDQBQPAcQCXkcktcdtPhXNtTxpbbIX.iknRjCRZsg3UV5aO7hg8HnwJh,DZ5gd9LRmJU.A+nyrN59-GcN7HTuj9Nn-Isx7gCd2\",\n    \"id\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"NIO\",\n        \"sku\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 2491.585592468124,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 3192,\n        \"price_point\": 4981603,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 8277,\n        \"image_url\": \"https://hOH.hzy8eRaT.dEwZ3e7WcdRiYDAq97KreKNAwGE0rebr+t.rkvMfa17TkanqnT\",\n        \"image_url_apple\": \"http://ArulhXGdvIkZiGEWqB.kwfVLFUsEpykctLJwWXVWja9bir0\",\n        \"icon_url\": \"https://xCqyjwXMta.vpQpwkTrNLENLgsY2I14MWYxhSqJkf,Aq,aCxGshUEzNy6u9vRCLvIn.nflPQ\",\n        \"icon_url_apple\": \"https://ALZYjjs.acz0y6yX48p7RbcOlO5uT\",\n        \"image_url_featured\": \"http://ItNXlCHXiaJXgsJdzDjqlDIfifadAh.dxtGP.ZFdGuTeJYQDO6ECgsX\",\n        \"image_url_featured_apple\": \"https://QTKICdBUlWFNWaTQajaZRmw.ocsklpC62lYLMWQrTINM,PLoitdlK5KLtFnTNzDRDuiuXQeK\",\n        \"background_image_url\": \"http://RcAmUclBAZyJvzQLhbYWiL.zascoVQbeOYjBFv7bkO0wTbaOxukHBmeQMTvdNLVE\",\n        \"background_image_url_apple\": \"https://gKQynimizPQqMhprRvlY.gsvv7L10-ap2oriE.0XUP-yCGcgqHi4mFmUxskGGClTVybgoM-mfPD-Krfn8FR2U0S\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://bFtDLTFMzkNQLftp.ztoIEl1mlm1fPYr9hKX-YirN9uben8g3GOfLj1Kn\",\n        \"featured_card_background_image_url_apple\": \"http://nKnUpIKqIcIgkinEAl.bdexhVt6K3jk6zdBCjUcVpbobUBY,C6aZ1DGsz0M4noLofqvIFe\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 7904,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 6322,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 7495,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"http://k.usfNDyvm0AdY0P,gTmLfws.\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 7131,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://mJnmMdTLkOEwRJQzf.dhsb8ppp9hquUutKq\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 2243,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 9216,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 32,\n        \"bonus_percent\": 4798,\n        \"is_custom\": false,\n        \"modified_at\": 2654.9172008887767,\n        \"archived_at\": 1873.3802064778372,\n        \"price_minor_unit\": 9894,\n        \"price_decimal\": 6586.698001838457,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 635,\n        \"meta\": {},\n        \"count\": 2385\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"NZD\",\n        \"sku\": \"string\",\n        \"type\": \"virtual_currency\",\n        \"is_stackable\": false,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 2541.58908208438,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 4428,\n        \"price_point\": 2324833,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 6438,\n        \"image_url\": \"https://vJIHVMAWClmcxOsImVgGrAKAtMuTJH.ojwIP6WWvUETBEcOSjgi2hyf6CyeyoAwTFs\",\n        \"image_url_apple\": \"http://FyfjBofLkqfEBbqEuPQLmouKHyO.uxmLRWCevCKU,5+TBxvVPN96IarPEKd,\",\n        \"icon_url\": \"http://bMLmzIKxOoLVbtbRPcYPIlDwdg.mif.+CzO4saQBPbx.SE.o+CoF2AlKRQNuq.XHbkP\",\n        \"icon_url_apple\": \"http://HnIfBSisCAgtsbPLVvniSELxDCUPHzHFZ.nssuCJoRaqItwvdJGAtQfhvHSetvpkjpD\",\n        \"image_url_featured\": \"http://oTkrLwzOVtPisW.lnvofHJAmQSYnj4migRkF6eolDiEvT+HRaRFxgEOBkP7bqqr-g,YEp6KGlnPZUMU4l9tC4\",\n        \"image_url_featured_apple\": \"https://NGGQcNYlJNzBsUJLsfiOAcYmX.banvVl7vzCh3C\",\n        \"background_image_url\": \"https://AnWMzMiXeqFdg.gmbSSWDUs7jixvLQjhh35TvYtoHp+dR,DL\",\n        \"background_image_url_apple\": \"https://fqLuwpFjnMJczgKAbOvZOkTKYpXGzIhmt.wyv85jp.m.jZM1MPizqpUOQ6iFb4eDvdSS9oy2Q17OLe0AyvfQIJztHUq8T61VHdXO0r9xmU+qj9ABVHS4vl-\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://bQagqsvAQXTfkx.tmvV-oVT.EZ9MSv+BKupRx0osG4VvxPXgXiVqEAZf72ANhcl57GSBhvHWC8Xb1D\",\n        \"featured_card_background_image_url_apple\": \"https://IMvFJxAkwb.pnerT.GAbhGhlh.sexq2aKSQ9AXrPU+39LdEpuOO+eW7g5xKBMGBRgi83DBOWqI\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 3446,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 1947,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 4499,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://czlXvSKf.qade-rOxDSyKJkZ8bCozhv-WbqJZkZXZnwDcU\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 2048,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"http://VmBIKDhxsYkxZ.bhhiie-dKNjzSZNq8uuhBvkpnkjRC3LtPhdmJPH.mIRn2WWU+6zZNZzr+uvk275Y5B5XxoxTX0s,5t\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 7616,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 5472,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 49,\n        \"bonus_percent\": 8618,\n        \"is_custom\": false,\n        \"modified_at\": 371.55313773002405,\n        \"archived_at\": 3161.3806701049584,\n        \"price_minor_unit\": 8198,\n        \"price_decimal\": 4598.304013857784,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 7355,\n        \"meta\": {},\n        \"count\": 4270\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c8d5f26-1232-402e-9e56-392340745d80",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d065f640-fd7e-4264-aa7f-fa93a8f1e57e",
+          "name": "Update Loyalty Tiers",
+          "request": {
+            "name": "Update Loyalty Tiers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "loyalty",
+                ":loyalty_settings_id",
+                "tiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"image_url\": \"<uri>\",\n    \"items\": [\n      {\n        \"id\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"image_url\": \"<uri>\",\n    \"items\": [\n      {\n        \"id\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"sku\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c566370-f864-4657-ae0c-f1fb347ebac5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"points\": 2237,\n    \"image_url\": \"https://fRcSyPGDFArWEwuECN.jcfsGHUthMTzvWEOcD1JVH\",\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"count\": 3820,\n        \"sku\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"points\": 3506,\n    \"image_url\": \"http://hUKhVjOqYjRQUspWqoMVHTCC.zzlpYefIkPKMLAVTDR0RJKkBgE8JsywPPEkRvRwp0BKbxtTEWzG\",\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"count\": 3131,\n        \"sku\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"points\": 8371,\n    \"image_url\": \"https://FYNhTqkrrOjaaObLPTuWFynSoPrzEtRVg.saZzYrI3gXd+gpmOWOD65T6YkNtQpNreyEJxIh3OqYk0Y-0mMs\",\n    \"id\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"XAF\",\n        \"sku\": \"string\",\n        \"type\": \"item\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 8749.6652662254,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 6653,\n        \"price_point\": 3582046,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 3657,\n        \"image_url\": \"http://mGPPzCukypnjRmjlOpvaWOHVNSDi.roWPfBl,CLbm4lZlvSB6wsxhHIyZpmyOO8Pua,JRA89Gzqal+EE30XX\",\n        \"image_url_apple\": \"http://GCjrLlzzmBv.antupcL3Pw1bG7oriKrokOaHQ9IIG+\",\n        \"icon_url\": \"https://umenlNjfutNubSIyLQyBYkDsQ.vhiMiHJRKjbJcCdnJrgFTSPB.pRcX9UH7qBKIyyn0.TdROl1941OY9yGm\",\n        \"icon_url_apple\": \"http://MDRuLThHSrjWBxxFxXerVDlRSv.urtjGGUcNWh4hx0Bpwoi8dpFiUcfOSnfhkv6ouD0Qcun\",\n        \"image_url_featured\": \"https://GDRVHBhiw.rwauBRMuR7ugmgVe2pxEIvJ5iZggNr2PyJn5lTQ351XgJPLYZv\",\n        \"image_url_featured_apple\": \"https://XPgBjRYoXYb.hfcNzZ-raGBz+cdzlUHZ8u8JNnri4rWVgn9Uc-Dhox2ej,Ul+Pji3Bh\",\n        \"background_image_url\": \"http://mzgoggTGPrtBLeItjUETIanrd.beWUgq-LhSinmd\",\n        \"background_image_url_apple\": \"https://rvBHjRJDimMcpo.prnhxV.oGWhmxjFnxsBx\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://AZKnjNxXuZkCyB.kobruIRwz-IpOStZPMlWs3DNcSC5MuuYuV3SKRM1nxjKKl1,qXIP\",\n        \"featured_card_background_image_url_apple\": \"https://jxRBNDjOIQsmGfjYHGBwdLajbzq.syzfW44RhM5Bu4XwKBGqAWAdI8mjYk67LJJlSSD1cbl2i57xx0A,+ChOO0q3lgmm3Ge29Qu\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 4215,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 3620,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 9434,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://hGKhim.ipVo+jcnEKDJh5olL9nZmsBoWjh,c1BHSUebMSUexHm-x27FlH0pWIPoTGmn0USP-BxVV3wsvmWBMPmEm\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 8900,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://MBKczrhvLfuvFrVzkytWFWp.fbmUw6bynOFg4\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 2567,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 9589,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 46,\n        \"bonus_percent\": 4539,\n        \"is_custom\": false,\n        \"modified_at\": 5055.0401301751435,\n        \"archived_at\": 3815.1661452721787,\n        \"price_minor_unit\": 6636,\n        \"price_decimal\": 3091.068468721775,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 7759,\n        \"meta\": {},\n        \"count\": 4207\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"KGS\",\n        \"sku\": \"string\",\n        \"type\": \"currency\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 8343.342996082783,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 2455,\n        \"price_point\": 2946026,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 3286,\n        \"image_url\": \"https://vBEgWhMtMFmuiFrnrkVOjDNRzV.yzjkr,aqW2tcX7zOntqWIMfTtWkqpEX8no6F1T2RmU8esFVjrxuxzt\",\n        \"image_url_apple\": \"https://WfxWNlJc.nzexRss8j1rwjd7g.vSwywbvKoeb1msXvfgaeunzRYf5BTL5tDfd+92,6u--73\",\n        \"icon_url\": \"http://MflRbHKkjKeeHMPyGsZffvjMUVnxiTcFJ.guardlHJvTj3KHxCjKMjxsuTecxps+k4wB.MMHAsKPIy,Gk1\",\n        \"icon_url_apple\": \"https://pSoXnQXkQeeQXDzwYFFoahsGns.laltgQQAN8fMnQT\",\n        \"image_url_featured\": \"http://YLyLpgWVUVDCmqO.ddsb87jiL.7k3F2wSpb\",\n        \"image_url_featured_apple\": \"https://mPrGphrSzfWmytWlYMvUv.lmZVs3e70amM\",\n        \"background_image_url\": \"http://S.mnfWsPK8RBFfHuy3uvM9a3FEjjNxmjhx\",\n        \"background_image_url_apple\": \"https://iJPuTguANeuirYzcWIEV.nvguF-crlQo+cLDX,H\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://RkspRREYAd.bmfIJDIZUck\",\n        \"featured_card_background_image_url_apple\": \"http://AZMrT.ipcyb,DGJcFAVmot6g3SnLAhKkg,oHM\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 6934,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 9533,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 3529,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"http://AmtEtMRKdzywAo.hiPQRN4jY81\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 6573,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://rpLYrlyvErSZXrpJHAdlMqhRjGf.qrvtRNPip2BP0g7BsBo3eecc3Vv3Xjd9y,x\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 9668,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 4659,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 36,\n        \"bonus_percent\": 6727,\n        \"is_custom\": false,\n        \"modified_at\": 1803.79822905806,\n        \"archived_at\": 3085.1024490343857,\n        \"price_minor_unit\": 2641,\n        \"price_decimal\": 4423.282266358277,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 4816,\n        \"meta\": {},\n        \"count\": 8562\n      }\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"points\": 3195,\n    \"image_url\": \"https://KvlX.mbzRt.DBVxNTVJz\",\n    \"id\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"currency\": \"GTQ\",\n        \"sku\": \"string\",\n        \"type\": \"subscription\",\n        \"is_stackable\": true,\n        \"is_currency\": false,\n        \"id\": \"string\",\n        \"created_at\": 8053.333007332115,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 2768,\n        \"price_point\": 1792643,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 520,\n        \"image_url\": \"https://RZoEZpwXJfP.uzobVP4cnCLD86SaUW6hNPaZ-ksrP+jlB,hl9b\",\n        \"image_url_apple\": \"https://xTTdeDdWRvlZXoyCoiZoOyzLZKOWGhzsT.icmO8cFqx3quHesC.oB7ylxwB+lKh+hp+-fqGndf,D0oxOZhhQ0AU\",\n        \"icon_url\": \"http://xwdvzHgJpHzwnAZqnnTEXTnFKb.knypDc9HovOjmBDPk9UTazV6tAz711NEO3L1VIbUPuH3TfhCKcXamVnVfRCXtryIZkNuAMAWTd-hsbDe\",\n        \"icon_url_apple\": \"http://XqkrIDdHxXFIxeWrcDnCSP.hygQUK1BfNPFcJbdgF6L2fmQlqNDjvAtE7p5uujIbi\",\n        \"image_url_featured\": \"http://TkCGtbwTJIdK.jdXCB7kA-jAK,xDSavczXX8a-.MHBOnUlecUJax\",\n        \"image_url_featured_apple\": \"http://gKp.cscd9JhE4\",\n        \"background_image_url\": \"https://KnjFWSUGBPPtDPWoeQgk.eswrIprAox0R\",\n        \"background_image_url_apple\": \"https://aiqfh.gywfIljlfW9tKykSgAT4cVqBFAlWFIK-Kf+VEiA1HjKSTdstTHb4mlzAb34L2WYOJrr\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://QfES.torZJ9gc\",\n        \"featured_card_background_image_url_apple\": \"https://hee.aruoAo0ZivFnxGtyl\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 6159,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 6096,\n        \"enable_reward_points_redemption\": false,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 2600,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://KJPHZbtkonxObtzzuWEAuuXRfvINZZw.crgicg1LgSfxgGa\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 3705,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://PDKDGBT.dnucbYyDRqGScU3iL2,5kQUCEEaZf\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 1870,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 812,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 44,\n        \"bonus_percent\": 4637,\n        \"is_custom\": false,\n        \"modified_at\": 2233.586149863536,\n        \"archived_at\": 1759.765195581018,\n        \"price_minor_unit\": 5386,\n        \"price_decimal\": 2880.2564099747583,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 7218,\n        \"meta\": {},\n        \"count\": 588\n      },\n      {\n        \"name\": \"string\",\n        \"currency\": \"GBP\",\n        \"sku\": \"string\",\n        \"type\": \"subscription\",\n        \"is_stackable\": true,\n        \"is_currency\": true,\n        \"id\": \"string\",\n        \"created_at\": 5739.179871867975,\n        \"description\": \"string\",\n        \"highlights\": {\n          \"items\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"price\": 5364,\n        \"price_point\": 4753578,\n        \"price_template_id\": \"string\",\n        \"reward_points_price\": 5115,\n        \"image_url\": \"https://pfwqQMwpi.yuehKjCSt1qLZarPQAmizptF1ljJJnhhlZlqwrsqe8jvNFxrq+ROV4j2mp9SUH\",\n        \"image_url_apple\": \"https://fYvVMGHjWZfjeVbcziPH.cnG0ZJIGHzRMVXseR3cZUwSKO.G1OPXoX0iLg.lBFGzeMKsoX\",\n        \"icon_url\": \"https://DiBWBgLIxWOCWnlPUeftWbRWXxZ.kiYzcytypFp95Boyerw4.P5pV\",\n        \"icon_url_apple\": \"https://YziGafIaiKiCjxl.ekdtkG+p3KVvAFd4uZbsiXFB+5M\",\n        \"image_url_featured\": \"https://EJOHfawGquaWgKwljShoUsHBlgoc.tzrevAkChle\",\n        \"image_url_featured_apple\": \"http://Lqg.rkjyOg.uIG2V1LFVO,yJHD2g\",\n        \"background_image_url\": \"https://StjC.imaLEgQCHZgOkmcfzI6a\",\n        \"background_image_url_apple\": \"http://bbOxsygXvGgIL.guWga7LXmseAy\",\n        \"background_image_color\": \"string\",\n        \"featured_card_background_image_url\": \"http://NHKMGkwAbPgWIPWQtMF.ycefEiBBoiKXVMNAp1TyLdMGhPqn5XVmZfkB3q2BKZ8r\",\n        \"featured_card_background_image_url_apple\": \"http://QtzrOy.lyimpwr-Xt1KdLDrKJFnhoSsQjBHoqW\",\n        \"view_option\": \"default\",\n        \"quantity\": 1,\n        \"position\": 7987,\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"duration\": 535,\n        \"enable_reward_points_redemption\": true,\n        \"nested_items\": [\n          {\n            \"id\": \"string\",\n            \"count\": 2517,\n            \"sku\": \"string\",\n            \"is_featured\": false,\n            \"meta\": {},\n            \"image_url\": \"http://QmUkdLNmhDwDEZULWBBC.sdlidMArxWHVor\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"count\": 6740,\n            \"sku\": \"string\",\n            \"is_featured\": true,\n            \"meta\": {},\n            \"image_url\": \"https://ptGDJQr.pivskH4BVIb+kRqT+pW9N8gvYYHtZ+bDto,oOzwdY0spw.sagDzRymVzcBRXG17U3l\",\n            \"view_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"properties\": [\n          {\n            \"property_id\": \"string\",\n            \"position\": 5106,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"property_id\": \"string\",\n            \"position\": 1034,\n            \"id\": \"string\",\n            \"item_id\": \"string\",\n            \"item_property\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"source\": \"order\",\n        \"rarity_id\": \"string\",\n        \"item_rarity\": {\n          \"name\": \"string\",\n          \"id\": \"string\",\n          \"color_background_badge\": \"string\"\n        },\n        \"discount_percent\": 45,\n        \"bonus_percent\": 7323,\n        \"is_custom\": false,\n        \"modified_at\": 2319.5149149965755,\n        \"archived_at\": 3983.760266211258,\n        \"price_minor_unit\": 8185,\n        \"price_decimal\": 3917.680966912881,\n        \"fallback_item_id\": \"string\",\n        \"fallback_item_quantity\": 4367,\n        \"meta\": {},\n        \"count\": 7607\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "274ffd93-b2d6-4b3e-8bd3-2ebeaf436e18",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "tiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"string\",\n    \"points\": 2237,\n    \"image_url\": \"https://fRcSyPGDFArWEwuECN.jcfsGHUthMTzvWEOcD1JVH\",\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"count\": 3820,\n        \"sku\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"points\": 3506,\n    \"image_url\": \"http://hUKhVjOqYjRQUspWqoMVHTCC.zzlpYefIkPKMLAVTDR0RJKkBgE8JsywPPEkRvRwp0BKbxtTEWzG\",\n    \"items\": [\n      {\n        \"id\": \"string\",\n        \"count\": 3131,\n        \"sku\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebcf1ca2-5fae-4b91-85ea-72ca64cd0cb4",
+          "name": "Issue Loyalty Points",
+          "request": {
+            "name": "Issue Loyalty Points",
+            "description": {
+              "content": "Issue loyalty points to a user manually.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "loyalty",
+                ":loyalty_settings_id",
+                "issue_points"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty_settings_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d38d9ae-aa79-4dbb-894a-266dc1e5a914",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "issue_points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f95bbaf6-11e4-457d-ae00-2d4cd32db060",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "loyalty",
+                    ":loyalty_settings_id",
+                    "issue_points"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty_settings_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<string>\",\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "26c42eff-fe49-43ed-bcd0-a5385618645f",
+    "name": "Aghanim Server-to-Server Achievements Loyalty Program API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

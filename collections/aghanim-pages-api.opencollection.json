@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Pages API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/pages",
+            "params": [
+              {
+                "name": "parent_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ignore_parent_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search_string",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to skip"
+              },
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Optional comma separated list of types"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Pages"
+        },
+        {
+          "info": {
+            "name": "Create Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/pages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Page"
+        },
+        {
+          "info": {
+            "name": "Bulk Update Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aghanim.com/s2s/v1/pages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates multiple pages."
+        },
+        {
+          "info": {
+            "name": "Bulk Delete Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/pages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes multiple pages."
+        },
+        {
+          "info": {
+            "name": "Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/pages/:page_id",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Page"
+        },
+        {
+          "info": {
+            "name": "Update Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/pages/:page_id",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Page"
+        },
+        {
+          "info": {
+            "name": "Delete Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/pages/:page_id",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Page"
+        },
+        {
+          "info": {
+            "name": "Translate Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/pages/:page_id/translate",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Translates a page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

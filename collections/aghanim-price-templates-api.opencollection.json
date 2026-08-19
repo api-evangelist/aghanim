@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Price Templates API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Price Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/price_templates",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned"
+              },
+              {
+                "name": "starting_after",
+                "value": "",
+                "type": "query",
+                "description": "The cursor for pagination"
+              },
+              {
+                "name": "ending_before",
+                "value": "",
+                "type": "query",
+                "description": "The cursor for pagination"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of price templates."
+        },
+        {
+          "info": {
+            "name": "Create Price Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/price_templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new price template."
+        },
+        {
+          "info": {
+            "name": "Get Price Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/price_templates/:price_template_id",
+            "params": [
+              {
+                "name": "price_template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a single price template."
+        },
+        {
+          "info": {
+            "name": "Update Price Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/price_templates/:price_template_id",
+            "params": [
+              {
+                "name": "price_template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a price template."
+        },
+        {
+          "info": {
+            "name": "Delete Price Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/price_templates/:price_template_id",
+            "params": [
+              {
+                "name": "price_template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a price template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

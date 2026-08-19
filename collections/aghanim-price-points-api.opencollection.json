@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Price Points API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Price Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/price_points",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "The two-letter country code (ISO 3166-1 alpha-2) for price localization."
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "Locale for price formatting (e.g., en, pt-BR, zh-Hant)."
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Platform for platform-specific pricing (e.g., ios, android, any)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns price points from price templates for the specified country.\n\nPrice templates can be configured in Dashboard -> SKU Management ->\n[Price Templates](https://dashboard.aghanim.com/go/sku/price-templates).\n\nThe `locale` parameter is optional and if not provided, it will be resolved\nfrom the country with the best match available for that country."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

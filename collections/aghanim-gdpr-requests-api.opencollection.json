@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements GDPR Requests API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GDPR Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GDPR Data Removal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/gdpr_requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a request for GDPR data removal."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

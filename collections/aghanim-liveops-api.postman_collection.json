@@ -1,0 +1,1696 @@
+{
+  "item": [
+    {
+      "id": "2b847b36-10ae-49b8-bf09-3e419a342efb",
+      "name": "LiveOps",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "370cd4a4-bb2a-45ad-89bf-09e674bc32b7",
+          "name": "Get Campaigns",
+          "request": {
+            "name": "Get Campaigns",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "enabled",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "A limit on the number of objects to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of objects to skip"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b35fd385-ae74-4ee5-a941-8fe314986615",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_state",
+                      "value": "archived"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "pwa_deinstalled"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"type\": \"level_up\",\n    \"id\": \"string\",\n    \"version_description\": \"string\",\n    \"created_at\": 7855,\n    \"description\": \"string\",\n    \"time_limit\": false,\n    \"start_at\": 8581.385353890957,\n    \"end_at\": 5303.639077767991,\n    \"archived_at\": 662.8556927756002,\n    \"attributes\": {\n      \"custom_attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"boolean\",\n          \"description\": \"string\",\n          \"min\": 9041,\n          \"max\": 6416,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"description\": \"string\",\n          \"min\": 4293,\n          \"max\": 1650,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        }\n      ],\n      \"abandoned_cart_duration\": 2703,\n      \"visit_duration\": 2375,\n      \"page_slugs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"run_for_subscription_id\": \"string\"\n    },\n    \"position\": 9100,\n    \"allowed_popups_on_store\": false,\n    \"is_sync\": true,\n    \"version\": \"string\",\n    \"created_by_customer_id\": \"string\",\n    \"created_from_id\": \"string\",\n    \"modified_at\": 8743\n  },\n  {\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"type\": \"add_segment\",\n    \"id\": \"string\",\n    \"version_description\": \"string\",\n    \"created_at\": 5982,\n    \"description\": \"string\",\n    \"time_limit\": false,\n    \"start_at\": 9082.332936053104,\n    \"end_at\": 7394.610825053627,\n    \"archived_at\": 3144.434865426916,\n    \"attributes\": {\n      \"custom_attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"date\",\n          \"description\": \"string\",\n          \"min\": 9128,\n          \"max\": 8248,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"date\",\n          \"description\": \"string\",\n          \"min\": 696,\n          \"max\": 317,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        }\n      ],\n      \"abandoned_cart_duration\": 4334,\n      \"visit_duration\": 2047,\n      \"page_slugs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"run_for_subscription_id\": \"string\"\n    },\n    \"position\": 2304,\n    \"allowed_popups_on_store\": false,\n    \"is_sync\": true,\n    \"version\": \"string\",\n    \"created_by_customer_id\": \"string\",\n    \"created_from_id\": \"string\",\n    \"modified_at\": 6998\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c87ee8b6-10ec-407f-940e-4aec5d72bff9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_state",
+                      "value": "archived"
+                    },
+                    {
+                      "key": "enabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "pwa_deinstalled"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80984b79-7226-44a9-b140-82f027cc6aa3",
+          "name": "Create Campaign",
+          "request": {
+            "name": "Create Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"time_limit\": false,\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"min\": \"<integer>\",\n        \"max\": \"<integer>\",\n        \"custom_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"min\": \"<integer>\",\n        \"max\": \"<integer>\",\n        \"custom_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": \"<integer>\",\n    \"visit_duration\": \"<integer>\",\n    \"page_slugs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"<string>\"\n  },\n  \"position\": \"<integer>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\",\n  \"graph\": {\n    \"id\": \"<string>\",\n    \"x\": \"<integer>\",\n    \"y\": \"<integer>\",\n    \"next_node_id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"result\": \"<string>\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      },\n      \"key_1\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      },\n      \"key_2\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      }\n    },\n    \"view_port\": {\n      \"x\": \"<number>\",\n      \"y\": \"<number>\",\n      \"zoom\": \"<number>\"\n    }\n  },\n  \"version_description\": \"Initial version\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05c74c6f-ceb6-4049-8b9b-69889c3cf96b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"free_item_claimed\",\n  \"description\": \"<string>\",\n  \"time_limit\": false,\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\",\n        \"min\": 9585,\n        \"max\": 1570,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 3757,\n        \"max\": 9127,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 8659,\n    \"visit_duration\": 4050,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": \"<integer>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\",\n  \"graph\": {\n    \"id\": \"string\",\n    \"x\": 2180,\n    \"y\": 2828,\n    \"next_node_id\": \"string\",\n    \"title\": \"string\",\n    \"result\": \"string\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": false,\n    \"description\": \"string\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"x\": 2265,\n        \"y\": 986,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": false,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      },\n      \"key_1\": {\n        \"id\": \"string\",\n        \"x\": 9943,\n        \"y\": 6213,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": true,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      }\n    },\n    \"view_port\": {\n      \"x\": 4547.82061113891,\n      \"y\": 32.01424106012429,\n      \"zoom\": 8351.267439176472\n    }\n  },\n  \"version_description\": \"Initial version\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"type\": \"game_hub_visit\",\n  \"id\": \"string\",\n  \"version_description\": \"string\",\n  \"created_at\": 9025,\n  \"description\": \"string\",\n  \"time_limit\": false,\n  \"start_at\": 3102.8029973164184,\n  \"end_at\": 7815.325409197682,\n  \"archived_at\": 4597.891412966825,\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 6271,\n        \"max\": 3806,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"min\": 431,\n        \"max\": 3025,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 108,\n    \"visit_duration\": 7444,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": 120,\n  \"allowed_popups_on_store\": false,\n  \"is_sync\": true,\n  \"version\": \"string\",\n  \"created_by_customer_id\": \"string\",\n  \"created_from_id\": \"string\",\n  \"modified_at\": 1614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e59aaf54-0768-4a8f-a11f-1311e9ca614f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"free_item_claimed\",\n  \"description\": \"<string>\",\n  \"time_limit\": false,\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\",\n        \"min\": 9585,\n        \"max\": 1570,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 3757,\n        \"max\": 9127,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 8659,\n    \"visit_duration\": 4050,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": \"<integer>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\",\n  \"graph\": {\n    \"id\": \"string\",\n    \"x\": 2180,\n    \"y\": 2828,\n    \"next_node_id\": \"string\",\n    \"title\": \"string\",\n    \"result\": \"string\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": false,\n    \"description\": \"string\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"x\": 2265,\n        \"y\": 986,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": false,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      },\n      \"key_1\": {\n        \"id\": \"string\",\n        \"x\": 9943,\n        \"y\": 6213,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": true,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      }\n    },\n    \"view_port\": {\n      \"x\": 4547.82061113891,\n      \"y\": 32.01424106012429,\n      \"zoom\": 8351.267439176472\n    }\n  },\n  \"version_description\": \"Initial version\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07bb97f3-3916-45d2-a127-9e1d1348b281",
+          "name": "Bulk Update Campaigns",
+          "request": {
+            "name": "Bulk Update Campaigns",
+            "description": {
+              "content": "Updates multiple campaigns.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"position\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"position\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7027345-ab62-4ab9-ab59-d6b4a72755a5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"position\": 6672\n  },\n  {\n    \"id\": \"string\",\n    \"position\": 9080\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73018be1-5f71-4076-a0db-a252de48e019",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"position\": 6672\n  },\n  {\n    \"id\": \"string\",\n    \"position\": 9080\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7ce786c-0773-4cf3-9df9-7c4159a65bea",
+          "name": "Get Campaigns By Ids",
+          "request": {
+            "name": "Get Campaigns By Ids",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                "by_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Comma separated list of ids"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7894a81-e5aa-436a-af44-5e84db778000",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    "by_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"enabled\": true,\n    \"type\": \"subscription_status_updated\",\n    \"id\": \"string\",\n    \"version_description\": \"string\",\n    \"created_at\": 5046,\n    \"description\": \"string\",\n    \"time_limit\": false,\n    \"start_at\": 3306.9627252228693,\n    \"end_at\": 5672.129083436365,\n    \"archived_at\": 8649.787069457772,\n    \"attributes\": {\n      \"custom_attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"description\": \"string\",\n          \"min\": 2480,\n          \"max\": 4650,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"description\": \"string\",\n          \"min\": 5660,\n          \"max\": 71,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        }\n      ],\n      \"abandoned_cart_duration\": 657,\n      \"visit_duration\": 2110,\n      \"page_slugs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"run_for_subscription_id\": \"string\"\n    },\n    \"position\": 1040,\n    \"allowed_popups_on_store\": false,\n    \"is_sync\": true,\n    \"version\": \"string\",\n    \"created_by_customer_id\": \"string\",\n    \"created_from_id\": \"string\",\n    \"modified_at\": 2000\n  },\n  {\n    \"name\": \"string\",\n    \"enabled\": false,\n    \"type\": \"purchased_in_web\",\n    \"id\": \"string\",\n    \"version_description\": \"string\",\n    \"created_at\": 2751,\n    \"description\": \"string\",\n    \"time_limit\": false,\n    \"start_at\": 3300.4836944858184,\n    \"end_at\": 7403.679777845674,\n    \"archived_at\": 1713.755326716132,\n    \"attributes\": {\n      \"custom_attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"number\",\n          \"description\": \"string\",\n          \"min\": 3110,\n          \"max\": 7524,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"list\",\n          \"description\": \"string\",\n          \"min\": 3408,\n          \"max\": 5229,\n          \"custom_values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"can_use_in_deep_link\": false,\n          \"scope\": \"private\"\n        }\n      ],\n      \"abandoned_cart_duration\": 5349,\n      \"visit_duration\": 6559,\n      \"page_slugs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variables\": [\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"run_for_subscription_id\": \"string\"\n    },\n    \"position\": 3231,\n    \"allowed_popups_on_store\": false,\n    \"is_sync\": false,\n    \"version\": \"string\",\n    \"created_by_customer_id\": \"string\",\n    \"created_from_id\": \"string\",\n    \"modified_at\": 6613\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a910938d-9b27-4ebb-801e-50eb1baff31c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    "by_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23108f5e-28d7-4efc-8359-a90f3faf4f5e",
+          "name": "Get Campaign",
+          "request": {
+            "name": "Get Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                ":campaign_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9f26acb3-b3e3-4aac-8364-bf9d0138460a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"type\": \"game_hub_visit\",\n  \"id\": \"string\",\n  \"version_description\": \"string\",\n  \"created_at\": 9025,\n  \"description\": \"string\",\n  \"time_limit\": false,\n  \"start_at\": 3102.8029973164184,\n  \"end_at\": 7815.325409197682,\n  \"archived_at\": 4597.891412966825,\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 6271,\n        \"max\": 3806,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"min\": 431,\n        \"max\": 3025,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 108,\n    \"visit_duration\": 7444,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": 120,\n  \"allowed_popups_on_store\": false,\n  \"is_sync\": true,\n  \"version\": \"string\",\n  \"created_by_customer_id\": \"string\",\n  \"created_from_id\": \"string\",\n  \"modified_at\": 1614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9a13ee5-0b7d-4294-9c34-1f7d8a49b9e0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a105f86-eddf-4b75-bf50-b8ed00cb705d",
+          "name": "Update Campaign",
+          "request": {
+            "name": "Update Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                ":campaign_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"graph\": {\n    \"id\": \"<string>\",\n    \"x\": \"<integer>\",\n    \"y\": \"<integer>\",\n    \"next_node_id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"result\": \"<string>\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": \"<boolean>\",\n    \"description\": \"<string>\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      },\n      \"key_1\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      },\n      \"key_2\": {\n        \"id\": \"<string>\",\n        \"x\": \"<integer>\",\n        \"y\": \"<integer>\",\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"result\": \"<string>\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": \"<boolean>\",\n        \"description\": \"<string>\",\n        \"expression\": \"<string>\",\n        \"true_node_id\": \"<string>\",\n        \"false_node_id\": \"<string>\"\n      }\n    },\n    \"view_port\": {\n      \"x\": \"<number>\",\n      \"y\": \"<number>\",\n      \"zoom\": \"<number>\"\n    }\n  },\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"time_limit\": \"<boolean>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"min\": \"<integer>\",\n        \"max\": \"<integer>\",\n        \"custom_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"<string>\",\n        \"description\": \"<string>\",\n        \"min\": \"<integer>\",\n        \"max\": \"<integer>\",\n        \"custom_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": \"<integer>\",\n    \"visit_duration\": \"<integer>\",\n    \"page_slugs\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"<string>\"\n  },\n  \"position\": \"<integer>\",\n  \"version_description\": \"<string>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98dc0a30-d294-4608-aa1c-a52516c08c78",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"pwa_deinstalled\",\n  \"graph\": {\n    \"id\": \"string\",\n    \"x\": 9328,\n    \"y\": 7482,\n    \"next_node_id\": \"string\",\n    \"title\": \"string\",\n    \"result\": \"string\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": true,\n    \"description\": \"string\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"x\": 7849,\n        \"y\": 2834,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": false,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      },\n      \"key_1\": {\n        \"id\": \"string\",\n        \"x\": 1193,\n        \"y\": 4653,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": true,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      }\n    },\n    \"view_port\": {\n      \"x\": 3658.354174869518,\n      \"y\": 366.5355415517046,\n      \"zoom\": 9907.610185681555\n    }\n  },\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"time_limit\": \"<boolean>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\",\n        \"min\": 7514,\n        \"max\": 9895,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 3145,\n        \"max\": 5625,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 2970,\n    \"visit_duration\": 2973,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": \"<integer>\",\n  \"version_description\": \"<string>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"type\": \"game_hub_visit\",\n  \"id\": \"string\",\n  \"version_description\": \"string\",\n  \"created_at\": 9025,\n  \"description\": \"string\",\n  \"time_limit\": false,\n  \"start_at\": 3102.8029973164184,\n  \"end_at\": 7815.325409197682,\n  \"archived_at\": 4597.891412966825,\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 6271,\n        \"max\": 3806,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"min\": 431,\n        \"max\": 3025,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 108,\n    \"visit_duration\": 7444,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": 120,\n  \"allowed_popups_on_store\": false,\n  \"is_sync\": true,\n  \"version\": \"string\",\n  \"created_by_customer_id\": \"string\",\n  \"created_from_id\": \"string\",\n  \"modified_at\": 1614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96a34ec8-bf20-4365-a2a0-fb5c582dc4d0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"pwa_deinstalled\",\n  \"graph\": {\n    \"id\": \"string\",\n    \"x\": 9328,\n    \"y\": 7482,\n    \"next_node_id\": \"string\",\n    \"title\": \"string\",\n    \"result\": \"string\",\n    \"model_type\": \"GraphRoot\",\n    \"break_on_error\": true,\n    \"description\": \"string\",\n    \"nodes\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"x\": 7849,\n        \"y\": 2834,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": false,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      },\n      \"key_1\": {\n        \"id\": \"string\",\n        \"x\": 1193,\n        \"y\": 4653,\n        \"expr\": {\n          \"tokens\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"variables\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"next_node_id\": \"string\",\n        \"title\": \"string\",\n        \"result\": \"string\",\n        \"model_type\": \"ConditionNode\",\n        \"break_on_error\": true,\n        \"description\": \"string\",\n        \"expression\": \"string\",\n        \"true_node_id\": \"string\",\n        \"false_node_id\": \"string\"\n      }\n    },\n    \"view_port\": {\n      \"x\": 3658.354174869518,\n      \"y\": 366.5355415517046,\n      \"zoom\": 9907.610185681555\n    }\n  },\n  \"start_at\": \"<number>\",\n  \"end_at\": \"<number>\",\n  \"time_limit\": \"<boolean>\",\n  \"archived_at\": \"<number>\",\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"description\": \"string\",\n        \"min\": 7514,\n        \"max\": 9895,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 3145,\n        \"max\": 5625,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 2970,\n    \"visit_duration\": 2973,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": \"<integer>\",\n  \"version_description\": \"<string>\",\n  \"allowed_popups_on_store\": \"<boolean>\",\n  \"is_sync\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a530405d-2443-4933-8c2a-7a236f598b25",
+          "name": "Delete Campaign",
+          "request": {
+            "name": "Delete Campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                ":campaign_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "256e6efd-0646-4bb1-bd0e-25540150ec63",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c5c408b-2e67-40bc-bd8e-ca34ee9cf423",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ad41b44-c00c-47a9-a780-07e82cf1d509",
+          "name": "Get Campaign Graph",
+          "request": {
+            "name": "Get Campaign Graph",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a699196-ad2c-4151-9e2f-98d5e76f2ec5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"x\": 8285,\n  \"y\": 5531,\n  \"next_node_id\": \"string\",\n  \"title\": \"string\",\n  \"result\": \"string\",\n  \"model_type\": \"GraphRoot\",\n  \"break_on_error\": true,\n  \"description\": \"string\",\n  \"nodes\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"x\": 3923,\n      \"y\": 5917,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": true,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"x\": 6387,\n      \"y\": 6240,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": false,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    }\n  },\n  \"view_port\": {\n    \"x\": 1876.8029919238038,\n    \"y\": 930.2536927066318,\n    \"zoom\": 855.5934957860734\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c77fb99b-4595-4dcd-9a26-263fcf82859b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9ae539d-9ae2-448f-abe2-3791c6c547b1",
+          "name": "Update Campaign Graph",
+          "request": {
+            "name": "Update Campaign Graph",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "campaigns",
+                ":campaign_id",
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"x\": \"<integer>\",\n  \"y\": \"<integer>\",\n  \"next_node_id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"result\": \"<string>\",\n  \"model_type\": \"GraphRoot\",\n  \"break_on_error\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"nodes\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"x\": \"<integer>\",\n      \"y\": \"<integer>\",\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"result\": \"<string>\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"expression\": \"<string>\",\n      \"true_node_id\": \"<string>\",\n      \"false_node_id\": \"<string>\"\n    },\n    \"key_1\": {\n      \"id\": \"<string>\",\n      \"x\": \"<integer>\",\n      \"y\": \"<integer>\",\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"result\": \"<string>\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"expression\": \"<string>\",\n      \"true_node_id\": \"<string>\",\n      \"false_node_id\": \"<string>\"\n    },\n    \"key_2\": {\n      \"id\": \"<string>\",\n      \"x\": \"<integer>\",\n      \"y\": \"<integer>\",\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"result\": \"<string>\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"expression\": \"<string>\",\n      \"true_node_id\": \"<string>\",\n      \"false_node_id\": \"<string>\"\n    }\n  },\n  \"view_port\": {\n    \"x\": \"<number>\",\n    \"y\": \"<number>\",\n    \"zoom\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72d35ea7-a6ee-4e40-85a0-278e7f0a041f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"x\": \"<integer>\",\n  \"y\": \"<integer>\",\n  \"next_node_id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"result\": \"<string>\",\n  \"model_type\": \"GraphRoot\",\n  \"break_on_error\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"nodes\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"x\": 3290,\n      \"y\": 1453,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": true,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"x\": 8459,\n      \"y\": 6957,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": false,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    }\n  },\n  \"view_port\": {\n    \"x\": 7617.569023997823,\n    \"y\": 7534.3063259756545,\n    \"zoom\": 8976.68081892125\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"enabled\": false,\n  \"type\": \"game_hub_visit\",\n  \"id\": \"string\",\n  \"version_description\": \"string\",\n  \"created_at\": 9025,\n  \"description\": \"string\",\n  \"time_limit\": false,\n  \"start_at\": 3102.8029973164184,\n  \"end_at\": 7815.325409197682,\n  \"archived_at\": 4597.891412966825,\n  \"attributes\": {\n    \"custom_attributes\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"list\",\n        \"description\": \"string\",\n        \"min\": 6271,\n        \"max\": 3806,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"date\",\n        \"description\": \"string\",\n        \"min\": 431,\n        \"max\": 3025,\n        \"custom_values\": [\n          \"string\",\n          \"string\"\n        ],\n        \"can_use_in_deep_link\": false,\n        \"scope\": \"private\"\n      }\n    ],\n    \"abandoned_cart_duration\": 108,\n    \"visit_duration\": 7444,\n    \"page_slugs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"variables\": [\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {}\n          }\n        ]\n      }\n    ],\n    \"run_for_subscription_id\": \"string\"\n  },\n  \"position\": 120,\n  \"allowed_popups_on_store\": false,\n  \"is_sync\": true,\n  \"version\": \"string\",\n  \"created_by_customer_id\": \"string\",\n  \"created_from_id\": \"string\",\n  \"modified_at\": 1614\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5056ac2-41ea-4afe-a149-e654d989acd9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "campaigns",
+                    ":campaign_id",
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"x\": \"<integer>\",\n  \"y\": \"<integer>\",\n  \"next_node_id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"result\": \"<string>\",\n  \"model_type\": \"GraphRoot\",\n  \"break_on_error\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"nodes\": {\n    \"key_0\": {\n      \"id\": \"string\",\n      \"x\": 3290,\n      \"y\": 1453,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": true,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    },\n    \"key_1\": {\n      \"id\": \"string\",\n      \"x\": 8459,\n      \"y\": 6957,\n      \"expr\": {\n        \"tokens\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variables\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tokens\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"next_node_id\": \"string\",\n      \"title\": \"string\",\n      \"result\": \"string\",\n      \"model_type\": \"ConditionNode\",\n      \"break_on_error\": false,\n      \"description\": \"string\",\n      \"expression\": \"string\",\n      \"true_node_id\": \"string\",\n      \"false_node_id\": \"string\"\n    }\n  },\n  \"view_port\": {\n    \"x\": 7617.569023997823,\n    \"y\": 7534.3063259756545,\n    \"zoom\": 8976.68081892125\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ad5b6bd-af83-430a-82fe-ceb0004f3f3d",
+          "name": "Trigger Campaign",
+          "request": {
+            "name": "Trigger Campaign",
+            "description": {
+              "content": "Starts a [LiveOps campaign](https://dashboard.aghanim.com/go/campaigns/table) triggered by an in-game event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_time\": \"<integer>\",\n  \"event_type\": \"<string>\",\n  \"event_data\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57c4b7ad-e02e-489b-b986-48364781e2cb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_time\": \"<integer>\",\n  \"event_type\": \"level_up\",\n  \"event_data\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b585abf-8b0e-4136-8b08-7541e0e65056",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_time\": \"<integer>\",\n  \"event_type\": \"level_up\",\n  \"event_data\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71abc873-68b5-4aa5-9f6e-1c2c88c2469a",
+    "name": "Aghanim Server-to-Server Achievements LiveOps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

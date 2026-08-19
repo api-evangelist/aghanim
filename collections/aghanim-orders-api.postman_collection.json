@@ -1,0 +1,890 @@
+{
+  "item": [
+    {
+      "id": "f2e581fa-3408-4df3-9fa7-f58ee553bf44",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5457d84-d358-4e01-9104-610252ae6c2f",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Returns the order with the latest status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a5154739-2bdd-4026-bd42-ce2bcfca5686",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 1192,\n  \"amount_before_discount\": 6962,\n  \"currency\": \"CZK\",\n  \"player_id\": \"string\",\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"free_item\",\n      \"quantity\": 826,\n      \"currency\": \"KZT\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"progression_program\",\n          \"quantity\": 3113,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"progression_program\",\n          \"quantity\": 9463,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        }\n      ],\n      \"selected_plan_key\": \"string\",\n      \"price\": 4072,\n      \"price_point\": 902,\n      \"price_decimal\": 4637.794736658424\n    },\n    {\n      \"id\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"lootbox\",\n      \"quantity\": 7977,\n      \"currency\": \"LSL\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"liveops\",\n          \"quantity\": 642,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"daily_reward\",\n          \"quantity\": 8678,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        }\n      ],\n      \"selected_plan_key\": \"string\",\n      \"price\": 7565,\n      \"price_point\": 417,\n      \"price_decimal\": 4132.626512869375\n    }\n  ],\n  \"status\": \"refunded\",\n  \"created_at\": 4260,\n  \"checkout_url\": \"http://etyPavLHOKHENvoUfAtJRvGJZkPq.mnxyonkwl8zhu5J95RzilnhcHX9iI57EA5mJIxjSbirhcy.OCzGId.YAC7oh6dOOw\",\n  \"receipt_number\": \"string\",\n  \"email\": \"string\",\n  \"player_info\": {\n    \"attributes\": {\n      \"level\": 0,\n      \"platform\": \"other\",\n      \"marketplace\": \"none\",\n      \"device_type\": \"Android\",\n      \"tags\": [\n        \"tester\",\n        \"tester\"\n      ],\n      \"soft_currency_amount\": 0,\n      \"hard_currency_amount\": 0,\n      \"appsflyer_id\": \"string\",\n      \"appsflyer_app_id\": \"string\",\n      \"appsflyer_meta\": {},\n      \"appsflyer_event_params\": {},\n      \"appsflyer_customer_user_id\": \"string\",\n      \"adjust_device_id\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"adjust_adid\": \"string\",\n      \"adjust_app_token\": \"string\",\n      \"adjust_authorization_token\": \"string\",\n      \"adjust_purchase_event_token\": \"string\",\n      \"adjust_callback_params\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"adjust_partner_params\": {\n        \"key_0\": \"string\"\n      },\n      \"singular_device_id\": {\n        \"key_0\": \"string\"\n      },\n      \"singular_app_id\": \"string\",\n      \"devtodev_appid\": \"string\",\n      \"devtodev_apikey\": \"string\",\n      \"devtodev_device_id\": {\n        \"deviceId\": \"string\",\n        \"devtodevId\": 9347,\n        \"userId\": \"string\",\n        \"advertisingId\": \"string\"\n      },\n      \"ga4_client_id\": \"string\",\n      \"ga4firebase_app_instance_id\": \"string\",\n      \"ga4_user_id\": \"string\"\n    },\n    \"custom_attributes\": {},\n    \"name\": \"string\",\n    \"avatar_url\": \"string\"\n  },\n  \"paid_at\": 3413,\n  \"metadata\": {},\n  \"expires_at\": 2453,\n  \"redirect_settings\": {\n    \"mode\": \"no_redirect\",\n    \"delay_seconds\": 298.22082028376184,\n    \"target\": \"store\"\n  },\n  \"ui_settings\": {\n    \"mode\": \"dark\",\n    \"show_player_info\": true\n  },\n  \"coupons_enabled\": false,\n  \"applied_reward_points\": 9818,\n  \"coupons\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"bonus\",\n      \"discount_percent\": 5745,\n      \"bonus_percent\": 7256,\n      \"bonus_fixed\": 9032\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"vc\",\n      \"discount_percent\": 6186,\n      \"bonus_percent\": 5549,\n      \"bonus_fixed\": 951\n    }\n  ],\n  \"eligible_for_reward_points\": 836,\n  \"eligible_for_loyalty_points\": 5891,\n  \"rewards\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"amount\": 9315,\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"issue_status\": \"issue_failed\",\n        \"icon_url\": \"string\",\n        \"sku\": \"string\"\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"amount\": 4141,\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"issue_status\": \"issued\",\n        \"icon_url\": \"string\",\n        \"sku\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd4c4215-ab9a-42d9-b7f4-025f03032b96",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a2787d8-1cb5-4dde-aaf5-7202d3c8dc6a",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {
+              "content": "Updates the order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"handled_by_client\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51281eb5-ce83-4c84-a515-971b666e6fc7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handled_by_client\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 1192,\n  \"amount_before_discount\": 6962,\n  \"currency\": \"CZK\",\n  \"player_id\": \"string\",\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"free_item\",\n      \"quantity\": 826,\n      \"currency\": \"KZT\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"progression_program\",\n          \"quantity\": 3113,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"progression_program\",\n          \"quantity\": 9463,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        }\n      ],\n      \"selected_plan_key\": \"string\",\n      \"price\": 4072,\n      \"price_point\": 902,\n      \"price_decimal\": 4637.794736658424\n    },\n    {\n      \"id\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"source\": \"lootbox\",\n      \"quantity\": 7977,\n      \"currency\": \"LSL\",\n      \"description\": \"string\",\n      \"image_url\": \"string\",\n      \"nested_items\": [\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"liveops\",\n          \"quantity\": 642,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"sku\": \"string\",\n          \"name\": \"string\",\n          \"source\": \"daily_reward\",\n          \"quantity\": 8678,\n          \"description\": \"string\",\n          \"image_url\": \"string\",\n          \"nested_items\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Item detected>\"\n            }\n          ]\n        }\n      ],\n      \"selected_plan_key\": \"string\",\n      \"price\": 7565,\n      \"price_point\": 417,\n      \"price_decimal\": 4132.626512869375\n    }\n  ],\n  \"status\": \"refunded\",\n  \"created_at\": 4260,\n  \"checkout_url\": \"http://etyPavLHOKHENvoUfAtJRvGJZkPq.mnxyonkwl8zhu5J95RzilnhcHX9iI57EA5mJIxjSbirhcy.OCzGId.YAC7oh6dOOw\",\n  \"receipt_number\": \"string\",\n  \"email\": \"string\",\n  \"player_info\": {\n    \"attributes\": {\n      \"level\": 0,\n      \"platform\": \"other\",\n      \"marketplace\": \"none\",\n      \"device_type\": \"Android\",\n      \"tags\": [\n        \"tester\",\n        \"tester\"\n      ],\n      \"soft_currency_amount\": 0,\n      \"hard_currency_amount\": 0,\n      \"appsflyer_id\": \"string\",\n      \"appsflyer_app_id\": \"string\",\n      \"appsflyer_meta\": {},\n      \"appsflyer_event_params\": {},\n      \"appsflyer_customer_user_id\": \"string\",\n      \"adjust_device_id\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"adjust_adid\": \"string\",\n      \"adjust_app_token\": \"string\",\n      \"adjust_authorization_token\": \"string\",\n      \"adjust_purchase_event_token\": \"string\",\n      \"adjust_callback_params\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"adjust_partner_params\": {\n        \"key_0\": \"string\"\n      },\n      \"singular_device_id\": {\n        \"key_0\": \"string\"\n      },\n      \"singular_app_id\": \"string\",\n      \"devtodev_appid\": \"string\",\n      \"devtodev_apikey\": \"string\",\n      \"devtodev_device_id\": {\n        \"deviceId\": \"string\",\n        \"devtodevId\": 9347,\n        \"userId\": \"string\",\n        \"advertisingId\": \"string\"\n      },\n      \"ga4_client_id\": \"string\",\n      \"ga4firebase_app_instance_id\": \"string\",\n      \"ga4_user_id\": \"string\"\n    },\n    \"custom_attributes\": {},\n    \"name\": \"string\",\n    \"avatar_url\": \"string\"\n  },\n  \"paid_at\": 3413,\n  \"metadata\": {},\n  \"expires_at\": 2453,\n  \"redirect_settings\": {\n    \"mode\": \"no_redirect\",\n    \"delay_seconds\": 298.22082028376184,\n    \"target\": \"store\"\n  },\n  \"ui_settings\": {\n    \"mode\": \"dark\",\n    \"show_player_info\": true\n  },\n  \"coupons_enabled\": false,\n  \"applied_reward_points\": 9818,\n  \"coupons\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"bonus\",\n      \"discount_percent\": 5745,\n      \"bonus_percent\": 7256,\n      \"bonus_fixed\": 9032\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"vc\",\n      \"discount_percent\": 6186,\n      \"bonus_percent\": 5549,\n      \"bonus_fixed\": 951\n    }\n  ],\n  \"eligible_for_reward_points\": 836,\n  \"eligible_for_loyalty_points\": 5891,\n  \"rewards\": {\n    \"available\": [\n      {\n        \"virtual_currency_id\": \"string\",\n        \"amount\": 9315,\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"issue_status\": \"issue_failed\",\n        \"icon_url\": \"string\",\n        \"sku\": \"string\"\n      },\n      {\n        \"virtual_currency_id\": \"string\",\n        \"amount\": 4141,\n        \"type\": \"virtual_currency\",\n        \"name\": \"string\",\n        \"issue_status\": \"issued\",\n        \"icon_url\": \"string\",\n        \"sku\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f027c20-2a51-4e4f-b8b3-d7ab3e74bff7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"handled_by_client\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ced4852-2608-40ee-9926-416e4036affb",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Creates an order for the specified `player_id` and list of `items`.\n\nThe response includes a `checkout_url` that the player should be\nredirected to in order to complete the purchase.\n\nYou can optionally provide:\n- `back_to_game_url`: A universal deep link that appears as a \"Back to Game\"\n  button on the checkout page. Typically, this should open the game client.\n- `back_to_store_url`: A web URL that appears as a \"Back to Store\"\n  button on the checkout page. Usually links to your store website.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"sku\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"image_url\": \"<uri>\",\n      \"quantity\": \"<integer>\",\n      \"store_key\": \"<string>\",\n      \"selected_plan_key\": \"<string>\"\n    }\n  ],\n  \"player_id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"player_info\": {\n    \"attributes\": {\n      \"level\": 0,\n      \"platform\": \"<string>\",\n      \"marketplace\": \"none\",\n      \"device_type\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"soft_currency_amount\": 0,\n      \"hard_currency_amount\": 0,\n      \"appsflyer_id\": \"<string>\",\n      \"appsflyer_app_id\": \"<string>\",\n      \"appsflyer_meta\": \"<object>\",\n      \"appsflyer_event_params\": \"<object>\",\n      \"appsflyer_customer_user_id\": \"<string>\",\n      \"adjust_device_id\": {\n        \"key_0\": \"<string>\"\n      },\n      \"adjust_adid\": \"<string>\",\n      \"adjust_app_token\": \"<string>\",\n      \"adjust_authorization_token\": \"<string>\",\n      \"adjust_purchase_event_token\": \"<string>\",\n      \"adjust_callback_params\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"adjust_partner_params\": {\n        \"key_0\": \"<string>\"\n      },\n      \"singular_device_id\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"singular_app_id\": \"<string>\",\n      \"devtodev_appid\": \"<string>\",\n      \"devtodev_apikey\": \"<string>\",\n      \"devtodev_device_id\": {\n        \"deviceId\": \"<string>\",\n        \"devtodevId\": \"<integer>\",\n        \"userId\": \"<string>\",\n        \"advertisingId\": \"<string>\"\n      },\n      \"ga4_client_id\": \"<string>\",\n      \"ga4firebase_app_instance_id\": \"<string>\",\n      \"ga4_user_id\": \"<string>\"\n    },\n    \"custom_attributes\": \"<object>\",\n    \"name\": \"<string>\",\n    \"avatar_url\": \"<string>\"\n  },\n  \"discount_percent\": \"<integer>\",\n  \"eligible_for_reward_points\": \"<integer>\",\n  \"eligible_for_loyalty_points\": \"<integer>\",\n  \"country\": \"<string>\",\n  \"country_locked\": \"<boolean>\",\n  \"redirect_settings\": {\n    \"mode\": \"no_redirect\",\n    \"delay_seconds\": \"<number>\",\n    \"target\": \"<string>\"\n  },\n  \"ui_settings\": {\n    \"mode\": \"<string>\",\n    \"show_player_info\": \"<boolean>\"\n  },\n  \"ip_address\": \"<ipvanyaddress>\",\n  \"user_agent\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"return_url\": \"<string>\",\n  \"back_to_game_url\": \"<string>\",\n  \"back_to_store_url\": \"<uri>\",\n  \"payment_methods_enabled\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"coupons_enabled\": \"<boolean>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"price_decimal\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"currency_preferred\": false,\n  \"price_template_id\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"expires_at\": \"<integer>\",\n  \"coupon_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41a164af-cdb9-4ba7-acb8-4e1761b6715d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"player_id\": \"r2d2-c3po\",\n  \"items\": [\n    {\n      \"sku\": \"crystal\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"ord_XXXXXXX\",\n  \"checkout_url\": \"https://pay.aghanim.com/order/ord_XXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a367b07-2a38-498a-a29e-8783952b807c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"player_id\": \"r2d2-c3po\",\n  \"items\": [\n    {\n      \"sku\": \"crystal\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4091210-b579-4728-b9a4-22468b5f7a86",
+          "name": "Expire Order",
+          "request": {
+            "name": "Expire Order",
+            "description": {
+              "content": "Expires the order.\n\nThe expiration timestamp is set to the current time, which makes the order\nimpossible to pay.\n\nOnly orders with status `created` or `reattempted` can be expired.\nAttempting to expire an order in any other status will result in an error.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "orders",
+                ":order_id",
+                "expire"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "87bba2af-b87b-46c5-b755-9a3413231aa8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "expire"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a182f63-422b-4b87-b565-4cda75a1092c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "expire"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0879cc5-15a7-46a5-a9b7-3d79e57719b3",
+          "name": "Refund Order",
+          "request": {
+            "name": "Refund Order",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "orders",
+                ":order_id",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a54e3fa3-a3e0-4f0a-b326-db597a42a45e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1d5fb60-5526-4d89-8890-3542d6b944bc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "orders",
+                    ":order_id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.aghanim.com/s2s",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42fba249-d3f7-4f8c-9db5-d65ff615ea55",
+    "name": "Aghanim Server-to-Server Achievements Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n\n\nContact Support:\n Name: Aghanim\n Email: integration@aghanim.com",
+      "type": "text/plain"
+    }
+  }
+}

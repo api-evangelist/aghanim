@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Players API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Players",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refresh Store For Single Player",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/refresh_store",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a store content refresh for a single player.\n\nIf the player is on the store page, this will call the `store.get` webhook and\nthe store page content will be refreshed immediately for them on the Game Hub."
+        },
+        {
+          "info": {
+            "name": "Refresh Store For All Players",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/refresh_store",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a store content refresh for all players.\n\nAll players on the store page will eventually see the updated store content.\nBe aware that this operation will call the `store.get` webhook for all players\ncurrently on the store page, so your server might experience a high number of\nrequests if you have a large number of players on the store page."
+        },
+        {
+          "info": {
+            "name": "Get Player",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a player by their player ID."
+        },
+        {
+          "info": {
+            "name": "Update Player",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a player"
+        },
+        {
+          "info": {
+            "name": "Issue Loyalty Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/issue_loyalty_points",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Issue loyalty points to a player."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

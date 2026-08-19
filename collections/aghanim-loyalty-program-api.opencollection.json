@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Loyalty Program API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loyalty Program",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Loyalty Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/loyalty",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Loyalty Settings"
+        },
+        {
+          "info": {
+            "name": "Update Loyalty Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/loyalty/:loyalty_settings_id",
+            "params": [
+              {
+                "name": "loyalty_settings_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Loyalty Settings"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Tiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/loyalty/:loyalty_settings_id/tiers",
+            "params": [
+              {
+                "name": "loyalty_settings_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Loyalty Tiers"
+        },
+        {
+          "info": {
+            "name": "Update Loyalty Tiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.aghanim.com/s2s/v1/loyalty/:loyalty_settings_id/tiers",
+            "params": [
+              {
+                "name": "loyalty_settings_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Loyalty Tiers"
+        },
+        {
+          "info": {
+            "name": "Issue Loyalty Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/loyalty/:loyalty_settings_id/issue_points",
+            "params": [
+              {
+                "name": "loyalty_settings_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Issue loyalty points to a user manually."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

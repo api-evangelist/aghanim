@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aghanim Server-to-Server Achievements Players' Subscriptions API",
+    "version": "2026.07.14"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Players' Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/subscriptions",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "effective",
+                "value": "",
+                "type": "query",
+                "description": "Filter by effective status. True for effective only, False for non-effective only, None for all."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "A limit on the number of objects to be returned"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of objects to skip"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve subscriptions for a player."
+        },
+        {
+          "info": {
+            "name": "Cancel Player Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/subscriptions/:subscription_id",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a players's subscription."
+        },
+        {
+          "info": {
+            "name": "Reactivate Player Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aghanim.com/s2s/v1/players/:player_id/subscriptions/:subscription_id/reactivate",
+            "params": [
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Reactivate a player's subscription.\n\nDepending on the current subscription state:\n  - reactivates the existing subscription if it is not in a terminal state,\n  - creates a new subscription if the previous one has ended,\n  - or does nothing if the subscription is already active."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
