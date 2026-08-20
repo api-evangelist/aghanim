@@ -37,6 +37,17 @@ tags:
 - Company
 - Mobile Games
 - Game Publishing
+- Direct to Consumer
+- Payments
+- Merchant of Record
+- Web Shop
+- LiveOps
+- Fintech
+- Gaming
+tags_raw:
+- Company
+- Mobile Games
+- Game Publishing
 - Direct-to-Consumer
 - Payments
 - Merchant of Record
@@ -171,6 +182,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -291,6 +304,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -532,6 +547,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -572,6 +589,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
