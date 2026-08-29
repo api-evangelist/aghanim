@@ -1,0 +1,105 @@
+slug: aghanim
+provider: Aghanim
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: GDPR Requests
+  spec_file: aghanim-gdpr-requests-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.9
+  evidence: POST /v1/gdpr_requests  gdpr_data_removal  "GDPR Data Removal", schema GDPRDataRemovalRequest
+  reason: Endpoint executes data-subject erasure requests under GDPR — squarely privacy and data protection
+    compliance.
+- tag: Loyalty Program
+  spec_file: aghanim-loyalty-program-api-openapi.yml
+  capability_id: BC-420.40
+  capability_id_l1: BC-420
+  capability_name: Loyalty & Retention Management
+  confidence: 0.9
+  evidence: GET /v1/loyalty get_loyalty_settings; PUT /v1/loyalty/{loyalty_settings_id}/tiers update_loyalty_tiers;
+    POST .../issue_points issue_loyalty_points
+  reason: The operations configure loyalty programme settings, tiers and issue loyalty points to players
+    — plainly loyalty programme administration under Loyalty & Retention Management.
+- tag: Coupons
+  spec_file: aghanim-coupons-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.82
+  evidence: '"Create Coupon", "Get User Coupons", schemas CouponCreate, CouponType, CouponGeneratedType'
+  reason: Creation, bulk update and per-user issuance of coupons is discount and promotional offer management
+    for the web shop.
+- tag: Players' Subscriptions
+  spec_file: aghanim-players-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.8
+  evidence: GET /v1/players/{player_id}/subscriptions Get Subscriptions; DELETE .../subscriptions/{subscription_id}
+    cancel_player_subscriptions; reactivate_player_subscription
+  reason: Operations manage the in-life state of consumer subscriptions — listing, cancellation and reactivation
+    — which is subscription lifecycle management; L2 left null as the surface spans cancellation and modification/renewal
+    reactivation.
+- tag: Store Promotions
+  spec_file: aghanim-store-promotions-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.8
+  evidence: 'POST /v1/store_promotions  create_store_promotion; schemas: StorePromotionOffers, PromotionPaymentLimits,
+    VCRewardConfig, ItemBonusSettings, UserStorePromotionRead'
+  reason: Lifecycle management of store promotions, promotional offers and bonus rewards, including per-user
+    promotion assignment — discount and promotion management.
+- tag: Price Templates
+  spec_file: aghanim-price-templates-api-openapi.yml
+  capability_id: BC-440.20
+  capability_id_l1: BC-440
+  capability_name: Price List Management
+  confidence: 0.78
+  evidence: 'POST /v1/price_templates  create_price_template; schemas: Price, PriceCategory, TemplatePrice,
+    Country, PriceTemplateRead'
+  reason: Full CRUD over reusable price templates carrying prices per currency and country — maintenance
+    of list/regional prices for sellable items, which is Price List Management.
+- tag: Webhooks
+  spec_file: aghanim-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.78
+  evidence: 'POST /v1/webhooks  create_webhook; POST /v1/webhooks/{webhook_id}/expire_secret; schemas:
+    WebhookEventType, WebhookRevealed'
+  reason: Lifecycle of outbound webhook subscriptions and their signing secrets/event types for a server-to-server
+    integration surface — matches Webhook & Event Subscription Management within the developer/API ecosystem.
+- tag: Players
+  spec_file: aghanim-players-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: POST /v1/players/{player_id} update_player; GET /v1/players/{player_id} get_player; schemas
+    PlayerRead, PlayerAttributes, PersistentPlayerAttributes, PlayerTag
+  reason: Player records with attributes, tags and consent state are the customer master for the DTC shop,
+    read and updated via these operations. 0.7 because the tag also contains store-refresh and loyalty-point
+    actions that go beyond customer data stewardship.
+- tag: Segmentation
+  spec_file: aghanim-segmentation-api-openapi.yml
+  capability_id: BC-420.20
+  capability_id_l1: BC-420
+  capability_name: Customer Segmentation Management
+  confidence: 0.7
+  evidence: POST /v1/segments  create_segment  Create Segment; GET /v1/segment_groups/{segment_group_id}/graph;
+    schemas include RemoveFromSegmentNode, SetAttributeValuesNode
+  reason: Creates and maintains segments and segment groups of players (with add/remove-from-segment nodes
+    and player attributes) used to target offers — customer/player segmentation for treatment strategies.

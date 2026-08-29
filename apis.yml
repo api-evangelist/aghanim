@@ -623,6 +623,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/aghanim-capability-edges.yml
+  name: Aghanim Business Capability Map
 - type: Overlay
   url: overlays/aghanim-openapi-overlay.yaml
 - type: AgenticAccess
