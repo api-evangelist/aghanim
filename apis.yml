@@ -47,6 +47,9 @@ specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-17'
 image: https://static-corp.aghanim.com/og_193da66018.png
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
 tags:
 - Company
 - Mobile Games
@@ -380,6 +383,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - Player
+  tags_raw:
   - Players
   properties:
   - type: OpenAPI
@@ -583,6 +588,8 @@ apis:
   humanURL: https://docs.aghanim.com/api-reference/
   baseURL: https://api.aghanim.com/s2s
   tags:
+  - Video
+  tags_raw:
   - Videos
   properties:
   - type: OpenAPI
