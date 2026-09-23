@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Aghanim Server-to-Server Achievements Payments API
-  description: "The Aghanim Server-to-Server API is designed for **backend server integrations only**. Use this API when you need to automate game hub updates from your server-side applications.\n\n\n## OpenAPI Specification\n\nYou can download the [OpenAPI](https://www.openapis.org/) specification for this API at the following link:\n[docs.aghanim.com/openapi.json](https://docs.aghanim.com/openapi.json).\n\n## Changelog\n\nSee the [S2S API Changelog](https://docs.aghanim.com/s2s-api/changelog/) for a history of changes to this API.\n\n## Authentication\n\nAghanim supports two methods of authentication: **Bearer token** and **Basic authentication**.\n\nTo authenticate, you will need your API key, which can be retrieved from\nthe Aghanim Dashboard → [**Game → Integration → API Keys**](https://dashboard.aghanim.com/go/integration/api-keys).\n\n**⚠️ Security Notice**: The S2S API key is **secret** and must be kept secure on your server. Never expose the S2S API key in client-side code, mobile apps, or any public-facing applications.\n\n### Bearer Token Authentication\n\nUse the Bearer method by including an `Authorization` header with the word `Bearer`\nfollowed by your API key. The `Authorization` header in your HTTP request should look like this: `Authorization: Bearer API_KEY`\n\n### Basic Authentication\n\nAlternatively, you can authenticate using Basic authentication. Your API key is used\nas the `username`, and the `password` should be left empty. Send an `Authorization`\nheader with the word `Basic` followed by a base64-encoded string\nin the format `API_KEY:` (note the colon at the end).\n\nThe `Authorization` header should look like this: `Authorization: Basic ZGVtbzpwQDU1dzByZA==`\n\n## Error Codes\n\nAghanim employs standard HTTP response codes to denote the success or failure of an API request.\nBelow is a table detailing error codes.\n\n| Code | Description |\n| ---- | ----------- |\n| 200  | OK          |\n| 400  | Bad request |\n| 401  | Not authenticated |\n| 403  | Not authorized |\n| 404  | Resource not found |\n| 409  | Conflict. Request conflicts with current state of resource |\n| 422  | Validation error |\n| 429  | Too many requests. Rate limit exceeded |\n| 503  | Server unavailable |\n\n### Generic error schema\n\n```json\n{\n  \"detail\": \"string\"\n}\n```\n\n### Validation error schema\n\n```json\n{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}\n```\n\n## Rate Limits\n\nThe Aghanim API has rate limiting in place to avoid overloading and to ensure it remains stable.\nThe allowable rate of requests is capped at 1,000 per minute for every game.\nGame developers who exceed this limit will receive a 429 error code.\n\nTo increase the rate limit, please contact us via [integration@aghanim.com](mailto:integration@aghanim.com).\n\n## Pagination\n\nIn the Aghanim API, pagination is managed through the use of the `limit` and `offset` query parameters.\nThese parameters allow to fine-tune your data retrieval requests by specifying:\n\n- `limit`: the number of records to be returned in a single request.\n- `offset`: indicates the number of records to skip from the start of the dataset.\n"
+  title: Aghanim Server-to-Server Payments API
+  description: The Aghanim Server-to-Server API is designed for **backend server integrations only**.
   contact:
     name: Aghanim
     email: integration@aghanim.com
@@ -117,108 +117,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Coupon:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the coupon.
-        code:
-          type: string
-          title: Code
-          description: The coupon code.
-        name:
-          type: string
-          title: Name
-          description: The name of the coupon.
-        type:
-          description: The type of the coupon.
-          $ref: '#/components/schemas/CouponType'
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          description: Discount percent for `discount` coupons.
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          description: Bonus percent for `bonus` coupons.
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: Fixed bonus quantity for `bonus` coupons.
-      type: object
-      required:
-      - id
-      - code
-      - name
-      - type
-      title: Coupon
-    ThreeDSecureResult:
-      type: string
-      enum:
-      - not_attempted
-      - authenticated
-      - failed
-      title: ThreeDSecureResult
-      description: An enumeration.
-    CouponType:
-      type: string
-      enum:
-      - bonus
-      - discount
-      - free_item
-      - vc
-      - non_benefit
-      - discount_fixed
-      - discount_reward_point
-      title: CouponType
-      description: An enumeration.
-    ItemSource:
-      type: string
-      enum:
-      - order
-      - bonus
-      - bundle
-      - coupon
-      - lootbox
-      - free_item
-      - liveops
-      - daily_reward
-      - loyalty_reward
-      - progression_program
-      - rolling_offer
-      - pick_one_offer
-      title: ItemSource
-      description: An enumeration.
-    RangeField:
-      type: string
-      enum:
-      - created_at
-      - modified_at
-      - status_updated_at
-      title: RangeField
-      description: An enumeration.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -228,86 +126,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    Item:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the item.
-        sku:
-          type: string
-          minLength: 1
-          title: SKU
-          description: Stock Keeping Unit (SKU) identifier.
-        name:
-          type: string
-          title: Name
-          description: The name of the item.
-        source:
-          description: The source of the payment item.
-          $ref: '#/components/schemas/ItemSource'
-        description:
-          type: string
-          title: Description
-          description: The description of the item
-          nullable: true
-        image_url:
-          type: string
-          title: Image Url
-          description: The URL of the image for the item
-        quantity:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Quantity
-          description: The quantity of the item.
-        nested_items:
-          items:
-            $ref: '#/components/schemas/Item'
-          type: array
-          title: Nested Items
-          description: Nested items of the bundle.
-      type: object
-      required:
-      - id
-      - sku
-      - name
-      - source
-      - quantity
-      title: Item
-    PaymentStatus:
-      type: string
-      enum:
-      - created
-      - failed
-      - expired
-      - voided
-      - rejected
-      - done
-      - refund_requested
-      - refunded
-      - dispute
-      - chargeback
-      - abandoned
-      - canceled
-      title: PaymentStatus
-      description: An enumeration.
-    SalesChannel:
-      type: string
-      enum:
-      - game_hub
-      - checkout
-      - android_sdk
-      - checkout_link
-      title: SalesChannel
-      description: An enumeration.
-    ThreeDSFlow:
-      type: string
-      enum:
-      - none
-      - challenge
-      - frictionless
-      title: ThreeDSFlow
-      description: An enumeration.
     PaymentRead:
       properties:
         user_id:
@@ -490,6 +308,188 @@ components:
       - currency_minor_unit
       - created_at
       title: PaymentRead
+    ThreeDSecureResult:
+      type: string
+      enum:
+      - not_attempted
+      - authenticated
+      - failed
+      title: ThreeDSecureResult
+      description: An enumeration.
+    SalesChannel:
+      type: string
+      enum:
+      - game_hub
+      - checkout
+      - android_sdk
+      - checkout_link
+      title: SalesChannel
+      description: An enumeration.
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    RangeField:
+      type: string
+      enum:
+      - created_at
+      - modified_at
+      - status_updated_at
+      title: RangeField
+      description: An enumeration.
+    Coupon:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the coupon.
+        code:
+          type: string
+          title: Code
+          description: The coupon code.
+        name:
+          type: string
+          title: Name
+          description: The name of the coupon.
+        type:
+          description: The type of the coupon.
+          $ref: '#/components/schemas/CouponType'
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: Discount percent for `discount` coupons.
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          description: Bonus percent for `bonus` coupons.
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: Fixed bonus quantity for `bonus` coupons.
+      type: object
+      required:
+      - id
+      - code
+      - name
+      - type
+      title: Coupon
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PaymentStatus:
+      type: string
+      enum:
+      - created
+      - failed
+      - expired
+      - voided
+      - rejected
+      - done
+      - refund_requested
+      - refunded
+      - dispute
+      - chargeback
+      - abandoned
+      - canceled
+      title: PaymentStatus
+      description: An enumeration.
+    Item:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the item.
+        sku:
+          type: string
+          minLength: 1
+          title: SKU
+          description: Stock Keeping Unit (SKU) identifier.
+        name:
+          type: string
+          title: Name
+          description: The name of the item.
+        source:
+          description: The source of the payment item.
+          $ref: '#/components/schemas/ItemSource'
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+          nullable: true
+        image_url:
+          type: string
+          title: Image Url
+          description: The URL of the image for the item
+        quantity:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Quantity
+          description: The quantity of the item.
+        nested_items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+          title: Nested Items
+          description: Nested items of the bundle.
+      type: object
+      required:
+      - id
+      - sku
+      - name
+      - source
+      - quantity
+      title: Item
+    CouponType:
+      type: string
+      enum:
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
+      description: An enumeration.
+    ThreeDSFlow:
+      type: string
+      enum:
+      - none
+      - challenge
+      - frictionless
+      title: ThreeDSFlow
+      description: An enumeration.
     Platform:
       type: string
       enum:
