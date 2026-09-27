@@ -231,236 +231,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    WebhookMethod:
-      type: string
-      enum:
-      - GET
-      - POST
-      title: WebhookMethod
-      description: An enumeration.
-    WebhookEventType:
-      type: string
-      enum:
-      - player.verify
-      - item.add
-      - item.remove
-      - analytics.checkout.payment_method.select
-      - analytics.checkout.submit_payment_form
-      - analytics.checkout.back_store
-      - analytics.checkout.back_game
-      - analytics.checkout.pageview
-      - analytics.checkout.pageshow
-      - analytics.checkout.pagehide
-      - analytics.checkout.pageexit
-      - analytics.checkout.payment_method.close
-      - analytics.hub.sign_up
-      - analytics.hub.login
-      - analytics.hub.buy_click
-      - analytics.hub.free_item_claimed
-      - batch.ready
-      - order.*
-      - order.created
-      - order.paid
-      - order.canceled
-      - order.refunded
-      - payment.*
-      - payment.succeeded
-      - payment.abandoned
-      - payment.canceled
-      - payment.chargeback
-      - payment.declined
-      - payment.dispute
-      - payment.expired
-      - payment.pending
-      - payment.refunded
-      - payment.rejected
-      - payment.voided
-      - fraud.reported
-      - subscription.activated
-      - subscription.updated
-      - subscription.renewed
-      - subscription.deactivated
-      - coupon.redeemed
-      - ingame.push
-      - ingame.popup
-      - campaign.custom
-      - player.is_idle
-      - player.lookup
-      - player.marketing_consent.updated
-      - store.get
-      title: WebhookEventType
-      description: An enumeration.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    WebhookRedacted:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-          nullable: true
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-          default: true
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-          default: true
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable send player attributes in context
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
-          nullable: true
-        secret_redacted:
-          type: string
-          title: Secret Redacted
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the webhook.
-        game_id:
-          type: string
-          title: Game Id
-          description: The unique identifier of the game.
-      type: object
-      required:
-      - events
-      - url
-      - method
-      - secret_redacted
-      - id
-      - game_id
-      title: WebhookRedacted
-    WebhookUpdate:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable player context.
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery mode.
-      type: object
-      title: WebhookUpdate
-    WebhookCreate:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-          nullable: true
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-          default: true
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-          default: true
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable send player attributes in context
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
-          nullable: true
-      type: object
-      required:
-      - events
-      - url
-      - method
-      title: WebhookCreate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     WebhookRevealed:
       properties:
         events:
@@ -521,6 +291,236 @@ components:
       - game_id
       - secret
       title: WebhookRevealed
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WebhookEventType:
+      type: string
+      enum:
+      - player.verify
+      - item.add
+      - item.remove
+      - analytics.checkout.payment_method.select
+      - analytics.checkout.submit_payment_form
+      - analytics.checkout.back_store
+      - analytics.checkout.back_game
+      - analytics.checkout.pageview
+      - analytics.checkout.pageshow
+      - analytics.checkout.pagehide
+      - analytics.checkout.pageexit
+      - analytics.checkout.payment_method.close
+      - analytics.hub.sign_up
+      - analytics.hub.login
+      - analytics.hub.buy_click
+      - analytics.hub.free_item_claimed
+      - batch.ready
+      - order.*
+      - order.created
+      - order.paid
+      - order.canceled
+      - order.refunded
+      - payment.*
+      - payment.succeeded
+      - payment.abandoned
+      - payment.canceled
+      - payment.chargeback
+      - payment.declined
+      - payment.dispute
+      - payment.expired
+      - payment.pending
+      - payment.refunded
+      - payment.rejected
+      - payment.voided
+      - fraud.reported
+      - subscription.activated
+      - subscription.updated
+      - subscription.renewed
+      - subscription.deactivated
+      - coupon.redeemed
+      - ingame.push
+      - ingame.popup
+      - campaign.custom
+      - player.is_idle
+      - player.lookup
+      - player.marketing_consent.updated
+      - store.get
+      title: WebhookEventType
+      description: An enumeration.
+    WebhookCreate:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+      type: object
+      required:
+      - events
+      - url
+      - method
+      title: WebhookCreate
+    WebhookUpdate:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable player context.
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery mode.
+      type: object
+      title: WebhookUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WebhookRedacted:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+        secret_redacted:
+          type: string
+          title: Secret Redacted
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the webhook.
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game.
+      type: object
+      required:
+      - events
+      - url
+      - method
+      - secret_redacted
+      - id
+      - game_id
+      title: WebhookRedacted
+    WebhookMethod:
+      type: string
+      enum:
+      - GET
+      - POST
+      title: WebhookMethod
+      description: An enumeration.
   securitySchemes:
     HTTPBearer:
       type: http

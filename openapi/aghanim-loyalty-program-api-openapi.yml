@@ -175,128 +175,20 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ItemPropertyRelationData:
+    MathExpression:
       properties:
-        value:
-          anyOf:
-          - type: number
-          - type: integer
-          - type: string
-          title: Value
-      type: object
-      title: ItemPropertyRelationData
-    HTTPValidationError:
-      properties:
-        detail:
+        tokens:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/Token'
           type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ItemPropertyRead:
-      properties:
+          title: Tokens
         name:
           type: string
-          maxLength: 255
           title: Name
-          description: The name of the property
-        description:
-          type: string
-          maxLength: 512
-          title: Description
-          description: The description of the property
-        icon_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Icon Url
-          description: The URL of the icon for the property
-        config:
-          oneOf:
-          - $ref: '#/components/schemas/ItemPropertyConfigRange'
-          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
-          - $ref: '#/components/schemas/ItemPropertyConfigString'
-          title: Config
-          description: The config of the property
-          discriminator:
-            propertyName: property_type
-            mapping:
-              range: '#/components/schemas/ItemPropertyConfigRange'
-              number: '#/components/schemas/ItemPropertyConfigNumber'
-              string: '#/components/schemas/ItemPropertyConfigString'
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the property
       type: object
       required:
       - name
-      - config
-      - id
-      title: ItemPropertyRead
-    ItemPropertyRelationRead:
-      properties:
-        property_id:
-          type: string
-          title: Property Id
-        data:
-          $ref: '#/components/schemas/ItemPropertyRelationData'
-        position:
-          type: integer
-          title: Position
-        id:
-          type: string
-          title: Id
-        item_id:
-          type: string
-          title: Item Id
-        item_property:
-          $ref: '#/components/schemas/ItemPropertyRead'
-      type: object
-      required:
-      - property_id
-      - position
-      - id
-      - item_id
-      - item_property
-      title: ItemPropertyRelationRead
-    Token:
-      properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      title: MathExpression
     LoyaltyItem:
       properties:
         name:
@@ -566,208 +458,67 @@ components:
       - id
       - created_at
       title: LoyaltyItem
-    OrderSourceType:
-      type: string
-      enum:
-      - s2s
-      - hub
-      - sdk
-      - checkout_link
-      title: OrderSourceType
-      description: An enumeration.
-    LoyaltyItemCreateUpdate:
+    ValidationError:
       properties:
-        id:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Id
-          description: The unique identifier of the item
-        count:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Count
-          description: Optional quantity override for the tier item. If not provided, the item's default quantity is used.
-          nullable: true
-        sku:
+          title: Message
+        type:
           type: string
-          title: SKU
+          title: Error Type
       type: object
       required:
-      - id
-      title: LoyaltyItemCreateUpdate
-    LoyaltySettingsDashboardRead:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Highlights:
       properties:
-        name:
+        title:
           type: string
-          maxLength: 255
-          title: Name
-          description: The name of the loyalty program
-        key:
-          type: string
-          title: Key
-          description: External key of the loyalty program
-          nullable: true
+          title: Title
         description:
           type: string
-          maxLength: 1024
           title: Description
-          description: A brief description of the loyalty program
-          nullable: true
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-          description: The URL of the image associated with the loyalty program
-          nullable: true
-        custom_icon_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Custom Icon Url
-          description: Custom icon URL for loyalty points
-          nullable: true
-        activated_at:
-          type: integer
-          title: Activated At
-          description: Timestamp when the program was activated (UNIX time)
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: Timestamp when the program ends (UNIX time)
-          nullable: true
-        period:
-          type: integer
-          title: Period
-          description: The duration of the loyalty program in days
-        repeatable:
-          type: boolean
-          title: Repeatable
-          description: Whether the program is repeatable
-          default: false
-        requirements_expression:
-          title: Requirements Expression
-          nullable: true
-          $ref: '#/components/schemas/Expression'
-        points_rate:
-          type: number
-          title: Points Rate
-          description: Exchange rate against the dollar
-        price_source:
-          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
-          default: local_price
-          nullable: true
-          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
-        excluded_sales_channels:
+        items:
           items:
-            $ref: '#/components/schemas/OrderSourceType'
+            $ref: '#/components/schemas/HighlightItem'
           type: array
-          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
-          nullable: true
-        show_store_button:
-          type: boolean
-          title: Show Store Button
-          description: Whether to show the 'Go to Store' button in the loyalty program widget
-          default: true
-        id:
-          type: string
-          title: Id
-          description: The unique identifier for the loyalty tier
-        game_id:
-          type: string
-          title: Game Id
-          description: The unique identifier of the game the accosiated with the loyalty program
-        time_window:
-          $ref: '#/components/schemas/LoyaltyTimeWindow'
+          title: Items
       type: object
       required:
-      - name
-      - period
-      - points_rate
-      - id
-      - game_id
-      - time_window
-      title: LoyaltySettingsDashboardRead
-    LoyaltySettingsUpdate:
+      - items
+      title: Highlights
+    HighlightItem:
       properties:
+        image_url:
+          type: string
+          title: Image Url
         name:
           type: string
-          maxLength: 255
           title: Name
-        key:
-          type: string
-          title: Key
         description:
           type: string
-          maxLength: 1024
           title: Description
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-        custom_icon_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Custom Icon Url
-        activated_at:
-          type: integer
-          title: Activated At
-        end_at:
-          type: integer
-          title: End At
-        period:
-          type: integer
-          exclusiveMaximum: 365.0
-          minimum: 0.0
-          title: Period
-        repeatable:
-          type: boolean
-          title: Repeatable
-        requirements_expression:
-          $ref: '#/components/schemas/Expression'
-        points_rate:
-          type: number
-          title: Points Rate
-        price_source:
-          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
-          default: local_price
-          nullable: true
-          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
-        excluded_sales_channels:
-          items:
-            $ref: '#/components/schemas/OrderSourceType'
-          type: array
-          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
-          nullable: true
-        show_store_button:
-          type: boolean
-          title: Show Store Button
       type: object
-      title: LoyaltySettingsUpdate
-    LoyaltyTimeWindow:
+      title: HighlightItem
+    ItemPropertyConfigString:
       properties:
-        start_at:
-          type: integer
-          title: Start At
-        end_at:
-          type: integer
-          title: End At
+        property_type:
+          type: string
+          enum:
+          - string
+          title: Property Type
+          default: string
       type: object
-      title: LoyaltyTimeWindow
+      title: ItemPropertyConfigString
     LoyaltySettings:
       properties:
         name:
@@ -865,281 +616,6 @@ components:
       - id
       - game_id
       title: LoyaltySettings
-    NestedItem:
-      properties:
-        id:
-          type: string
-          title: Id
-        count:
-          type: integer
-          title: Count
-        sku:
-          type: string
-          title: SKU
-        is_featured:
-          type: boolean
-          title: Is Featured
-        meta:
-          type: object
-          title: Meta
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-        view_type:
-          $ref: '#/components/schemas/NestedItemViewType'
-      type: object
-      title: NestedItem
-    ItemPropertyConfigRange:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - range
-          title: Property Type
-          default: range
-        max:
-          type: integer
-          title: Max
-        min:
-          type: integer
-          title: Min
-          default: 0
-      type: object
-      required:
-      - max
-      title: ItemPropertyConfigRange
-    LoyaltyPointsPriceSource:
-      type: string
-      enum:
-      - local_price
-      - base_price
-      title: LoyaltyPointsPriceSource
-      description: An enumeration.
-    MathExpression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: MathExpression
-    aghanim__loyalty__schemas__IssueLoyaltyPointsRequest:
-      properties:
-        user_id:
-          type: string
-          title: User Id
-          description: The unique identifier of the user
-        amount:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Amount
-          description: The amount of loyalty points to issue
-      type: object
-      required:
-      - user_id
-      - amount
-      title: IssueLoyaltyPointsRequest
-    ItemSource:
-      type: string
-      enum:
-      - order
-      - bonus
-      - bundle
-      - coupon
-      - lootbox
-      - free_item
-      - liveops
-      - daily_reward
-      - loyalty_reward
-      - progression_program
-      - rolling_offer
-      - pick_one_offer
-      title: ItemSource
-      description: An enumeration.
-    Expression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
-      type: object
-      title: Expression
-    ItemPropertyConfigString:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - string
-          title: Property Type
-          default: string
-      type: object
-      title: ItemPropertyConfigString
-    LoyaltyTierCreateUpdate:
-      properties:
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        points:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Points
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-        items:
-          items:
-            $ref: '#/components/schemas/LoyaltyItemCreateUpdate'
-          type: array
-          maxItems: 10
-          minItems: 1
-          title: Items
-      type: object
-      required:
-      - name
-      - points
-      - image_url
-      - items
-      title: LoyaltyTierCreateUpdate
-    LoyaltyTier:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: The name of the loyalty tier
-        points:
-          type: integer
-          title: Points
-          description: Points required to reach this tier
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-          description: The image URL for this loyalty tier
-        id:
-          type: string
-          title: Id
-          description: The unique identifier for the loyalty tier
-        items:
-          items:
-            $ref: '#/components/schemas/LoyaltyItem'
-          type: array
-          title: Items
-          description: Items associated with this loyalty tier
-      type: object
-      required:
-      - name
-      - points
-      - image_url
-      - id
-      - items
-      title: LoyaltyTier
-    ItemViewOption:
-      type: string
-      enum:
-      - default
-      - skeleton
-      title: ItemViewOption
-      description: An enumeration.
-    ItemPropertyConfigNumber:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - number
-          title: Property Type
-          default: number
-      type: object
-      title: ItemPropertyConfigNumber
-    Highlights:
-      properties:
-        title:
-          type: string
-          title: Title
-        description:
-          type: string
-          title: Description
-        items:
-          items:
-            $ref: '#/components/schemas/HighlightItem'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Highlights
-    HighlightItem:
-      properties:
-        image_url:
-          type: string
-          title: Image Url
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      title: HighlightItem
-    ItemType:
-      type: string
-      enum:
-      - item
-      - currency
-      - bundle
-      - lootbox
-      - subscription
-      - virtual_currency
-      title: ItemType
-      description: An enumeration.
-    TokenType:
-      type: string
-      enum:
-      - attribute
-      - custom_attribute
-      - event_attribute
-      - custom_event_attribute
-      - operator
-      - number
-      - date
-      - string
-      - boolean
-      - list
-      - variable
-      - virtual_currency
-      title: TokenType
     Currency:
       type: string
       enum:
@@ -1304,6 +780,21 @@ components:
       - RP
       - VC
       title: Currency
+    NestedItemViewType:
+      type: string
+      enum:
+      - separated
+      title: NestedItemViewType
+      description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ItemRarityRead:
       properties:
         name:
@@ -1323,11 +814,520 @@ components:
       - name
       - id
       title: ItemRarityRead
-    NestedItemViewType:
+    LoyaltyItemCreateUpdate:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        count:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Count
+          description: Optional quantity override for the tier item. If not provided, the item's default quantity is used.
+          nullable: true
+        sku:
+          type: string
+          title: SKU
+      type: object
+      required:
+      - id
+      title: LoyaltyItemCreateUpdate
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    LoyaltyTierCreateUpdate:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        points:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Points
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+        items:
+          items:
+            $ref: '#/components/schemas/LoyaltyItemCreateUpdate'
+          type: array
+          maxItems: 10
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - name
+      - points
+      - image_url
+      - items
+      title: LoyaltyTierCreateUpdate
+    ItemViewOption:
       type: string
       enum:
-      - separated
-      title: NestedItemViewType
+      - default
+      - skeleton
+      title: ItemViewOption
+      description: An enumeration.
+    NestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        is_featured:
+          type: boolean
+          title: Is Featured
+        meta:
+          type: object
+          title: Meta
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+        view_type:
+          $ref: '#/components/schemas/NestedItemViewType'
+      type: object
+      title: NestedItem
+    ItemPropertyRelationData:
+      properties:
+        value:
+          anyOf:
+          - type: number
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      title: ItemPropertyRelationData
+    ItemPropertyRelationRead:
+      properties:
+        property_id:
+          type: string
+          title: Property Id
+        data:
+          $ref: '#/components/schemas/ItemPropertyRelationData'
+        position:
+          type: integer
+          title: Position
+        id:
+          type: string
+          title: Id
+        item_id:
+          type: string
+          title: Item Id
+        item_property:
+          $ref: '#/components/schemas/ItemPropertyRead'
+      type: object
+      required:
+      - property_id
+      - position
+      - id
+      - item_id
+      - item_property
+      title: ItemPropertyRelationRead
+    LoyaltySettingsDashboardRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the loyalty program
+        key:
+          type: string
+          title: Key
+          description: External key of the loyalty program
+          nullable: true
+        description:
+          type: string
+          maxLength: 1024
+          title: Description
+          description: A brief description of the loyalty program
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image associated with the loyalty program
+          nullable: true
+        custom_icon_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Icon Url
+          description: Custom icon URL for loyalty points
+          nullable: true
+        activated_at:
+          type: integer
+          title: Activated At
+          description: Timestamp when the program was activated (UNIX time)
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: Timestamp when the program ends (UNIX time)
+          nullable: true
+        period:
+          type: integer
+          title: Period
+          description: The duration of the loyalty program in days
+        repeatable:
+          type: boolean
+          title: Repeatable
+          description: Whether the program is repeatable
+          default: false
+        requirements_expression:
+          title: Requirements Expression
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        points_rate:
+          type: number
+          title: Points Rate
+          description: Exchange rate against the dollar
+        price_source:
+          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
+          default: local_price
+          nullable: true
+          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
+          nullable: true
+        show_store_button:
+          type: boolean
+          title: Show Store Button
+          description: Whether to show the 'Go to Store' button in the loyalty program widget
+          default: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the loyalty tier
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game the accosiated with the loyalty program
+        time_window:
+          $ref: '#/components/schemas/LoyaltyTimeWindow'
+      type: object
+      required:
+      - name
+      - period
+      - points_rate
+      - id
+      - game_id
+      - time_window
+      title: LoyaltySettingsDashboardRead
+    ItemPropertyConfigNumber:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - number
+          title: Property Type
+          default: number
+      type: object
+      title: ItemPropertyConfigNumber
+    LoyaltyTier:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the loyalty tier
+        points:
+          type: integer
+          title: Points
+          description: Points required to reach this tier
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The image URL for this loyalty tier
+        id:
+          type: string
+          title: Id
+          description: The unique identifier for the loyalty tier
+        items:
+          items:
+            $ref: '#/components/schemas/LoyaltyItem'
+          type: array
+          title: Items
+          description: Items associated with this loyalty tier
+      type: object
+      required:
+      - name
+      - points
+      - image_url
+      - id
+      - items
+      title: LoyaltyTier
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
+    ItemPropertyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the property
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the property
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the property
+        config:
+          oneOf:
+          - $ref: '#/components/schemas/ItemPropertyConfigRange'
+          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
+          - $ref: '#/components/schemas/ItemPropertyConfigString'
+          title: Config
+          description: The config of the property
+          discriminator:
+            propertyName: property_type
+            mapping:
+              range: '#/components/schemas/ItemPropertyConfigRange'
+              number: '#/components/schemas/ItemPropertyConfigNumber'
+              string: '#/components/schemas/ItemPropertyConfigString'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the property
+      type: object
+      required:
+      - name
+      - config
+      - id
+      title: ItemPropertyRead
+    aghanim__loyalty__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+          description: The unique identifier of the user
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue
+      type: object
+      required:
+      - user_id
+      - amount
+      title: IssueLoyaltyPointsRequest
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    LoyaltyPointsPriceSource:
+      type: string
+      enum:
+      - local_price
+      - base_price
+      title: LoyaltyPointsPriceSource
+      description: An enumeration.
+    LoyaltySettingsUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        key:
+          type: string
+          title: Key
+        description:
+          type: string
+          maxLength: 1024
+          title: Description
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+        custom_icon_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Custom Icon Url
+        activated_at:
+          type: integer
+          title: Activated At
+        end_at:
+          type: integer
+          title: End At
+        period:
+          type: integer
+          exclusiveMaximum: 365.0
+          minimum: 0.0
+          title: Period
+        repeatable:
+          type: boolean
+          title: Repeatable
+        requirements_expression:
+          $ref: '#/components/schemas/Expression'
+        points_rate:
+          type: number
+          title: Points Rate
+        price_source:
+          description: 'Source of price for calculating loyalty points: local_price (convert from local price) or base_price (use base USD price directly)'
+          default: local_price
+          nullable: true
+          $ref: '#/components/schemas/LoyaltyPointsPriceSource'
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+          description: The list of Order Sources (sales channels) where paid orders will not issue Loyalty Points
+          nullable: true
+        show_store_button:
+          type: boolean
+          title: Show Store Button
+      type: object
+      title: LoyaltySettingsUpdate
+    LoyaltyTimeWindow:
+      properties:
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      title: LoyaltyTimeWindow
+    ItemPropertyConfigRange:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - range
+          title: Property Type
+          default: range
+        max:
+          type: integer
+          title: Max
+        min:
+          type: integer
+          title: Min
+          default: 0
+      type: object
+      required:
+      - max
+      title: ItemPropertyConfigRange
+    ItemType:
+      type: string
+      enum:
+      - item
+      - currency
+      - bundle
+      - lootbox
+      - subscription
+      - virtual_currency
+      title: ItemType
+      description: An enumeration.
+    OrderSourceType:
+      type: string
+      enum:
+      - s2s
+      - hub
+      - sdk
+      - checkout_link
+      title: OrderSourceType
       description: An enumeration.
   securitySchemes:
     HTTPBearer:

@@ -290,28 +290,12 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    LeaderboardUpdate:
-      properties:
-        start_at:
-          title: Start At
-          type: integer
-        end_at:
-          title: End At
-          type: integer
-        name:
-          title: Name
-          description: The name of the leaderboard.
-          type: string
-          maxLength: 255
-        description:
-          title: Description
-          description: The description of the leaderboard.
-          type: string
-          maxLength: 512
-        visibility:
-          $ref: '#/components/schemas/LeaderboardVisibility'
-      type: object
-      title: LeaderboardUpdate
+    LeaderboardVisibility:
+      type: string
+      enum:
+      - general
+      - personal
+      title: LeaderboardVisibility
     HTTPValidationError:
       properties:
         detail:
@@ -321,41 +305,27 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    LeaderboardRead:
+    ValidationError:
       properties:
-        name:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          maxLength: 255
-          title: Name
-          description: The name of the leaderboard.
-        description:
+          title: Message
+        type:
           type: string
-          maxLength: 512
-          title: Description
-          description: The description of the leaderboard.
-        visibility:
-          $ref: '#/components/schemas/LeaderboardVisibility'
-          description: The visibility of the leaderboard. It can be either 'general' or 'personal'. General leaderboards are visible to all users, while personal leaderboards are only visible to leaderboard participants.
-          default: general
-        start_at:
-          title: Start At
-          description: The start date of the leaderboard in Unix timestamp.If set, the leaderboard will only be visible in game-hub after this date.
-          type: integer
-        end_at:
-          title: End At
-          description: The end date of the leaderboard in Unix timestamp.If set, the leaderboard will only be visible in game-hub before this date.
-          type: integer
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: The unique identifier of the leaderboard.
+          title: Error Type
       type: object
       required:
-      - name
-      - description
-      - id
-      title: LeaderboardRead
+      - loc
+      - msg
+      - type
+      title: ValidationError
     LeaderboardMemberRead:
       properties:
         member_id:
@@ -402,6 +372,63 @@ components:
       - id
       - created_at
       title: LeaderboardMemberRead
+    LeaderboardRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the leaderboard.
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the leaderboard.
+        visibility:
+          $ref: '#/components/schemas/LeaderboardVisibility'
+          description: The visibility of the leaderboard. It can be either 'general' or 'personal'. General leaderboards are visible to all users, while personal leaderboards are only visible to leaderboard participants.
+          default: general
+        start_at:
+          title: Start At
+          description: The start date of the leaderboard in Unix timestamp.If set, the leaderboard will only be visible in game-hub after this date.
+          type: integer
+        end_at:
+          title: End At
+          description: The end date of the leaderboard in Unix timestamp.If set, the leaderboard will only be visible in game-hub before this date.
+          type: integer
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the leaderboard.
+      type: object
+      required:
+      - name
+      - description
+      - id
+      title: LeaderboardRead
+    LeaderboardUpdate:
+      properties:
+        start_at:
+          title: Start At
+          type: integer
+        end_at:
+          title: End At
+          type: integer
+        name:
+          title: Name
+          description: The name of the leaderboard.
+          type: string
+          maxLength: 255
+        description:
+          title: Description
+          description: The description of the leaderboard.
+          type: string
+          maxLength: 512
+        visibility:
+          $ref: '#/components/schemas/LeaderboardVisibility'
+      type: object
+      title: LeaderboardUpdate
     LeaderboardMemberUpdate:
       properties:
         member_id:
@@ -425,33 +452,6 @@ components:
           type: integer
       type: object
       title: LeaderboardMemberUpdate
-    LeaderboardVisibility:
-      type: string
-      enum:
-      - general
-      - personal
-      title: LeaderboardVisibility
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     LeaderboardCreate:
       properties:
         name:

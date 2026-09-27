@@ -226,6 +226,13 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    StoreCategoryDividerPosition:
+      type: string
+      enum:
+      - top
+      - bottom
+      title: StoreCategoryDividerPosition
+      description: An enumeration.
     HTTPValidationError:
       properties:
         detail:
@@ -235,101 +242,16 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    StoreCategoryRenderType:
-      type: string
-      enum:
-      - default
-      - carousel
-      title: StoreCategoryRenderType
-      description: An enumeration.
-    Expression:
+    Token:
       properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
       type: object
-      title: Expression
-    TokenType:
-      type: string
-      enum:
-      - attribute
-      - custom_attribute
-      - event_attribute
-      - custom_event_attribute
-      - operator
-      - number
-      - date
-      - string
-      - boolean
-      - list
-      - variable
-      - virtual_currency
-      title: TokenType
-    ItemCategoryUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-        position:
-          type: integer
-          title: Position
-        parent_id:
-          type: string
-          title: Parent Id
-        item_template_id:
-          type: string
-          title: Item Template Id
-        pinned_expression:
-          $ref: '#/components/schemas/Expression'
-        slug:
-          type: string
-          title: Slug
-        icon:
-          type: string
-          title: Icon
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-        divider_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Divider Image Url
-        divider_position:
-          $ref: '#/components/schemas/StoreCategoryDividerPosition'
-        divider_type:
-          $ref: '#/components/schemas/StoreCategoryDividerType'
-        background_color:
-          type: string
-          title: Background Color
-        background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Background Image Url
-        background_size:
-          $ref: '#/components/schemas/BackgroundSize'
-        render_type:
-          $ref: '#/components/schemas/StoreCategoryRenderType'
-        render_options:
-          $ref: '#/components/schemas/StoreCategoryRenderOptions'
-      type: object
-      title: ItemCategoryUpdate
+      required:
+      - type
+      title: Token
     ItemCategoryRead:
       properties:
         name:
@@ -388,6 +310,45 @@ components:
       - position
       - id
       title: ItemCategoryRead
+    ItemCategoryBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: ItemCategoryBulkDelete
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
     StoreCategoryDividerType:
       type: string
       enum:
@@ -395,7 +356,15 @@ components:
       - mask
       title: StoreCategoryDividerType
       description: An enumeration.
-    ItemCategoryCreate:
+    CarouselDisplayType:
+      type: string
+      enum:
+      - default
+      - compact
+      - alone
+      title: CarouselDisplayType
+      description: An enumeration.
+    ItemCategoryUpdate:
       properties:
         name:
           type: string
@@ -433,10 +402,8 @@ components:
           format: uri
           title: Divider Image Url
         divider_position:
-          default: top
           $ref: '#/components/schemas/StoreCategoryDividerPosition'
         divider_type:
-          default: image
           $ref: '#/components/schemas/StoreCategoryDividerType'
         background_color:
           type: string
@@ -454,87 +421,7 @@ components:
         render_options:
           $ref: '#/components/schemas/StoreCategoryRenderOptions'
       type: object
-      required:
-      - name
-      - position
-      title: ItemCategoryCreate
-    StoreCategoryDividerPosition:
-      type: string
-      enum:
-      - top
-      - bottom
-      title: StoreCategoryDividerPosition
-      description: An enumeration.
-    Token:
-      properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    CarouselDisplayType:
-      type: string
-      enum:
-      - default
-      - compact
-      - alone
-      title: CarouselDisplayType
-      description: An enumeration.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ItemCategoryBulkDelete:
-      properties:
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - id
-      title: ItemCategoryBulkDelete
-    MathExpression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: MathExpression
-    BackgroundSize:
-      type: string
-      enum:
-      - contain
-      - repeat
-      - cover
-      title: BackgroundSize
-      description: An enumeration.
+      title: ItemCategoryUpdate
     StoreCategoryRenderOptions:
       properties:
         delay:
@@ -616,6 +503,119 @@ components:
       required:
       - id
       title: ItemCategoryBulkUpdate
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ItemCategoryCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        position:
+          type: integer
+          title: Position
+        parent_id:
+          type: string
+          title: Parent Id
+        item_template_id:
+          type: string
+          title: Item Template Id
+        pinned_expression:
+          $ref: '#/components/schemas/Expression'
+        slug:
+          type: string
+          title: Slug
+        icon:
+          type: string
+          title: Icon
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+        divider_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Divider Image Url
+        divider_position:
+          default: top
+          $ref: '#/components/schemas/StoreCategoryDividerPosition'
+        divider_type:
+          default: image
+          $ref: '#/components/schemas/StoreCategoryDividerType'
+        background_color:
+          type: string
+          title: Background Color
+        background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url
+        background_size:
+          $ref: '#/components/schemas/BackgroundSize'
+        render_type:
+          $ref: '#/components/schemas/StoreCategoryRenderType'
+        render_options:
+          $ref: '#/components/schemas/StoreCategoryRenderOptions'
+      type: object
+      required:
+      - name
+      - position
+      title: ItemCategoryCreate
+    StoreCategoryRenderType:
+      type: string
+      enum:
+      - default
+      - carousel
+      title: StoreCategoryRenderType
+      description: An enumeration.
+    BackgroundSize:
+      type: string
+      enum:
+      - contain
+      - repeat
+      - cover
+      title: BackgroundSize
+      description: An enumeration.
   securitySchemes:
     HTTPBearer:
       type: http

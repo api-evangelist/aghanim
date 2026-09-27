@@ -178,17 +178,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
     HTTPValidationError:
       properties:
         detail:
@@ -231,40 +220,6 @@ components:
           description: The player's custom attributes.
       type: object
       title: PlayerInfo
-    DevtodevDeviceId:
-      properties:
-        deviceId:
-          type: string
-          title: Deviceid
-        devtodevId:
-          type: integer
-          title: Devtodevid
-        userId:
-          type: string
-          title: Userid
-        advertisingId:
-          type: string
-          title: Advertisingid
-      type: object
-      title: DevtodevDeviceId
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
-    LoginResponse:
-      properties:
-        authorization_url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Authorization Url
-          description: The URL to authenticate the user on the Game Hub.
-      type: object
-      required:
-      - authorization_url
-      title: LoginResponse
     LoginRequest:
       properties:
         player_id:
@@ -297,6 +252,44 @@ components:
       required:
       - token
       title: AuthenticateRequest
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    UserRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
+        name:
+          type: string
+          title: Name
+          description: The name of the user.
+        avatar_url:
+          type: string
+          title: Avatar Url
+          description: The avatar URL of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user. If the user is not linked to a player, this field will be null.
+      type: object
+      required:
+      - id
+      title: UserRead
     ValidationError:
       properties:
         loc:
@@ -318,6 +311,19 @@ components:
       - msg
       - type
       title: ValidationError
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
     LinkPlayerRequest:
       properties:
         player_id:
@@ -328,14 +334,6 @@ components:
       required:
       - player_id
       title: LinkPlayerRequest
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
     PlayerAttributes:
       properties:
         level:
@@ -435,36 +433,38 @@ components:
           description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
       type: object
       title: PlayerAttributes
-    UserRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the user.
-        name:
-          type: string
-          title: Name
-          description: The name of the user.
-        avatar_url:
-          type: string
-          title: Avatar Url
-          description: The avatar URL of the user.
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique player ID of the user. If the user is not linked to a player, this field will be null.
-      type: object
-      required:
-      - id
-      title: UserRead
-    Platform:
+    DeviceType:
       type: string
       enum:
-      - any
-      - ios
-      - android
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+    LoginResponse:
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Authorization Url
+          description: The URL to authenticate the user on the Game Hub.
+      type: object
+      required:
+      - authorization_url
+      title: LoginResponse
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
       - other
-      title: Platform
+      - one_store
+      - galaxy_store
+      title: Marketplace
   securitySchemes:
     HTTPBearer:
       type: http

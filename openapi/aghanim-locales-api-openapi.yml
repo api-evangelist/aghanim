@@ -180,6 +180,18 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    LocaleStats:
+      properties:
+        total:
+          type: integer
+          title: Total
+          default: 0
+        done:
+          type: integer
+          title: Done
+          default: 0
+      type: object
+      title: LocaleStats
     LocaleRead:
       properties:
         locale:
@@ -205,6 +217,14 @@ components:
       - stats
       - status
       title: LocaleRead
+    LocaleStatus:
+      type: string
+      enum:
+      - clean
+      - translating
+      - synchronization
+      - fuzzy
+      title: LocaleStatus
     ValidationError:
       properties:
         loc:
@@ -226,14 +246,21 @@ components:
       - msg
       - type
       title: ValidationError
-    LocaleStatus:
-      type: string
-      enum:
-      - clean
-      - translating
-      - synchronization
-      - fuzzy
-      title: LocaleStatus
+    LocaleUpdate:
+      properties: {}
+      type: object
+      title: LocaleUpdate
+    LocaleCreate:
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+        published_at:
+          title: Published At
+          type: integer
+      type: object
+      required:
+      - locale
+      title: LocaleCreate
     Locale:
       type: string
       enum:
@@ -264,33 +291,6 @@ components:
       - zh-Hant
       title: Locale
       description: Language codes according to ISO 639-1.
-    LocaleStats:
-      properties:
-        total:
-          type: integer
-          title: Total
-          default: 0
-        done:
-          type: integer
-          title: Done
-          default: 0
-      type: object
-      title: LocaleStats
-    LocaleCreate:
-      properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        published_at:
-          title: Published At
-          type: integer
-      type: object
-      required:
-      - locale
-      title: LocaleCreate
-    LocaleUpdate:
-      properties: {}
-      type: object
-      title: LocaleUpdate
   securitySchemes:
     HTTPBearer:
       type: http

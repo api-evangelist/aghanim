@@ -245,6 +245,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    CreatorSocialPlatform:
+      type: string
+      enum:
+      - tiktok
+      - youtube
+      - instagram
+      - threads
+      - x_twitter
+      - facebook
+      - reddit
+      - twitch
+      - other
+      title: CreatorSocialPlatform
     HTTPValidationError:
       properties:
         detail:
@@ -254,109 +267,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    UnitedStates:
-      type: string
-      enum:
-      - US-AL
-      - US-MS
-      - US-NE
-      - US-PR
-      title: UnitedStates
-      description: An enumeration.
-    CreatorTermsRead:
-      properties:
-        id:
-          type: string
-          title: Id
-        accepted_at:
-          type: integer
-          title: Accepted At
-        date_of_birth:
-          type: string
-          format: date
-          title: Date Of Birth
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-        state:
-          $ref: '#/components/schemas/UnitedStates'
-        age:
-          type: integer
-          title: Age
-      type: object
-      required:
-      - id
-      - accepted_at
-      title: CreatorTermsRead
-    CreatorSocialAccountRead:
-      properties:
-        platform:
-          $ref: '#/components/schemas/CreatorSocialPlatform'
-        handle:
-          type: string
-          title: Handle
-        sync_status:
-          $ref: '#/components/schemas/SyncStatus'
-        synced_at:
-          title: Synced At
-          type: number
-        channel:
-          $ref: '#/components/schemas/SocialChannelRead'
-        content:
-          items:
-            $ref: '#/components/schemas/SocialContentItemRead'
-          type: array
-          title: Content
-        performance:
-          items:
-            $ref: '#/components/schemas/SocialPerformanceSnapshotRead'
-          type: array
-          title: Performance
-      type: object
-      required:
-      - platform
-      - handle
-      - sync_status
-      - synced_at
-      - channel
-      - content
-      - performance
-      title: CreatorSocialAccountRead
-    SocialContentItemRead:
-      properties:
-        url:
-          type: string
-          title: Url
-        title:
-          title: Title
-          type: string
-        thumbnail_url:
-          title: Thumbnail Url
-          type: string
-        published_at:
-          type: string
-          format: date-time
-          title: Published At
-        views:
-          title: Views
-          type: integer
-        likes:
-          title: Likes
-          type: integer
-        comments:
-          title: Comments
-          type: integer
-      type: object
-      required:
-      - url
-      - title
-      - thumbnail_url
-      - published_at
-      - views
-      - likes
-      - comments
-      title: SocialContentItemRead
     SocialPerformanceSnapshotRead:
       properties:
         content_url:
@@ -391,108 +301,6 @@ components:
       - window_days
       - metrics
       title: SocialPerformanceSnapshotRead
-    SocialPerformanceMetricsRead:
-      properties:
-        views:
-          title: Views
-          type: integer
-        likes:
-          title: Likes
-          type: integer
-        comments:
-          title: Comments
-          type: integer
-      type: object
-      required:
-      - views
-      - likes
-      - comments
-      title: SocialPerformanceMetricsRead
-    CreatorUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-        email:
-          type: string
-          title: Email
-        avatar_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Avatar Url
-        extra_terms_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Extra Terms Url
-        extra_terms_text:
-          type: string
-          title: Extra Terms Text
-        social_medias:
-          items:
-            $ref: '#/components/schemas/CreatorSocial'
-          type: array
-          title: Social Medias
-        creator_tier_group_id:
-          type: string
-          title: Creator Tier Group Id
-          description: New tier group to assign the creator to.
-        revenue_share_override_enabled:
-          type: boolean
-          title: Revenue Share Override Enabled
-          description: When true, the creator's revenue share is fixed at `revenue_share_override_bps` and ignores tier rates.
-        revenue_share_override_bps:
-          type: integer
-          maximum: 10000.0
-          minimum: 0.0
-          title: Revenue Share Override Bps
-          description: Override revenue share in basis points; required when enabling the override.
-      type: object
-      title: CreatorUpdate
-    CreatorSocial:
-      properties:
-        url:
-          type: string
-          title: Url
-        platform:
-          $ref: '#/components/schemas/CreatorSocialPlatform'
-      type: object
-      required:
-      - url
-      title: CreatorSocial
-    SocialChannelRead:
-      properties:
-        followers:
-          title: Followers
-          type: integer
-        total_views:
-          title: Total Views
-          type: integer
-        total_content_count:
-          title: Total Content Count
-          type: integer
-      type: object
-      required:
-      - followers
-      - total_views
-      - total_content_count
-      title: SocialChannelRead
-    CreatorSocialPlatform:
-      type: string
-      enum:
-      - tiktok
-      - youtube
-      - instagram
-      - threads
-      - x_twitter
-      - facebook
-      - reddit
-      - twitch
-      - other
-      title: CreatorSocialPlatform
     SyncStatus:
       type: string
       enum:
@@ -572,6 +380,102 @@ components:
       - email
       - id
       title: CreatorRead
+    CreatorUpdate:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        avatar_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Avatar Url
+        extra_terms_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Extra Terms Url
+        extra_terms_text:
+          type: string
+          title: Extra Terms Text
+        social_medias:
+          items:
+            $ref: '#/components/schemas/CreatorSocial'
+          type: array
+          title: Social Medias
+        creator_tier_group_id:
+          type: string
+          title: Creator Tier Group Id
+          description: New tier group to assign the creator to.
+        revenue_share_override_enabled:
+          type: boolean
+          title: Revenue Share Override Enabled
+          description: When true, the creator's revenue share is fixed at `revenue_share_override_bps` and ignores tier rates.
+        revenue_share_override_bps:
+          type: integer
+          maximum: 10000.0
+          minimum: 0.0
+          title: Revenue Share Override Bps
+          description: Override revenue share in basis points; required when enabling the override.
+      type: object
+      title: CreatorUpdate
+    UnitedStates:
+      type: string
+      enum:
+      - US-AL
+      - US-MS
+      - US-NE
+      - US-PR
+      title: UnitedStates
+      description: An enumeration.
+    SocialPerformanceMetricsRead:
+      properties:
+        views:
+          title: Views
+          type: integer
+        likes:
+          title: Likes
+          type: integer
+        comments:
+          title: Comments
+          type: integer
+      type: object
+      required:
+      - views
+      - likes
+      - comments
+      title: SocialPerformanceMetricsRead
+    CreatorTermsRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        accepted_at:
+          type: integer
+          title: Accepted At
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+        state:
+          $ref: '#/components/schemas/UnitedStates'
+        age:
+          type: integer
+          title: Age
+      type: object
+      required:
+      - id
+      - accepted_at
+      title: CreatorTermsRead
     ValidationError:
       properties:
         loc:
@@ -593,6 +497,57 @@ components:
       - msg
       - type
       title: ValidationError
+    SocialChannelRead:
+      properties:
+        followers:
+          title: Followers
+          type: integer
+        total_views:
+          title: Total Views
+          type: integer
+        total_content_count:
+          title: Total Content Count
+          type: integer
+      type: object
+      required:
+      - followers
+      - total_views
+      - total_content_count
+      title: SocialChannelRead
+    SocialContentItemRead:
+      properties:
+        url:
+          type: string
+          title: Url
+        title:
+          title: Title
+          type: string
+        thumbnail_url:
+          title: Thumbnail Url
+          type: string
+        published_at:
+          type: string
+          format: date-time
+          title: Published At
+        views:
+          title: Views
+          type: integer
+        likes:
+          title: Likes
+          type: integer
+        comments:
+          title: Comments
+          type: integer
+      type: object
+      required:
+      - url
+      - title
+      - thumbnail_url
+      - published_at
+      - views
+      - likes
+      - comments
+      title: SocialContentItemRead
     CreatorAnnotation:
       properties:
         note:
@@ -605,6 +560,40 @@ components:
           title: Display Name
       type: object
       title: CreatorAnnotation
+    CreatorSocialAccountRead:
+      properties:
+        platform:
+          $ref: '#/components/schemas/CreatorSocialPlatform'
+        handle:
+          type: string
+          title: Handle
+        sync_status:
+          $ref: '#/components/schemas/SyncStatus'
+        synced_at:
+          title: Synced At
+          type: number
+        channel:
+          $ref: '#/components/schemas/SocialChannelRead'
+        content:
+          items:
+            $ref: '#/components/schemas/SocialContentItemRead'
+          type: array
+          title: Content
+        performance:
+          items:
+            $ref: '#/components/schemas/SocialPerformanceSnapshotRead'
+          type: array
+          title: Performance
+      type: object
+      required:
+      - platform
+      - handle
+      - sync_status
+      - synced_at
+      - channel
+      - content
+      - performance
+      title: CreatorSocialAccountRead
     PaginatedResponse_list_aghanim.creator.schemas.CreatorRead__:
       properties:
         data:
@@ -632,6 +621,17 @@ components:
       - offset
       - has_next
       title: PaginatedResponse[list[aghanim.creator.schemas.CreatorRead]]
+    CreatorSocial:
+      properties:
+        url:
+          type: string
+          title: Url
+        platform:
+          $ref: '#/components/schemas/CreatorSocialPlatform'
+      type: object
+      required:
+      - url
+      title: CreatorSocial
     CreatorCreate:
       properties:
         name:

@@ -240,35 +240,6 @@ components:
       - msg
       - type
       title: ValidationError
-    TranslationGlossaryRead:
-      properties:
-        locale_id:
-          type: string
-          maxLength: 32
-          title: Locale Id
-          description: The unique identifier of the locale
-        term:
-          type: string
-          maxLength: 255
-          title: Term
-          description: The glossary term
-        translation:
-          type: string
-          maxLength: 255
-          title: Translation
-          description: The translation of the glossary term
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: The unique identifier of the glossary
-      type: object
-      required:
-      - locale_id
-      - term
-      - translation
-      - id
-      title: TranslationGlossaryRead
     TranslationGlossaryUpdate:
       properties:
         term:
@@ -306,6 +277,35 @@ components:
       - term
       - translation
       title: TranslationGlossaryCreate
+    TranslationGlossaryRead:
+      properties:
+        locale_id:
+          type: string
+          maxLength: 32
+          title: Locale Id
+          description: The unique identifier of the locale
+        term:
+          type: string
+          maxLength: 255
+          title: Term
+          description: The glossary term
+        translation:
+          type: string
+          maxLength: 255
+          title: Translation
+          description: The translation of the glossary term
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the glossary
+      type: object
+      required:
+      - locale_id
+      - term
+      - translation
+      - id
+      title: TranslationGlossaryRead
   securitySchemes:
     HTTPBearer:
       type: http

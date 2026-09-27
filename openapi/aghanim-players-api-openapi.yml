@@ -172,30 +172,12 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
-    VirtualCurrencyShort:
+    MarketingConsent:
       properties:
-        sku:
-          type: string
-          title: SKU
-        quantity:
-          type: integer
-          title: Quantity
+        email:
+          $ref: '#/components/schemas/EmailConsent'
       type: object
-      required:
-      - sku
-      - quantity
-      title: VirtualCurrencyShort
+      title: MarketingConsent
     HTTPValidationError:
       properties:
         detail:
@@ -205,73 +187,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
-      properties:
-        amount:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Amount
-          description: The amount of loyalty points to issue.
-      type: object
-      required:
-      - amount
-      title: IssueLoyaltyPointsRequest
-    DevtodevDeviceIdV2:
-      properties:
-        deviceId:
-          title: Deviceid
-          type: string
-        devtodevId:
-          title: Devtodevid
-          type: integer
-        userId:
-          title: Userid
-          type: string
-        advertisingId:
-          title: Advertisingid
-          type: string
-      type: object
-      title: DevtodevDeviceId
-    PeriodPurchaseStat:
-      properties:
-        start_calc_at:
-          type: integer
-          title: Start Calc At
-        ltv:
-          type: integer
-          title: Ltv
-      type: object
-      required:
-      - start_calc_at
-      - ltv
-      title: PeriodPurchaseStat
-    PlayerRead:
-      properties:
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the user.
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique player ID of the user.
-        loyalty_points:
-          type: integer
-          title: Loyalty Points
-          description: The amount of loyalty points the player has.
-      type: object
-      required:
-      - id
-      - player_id
-      title: PlayerRead
     UserUpdate:
       properties:
         name:
@@ -323,11 +238,48 @@ components:
           type: object
       type: object
       title: UserUpdate
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
+    EmailConsent:
+      properties:
+        granted_at:
+          title: Granted At
+          type: integer
+        revoked_at:
+          title: Revoked At
+          type: integer
+      type: object
+      title: EmailConsent
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    DevtodevDeviceIdV2:
+      properties:
+        deviceId:
+          title: Deviceid
+          type: string
+        devtodevId:
+          title: Devtodevid
+          type: integer
+        userId:
+          title: Userid
+          type: string
+        advertisingId:
+          title: Advertisingid
+          type: string
+      type: object
+      title: DevtodevDeviceId
     ValidationError:
       properties:
         loc:
@@ -349,12 +301,182 @@ components:
       - msg
       - type
       title: ValidationError
-    MarketingConsent:
+    VirtualCurrencyShort:
       properties:
-        email:
-          $ref: '#/components/schemas/EmailConsent'
+        sku:
+          type: string
+          title: SKU
+        quantity:
+          type: integer
+          title: Quantity
       type: object
-      title: MarketingConsent
+      required:
+      - sku
+      - quantity
+      title: VirtualCurrencyShort
+    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue.
+      type: object
+      required:
+      - amount
+      title: IssueLoyaltyPointsRequest
+    PeriodPurchaseStat:
+      properties:
+        start_calc_at:
+          type: integer
+          title: Start Calc At
+        ltv:
+          type: integer
+          title: Ltv
+      type: object
+      required:
+      - start_calc_at
+      - ltv
+      title: PeriodPurchaseStat
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
+    PlayerRead:
+      properties:
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user.
+        loyalty_points:
+          type: integer
+          title: Loyalty Points
+          description: The amount of loyalty points the player has.
+      type: object
+      required:
+      - id
+      - player_id
+      title: PlayerRead
+    PlayerAttributes:
+      properties:
+        level:
+          type: integer
+          title: Level
+          default: 0
+          posthog: true
+        platform:
+          $ref: '#/components/schemas/Platform'
+        marketplace:
+          default: none
+          $ref: '#/components/schemas/Marketplace'
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+        tags:
+          items:
+            $ref: '#/components/schemas/PlayerTag'
+          type: array
+        soft_currency_amount:
+          type: integer
+          title: Soft Currency Amount
+          default: 0
+        hard_currency_amount:
+          type: integer
+          title: Hard Currency Amount
+          default: 0
+        appsflyer_id:
+          type: string
+          title: Appsflyer Id
+        appsflyer_app_id:
+          type: string
+          title: Appsflyer App Id
+        appsflyer_meta:
+          type: object
+          title: Appsflyer Meta
+        appsflyer_event_params:
+          type: object
+          title: Appsflyer Event Params
+        appsflyer_customer_user_id:
+          type: string
+          title: Appsflyer Customer User Id
+        adjust_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Device Id
+        adjust_adid:
+          type: string
+          title: Adjust Adid
+        adjust_app_token:
+          type: string
+          title: Adjust App Token
+        adjust_authorization_token:
+          type: string
+          title: Adjust Authorization Token
+        adjust_purchase_event_token:
+          type: string
+          title: Adjust Purchase Event Token
+        adjust_callback_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Callback Params
+        adjust_partner_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Partner Params
+        singular_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Singular Device Id
+        singular_app_id:
+          type: string
+          title: Singular App Id
+        devtodev_appid:
+          type: string
+          title: Devtodev Appid
+        devtodev_apikey:
+          type: string
+          title: Devtodev Apikey
+        devtodev_device_id:
+          $ref: '#/components/schemas/DevtodevDeviceId'
+        ga4_client_id:
+          type: string
+          title: Ga4 Client Id
+          description: GA4 web `client_id` from the `_ga` cookie.
+        ga4firebase_app_instance_id:
+          type: string
+          title: Ga4Firebase App Instance Id
+          description: Firebase mobile `app_instance_id` from the SDK.
+        ga4_user_id:
+          type: string
+          maxLength: 256
+          title: Ga4 User Id
+          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
+      type: object
+      title: PlayerAttributes
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
     PersistentPlayerAttributes:
       properties:
         level:
@@ -500,139 +622,6 @@ components:
           type: object
       type: object
       title: PersistentPlayerAttributes
-    DevtodevDeviceId:
-      properties:
-        deviceId:
-          type: string
-          title: Deviceid
-        devtodevId:
-          type: integer
-          title: Devtodevid
-        userId:
-          type: string
-          title: Userid
-        advertisingId:
-          type: string
-          title: Advertisingid
-      type: object
-      title: DevtodevDeviceId
-    PlayerAttributes:
-      properties:
-        level:
-          type: integer
-          title: Level
-          default: 0
-          posthog: true
-        platform:
-          $ref: '#/components/schemas/Platform'
-        marketplace:
-          default: none
-          $ref: '#/components/schemas/Marketplace'
-        device_type:
-          $ref: '#/components/schemas/DeviceType'
-        tags:
-          items:
-            $ref: '#/components/schemas/PlayerTag'
-          type: array
-        soft_currency_amount:
-          type: integer
-          title: Soft Currency Amount
-          default: 0
-        hard_currency_amount:
-          type: integer
-          title: Hard Currency Amount
-          default: 0
-        appsflyer_id:
-          type: string
-          title: Appsflyer Id
-        appsflyer_app_id:
-          type: string
-          title: Appsflyer App Id
-        appsflyer_meta:
-          type: object
-          title: Appsflyer Meta
-        appsflyer_event_params:
-          type: object
-          title: Appsflyer Event Params
-        appsflyer_customer_user_id:
-          type: string
-          title: Appsflyer Customer User Id
-        adjust_device_id:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Device Id
-        adjust_adid:
-          type: string
-          title: Adjust Adid
-        adjust_app_token:
-          type: string
-          title: Adjust App Token
-        adjust_authorization_token:
-          type: string
-          title: Adjust Authorization Token
-        adjust_purchase_event_token:
-          type: string
-          title: Adjust Purchase Event Token
-        adjust_callback_params:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Callback Params
-        adjust_partner_params:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Partner Params
-        singular_device_id:
-          additionalProperties:
-            type: string
-          type: object
-          title: Singular Device Id
-        singular_app_id:
-          type: string
-          title: Singular App Id
-        devtodev_appid:
-          type: string
-          title: Devtodev Appid
-        devtodev_apikey:
-          type: string
-          title: Devtodev Apikey
-        devtodev_device_id:
-          $ref: '#/components/schemas/DevtodevDeviceId'
-        ga4_client_id:
-          type: string
-          title: Ga4 Client Id
-          description: GA4 web `client_id` from the `_ga` cookie.
-        ga4firebase_app_instance_id:
-          type: string
-          title: Ga4Firebase App Instance Id
-          description: Firebase mobile `app_instance_id` from the SDK.
-        ga4_user_id:
-          type: string
-          maxLength: 256
-          title: Ga4 User Id
-          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
-      type: object
-      title: PlayerAttributes
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    EmailConsent:
-      properties:
-        granted_at:
-          title: Granted At
-          type: integer
-        revoked_at:
-          title: Revoked At
-          type: integer
-      type: object
-      title: EmailConsent
     Platform:
       type: string
       enum:
@@ -641,6 +630,17 @@ components:
       - android
       - other
       title: Platform
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
   securitySchemes:
     HTTPBearer:
       type: http

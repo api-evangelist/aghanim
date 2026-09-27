@@ -216,105 +216,26 @@ components:
       - price
       - is_custom
       title: TemplatePrice
-    PriceTemplateShort:
+    Price:
       properties:
-        key:
-          title: Key
-          description: Unique key for the price template
-          type: string
-        name:
-          type: string
-          title: Name
-          description: Name of the price template
+        country:
+          $ref: '#/components/schemas/Country'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        platform:
+          $ref: '#/components/schemas/Platform'
         price:
           type: integer
+          maximum: 1000000000000.0
+          minimum: 0.0
           title: Price
-          description: Price point used to derive pricing details
-        category:
-          $ref: '#/components/schemas/PriceCategory'
-          description: Category of the price template (e.g., none or platform)
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: Unique identifier for the price template
-        items_count:
-          type: integer
-          title: Items Count
-          description: Number of items linked to the template
-          default: 0
-        created_at:
-          type: integer
-          title: Created At
-          description: Timestamp (in epoch seconds) when the template was created
-        modified_at:
-          title: Modified At
-          description: Timestamp (in epoch seconds) when the template was last modified
-          type: integer
       type: object
       required:
-      - name
-      - price
-      - category
-      - id
-      - created_at
-      title: PriceTemplateShort
-    PriceCategory:
-      type: string
-      enum:
-      - none
+      - country
+      - currency
       - platform
-      title: PriceCategory
-    PriceTemplateRead:
-      properties:
-        key:
-          title: Key
-          description: Unique key for the price template
-          type: string
-        name:
-          type: string
-          title: Name
-          description: Name of the price template
-        price:
-          type: integer
-          title: Price
-          description: Price point used to derive pricing details
-        category:
-          $ref: '#/components/schemas/PriceCategory'
-          description: Category of the price template (e.g., none or platform)
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: Unique identifier for the price template
-        items_count:
-          type: integer
-          title: Items Count
-          description: Number of items linked to the template
-          default: 0
-        created_at:
-          type: integer
-          title: Created At
-          description: Timestamp (in epoch seconds) when the template was created
-        modified_at:
-          title: Modified At
-          description: Timestamp (in epoch seconds) when the template was last modified
-          type: integer
-        prices:
-          items:
-            $ref: '#/components/schemas/TemplatePrice'
-          type: array
-          title: Prices
-          description: List of prices derived from the template
-      type: object
-      required:
-      - name
       - price
-      - category
-      - id
-      - created_at
-      - prices
-      title: PriceTemplateRead
+      title: Price
     PriceTemplateCreate:
       properties:
         key:
@@ -366,26 +287,256 @@ components:
       - msg
       - type
       title: ValidationError
-    Price:
+    PriceCategory:
+      type: string
+      enum:
+      - none
+      - platform
+      title: PriceCategory
+    Country:
+      type: string
+      enum:
+      - VA
+      - MM
+      - PE
+      - DK
+      - PY
+      - SV
+      - US
+      - SI
+      - SG
+      - CZ
+      - KE
+      - JP
+      - KR
+      - NZ
+      - KZ
+      - AE
+      - IQ
+      - AU
+      - CL
+      - QA
+      - NL
+      - IN
+      - GE
+      - EE
+      - BM
+      - AT
+      - VN
+      - LI
+      - KW
+      - TC
+      - BR
+      - PL
+      - MY
+      - HK
+      - MC
+      - VG
+      - GI
+      - SE
+      - EG
+      - GH
+      - CH
+      - LK
+      - SA
+      - SM
+      - PK
+      - DE
+      - TW
+      - LU
+      - BO
+      - FM
+      - CA
+      - SK
+      - LT
+      - FR
+      - KY
+      - LV
+      - CY
+      - MX
+      - RO
+      - TZ
+      - HU
+      - PH
+      - MO
+      - FI
+      - RS
+      - EC
+      - IE
+      - ID
+      - OM
+      - BD
+      - PA
+      - UA
+      - ZA
+      - ES
+      - PT
+      - 'NO'
+      - NG
+      - TH
+      - IL
+      - GB
+      - JO
+      - IT
+      - BG
+      - TR
+      - BH
+      - CR
+      - MA
+      - HR
+      - GR
+      - KH
+      - CO
+      - BE
+      - DZ
+      - CN
+      - AD
+      - AL
+      - BA
+      - IS
+      - MD
+      - ME
+      - MK
+      - MT
+      - RU
+      - AR
+      title: Country
+    PriceTemplateShort:
       properties:
-        country:
-          $ref: '#/components/schemas/Country'
-        currency:
-          $ref: '#/components/schemas/Currency'
-        platform:
-          $ref: '#/components/schemas/Platform'
+        key:
+          title: Key
+          description: Unique key for the price template
+          type: string
+        name:
+          type: string
+          title: Name
+          description: Name of the price template
         price:
           type: integer
-          maximum: 1000000000000.0
-          minimum: 0.0
           title: Price
+          description: Price point used to derive pricing details
+        category:
+          $ref: '#/components/schemas/PriceCategory'
+          description: Category of the price template (e.g., none or platform)
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: Unique identifier for the price template
+        items_count:
+          type: integer
+          title: Items Count
+          description: Number of items linked to the template
+          default: 0
+        created_at:
+          type: integer
+          title: Created At
+          description: Timestamp (in epoch seconds) when the template was created
+        modified_at:
+          title: Modified At
+          description: Timestamp (in epoch seconds) when the template was last modified
+          type: integer
       type: object
       required:
-      - country
-      - currency
-      - platform
+      - name
       - price
-      title: Price
+      - category
+      - id
+      - created_at
+      title: PriceTemplateShort
+    PriceTemplateUpdate:
+      properties:
+        key:
+          title: Key
+          description: Unique key for the price template
+          type: string
+        name:
+          title: Name
+          description: Updated name of the price template
+          type: string
+        price:
+          title: Price
+          description: Updated price point
+          type: integer
+        category:
+          description: Updated category of the price template)
+          $ref: '#/components/schemas/PriceCategory'
+        customs:
+          title: Customs
+          description: List of price customizations overwriting platform suggested prices
+          items:
+            $ref: '#/components/schemas/Price'
+          type: array
+      type: object
+      title: PriceTemplateUpdate
+    InfinitePaginatedResponse_PriceTemplateShort_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PriceTemplateShort'
+          type: array
+          title: Data
+        has_more:
+          type: boolean
+          title: Has More
+        next_cursor:
+          title: Next Cursor
+          type: string
+      type: object
+      required:
+      - data
+      - has_more
+      title: InfinitePaginatedResponse[PriceTemplateShort]
+    PriceTemplateRead:
+      properties:
+        key:
+          title: Key
+          description: Unique key for the price template
+          type: string
+        name:
+          type: string
+          title: Name
+          description: Name of the price template
+        price:
+          type: integer
+          title: Price
+          description: Price point used to derive pricing details
+        category:
+          $ref: '#/components/schemas/PriceCategory'
+          description: Category of the price template (e.g., none or platform)
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: Unique identifier for the price template
+        items_count:
+          type: integer
+          title: Items Count
+          description: Number of items linked to the template
+          default: 0
+        created_at:
+          type: integer
+          title: Created At
+          description: Timestamp (in epoch seconds) when the template was created
+        modified_at:
+          title: Modified At
+          description: Timestamp (in epoch seconds) when the template was last modified
+          type: integer
+        prices:
+          items:
+            $ref: '#/components/schemas/TemplatePrice'
+          type: array
+          title: Prices
+          description: List of prices derived from the template
+      type: object
+      required:
+      - name
+      - price
+      - category
+      - id
+      - created_at
+      - prices
+      title: PriceTemplateRead
     Currency:
       type: string
       enum:
@@ -550,157 +701,6 @@ components:
       - RP
       - VC
       title: Currency
-    PriceTemplateUpdate:
-      properties:
-        key:
-          title: Key
-          description: Unique key for the price template
-          type: string
-        name:
-          title: Name
-          description: Updated name of the price template
-          type: string
-        price:
-          title: Price
-          description: Updated price point
-          type: integer
-        category:
-          description: Updated category of the price template)
-          $ref: '#/components/schemas/PriceCategory'
-        customs:
-          title: Customs
-          description: List of price customizations overwriting platform suggested prices
-          items:
-            $ref: '#/components/schemas/Price'
-          type: array
-      type: object
-      title: PriceTemplateUpdate
-    InfinitePaginatedResponse_PriceTemplateShort_:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PriceTemplateShort'
-          type: array
-          title: Data
-        has_more:
-          type: boolean
-          title: Has More
-        next_cursor:
-          title: Next Cursor
-          type: string
-      type: object
-      required:
-      - data
-      - has_more
-      title: InfinitePaginatedResponse[PriceTemplateShort]
-    Country:
-      type: string
-      enum:
-      - VA
-      - MM
-      - PE
-      - DK
-      - PY
-      - SV
-      - US
-      - SI
-      - SG
-      - CZ
-      - KE
-      - JP
-      - KR
-      - NZ
-      - KZ
-      - AE
-      - IQ
-      - AU
-      - CL
-      - QA
-      - NL
-      - IN
-      - GE
-      - EE
-      - BM
-      - AT
-      - VN
-      - LI
-      - KW
-      - TC
-      - BR
-      - PL
-      - MY
-      - HK
-      - MC
-      - VG
-      - GI
-      - SE
-      - EG
-      - GH
-      - CH
-      - LK
-      - SA
-      - SM
-      - PK
-      - DE
-      - TW
-      - LU
-      - BO
-      - FM
-      - CA
-      - SK
-      - LT
-      - FR
-      - KY
-      - LV
-      - CY
-      - MX
-      - RO
-      - TZ
-      - HU
-      - PH
-      - MO
-      - FI
-      - RS
-      - EC
-      - IE
-      - ID
-      - OM
-      - BD
-      - PA
-      - UA
-      - ZA
-      - ES
-      - PT
-      - 'NO'
-      - NG
-      - TH
-      - IL
-      - GB
-      - JO
-      - IT
-      - BG
-      - TR
-      - BH
-      - CR
-      - MA
-      - HR
-      - GR
-      - KH
-      - CO
-      - BE
-      - DZ
-      - CN
-      - AD
-      - AL
-      - BA
-      - IS
-      - MD
-      - ME
-      - MK
-      - MT
-      - RU
-      - AR
-      title: Country
     Platform:
       type: string
       enum:

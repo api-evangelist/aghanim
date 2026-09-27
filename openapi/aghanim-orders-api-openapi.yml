@@ -195,150 +195,23 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    RedirectMode:
+    Mode:
       type: string
       enum:
-      - no_redirect
-      - immediate
-      - delayed
-      title: RedirectMode
+      - dark
+      - light
+      - auto
+      title: Mode
       description: An enumeration.
-    OrderItemRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the item.
-        sku:
-          type: string
-          minLength: 1
-          title: SKU
-          description: Stock Keeping Unit (SKU) identifier.
-        name:
-          type: string
-          title: Name
-          description: The name of the item.
-        source:
-          description: The source of the payment item.
-          $ref: '#/components/schemas/ItemSource'
-        description:
-          type: string
-          title: Description
-          description: The description of the item
-          nullable: true
-        image_url:
-          type: string
-          title: Image Url
-          description: The URL of the image for the item
-        quantity:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Quantity
-          description: The quantity of the item.
-        nested_items:
-          items:
-            $ref: '#/components/schemas/Item'
-          type: array
-          title: Nested Items
-          description: Nested items of the bundle.
-        selected_plan_key:
-          type: string
-          title: Selected Plan Key
-          description: The key of the subscription plan to pre-select on the checkout page. Only applicable to subscription SKUs.
-          nullable: true
-        currency:
-          description: The currency of the item.
-          $ref: '#/components/schemas/Currency'
-        price:
-          type: integer
-          title: Price
-          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/)
-        price_point:
-          type: integer
-          title: Price Point
-          description: The price point for local prices
-        price_decimal:
-          type: number
-          title: Price Decimal
-          description: price in decimal units
-      type: object
-      required:
-      - id
-      - sku
-      - name
-      - source
-      - quantity
-      - currency
-      title: OrderItemRead
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    OrderRewards:
-      properties:
-        available:
-          items:
-            $ref: '#/components/schemas/OrderVirtualCurrencyReward'
-          type: array
-          title: Available
-      type: object
-      required:
-      - available
-      title: OrderRewards
-    OrderItemCreate:
-      properties:
-        sku:
-          type: string
-          minLength: 1
-          title: SKU
-          description: Stock Keeping Unit (SKU) identifier.
-        name:
-          type: string
-          title: Name
-          description: The name of the item.
-          nullable: true
-        description:
-          type: string
-          title: Description
-          description: The description of the item
-          nullable: true
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-          description: The URL of the image for the item
-          nullable: true
-        quantity:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Quantity
-          description: The quantity of the item.
-          nullable: true
-        store_key:
-          type: string
-          title: Store Key
-          description: The key of the store where order taking store item for discount and benefits.
-          nullable: true
-        selected_plan_key:
-          type: string
-          title: Selected Plan Key
-          description: The key of the subscription plan to pre-select on the checkout page. Only applicable to subscription SKUs.
-          nullable: true
-      type: object
-      required:
-      - sku
-      title: OrderItemCreate
+    RewardIssueStatus:
+      type: string
+      enum:
+      - issued
+      - revoked
+      - issue_failed
+      - revoke_failed
+      title: RewardIssueStatus
+      description: An enumeration.
     ValidationError:
       properties:
         loc:
@@ -360,573 +233,6 @@ components:
       - msg
       - type
       title: ValidationError
-    UISettings:
-      properties:
-        mode:
-          description: The appearance mode for checkout page. `dark` (dark mode), `light` (light mode), or `auto` (follows system preference)
-          $ref: '#/components/schemas/Mode'
-        show_player_info:
-          type: boolean
-          title: Show Player Info
-          description: Whether to display player information on checkout page
-      type: object
-      title: UISettings
-    DevtodevDeviceId:
-      properties:
-        deviceId:
-          type: string
-          title: Deviceid
-        devtodevId:
-          type: integer
-          title: Devtodevid
-        userId:
-          type: string
-          title: Userid
-        advertisingId:
-          type: string
-          title: Advertisingid
-      type: object
-      title: DevtodevDeviceId
-    PlayerInfo:
-      properties:
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
-        name:
-          type: string
-          title: Name
-          description: The player's name.
-        avatar_url:
-          type: string
-          title: Avatar Url
-          description: The player's avatar URL.
-      type: object
-      title: PlayerInfo
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - captured
-      - paid
-      - canceled
-      - refunded
-      - refund_requested
-      - reattempted
-      - disputed
-      title: OrderStatus
-      description: An enumeration.
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
-    Mode:
-      type: string
-      enum:
-      - dark
-      - light
-      - auto
-      title: Mode
-      description: An enumeration.
-    Locale:
-      type: string
-      enum:
-      - cs
-      - de
-      - en
-      - es
-      - fr
-      - fr-CA
-      - hi
-      - id
-      - it
-      - ja
-      - ko
-      - ms
-      - nl
-      - 'no'
-      - pl
-      - pt
-      - pt-BR
-      - ru
-      - sv
-      - th
-      - tr
-      - uk
-      - vi
-      - zh
-      - zh-Hant
-      title: Locale
-      description: Language codes according to ISO 639-1.
-    PublicPaymentMethod:
-      type: string
-      enum:
-      - card
-      - paypal
-      - apple_pay
-      - google_pay
-      - cashapp
-      - klarna
-      - venmo
-      title: PublicPaymentMethod
-      description: Payment methods exposed to customers.
-    PlayerAttributes:
-      properties:
-        level:
-          type: integer
-          title: Level
-          default: 0
-          posthog: true
-        platform:
-          $ref: '#/components/schemas/Platform'
-        marketplace:
-          default: none
-          $ref: '#/components/schemas/Marketplace'
-        device_type:
-          $ref: '#/components/schemas/DeviceType'
-        tags:
-          items:
-            $ref: '#/components/schemas/PlayerTag'
-          type: array
-        soft_currency_amount:
-          type: integer
-          title: Soft Currency Amount
-          default: 0
-        hard_currency_amount:
-          type: integer
-          title: Hard Currency Amount
-          default: 0
-        appsflyer_id:
-          type: string
-          title: Appsflyer Id
-        appsflyer_app_id:
-          type: string
-          title: Appsflyer App Id
-        appsflyer_meta:
-          type: object
-          title: Appsflyer Meta
-        appsflyer_event_params:
-          type: object
-          title: Appsflyer Event Params
-        appsflyer_customer_user_id:
-          type: string
-          title: Appsflyer Customer User Id
-        adjust_device_id:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Device Id
-        adjust_adid:
-          type: string
-          title: Adjust Adid
-        adjust_app_token:
-          type: string
-          title: Adjust App Token
-        adjust_authorization_token:
-          type: string
-          title: Adjust Authorization Token
-        adjust_purchase_event_token:
-          type: string
-          title: Adjust Purchase Event Token
-        adjust_callback_params:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Callback Params
-        adjust_partner_params:
-          additionalProperties:
-            type: string
-          type: object
-          title: Adjust Partner Params
-        singular_device_id:
-          additionalProperties:
-            type: string
-          type: object
-          title: Singular Device Id
-        singular_app_id:
-          type: string
-          title: Singular App Id
-        devtodev_appid:
-          type: string
-          title: Devtodev Appid
-        devtodev_apikey:
-          type: string
-          title: Devtodev Apikey
-        devtodev_device_id:
-          $ref: '#/components/schemas/DevtodevDeviceId'
-        ga4_client_id:
-          type: string
-          title: Ga4 Client Id
-          description: GA4 web `client_id` from the `_ga` cookie.
-        ga4firebase_app_instance_id:
-          type: string
-          title: Ga4Firebase App Instance Id
-          description: Firebase mobile `app_instance_id` from the SDK.
-        ga4_user_id:
-          type: string
-          maxLength: 256
-          title: Ga4 User Id
-          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
-      type: object
-      title: PlayerAttributes
-    RedirectTarget:
-      type: string
-      enum:
-      - game
-      - store
-      title: RedirectTarget
-      description: An enumeration.
-    ItemSource:
-      type: string
-      enum:
-      - order
-      - bonus
-      - bundle
-      - coupon
-      - lootbox
-      - free_item
-      - liveops
-      - daily_reward
-      - loyalty_reward
-      - progression_program
-      - rolling_offer
-      - pick_one_offer
-      title: ItemSource
-      description: An enumeration.
-    RewardIssueStatus:
-      type: string
-      enum:
-      - issued
-      - revoked
-      - issue_failed
-      - revoke_failed
-      title: RewardIssueStatus
-      description: An enumeration.
-    OrderCreate:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/OrderItemCreate'
-          type: array
-          minItems: 1
-          title: Items
-          description: A list of items the player wants to purchase.
-        player_id:
-          type: string
-          title: Player Id
-          description: A unique identifier for the player making the purchase.
-        email:
-          type: string
-          format: email
-          title: Email
-          description: The player's email address, used as the billing email address.
-        player_info:
-          title: Player Info
-          description: Additional player information.
-          $ref: '#/components/schemas/PlayerInfo'
-        discount_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The percentage of discount applied to the order.
-        eligible_for_reward_points:
-          type: integer
-          title: Eligible For Reward Points
-          description: The number of reward points the order is eligible for.
-        eligible_for_loyalty_points:
-          type: integer
-          title: Eligible For Loyalty Points
-          description: The number of loyalty points the order is eligible for.
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-          description: The two-letter country code (ISO 3166-1 alpha-2) for the order. If not provided, the country will be determined by the IP address of the player when the checkout page is opened.
-        country_locked:
-          type: boolean
-          title: Country Locked
-          description: Whether the order country is locked after creation. If `true`, the player cannot pay from a different country than the one initially specified in the `country` field.
-        redirect_settings:
-          title: Redirect Settings
-          description: The settings for redirecting the player after a successful payment. Depending on the mode, the player will be redirected to either `back_to_game_url` or `back_to_store_url`, if provided.
-          $ref: '#/components/schemas/RedirectSettings'
-        ui_settings:
-          title: Ui Settings
-          description: The UI settings for checkout page.
-          $ref: '#/components/schemas/UISettings'
-        ip_address:
-          type: string
-          format: ipvanyaddress
-          title: Ip Address
-          description: The IP address of the player placing the order.
-        user_agent:
-          type: string
-          title: User Agent
-          description: The User-Agent string representing the player's browser properties, including browser type, version, and operating system
-        locale:
-          description: The player's preferred locale or language.
-          $ref: '#/components/schemas/Locale'
-        return_url:
-          type: string
-          title: Return Url
-          description: 'DEPRECATED: Use `back_to_game_url` or `back_to_store_url` instead. The URL to redirect the player after the purchase.'
-          deprecated: true
-        back_to_game_url:
-          type: string
-          title: Back To Game Url
-          description: The URL to redirect the player back to the game after the purchase. Supports formatting with {order_id}.
-        back_to_store_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Back To Store Url
-          description: The URL to redirect the player back to the store. Supports formatting with {order_id}.
-        payment_methods_enabled:
-          items:
-            $ref: '#/components/schemas/PublicPaymentMethod'
-          type: array
-          description: The list of payment methods enabled for the order.
-        coupons_enabled:
-          type: boolean
-          title: Coupons Enabled
-          description: Whether coupons are enabled for the order.
-        metadata:
-          additionalProperties:
-            type: string
-          type: object
-          title: Metadata
-          description: The metadata object structured as key-value pairs to store additional information about the order.
-        price_decimal:
-          type: number
-          maximum: 1000000000.0
-          minimum: 0.0
-          title: Price Decimal
-          description: Order price in decimal units. Overrides item price if set.
-          nullable: true
-        currency:
-          description: Order currency (ISO 4217 code). See supported currencies.
-          nullable: true
-          $ref: '#/components/schemas/Currency'
-        currency_preferred:
-          type: boolean
-          title: Currency Preferred
-          description: Prefer the specified currency and ignore country-specific pricing.
-          default: false
-        price_template_id:
-          type: string
-          title: Price Template Id
-          description: The unique identifier for the price template.
-          nullable: true
-        platform:
-          description: The platform of the order.
-          nullable: true
-          $ref: '#/components/schemas/OrderCreatePlatform'
-        expires_at:
-          type: integer
-          title: Expires At
-          description: Order expiration date in Unix epoch time. If not provided, defaults to 3 days from creation. Orders cannot be paid after this date.
-          nullable: true
-        coupon_code:
-          type: string
-          minLength: 1
-          title: Coupon Code
-          description: A coupon code to apply to the order on creation. Used for creator attribution when the code belongs to a creator program.
-          nullable: true
-      type: object
-      required:
-      - items
-      - player_id
-      title: OrderCreate
-      examples:
-      - player_id: r2d2-c3po
-        items:
-        - sku: crystal
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    OrderVirtualCurrencyReward:
-      properties:
-        type:
-          type: string
-          enum:
-          - virtual_currency
-          title: Type
-          default: virtual_currency
-        name:
-          type: string
-          title: Name
-        virtual_currency_id:
-          type: string
-          title: Virtual Currency Id
-        amount:
-          type: integer
-          title: Amount
-        issue_status:
-          $ref: '#/components/schemas/RewardIssueStatus'
-        icon_url:
-          type: string
-          title: Icon Url
-        sku:
-          type: string
-          title: SKU
-      type: object
-      required:
-      - virtual_currency_id
-      - amount
-      title: OrderVirtualCurrencyReward
-    OrderCreatePlatform:
-      type: string
-      enum:
-      - ios
-      - android
-      - other
-      title: OrderCreatePlatform
-      description: An enumeration.
-    OrderRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the order.
-        receipt_number:
-          type: string
-          title: Receipt Number
-          description: The number of the payment in receipt
-        amount:
-          type: integer
-          title: Amount
-          description: The amount of the order.
-        amount_before_discount:
-          type: integer
-          title: Amount Before Discount
-          description: The amount of the order before discount.
-        currency:
-          description: The currency of the order.
-          $ref: '#/components/schemas/Currency'
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique identifier for the player making the purchase.
-        email:
-          type: string
-          title: Email
-          description: The player's email address.
-        player_info:
-          title: Player Info
-          description: Additional player information.
-          $ref: '#/components/schemas/PlayerInfo'
-        items:
-          items:
-            $ref: '#/components/schemas/OrderItemRead'
-          type: array
-          title: Items
-          description: The list of items the player wants to purchase included bonus items.
-        status:
-          description: The current status of the order.
-          $ref: '#/components/schemas/OrderStatus'
-        created_at:
-          type: integer
-          title: Created At
-          description: Order creation date in Unix epoch time.
-        paid_at:
-          type: integer
-          title: Paid At
-          description: Order payment date in Unix epoch time.
-        metadata:
-          type: object
-          title: Metadata
-          description: The metadata object structured as key-value pairs to store additional information about the order.
-        expires_at:
-          type: integer
-          title: Expires At
-          description: Order expiration date in Unix epoch time (seconds). Orders cannot be paid after this date.
-        checkout_url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Checkout Url
-          description: The URL to redirect the player to complete the purchase.
-        redirect_settings:
-          title: Redirect Settings
-          description: The settings for redirecting the player after a successful payment. Depending on the mode, the player will be redirected to either `back_to_game_url` or `back_to_store_url`, if provided.
-          $ref: '#/components/schemas/RedirectSettings'
-        ui_settings:
-          title: Ui Settings
-          description: The UI settings for checkout page.
-          $ref: '#/components/schemas/UISettings'
-        coupons_enabled:
-          type: boolean
-          title: Coupons Enabled
-          description: Whether coupons are enabled for the order.
-        applied_reward_points:
-          type: integer
-          title: Applied Reward Points
-          description: The applied reward points for the order that allowed you to receive a discount.
-        coupons:
-          items:
-            $ref: '#/components/schemas/Coupon'
-          type: array
-          title: Coupons
-          description: The list of coupons applied to the order.
-        eligible_for_reward_points:
-          type: integer
-          title: Eligible For Reward Points
-          description: The number of reward points the player is eligible to receive for this order.
-        eligible_for_loyalty_points:
-          type: integer
-          title: Eligible For Loyalty Points
-          description: The number of loyalty points the player is eligible to receive for this order.
-        rewards:
-          title: Rewards
-          description: The virtual currency rewards the player is eligible to receive for this order.
-          $ref: '#/components/schemas/OrderRewards'
-      type: object
-      required:
-      - id
-      - amount
-      - amount_before_discount
-      - currency
-      - player_id
-      - items
-      - status
-      - created_at
-      - checkout_url
-      title: OrderRead
-      examples:
-      - id: ord_XXXXXXX
-        player_id: r2d2-c3po
-        items:
-        - sku: crystal
-        status: paid
-        created_at: 1690000000
-        paid_at: 1690000100
-        metadata:
-          key: value
-        checkout_url: https://pay.aghanim.com/order/ord_XXXXXXX
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
     OrderUpdate:
       properties:
         handled_by_client:
@@ -935,52 +241,11 @@ components:
           description: Whether the order was handled/consumed by the client or not.
       type: object
       title: OrderUpdate
-    OrderRefund:
-      properties:
-        reason:
-          type: string
-          title: Reason
-          description: Reason of refund order
-      type: object
-      required:
-      - reason
-      title: OrderRefund
-    Coupon:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the coupon.
-        code:
-          type: string
-          title: Code
-          description: The coupon code.
-        name:
-          type: string
-          title: Name
-          description: The name of the coupon.
-        type:
-          description: The type of the coupon.
-          $ref: '#/components/schemas/CouponType'
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          description: Discount percent for `discount` coupons.
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          description: Bonus percent for `bonus` coupons.
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: Fixed bonus quantity for `bonus` coupons.
-      type: object
-      required:
-      - id
-      - code
-      - name
-      - type
-      title: Coupon
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
     Currency:
       type: string
       enum:
@@ -1145,18 +410,425 @@ components:
       - RP
       - VC
       title: Currency
-    CouponType:
+    OrderStatus:
       type: string
       enum:
-      - bonus
-      - discount
-      - free_item
-      - vc
-      - non_benefit
-      - discount_fixed
-      - discount_reward_point
-      title: CouponType
+      - created
+      - captured
+      - paid
+      - canceled
+      - refunded
+      - refund_requested
+      - reattempted
+      - disputed
+      title: OrderStatus
       description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PublicPaymentMethod:
+      type: string
+      enum:
+      - card
+      - paypal
+      - apple_pay
+      - google_pay
+      - cashapp
+      - klarna
+      - venmo
+      title: PublicPaymentMethod
+      description: Payment methods exposed to customers.
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    OrderRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the order.
+        receipt_number:
+          type: string
+          title: Receipt Number
+          description: The number of the payment in receipt
+        amount:
+          type: integer
+          title: Amount
+          description: The amount of the order.
+        amount_before_discount:
+          type: integer
+          title: Amount Before Discount
+          description: The amount of the order before discount.
+        currency:
+          description: The currency of the order.
+          $ref: '#/components/schemas/Currency'
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique identifier for the player making the purchase.
+        email:
+          type: string
+          title: Email
+          description: The player's email address.
+        player_info:
+          title: Player Info
+          description: Additional player information.
+          $ref: '#/components/schemas/PlayerInfo'
+        items:
+          items:
+            $ref: '#/components/schemas/OrderItemRead'
+          type: array
+          title: Items
+          description: The list of items the player wants to purchase included bonus items.
+        status:
+          description: The current status of the order.
+          $ref: '#/components/schemas/OrderStatus'
+        created_at:
+          type: integer
+          title: Created At
+          description: Order creation date in Unix epoch time.
+        paid_at:
+          type: integer
+          title: Paid At
+          description: Order payment date in Unix epoch time.
+        metadata:
+          type: object
+          title: Metadata
+          description: The metadata object structured as key-value pairs to store additional information about the order.
+        expires_at:
+          type: integer
+          title: Expires At
+          description: Order expiration date in Unix epoch time (seconds). Orders cannot be paid after this date.
+        checkout_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Checkout Url
+          description: The URL to redirect the player to complete the purchase.
+        redirect_settings:
+          title: Redirect Settings
+          description: The settings for redirecting the player after a successful payment. Depending on the mode, the player will be redirected to either `back_to_game_url` or `back_to_store_url`, if provided.
+          $ref: '#/components/schemas/RedirectSettings'
+        ui_settings:
+          title: Ui Settings
+          description: The UI settings for checkout page.
+          $ref: '#/components/schemas/UISettings'
+        coupons_enabled:
+          type: boolean
+          title: Coupons Enabled
+          description: Whether coupons are enabled for the order.
+        applied_reward_points:
+          type: integer
+          title: Applied Reward Points
+          description: The applied reward points for the order that allowed you to receive a discount.
+        coupons:
+          items:
+            $ref: '#/components/schemas/Coupon'
+          type: array
+          title: Coupons
+          description: The list of coupons applied to the order.
+        eligible_for_reward_points:
+          type: integer
+          title: Eligible For Reward Points
+          description: The number of reward points the player is eligible to receive for this order.
+        eligible_for_loyalty_points:
+          type: integer
+          title: Eligible For Loyalty Points
+          description: The number of loyalty points the player is eligible to receive for this order.
+        rewards:
+          title: Rewards
+          description: The virtual currency rewards the player is eligible to receive for this order.
+          $ref: '#/components/schemas/OrderRewards'
+      type: object
+      required:
+      - id
+      - amount
+      - amount_before_discount
+      - currency
+      - player_id
+      - items
+      - status
+      - created_at
+      - checkout_url
+      title: OrderRead
+      examples:
+      - id: ord_XXXXXXX
+        player_id: r2d2-c3po
+        items:
+        - sku: crystal
+        status: paid
+        created_at: 1690000000
+        paid_at: 1690000100
+        metadata:
+          key: value
+        checkout_url: https://pay.aghanim.com/order/ord_XXXXXXX
+    OrderRewards:
+      properties:
+        available:
+          items:
+            $ref: '#/components/schemas/OrderVirtualCurrencyReward'
+          type: array
+          title: Available
+      type: object
+      required:
+      - available
+      title: OrderRewards
+    OrderItemCreate:
+      properties:
+        sku:
+          type: string
+          minLength: 1
+          title: SKU
+          description: Stock Keeping Unit (SKU) identifier.
+        name:
+          type: string
+          title: Name
+          description: The name of the item.
+          nullable: true
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+          nullable: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+          nullable: true
+        quantity:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Quantity
+          description: The quantity of the item.
+          nullable: true
+        store_key:
+          type: string
+          title: Store Key
+          description: The key of the store where order taking store item for discount and benefits.
+          nullable: true
+        selected_plan_key:
+          type: string
+          title: Selected Plan Key
+          description: The key of the subscription plan to pre-select on the checkout page. Only applicable to subscription SKUs.
+          nullable: true
+      type: object
+      required:
+      - sku
+      title: OrderItemCreate
+    OrderCreateResponse:
+      properties:
+        order_id:
+          type: string
+          title: Order Id
+          description: The unique ID of the created order.
+        checkout_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Checkout Url
+          description: The URL to redirect the player to complete the purchase.
+      type: object
+      required:
+      - order_id
+      - checkout_url
+      title: OrderCreateResponse
+      examples:
+      - order_id: ord_XXXXXXX
+        checkout_url: https://pay.aghanim.com/order/ord_XXXXXXX
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
+    OrderItemRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the item.
+        sku:
+          type: string
+          minLength: 1
+          title: SKU
+          description: Stock Keeping Unit (SKU) identifier.
+        name:
+          type: string
+          title: Name
+          description: The name of the item.
+        source:
+          description: The source of the payment item.
+          $ref: '#/components/schemas/ItemSource'
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+          nullable: true
+        image_url:
+          type: string
+          title: Image Url
+          description: The URL of the image for the item
+        quantity:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Quantity
+          description: The quantity of the item.
+        nested_items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+          title: Nested Items
+          description: Nested items of the bundle.
+        selected_plan_key:
+          type: string
+          title: Selected Plan Key
+          description: The key of the subscription plan to pre-select on the checkout page. Only applicable to subscription SKUs.
+          nullable: true
+        currency:
+          description: The currency of the item.
+          $ref: '#/components/schemas/Currency'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/)
+        price_point:
+          type: integer
+          title: Price Point
+          description: The price point for local prices
+        price_decimal:
+          type: number
+          title: Price Decimal
+          description: price in decimal units
+      type: object
+      required:
+      - id
+      - sku
+      - name
+      - source
+      - quantity
+      - currency
+      title: OrderItemRead
+    Coupon:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the coupon.
+        code:
+          type: string
+          title: Code
+          description: The coupon code.
+        name:
+          type: string
+          title: Name
+          description: The name of the coupon.
+        type:
+          description: The type of the coupon.
+          $ref: '#/components/schemas/CouponType'
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: Discount percent for `discount` coupons.
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          description: Bonus percent for `bonus` coupons.
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: Fixed bonus quantity for `bonus` coupons.
+      type: object
+      required:
+      - id
+      - code
+      - name
+      - type
+      title: Coupon
+    OrderCreatePlatform:
+      type: string
+      enum:
+      - ios
+      - android
+      - other
+      title: OrderCreatePlatform
+      description: An enumeration.
+    UISettings:
+      properties:
+        mode:
+          description: The appearance mode for checkout page. `dark` (dark mode), `light` (light mode), or `auto` (follows system preference)
+          $ref: '#/components/schemas/Mode'
+        show_player_info:
+          type: boolean
+          title: Show Player Info
+          description: Whether to display player information on checkout page
+      type: object
+      title: UISettings
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
     Item:
       properties:
         id:
@@ -1203,27 +875,6 @@ components:
       - source
       - quantity
       title: Item
-    OrderCreateResponse:
-      properties:
-        order_id:
-          type: string
-          title: Order Id
-          description: The unique ID of the created order.
-        checkout_url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Checkout Url
-          description: The URL to redirect the player to complete the purchase.
-      type: object
-      required:
-      - order_id
-      - checkout_url
-      title: OrderCreateResponse
-      examples:
-      - order_id: ord_XXXXXXX
-        checkout_url: https://pay.aghanim.com/order/ord_XXXXXXX
     RedirectSettings:
       properties:
         mode:
@@ -1241,14 +892,363 @@ components:
           $ref: '#/components/schemas/RedirectTarget'
       type: object
       title: RedirectSettings
-    Platform:
+    OrderVirtualCurrencyReward:
+      properties:
+        type:
+          type: string
+          enum:
+          - virtual_currency
+          title: Type
+          default: virtual_currency
+        name:
+          type: string
+          title: Name
+        virtual_currency_id:
+          type: string
+          title: Virtual Currency Id
+        amount:
+          type: integer
+          title: Amount
+        issue_status:
+          $ref: '#/components/schemas/RewardIssueStatus'
+        icon_url:
+          type: string
+          title: Icon Url
+        sku:
+          type: string
+          title: SKU
+      type: object
+      required:
+      - virtual_currency_id
+      - amount
+      title: OrderVirtualCurrencyReward
+    CouponType:
       type: string
       enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
+      description: An enumeration.
+    RedirectTarget:
+      type: string
+      enum:
+      - game
+      - store
+      title: RedirectTarget
+      description: An enumeration.
+    OrderCreate:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/OrderItemCreate'
+          type: array
+          minItems: 1
+          title: Items
+          description: A list of items the player wants to purchase.
+        player_id:
+          type: string
+          title: Player Id
+          description: A unique identifier for the player making the purchase.
+        email:
+          type: string
+          format: email
+          title: Email
+          description: The player's email address, used as the billing email address.
+        player_info:
+          title: Player Info
+          description: Additional player information.
+          $ref: '#/components/schemas/PlayerInfo'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The percentage of discount applied to the order.
+        eligible_for_reward_points:
+          type: integer
+          title: Eligible For Reward Points
+          description: The number of reward points the order is eligible for.
+        eligible_for_loyalty_points:
+          type: integer
+          title: Eligible For Loyalty Points
+          description: The number of loyalty points the order is eligible for.
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+          description: The two-letter country code (ISO 3166-1 alpha-2) for the order. If not provided, the country will be determined by the IP address of the player when the checkout page is opened.
+        country_locked:
+          type: boolean
+          title: Country Locked
+          description: Whether the order country is locked after creation. If `true`, the player cannot pay from a different country than the one initially specified in the `country` field.
+        redirect_settings:
+          title: Redirect Settings
+          description: The settings for redirecting the player after a successful payment. Depending on the mode, the player will be redirected to either `back_to_game_url` or `back_to_store_url`, if provided.
+          $ref: '#/components/schemas/RedirectSettings'
+        ui_settings:
+          title: Ui Settings
+          description: The UI settings for checkout page.
+          $ref: '#/components/schemas/UISettings'
+        ip_address:
+          type: string
+          format: ipvanyaddress
+          title: Ip Address
+          description: The IP address of the player placing the order.
+        user_agent:
+          type: string
+          title: User Agent
+          description: The User-Agent string representing the player's browser properties, including browser type, version, and operating system
+        locale:
+          description: The player's preferred locale or language.
+          $ref: '#/components/schemas/Locale'
+        return_url:
+          type: string
+          title: Return Url
+          description: 'DEPRECATED: Use `back_to_game_url` or `back_to_store_url` instead. The URL to redirect the player after the purchase.'
+          deprecated: true
+        back_to_game_url:
+          type: string
+          title: Back To Game Url
+          description: The URL to redirect the player back to the game after the purchase. Supports formatting with {order_id}.
+        back_to_store_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Back To Store Url
+          description: The URL to redirect the player back to the store. Supports formatting with {order_id}.
+        payment_methods_enabled:
+          items:
+            $ref: '#/components/schemas/PublicPaymentMethod'
+          type: array
+          description: The list of payment methods enabled for the order.
+        coupons_enabled:
+          type: boolean
+          title: Coupons Enabled
+          description: Whether coupons are enabled for the order.
+        metadata:
+          additionalProperties:
+            type: string
+          type: object
+          title: Metadata
+          description: The metadata object structured as key-value pairs to store additional information about the order.
+        price_decimal:
+          type: number
+          maximum: 1000000000.0
+          minimum: 0.0
+          title: Price Decimal
+          description: Order price in decimal units. Overrides item price if set.
+          nullable: true
+        currency:
+          description: Order currency (ISO 4217 code). See supported currencies.
+          nullable: true
+          $ref: '#/components/schemas/Currency'
+        currency_preferred:
+          type: boolean
+          title: Currency Preferred
+          description: Prefer the specified currency and ignore country-specific pricing.
+          default: false
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The unique identifier for the price template.
+          nullable: true
+        platform:
+          description: The platform of the order.
+          nullable: true
+          $ref: '#/components/schemas/OrderCreatePlatform'
+        expires_at:
+          type: integer
+          title: Expires At
+          description: Order expiration date in Unix epoch time. If not provided, defaults to 3 days from creation. Orders cannot be paid after this date.
+          nullable: true
+        coupon_code:
+          type: string
+          minLength: 1
+          title: Coupon Code
+          description: A coupon code to apply to the order on creation. Used for creator attribution when the code belongs to a creator program.
+          nullable: true
+      type: object
+      required:
+      - items
+      - player_id
+      title: OrderCreate
+      examples:
+      - player_id: r2d2-c3po
+        items:
+        - sku: crystal
+    RedirectMode:
+      type: string
+      enum:
+      - no_redirect
+      - immediate
+      - delayed
+      title: RedirectMode
+      description: An enumeration.
+    OrderRefund:
+      properties:
+        reason:
+          type: string
+          title: Reason
+          description: Reason of refund order
+      type: object
+      required:
+      - reason
+      title: OrderRefund
+    PlayerAttributes:
+      properties:
+        level:
+          type: integer
+          title: Level
+          default: 0
+          posthog: true
+        platform:
+          $ref: '#/components/schemas/Platform'
+        marketplace:
+          default: none
+          $ref: '#/components/schemas/Marketplace'
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+        tags:
+          items:
+            $ref: '#/components/schemas/PlayerTag'
+          type: array
+        soft_currency_amount:
+          type: integer
+          title: Soft Currency Amount
+          default: 0
+        hard_currency_amount:
+          type: integer
+          title: Hard Currency Amount
+          default: 0
+        appsflyer_id:
+          type: string
+          title: Appsflyer Id
+        appsflyer_app_id:
+          type: string
+          title: Appsflyer App Id
+        appsflyer_meta:
+          type: object
+          title: Appsflyer Meta
+        appsflyer_event_params:
+          type: object
+          title: Appsflyer Event Params
+        appsflyer_customer_user_id:
+          type: string
+          title: Appsflyer Customer User Id
+        adjust_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Device Id
+        adjust_adid:
+          type: string
+          title: Adjust Adid
+        adjust_app_token:
+          type: string
+          title: Adjust App Token
+        adjust_authorization_token:
+          type: string
+          title: Adjust Authorization Token
+        adjust_purchase_event_token:
+          type: string
+          title: Adjust Purchase Event Token
+        adjust_callback_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Callback Params
+        adjust_partner_params:
+          additionalProperties:
+            type: string
+          type: object
+          title: Adjust Partner Params
+        singular_device_id:
+          additionalProperties:
+            type: string
+          type: object
+          title: Singular Device Id
+        singular_app_id:
+          type: string
+          title: Singular App Id
+        devtodev_appid:
+          type: string
+          title: Devtodev Appid
+        devtodev_apikey:
+          type: string
+          title: Devtodev Apikey
+        devtodev_device_id:
+          $ref: '#/components/schemas/DevtodevDeviceId'
+        ga4_client_id:
+          type: string
+          title: Ga4 Client Id
+          description: GA4 web `client_id` from the `_ga` cookie.
+        ga4firebase_app_instance_id:
+          type: string
+          title: Ga4Firebase App Instance Id
+          description: Firebase mobile `app_instance_id` from the SDK.
+        ga4_user_id:
+          type: string
+          maxLength: 256
+          title: Ga4 User Id
+          description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
+      type: object
+      title: PlayerAttributes
+    PlayerInfo:
+      properties:
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+        name:
+          type: string
+          title: Name
+          description: The player's name.
+        avatar_url:
+          type: string
+          title: Avatar Url
+          description: The player's avatar URL.
+      type: object
+      title: PlayerInfo
+    Locale:
+      type: string
+      enum:
+      - cs
+      - de
+      - en
+      - es
+      - fr
+      - fr-CA
+      - hi
+      - id
+      - it
+      - ja
+      - ko
+      - ms
+      - nl
+      - 'no'
+      - pl
+      - pt
+      - pt-BR
+      - ru
+      - sv
+      - th
+      - tr
+      - uk
+      - vi
+      - zh
+      - zh-Hant
+      title: Locale
+      description: Language codes according to ISO 639-1.
   securitySchemes:
     HTTPBearer:
       type: http

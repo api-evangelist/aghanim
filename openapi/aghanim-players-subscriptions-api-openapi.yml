@@ -163,55 +163,20 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ReactivatedSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Resulting subscription ID.
-        status:
-          description: Resulting subscription status.
-          $ref: '#/components/schemas/SubscriptionStatus'
-      type: object
-      required:
-      - id
-      - status
-      title: ReactivatedSubscription
-    Offer:
-      properties:
-        key:
-          type: string
-          title: Key
-          description: Offer unique key.
-        name:
-          type: string
-          title: Name
-          description: Offer display name.
-      type: object
-      required:
-      - key
-      title: Offer
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+    SubscriptionStatus:
+      type: string
+      enum:
+      - trial
+      - active
+      - grace
+      - canceled
+      - locked
+      - ended
+      - expired
+      - paused
+      - pending
+      title: SubscriptionStatus
+      description: An enumeration.
     aghanim__s2s__player__subscription__schemas__SubscriptionRead:
       properties:
         sku:
@@ -263,20 +228,6 @@ components:
       - created_at
       - plan
       title: SubscriptionRead
-    SubscriptionStatus:
-      type: string
-      enum:
-      - trial
-      - active
-      - grace
-      - canceled
-      - locked
-      - ended
-      - expired
-      - paused
-      - pending
-      title: SubscriptionStatus
-      description: An enumeration.
     Plan:
       properties:
         key:
@@ -296,6 +247,55 @@ components:
       - key
       - name
       title: Plan
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    ReactivatedSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Resulting subscription ID.
+        status:
+          description: Resulting subscription status.
+          $ref: '#/components/schemas/SubscriptionStatus'
+      type: object
+      required:
+      - id
+      - status
+      title: ReactivatedSubscription
+    Offer:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: Offer unique key.
+        name:
+          type: string
+          title: Name
+          description: Offer display name.
+      type: object
+      required:
+      - key
+      title: Offer
   securitySchemes:
     HTTPBearer:
       type: http
