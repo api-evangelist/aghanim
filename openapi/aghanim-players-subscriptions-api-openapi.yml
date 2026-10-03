@@ -154,29 +154,41 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
-      title: HTTPValidationError
-    SubscriptionStatus:
-      type: string
-      enum:
-      - trial
-      - active
-      - grace
-      - canceled
-      - locked
-      - ended
-      - expired
-      - paused
-      - pending
-      title: SubscriptionStatus
-      description: An enumeration.
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Offer:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: Offer unique key.
+        name:
+          type: string
+          title: Name
+          description: Offer display name.
+      type: object
+      required:
+      - key
+      title: Offer
     aghanim__s2s__player__subscription__schemas__SubscriptionRead:
       properties:
         sku:
@@ -228,6 +240,29 @@ components:
       - created_at
       - plan
       title: SubscriptionRead
+    SubscriptionStatus:
+      type: string
+      enum:
+      - trial
+      - active
+      - grace
+      - canceled
+      - locked
+      - ended
+      - expired
+      - paused
+      - pending
+      title: SubscriptionStatus
+      description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     Plan:
       properties:
         key:
@@ -247,27 +282,6 @@ components:
       - key
       - name
       title: Plan
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     ReactivatedSubscription:
       properties:
         id:
@@ -282,20 +296,6 @@ components:
       - id
       - status
       title: ReactivatedSubscription
-    Offer:
-      properties:
-        key:
-          type: string
-          title: Key
-          description: Offer unique key.
-        name:
-          type: string
-          title: Name
-          description: Offer display name.
-      type: object
-      required:
-      - key
-      title: Offer
   securitySchemes:
     HTTPBearer:
       type: http

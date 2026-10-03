@@ -178,70 +178,27 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    PlayerInfoV1:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The player's name.
-        avatar_url:
-          type: string
-          title: Avatar Url
-          description: The player's avatar URL.
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          additionalProperties:
             anyOf:
-            - type: boolean
-            - type: integer
-            - type: number
             - type: string
-            - items:
-                anyOf:
-                - type: boolean
-                - type: integer
-                - type: number
-                - type: string
-              type: array
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
-      type: object
-      title: PlayerInfo
-    LoginRequest:
-      properties:
-        player_id:
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Player Id
-          description: The unique player ID.
-        nonce:
+          title: Message
+        type:
           type: string
-          title: Nonce
-          description: The nonce to authenticate the user.
-        redirect_path:
-          type: string
-          title: Redirect Path
-          description: The game hub page to redirect the player to.
-        player_info:
-          title: Player Info
-          description: The player info object.
-          $ref: '#/components/schemas/PlayerInfoV1'
+          title: Error Type
       type: object
       required:
-      - player_id
-      title: LoginRequest
+      - loc
+      - msg
+      - type
+      title: ValidationError
     AuthenticateRequest:
       properties:
         token:
@@ -252,22 +209,25 @@ components:
       required:
       - token
       title: AuthenticateRequest
-    DevtodevDeviceId:
-      properties:
-        deviceId:
-          type: string
-          title: Deviceid
-        devtodevId:
-          type: integer
-          title: Devtodevid
-        userId:
-          type: string
-          title: Userid
-        advertisingId:
-          type: string
-          title: Advertisingid
-      type: object
-      title: DevtodevDeviceId
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
     UserRead:
       properties:
         id:
@@ -290,40 +250,6 @@ components:
       required:
       - id
       title: UserRead
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
     LinkPlayerRequest:
       properties:
         player_id:
@@ -334,6 +260,58 @@ components:
       required:
       - player_id
       title: LinkPlayerRequest
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+    LoginResponse:
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Authorization Url
+          description: The URL to authenticate the user on the Game Hub.
+      type: object
+      required:
+      - authorization_url
+      title: LoginResponse
+    LoginRequest:
+      properties:
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID.
+        nonce:
+          type: string
+          title: Nonce
+          description: The nonce to authenticate the user.
+        redirect_path:
+          type: string
+          title: Redirect Path
+          description: The game hub page to redirect the player to.
+        player_info:
+          title: Player Info
+          description: The player info object.
+          $ref: '#/components/schemas/PlayerInfoV1'
+      type: object
+      required:
+      - player_id
+      title: LoginRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     PlayerAttributes:
       properties:
         level:
@@ -433,38 +411,60 @@ components:
           description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
       type: object
       title: PlayerAttributes
-    DeviceType:
+    PlayerTag:
       type: string
       enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    LoginResponse:
+      - tester
+      title: PlayerTag
+    PlayerInfoV1:
       properties:
-        authorization_url:
+        name:
           type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Authorization Url
-          description: The URL to authenticate the user on the Game Hub.
+          title: Name
+          description: The player's name.
+        avatar_url:
+          type: string
+          title: Avatar Url
+          description: The player's avatar URL.
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          additionalProperties:
+            anyOf:
+            - type: boolean
+            - type: integer
+            - type: number
+            - type: string
+            - items:
+                anyOf:
+                - type: boolean
+                - type: integer
+                - type: number
+                - type: string
+              type: array
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
       type: object
-      required:
-      - authorization_url
-      title: LoginResponse
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
+      title: PlayerInfo
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
   securitySchemes:
     HTTPBearer:
       type: http

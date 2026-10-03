@@ -192,33 +192,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    InfinitePaginatedResponse_TranslationGlossaryRead_:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/TranslationGlossaryRead'
-          type: array
-          title: Data
-        has_more:
-          type: boolean
-          title: Has More
-        next_cursor:
-          title: Next Cursor
-          type: string
-      type: object
-      required:
-      - data
-      - has_more
-      title: InfinitePaginatedResponse[TranslationGlossaryRead]
     ValidationError:
       properties:
         loc:
@@ -240,6 +213,33 @@ components:
       - msg
       - type
       title: ValidationError
+    InfinitePaginatedResponse_TranslationGlossaryRead_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/TranslationGlossaryRead'
+          type: array
+          title: Data
+        has_more:
+          type: boolean
+          title: Has More
+        next_cursor:
+          title: Next Cursor
+          type: string
+      type: object
+      required:
+      - data
+      - has_more
+      title: InfinitePaginatedResponse[TranslationGlossaryRead]
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     TranslationGlossaryUpdate:
       properties:
         term:

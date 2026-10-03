@@ -275,18 +275,450 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CreatorProgramBase:
+    ValidationError:
       properties:
-        creator_id:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Creator Id
-          description: The creator ID
-        reward:
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CouponBulkUpdate:
+      properties:
+        id:
+          type: string
+          title: Id
+        category_id:
+          type: string
+          title: Category Id
+          description: The coupon category ID
+      type: object
+      required:
+      - id
+      - category_id
+      title: CouponBulkUpdate
+    CouponGeneratedType:
+      type: string
+      enum:
+      - campaign
+      - receipt
+      title: CouponGeneratedType
+      description: An enumeration.
+    CouponType:
+      type: string
+      enum:
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
+      description: An enumeration.
+    NestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        is_featured:
+          type: boolean
+          title: Is Featured
+        meta:
+          type: object
+          title: Meta
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+        view_type:
+          $ref: '#/components/schemas/NestedItemViewType'
+      type: object
+      title: NestedItem
+    ItemPropertyConfigNumber:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - number
+          title: Property Type
+          default: number
+      type: object
+      title: ItemPropertyConfigNumber
+    ItemPropertyRelationData:
+      properties:
+        value:
+          anyOf:
+          - type: number
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      title: ItemPropertyRelationData
+    ItemType:
+      type: string
+      enum:
+      - item
+      - currency
+      - bundle
+      - lootbox
+      - subscription
+      - virtual_currency
+      title: ItemType
+      description: An enumeration.
+    ItemRarityRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: Name of the item rarity
+        color_background_badge:
+          type: string
+          title: Color Background Badge
+          description: Background color of the badge with this rarity
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - name
+      - id
+      title: ItemRarityRead
+    CouponCreate:
+      properties:
+        free_items:
+          title: Free Items
+          description: Items granted when the coupon is redeemed
+          $ref: '#/components/schemas/CouponFreeItems'
+        discount_percent:
           type: integer
           maximum: 100.0
           minimum: 0.0
-          title: Reward
-          description: The reward for the coupon
+          title: Discount Percent
+          description: The discount percent for the coupon
+        bonus_percent:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the coupon
+        bonus_fixed:
+          type: integer
+          minimum: 1.0
+          title: Bonus Fixed
+          description: The fixed bonus amount for the coupon
+          nullable: true
+        discount_amount_usd:
+          type: integer
+          minimum: 0.0
+          title: Discount Amount USD
+          description: The discount amount in USD for the coupon
+        requirements_expression:
+          title: Requirements Expression
+          description: The requirement expression for the coupon
+          $ref: '#/components/schemas/Expression'
+        expires_at:
+          type: integer
+          title: Expires At
+          description: The expiration date of the coupon
+        applicable_item_ids:
+          items:
+            type: string
+          type: array
+          title: Applicable Item Ids
+          description: The applicable item IDs
+        category_id:
+          type: string
+          title: Category Id
+          description: The coupon category ID
+        min_amount:
+          type: integer
+          title: Min Amount
+          description: Require a minimum order amount to apply the coupon
+        max_redemptions:
+          type: integer
+          title: Max Redemptions
+          description: Limit the number of times this code can be redeemed
+        max_redemptions_per_user:
+          type: integer
+          title: Max Redemptions Per User
+          description: Limit the number of times a user can redeem the coupon
+        is_stackable_with_bonus_coupons:
+          type: boolean
+          title: Is Stackable With Bonus Coupons
+          description: Allow stacking with bonus coupons
+        stackable_bonus_limit_percent:
+          type: integer
+          title: Stackable Bonus Limit Percent
+          description: Limit the bonus percent when stacking with bonus coupons
+        is_stackable_with_discount_coupons:
+          type: boolean
+          title: Is Stackable With Discount Coupons
+          description: Allow stacking with discount coupons
+        stackable_discount_limit_percent:
+          type: integer
+          title: Stackable Discount Limit Percent
+          description: Limit the discount percent when stacking with discount coupons
+        store_item_discount_limit_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Store Item Discount Limit Percent
+          description: Limit the combined store item and coupon discount percent
+        store_item_bonus_limit_percent:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Store Item Bonus Limit Percent
+          description: Limit the combined store item and coupon bonus percent
+        start_at:
+          type: integer
+          title: Start At
+          description: The timestamp when the coupon becomes valid
+        end_at:
+          type: integer
+          title: End At
+          description: The timestamp when the coupon ceases to be valid
+        player_ids:
+          items:
+            type: string
+          type: array
+          title: Player Ids
+          description: The player IDs that can redeem the coupon
+        exclude_player_ids:
+          items:
+            type: string
+          type: array
+          title: Exclude Player Ids
+          description: The player IDs that cannot redeem the coupon
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the coupon
+        code:
+          type: string
+          maxLength: 20
+          title: Code
+          description: The code of the coupon
+        type:
+          description: The type of the coupon
+          $ref: '#/components/schemas/CouponType'
+        creator_program:
+          title: Creator Program
+          description: The creator program for the coupon
+          $ref: '#/components/schemas/CreatorProgramBase'
+      type: object
+      required:
+      - name
+      - code
+      - type
+      title: CouponCreate
+    Currency:
+      type: string
+      enum:
+      - USD
+      - EUR
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - UYU
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZWG
+      - ZWL
+      - RP
+      - VC
+      title: Currency
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    ItemViewOption:
+      type: string
+      enum:
+      - default
+      - skeleton
+      title: ItemViewOption
+      description: An enumeration.
+    CreatorProgramUpdate:
+      properties:
         verbal_terms:
           type: string
           title: Verbal Terms
@@ -295,32 +727,56 @@ components:
           type: string
           title: Message
           description: The message for the creator program
+        reward:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward
+          description: The reward for the coupon
         inherits_from_tier:
           type: boolean
           title: Inherits From Tier
           description: When true, revenue share is taken from the creator's current tier instead of `reward`.
-          default: false
       type: object
-      required:
-      - creator_id
-      - reward
-      - verbal_terms
-      - message
-      title: CreatorProgramBase
-    MathExpression:
+      title: CreatorProgramUpdate
+    ItemPropertyConfigString:
       properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        name:
+        property_type:
           type: string
-          title: Name
+          enum:
+          - string
+          title: Property Type
+          default: string
+      type: object
+      title: ItemPropertyConfigString
+    CouponFreeItem:
+      properties:
+        item_id:
+          type: string
+          title: Item Id
+          description: The item ID to grant when the coupon is redeemed
+        quantity:
+          type: integer
+          minimum: 1.0
+          title: Quantity
+          description: Quantity granted when the coupon is redeemed
       type: object
       required:
-      - name
-      title: MathExpression
+      - item_id
+      - quantity
+      title: CouponFreeItem
+    CouponFreeItems:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/CouponFreeItem'
+          type: array
+          maxItems: 100
+          title: Items
+          description: Items granted when the coupon is redeemed
+      type: object
+      title: CouponFreeItems
+      description: API wrapper for the `free_items` JSONB column, mirroring the storage shape.
     ItemRead:
       properties:
         name:
@@ -605,355 +1061,38 @@ components:
       - id
       - created_at
       title: ItemRead
-    ValidationError:
+    CreatorProgramBase:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        creator_id:
+          type: string
+          title: Creator Id
+          description: The creator ID
+        reward:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward
+          description: The reward for the coupon
+        verbal_terms:
+          type: string
+          title: Verbal Terms
+          description: The verbal terms for the creator program
+        message:
           type: string
           title: Message
-        type:
-          type: string
-          title: Error Type
+          description: The message for the creator program
+        inherits_from_tier:
+          type: boolean
+          title: Inherits From Tier
+          description: When true, revenue share is taken from the creator's current tier instead of `reward`.
+          default: false
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    Highlights:
-      properties:
-        title:
-          type: string
-          title: Title
-        description:
-          type: string
-          title: Description
-        items:
-          items:
-            $ref: '#/components/schemas/HighlightItem'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Highlights
-    HighlightItem:
-      properties:
-        image_url:
-          type: string
-          title: Image Url
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      title: HighlightItem
-    ItemPropertyConfigString:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - string
-          title: Property Type
-          default: string
-      type: object
-      title: ItemPropertyConfigString
-    Currency:
-      type: string
-      enum:
-      - USD
-      - EUR
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHF
-      - CLP
-      - CNY
-      - COP
-      - CRC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JMD
-      - JOD
-      - JPY
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KRW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLE
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - UYU
-      - UZS
-      - VED
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XCD
-      - XCG
-      - XOF
-      - XPF
-      - YER
-      - ZAR
-      - ZMW
-      - ZWG
-      - ZWL
-      - RP
-      - VC
-      title: Currency
-    CouponUpdate:
-      properties:
-        free_items:
-          title: Free Items
-          description: Items granted when the coupon is redeemed
-          $ref: '#/components/schemas/CouponFreeItems'
-        discount_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent for the coupon
-        bonus_percent:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent for the coupon
-        bonus_fixed:
-          type: integer
-          minimum: 1.0
-          title: Bonus Fixed
-          description: The fixed bonus amount for the coupon
-          nullable: true
-        discount_amount_usd:
-          type: integer
-          minimum: 0.0
-          title: Discount Amount USD
-          description: The discount amount in USD for the coupon
-        requirements_expression:
-          title: Requirements Expression
-          description: The requirement expression for the coupon
-          $ref: '#/components/schemas/Expression'
-        expires_at:
-          type: integer
-          title: Expires At
-          description: The expiration date of the coupon
-        applicable_item_ids:
-          items:
-            type: string
-          type: array
-          title: Applicable Item Ids
-          description: The applicable item IDs
-        category_id:
-          type: string
-          title: Category Id
-          description: The coupon category ID
-        min_amount:
-          type: integer
-          title: Min Amount
-          description: Require a minimum order amount to apply the coupon
-        max_redemptions:
-          type: integer
-          title: Max Redemptions
-          description: Limit the number of times this code can be redeemed
-        max_redemptions_per_user:
-          type: integer
-          title: Max Redemptions Per User
-          description: Limit the number of times a user can redeem the coupon
-        is_stackable_with_bonus_coupons:
-          type: boolean
-          title: Is Stackable With Bonus Coupons
-          description: Allow stacking with bonus coupons
-        stackable_bonus_limit_percent:
-          type: integer
-          title: Stackable Bonus Limit Percent
-          description: Limit the bonus percent when stacking with bonus coupons
-        is_stackable_with_discount_coupons:
-          type: boolean
-          title: Is Stackable With Discount Coupons
-          description: Allow stacking with discount coupons
-        stackable_discount_limit_percent:
-          type: integer
-          title: Stackable Discount Limit Percent
-          description: Limit the discount percent when stacking with discount coupons
-        store_item_discount_limit_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Store Item Discount Limit Percent
-          description: Limit the combined store item and coupon discount percent
-        store_item_bonus_limit_percent:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Store Item Bonus Limit Percent
-          description: Limit the combined store item and coupon bonus percent
-        start_at:
-          type: integer
-          title: Start At
-          description: The timestamp when the coupon becomes valid
-        end_at:
-          type: integer
-          title: End At
-          description: The timestamp when the coupon ceases to be valid
-        player_ids:
-          items:
-            type: string
-          type: array
-          title: Player Ids
-          description: The player IDs that can redeem the coupon
-        exclude_player_ids:
-          items:
-            type: string
-          type: array
-          title: Exclude Player Ids
-          description: The player IDs that cannot redeem the coupon
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: The name of the coupon
-        creator_program:
-          title: Creator Program
-          description: The creator program for the coupon
-          $ref: '#/components/schemas/CreatorProgramUpdate'
-      type: object
-      title: CouponUpdate
-    NestedItemViewType:
-      type: string
-      enum:
-      - separated
-      title: NestedItemViewType
-      description: An enumeration.
+      - creator_id
+      - reward
+      - verbal_terms
+      - message
+      title: CreatorProgramBase
     HTTPValidationError:
       properties:
         detail:
@@ -963,263 +1102,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    ItemRarityRead:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: Name of the item rarity
-        color_background_badge:
-          type: string
-          title: Color Background Badge
-          description: Background color of the badge with this rarity
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - name
-      - id
-      title: ItemRarityRead
-    CouponFreeItem:
-      properties:
-        item_id:
-          type: string
-          title: Item Id
-          description: The item ID to grant when the coupon is redeemed
-        quantity:
-          type: integer
-          minimum: 1.0
-          title: Quantity
-          description: Quantity granted when the coupon is redeemed
-      type: object
-      required:
-      - item_id
-      - quantity
-      title: CouponFreeItem
-    Expression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
-      type: object
-      title: Expression
-    CreatorProgramUpdate:
-      properties:
-        verbal_terms:
-          type: string
-          title: Verbal Terms
-          description: The verbal terms for the creator program
-        message:
-          type: string
-          title: Message
-          description: The message for the creator program
-        reward:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Reward
-          description: The reward for the coupon
-        inherits_from_tier:
-          type: boolean
-          title: Inherits From Tier
-          description: When true, revenue share is taken from the creator's current tier instead of `reward`.
-      type: object
-      title: CreatorProgramUpdate
-    CouponCreate:
-      properties:
-        free_items:
-          title: Free Items
-          description: Items granted when the coupon is redeemed
-          $ref: '#/components/schemas/CouponFreeItems'
-        discount_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent for the coupon
-        bonus_percent:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent for the coupon
-        bonus_fixed:
-          type: integer
-          minimum: 1.0
-          title: Bonus Fixed
-          description: The fixed bonus amount for the coupon
-          nullable: true
-        discount_amount_usd:
-          type: integer
-          minimum: 0.0
-          title: Discount Amount USD
-          description: The discount amount in USD for the coupon
-        requirements_expression:
-          title: Requirements Expression
-          description: The requirement expression for the coupon
-          $ref: '#/components/schemas/Expression'
-        expires_at:
-          type: integer
-          title: Expires At
-          description: The expiration date of the coupon
-        applicable_item_ids:
-          items:
-            type: string
-          type: array
-          title: Applicable Item Ids
-          description: The applicable item IDs
-        category_id:
-          type: string
-          title: Category Id
-          description: The coupon category ID
-        min_amount:
-          type: integer
-          title: Min Amount
-          description: Require a minimum order amount to apply the coupon
-        max_redemptions:
-          type: integer
-          title: Max Redemptions
-          description: Limit the number of times this code can be redeemed
-        max_redemptions_per_user:
-          type: integer
-          title: Max Redemptions Per User
-          description: Limit the number of times a user can redeem the coupon
-        is_stackable_with_bonus_coupons:
-          type: boolean
-          title: Is Stackable With Bonus Coupons
-          description: Allow stacking with bonus coupons
-        stackable_bonus_limit_percent:
-          type: integer
-          title: Stackable Bonus Limit Percent
-          description: Limit the bonus percent when stacking with bonus coupons
-        is_stackable_with_discount_coupons:
-          type: boolean
-          title: Is Stackable With Discount Coupons
-          description: Allow stacking with discount coupons
-        stackable_discount_limit_percent:
-          type: integer
-          title: Stackable Discount Limit Percent
-          description: Limit the discount percent when stacking with discount coupons
-        store_item_discount_limit_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Store Item Discount Limit Percent
-          description: Limit the combined store item and coupon discount percent
-        store_item_bonus_limit_percent:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Store Item Bonus Limit Percent
-          description: Limit the combined store item and coupon bonus percent
-        start_at:
-          type: integer
-          title: Start At
-          description: The timestamp when the coupon becomes valid
-        end_at:
-          type: integer
-          title: End At
-          description: The timestamp when the coupon ceases to be valid
-        player_ids:
-          items:
-            type: string
-          type: array
-          title: Player Ids
-          description: The player IDs that can redeem the coupon
-        exclude_player_ids:
-          items:
-            type: string
-          type: array
-          title: Exclude Player Ids
-          description: The player IDs that cannot redeem the coupon
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: The name of the coupon
-        code:
-          type: string
-          maxLength: 20
-          title: Code
-          description: The code of the coupon
-        type:
-          description: The type of the coupon
-          $ref: '#/components/schemas/CouponType'
-        creator_program:
-          title: Creator Program
-          description: The creator program for the coupon
-          $ref: '#/components/schemas/CreatorProgramBase'
-      type: object
-      required:
-      - name
-      - code
-      - type
-      title: CouponCreate
-    ItemPropertyRelationData:
-      properties:
-        value:
-          anyOf:
-          - type: number
-          - type: integer
-          - type: string
-          title: Value
-      type: object
-      title: ItemPropertyRelationData
-    ItemViewOption:
-      type: string
-      enum:
-      - default
-      - skeleton
-      title: ItemViewOption
-      description: An enumeration.
-    CouponFreeItems:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/CouponFreeItem'
-          type: array
-          maxItems: 100
-          title: Items
-          description: Items granted when the coupon is redeemed
-      type: object
-      title: CouponFreeItems
-      description: API wrapper for the `free_items` JSONB column, mirroring the storage shape.
-    NestedItem:
-      properties:
-        id:
-          type: string
-          title: Id
-        count:
-          type: integer
-          title: Count
-        sku:
-          type: string
-          title: SKU
-        is_featured:
-          type: boolean
-          title: Is Featured
-        meta:
-          type: object
-          title: Meta
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-        view_type:
-          $ref: '#/components/schemas/NestedItemViewType'
-      type: object
-      title: NestedItem
     ItemPropertyRelationRead:
       properties:
         property_id:
@@ -1246,16 +1128,6 @@ components:
       - item_id
       - item_property
       title: ItemPropertyRelationRead
-    ItemPropertyConfigNumber:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - number
-          title: Property Type
-          default: number
-      type: object
-      title: ItemPropertyConfigNumber
     TokenType:
       type: string
       enum:
@@ -1272,6 +1144,20 @@ components:
       - variable
       - virtual_currency
       title: TokenType
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
     UserCouponRead:
       properties:
         free_items:
@@ -1423,52 +1309,48 @@ components:
       - type
       - id
       title: UserCouponRead
-    ItemPropertyRead:
+    ItemPropertyConfigRange:
       properties:
-        name:
+        property_type:
           type: string
-          maxLength: 255
-          title: Name
-          description: The name of the property
-        description:
-          type: string
-          maxLength: 512
-          title: Description
-          description: The description of the property
-        icon_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Icon Url
-          description: The URL of the icon for the property
-        config:
-          oneOf:
-          - $ref: '#/components/schemas/ItemPropertyConfigRange'
-          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
-          - $ref: '#/components/schemas/ItemPropertyConfigString'
-          title: Config
-          description: The config of the property
-          discriminator:
-            propertyName: property_type
-            mapping:
-              range: '#/components/schemas/ItemPropertyConfigRange'
-              number: '#/components/schemas/ItemPropertyConfigNumber'
-              string: '#/components/schemas/ItemPropertyConfigString'
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the property
+          enum:
+          - range
+          title: Property Type
+          default: range
+        max:
+          type: integer
+          title: Max
+        min:
+          type: integer
+          title: Min
+          default: 0
       type: object
       required:
-      - name
-      - config
-      - id
-      title: ItemPropertyRead
+      - max
+      title: ItemPropertyConfigRange
+    Highlights:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        items:
+          items:
+            $ref: '#/components/schemas/HighlightItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Highlights
+    NestedItemViewType:
+      type: string
+      enum:
+      - separated
+      title: NestedItemViewType
+      description: An enumeration.
     CouponRead:
       properties:
         free_items:
@@ -1614,6 +1496,197 @@ components:
       - type
       - id
       title: CouponRead
+    HighlightItem:
+      properties:
+        image_url:
+          type: string
+          title: Image Url
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+      type: object
+      title: HighlightItem
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    CouponUpdate:
+      properties:
+        free_items:
+          title: Free Items
+          description: Items granted when the coupon is redeemed
+          $ref: '#/components/schemas/CouponFreeItems'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the coupon
+        bonus_percent:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the coupon
+        bonus_fixed:
+          type: integer
+          minimum: 1.0
+          title: Bonus Fixed
+          description: The fixed bonus amount for the coupon
+          nullable: true
+        discount_amount_usd:
+          type: integer
+          minimum: 0.0
+          title: Discount Amount USD
+          description: The discount amount in USD for the coupon
+        requirements_expression:
+          title: Requirements Expression
+          description: The requirement expression for the coupon
+          $ref: '#/components/schemas/Expression'
+        expires_at:
+          type: integer
+          title: Expires At
+          description: The expiration date of the coupon
+        applicable_item_ids:
+          items:
+            type: string
+          type: array
+          title: Applicable Item Ids
+          description: The applicable item IDs
+        category_id:
+          type: string
+          title: Category Id
+          description: The coupon category ID
+        min_amount:
+          type: integer
+          title: Min Amount
+          description: Require a minimum order amount to apply the coupon
+        max_redemptions:
+          type: integer
+          title: Max Redemptions
+          description: Limit the number of times this code can be redeemed
+        max_redemptions_per_user:
+          type: integer
+          title: Max Redemptions Per User
+          description: Limit the number of times a user can redeem the coupon
+        is_stackable_with_bonus_coupons:
+          type: boolean
+          title: Is Stackable With Bonus Coupons
+          description: Allow stacking with bonus coupons
+        stackable_bonus_limit_percent:
+          type: integer
+          title: Stackable Bonus Limit Percent
+          description: Limit the bonus percent when stacking with bonus coupons
+        is_stackable_with_discount_coupons:
+          type: boolean
+          title: Is Stackable With Discount Coupons
+          description: Allow stacking with discount coupons
+        stackable_discount_limit_percent:
+          type: integer
+          title: Stackable Discount Limit Percent
+          description: Limit the discount percent when stacking with discount coupons
+        store_item_discount_limit_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Store Item Discount Limit Percent
+          description: Limit the combined store item and coupon discount percent
+        store_item_bonus_limit_percent:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Store Item Bonus Limit Percent
+          description: Limit the combined store item and coupon bonus percent
+        start_at:
+          type: integer
+          title: Start At
+          description: The timestamp when the coupon becomes valid
+        end_at:
+          type: integer
+          title: End At
+          description: The timestamp when the coupon ceases to be valid
+        player_ids:
+          items:
+            type: string
+          type: array
+          title: Player Ids
+          description: The player IDs that can redeem the coupon
+        exclude_player_ids:
+          items:
+            type: string
+          type: array
+          title: Exclude Player Ids
+          description: The player IDs that cannot redeem the coupon
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the coupon
+        creator_program:
+          title: Creator Program
+          description: The creator program for the coupon
+          $ref: '#/components/schemas/CreatorProgramUpdate'
+      type: object
+      title: CouponUpdate
+    ItemPropertyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the property
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the property
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the property
+        config:
+          oneOf:
+          - $ref: '#/components/schemas/ItemPropertyConfigRange'
+          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
+          - $ref: '#/components/schemas/ItemPropertyConfigString'
+          title: Config
+          description: The config of the property
+          discriminator:
+            propertyName: property_type
+            mapping:
+              range: '#/components/schemas/ItemPropertyConfigRange'
+              number: '#/components/schemas/ItemPropertyConfigNumber'
+              string: '#/components/schemas/ItemPropertyConfigString'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the property
+      type: object
+      required:
+      - name
+      - config
+      - id
+      title: ItemPropertyRead
     ItemSource:
       type: string
       enum:
@@ -1630,79 +1703,6 @@ components:
       - rolling_offer
       - pick_one_offer
       title: ItemSource
-      description: An enumeration.
-    Token:
-      properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    CouponBulkUpdate:
-      properties:
-        id:
-          type: string
-          title: Id
-        category_id:
-          type: string
-          title: Category Id
-          description: The coupon category ID
-      type: object
-      required:
-      - id
-      - category_id
-      title: CouponBulkUpdate
-    CouponType:
-      type: string
-      enum:
-      - bonus
-      - discount
-      - free_item
-      - vc
-      - non_benefit
-      - discount_fixed
-      - discount_reward_point
-      title: CouponType
-      description: An enumeration.
-    CouponGeneratedType:
-      type: string
-      enum:
-      - campaign
-      - receipt
-      title: CouponGeneratedType
-      description: An enumeration.
-    ItemPropertyConfigRange:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - range
-          title: Property Type
-          default: range
-        max:
-          type: integer
-          title: Max
-        min:
-          type: integer
-          title: Min
-          default: 0
-      type: object
-      required:
-      - max
-      title: ItemPropertyConfigRange
-    ItemType:
-      type: string
-      enum:
-      - item
-      - currency
-      - bundle
-      - lootbox
-      - subscription
-      - virtual_currency
-      title: ItemType
       description: An enumeration.
   securitySchemes:
     HTTPBearer:
