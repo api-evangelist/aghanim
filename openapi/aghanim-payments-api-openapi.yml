@@ -117,27 +117,14 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+    RangeField:
+      type: string
+      enum:
+      - created_at
+      - modified_at
+      - status_updated_at
+      title: RangeField
+      description: An enumeration.
     PaymentStatus:
       type: string
       enum:
@@ -163,13 +150,14 @@ components:
       - android
       - other
       title: Platform
-    RangeField:
+    SalesChannel:
       type: string
       enum:
-      - created_at
-      - modified_at
-      - status_updated_at
-      title: RangeField
+      - game_hub
+      - checkout
+      - android_sdk
+      - checkout_link
+      title: SalesChannel
       description: An enumeration.
     ThreeDSFlow:
       type: string
@@ -179,6 +167,80 @@ components:
       - frictionless
       title: ThreeDSFlow
       description: An enumeration.
+    ThreeDSecureResult:
+      type: string
+      enum:
+      - not_attempted
+      - authenticated
+      - failed
+      title: ThreeDSecureResult
+      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Coupon:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique ID of the coupon.
+        code:
+          type: string
+          title: Code
+          description: The coupon code.
+        name:
+          type: string
+          title: Name
+          description: The name of the coupon.
+        type:
+          description: The type of the coupon.
+          $ref: '#/components/schemas/CouponType'
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: Discount percent for `discount` coupons.
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          description: Bonus percent for `bonus` coupons.
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: Fixed bonus quantity for `bonus` coupons.
+      type: object
+      required:
+      - id
+      - code
+      - name
+      - type
+      title: Coupon
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     PaymentRead:
       properties:
         user_id:
@@ -361,24 +423,6 @@ components:
       - currency_minor_unit
       - created_at
       title: PaymentRead
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    SalesChannel:
-      type: string
-      enum:
-      - game_hub
-      - checkout
-      - android_sdk
-      - checkout_link
-      title: SalesChannel
-      description: An enumeration.
     Item:
       properties:
         id:
@@ -425,62 +469,6 @@ components:
       - source
       - quantity
       title: Item
-    CouponType:
-      type: string
-      enum:
-      - bonus
-      - discount
-      - free_item
-      - vc
-      - non_benefit
-      - discount_fixed
-      - discount_reward_point
-      title: CouponType
-      description: An enumeration.
-    ThreeDSecureResult:
-      type: string
-      enum:
-      - not_attempted
-      - authenticated
-      - failed
-      title: ThreeDSecureResult
-      description: An enumeration.
-    Coupon:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique ID of the coupon.
-        code:
-          type: string
-          title: Code
-          description: The coupon code.
-        name:
-          type: string
-          title: Name
-          description: The name of the coupon.
-        type:
-          description: The type of the coupon.
-          $ref: '#/components/schemas/CouponType'
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          description: Discount percent for `discount` coupons.
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          description: Bonus percent for `bonus` coupons.
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: Fixed bonus quantity for `bonus` coupons.
-      type: object
-      required:
-      - id
-      - code
-      - name
-      - type
-      title: Coupon
     ItemSource:
       type: string
       enum:
@@ -497,6 +485,18 @@ components:
       - rolling_offer
       - pick_one_offer
       title: ItemSource
+      description: An enumeration.
+    CouponType:
+      type: string
+      enum:
+      - bonus
+      - discount
+      - free_item
+      - vc
+      - non_benefit
+      - discount_fixed
+      - discount_reward_point
+      title: CouponType
       description: An enumeration.
   securitySchemes:
     HTTPBearer:

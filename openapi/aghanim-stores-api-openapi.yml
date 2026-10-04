@@ -661,403 +661,378 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    StoreItemCreate:
+    CTAButtonType:
+      type: string
+      enum:
+      - text
+      - price
+      - trial
+      title: CTAButtonType
+      description: An enumeration.
+    PublicItemRead:
       properties:
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          nullable: true
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          nullable: true
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: The user will receive a fixed quantity of the item.
-          nullable: true
-        position:
-          type: integer
-          title: Position
         name:
           type: string
           title: Name
-          nullable: true
+          description: The name of the item
         description:
           type: string
           title: Description
+          description: The description of the item
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
           nullable: true
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-          nullable: true
-        max_purchases:
-          type: integer
-          title: Max Purchases
-          description: The maximum number of purchases allowed for the item per user.
-          nullable: true
-        global_max_purchases:
-          type: integer
-          title: Global Max Purchases
-          description: The maximum number of purchases allowed for the item across all users.
-          nullable: true
-        requirements_expression:
-          title: Requirements Expression
-          description: Defines the rules by which an item is shown to the user
-          nullable: true
-          $ref: '#/components/schemas/Expression'
-        custom_badge:
-          type: string
-          maxLength: 100
-          title: Custom Badge
-          description: The custom badge of the item
-          nullable: true
-        campaign_id:
-          type: string
-          title: Campaign Id
-          nullable: true
-        user_campaign_id:
-          type: string
-          title: User Campaign Id
-          nullable: true
-        bond_user_id:
-          type: string
-          title: Bond User Id
-          nullable: true
-        start_at:
-          type: integer
-          title: Start At
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          nullable: true
-        min_amount:
-          type: integer
-          title: Min Amount
-          nullable: true
-        max_reward_points_percent:
-          type: integer
-          title: Max Reward Points Percent
-          nullable: true
-        reward_points_percent:
-          type: number
-          title: Reward Points Percent
-          description: Percentage of reward points for the item.
-          nullable: true
-        reward_points_fixed:
-          type: integer
-          title: Reward Points Fixed
-          description: Fixed reward points for the item.
-          nullable: true
-        loyalty_points_percent:
-          type: integer
-          title: Loyalty Points Percent
-          description: Percentage of loyalty points for the item.
-          nullable: true
-        loyalty_points_fixed:
-          type: integer
-          title: Loyalty Points Fixed
-          description: Fixed loyalty points for the item.
-          nullable: true
-        reward_settings:
-          title: Reward Settings
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        payment_bound:
-          title: Payment Bound
-          description: Payment settings for the item.
-          nullable: true
-          $ref: '#/components/schemas/StoreItemPaymentSettings'
-        is_free_item:
-          type: boolean
-          title: Is Free Item
-          default: false
-        rotation_weight:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Rotation Weight
-          nullable: true
-        max_purchases_period_type:
-          description: The period type for the max purchases limit. If not set, the limit is global and does not reset.
-          nullable: true
-          $ref: '#/components/schemas/PeriodType'
-        max_purchases_period_value:
-          type: integer
-          minimum: 0.0
-          title: Max Purchases Period Value
-          nullable: true
-        max_purchases_limit_type:
-          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value and last purchase date.
-          nullable: true
-          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
-        show_disabled_by_max_purchases:
-          type: boolean
-          title: Show Disabled By Max Purchases
-          description: Whether to show the item as disabled when max purchases limit is reached.
-          nullable: true
-        requirements_mismatch_behavior:
-          description: Define what happens when the requirements_expression return false for current user.
-          nullable: true
-          $ref: '#/components/schemas/RequirementsMismatchBehavior'
-        card_type:
-          description: The type of the card for the item, used for displaying in the store
-          nullable: true
-          $ref: '#/components/schemas/StoreCardType'
-        show_first_on_category_list:
-          type: boolean
-          title: Show First On Category List
-          description: Whether to show the item first on the category list
-          nullable: true
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          description: The ID of the bonus item that will be given to the user when they purchase this item.
-          deprecated: true
-          nullable: true
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-          deprecated: true
-          nullable: true
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-          deprecated: true
-          nullable: true
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: The bonus settings for the item, including bonus items and their quantities.
-          nullable: true
-          $ref: '#/components/schemas/ItemBonusSettings'
-        subscription_settings:
-          title: Subscription Settings
-          description: The subscription settings for the item
-          nullable: true
-          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for bonus badge
-          nullable: true
+          $ref: '#/components/schemas/Highlights'
         price:
           type: integer
           title: Price
           description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
-          nullable: true
         price_point:
           type: integer
           maximum: 5000000.0
           exclusiveMinimum: 0.0
           title: Price Point
-          description: The price point
-          nullable: true
+          description: The price point for local prices `DEPRECATED`
         price_template_id:
           type: string
           title: Price Template Id
           description: The ID of the price template
-          nullable: true
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
         quantity:
           type: integer
           maximum: 1.0e+18
           minimum: 1.0
           title: Quantity
           description: The quantity of the item
-          nullable: true
-        item_id:
-          type: string
-          title: Item Id
-      type: object
-      required:
-      - position
-      - item_id
-      title: StoreItemCreate
-    NestedItem:
-      properties:
-        id:
-          type: string
-          title: Id
-        count:
-          type: integer
-          title: Count
-        sku:
-          type: string
-          title: SKU
-        is_featured:
+          default: 1
+        is_stackable:
           type: boolean
-          title: Is Featured
-        meta:
-          type: object
-          title: Meta
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-        view_type:
-          $ref: '#/components/schemas/NestedItemViewType'
-      type: object
-      title: NestedItem
-    MaxPurchaseLimitPeriodType:
-      type: string
-      enum:
-      - global
-      - personal
-      title: MaxPurchaseLimitPeriodType
-      description: An enumeration.
-    ItemType:
-      type: string
-      enum:
-      - item
-      - currency
-      - bundle
-      - lootbox
-      - subscription
-      - virtual_currency
-      title: ItemType
-      description: An enumeration.
-    SubscriptionPlanType:
-      type: string
-      enum:
-      - default
-      - special
-      title: SubscriptionPlanType
-      description: An enumeration.
-    SubscriptionPlan:
-      properties:
-        key:
-          type: string
-          title: Key
-          description: The unique key of the plan
-        name:
-          type: string
-          title: Name
-          description: The display name of the plan
-        billing_cycle:
-          title: Billing Cycle
-          description: The billing cycle configuration
-          $ref: '#/components/schemas/SubscriptionBillingCycle'
-        renewal_type:
-          description: The renewal type of the plan
-          $ref: '#/components/schemas/SubscriptionRenewalType'
-        price:
-          type: integer
-          title: Price
-          description: The price in minor currency units
-        price_point:
-          type: integer
-          title: Price Point
-          description: The price point for local prices
-        price_template_id:
-          type: string
-          title: Price Template Id
-          description: The ID of the price template
-        currency:
-          description: The currency of the plan
-          default: USD
-          $ref: '#/components/schemas/Currency'
-        grace_period:
-          type: integer
-          title: Grace Period
-          description: The grace period in days before subscription is canceled
-        grace_mode:
-          description: The grace mode for payment transitions
-          $ref: '#/components/schemas/SubscriptionGraceMode'
-        trial_period:
-          type: integer
-          title: Trial Period
-          description: The trial period in days
-        account_lock_duration:
-          type: integer
-          title: Account Lock Duration
-          description: The duration in days to lock account after cancellation
-        change_payment_mode:
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
           type: boolean
-          title: Change Payment Mode
-          description: Whether changing payment method is allowed
-        is_downgrade_supported:
-          type: boolean
-          title: Is Downgrade Supported
-          description: Whether downgrading to this plan is supported
-          default: false
-        is_pause_allowed:
-          type: boolean
-          title: Is Pause Allowed
-          description: Whether pausing the subscription is allowed
-          default: false
-        is_reactivation_allowed:
-          type: boolean
-          title: Is Reactivation Allowed
-          description: Whether reactivating the subscription is allowed
-          default: false
-        offers:
-          items:
-            $ref: '#/components/schemas/SubscriptionOffer'
-          type: array
-          title: Offers
-          description: The list of special offers for this plan
-        benefits:
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
           items:
             type: string
           type: array
-          title: Benefits
-          description: The list of benefit descriptions for this plan
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
         nested_items:
           items:
             $ref: '#/components/schemas/NestedItem'
           type: array
           title: Nested Items
-          description: Nested items references for this subscription plan
-        archived_at:
-          type: number
-          title: Archived At
-          description: The timestamp when the plan was archived
-        type:
-          description: The type of the plan
-          default: default
-          $ref: '#/components/schemas/SubscriptionPlanType'
-      type: object
-      required:
-      - key
-      - name
-      - billing_cycle
-      - renewal_type
-      title: SubscriptionPlan
-    ItemRarityRead:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: Name of the item rarity
-        color_background_badge:
-          type: string
-          title: Color Background Badge
-          description: Background color of the badge with this rarity
+          description: The child items of the bundle
         id:
           type: string
           title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        model_type:
+          type: string
+          enum:
+          - PublicItemRead
+          title: Model Type
+          default: PublicItemRead
+        nested_items_read:
+          items:
+            $ref: '#/components/schemas/PublicItemRead'
+          type: array
+          title: Nested Items Read
+        fallback_item:
+          $ref: '#/components/schemas/PublicItemRead'
+        quantity_after_bonus:
+          type: integer
+          title: Quantity After Bonus
+        quantity_bonus_value:
+          type: integer
+          title: Quantity Bonus Value
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
       type: object
       required:
       - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
       - id
-      title: ItemRarityRead
-    TrialTextMode:
+      - created_at
+      title: PublicItemRead
+    PeriodType:
       type: string
       enum:
-      - start_free_trial
-      - try_free_for_n_days
-      title: TrialTextMode
-      description: An enumeration.
-    aghanim__subscription_item__schemas__SubscriptionRead:
+      - year
+      - month
+      - week
+      - day
+      - hour
+      - minute
+      - second
+      title: PeriodType
+    ItemsCreate:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/StoreItemCreate'
+          type: array
+          maxItems: 50
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - items
+      title: ItemsCreate
+    ItemPropertyRelationRead:
+      properties:
+        property_id:
+          type: string
+          title: Property Id
+        data:
+          $ref: '#/components/schemas/ItemPropertyRelationData'
+        position:
+          type: integer
+          title: Position
+        id:
+          type: string
+          title: Id
+        item_id:
+          type: string
+          title: Item Id
+        item_property:
+          $ref: '#/components/schemas/ItemPropertyRead'
+      type: object
+      required:
+      - property_id
+      - position
+      - id
+      - item_id
+      - item_property
+      title: ItemPropertyRelationRead
+    ItemRewardSettings:
+      properties:
+        available:
+          items:
+            $ref: '#/components/schemas/VCRewardConfig'
+          type: array
+          title: Available
+      type: object
+      required:
+      - available
+      title: ItemRewardSettings
+    ItemBonusSettings:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ItemBonus'
+          type: array
+          title: Items
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      required:
+      - items
+      title: ItemBonusSettings
+    VirtualCurrencyRead:
       properties:
         name:
           type: string
@@ -1241,46 +1216,32 @@ components:
           type: boolean
           title: Enable Reward Points Redemption
           description: Allows using Reward Points on purchase
-        nested_items:
-          items:
-            $ref: '#/components/schemas/NestedItem'
-          type: array
-          title: Nested Items
-          description: The child items of the bundle
-        meta:
-          type: object
-          title: Meta
+        vc_settings:
+          title: Vc Settings
+          description: The settings of the virtual currency
+          $ref: '#/components/schemas/VirtualCurrencySettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The timestamp of when the virtual currency becomes active
+        end_at:
+          type: integer
+          title: End At
+          description: The timestamp of when the virtual currency expires
         id:
           type: string
           title: Id
-          description: The unique identifier of the subscription
+          description: The unique identifier of the virtual currency
         model_type:
           type: string
           enum:
-          - SubscriptionRead
+          - VirtualCurrencyRead
           title: Model Type
-          default: SubscriptionRead
-        created_at:
-          type: number
-          title: Created At
-          description: The timestamp of when the subscription was created
-        modified_at:
-          type: number
-          title: Modified At
-          description: The timestamp of when the subscription was modified
+          default: VirtualCurrencyRead
         archived_at:
           type: number
           title: Archived At
-          description: The timestamp of when the subscription was archived
-        comment:
-          type: string
-          maxLength: 255
-          title: Comment
-          description: Internal comment for this subscription
-        subscription_settings:
-          title: Subscription Settings
-          description: The settings of the subscription
-          $ref: '#/components/schemas/SubscriptionSettings'
+          description: The timestamp of when the virtual currency was archived
       type: object
       required:
       - name
@@ -1289,30 +1250,305 @@ components:
       - type
       - is_stackable
       - is_currency
+      - vc_settings
       - id
-      - created_at
-      - subscription_settings
-      title: SubscriptionRead
-    ItemViewOption:
+      title: VirtualCurrencyRead
+    ItemPropertyConfigString:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - string
+          title: Property Type
+          default: string
+      type: object
+      title: ItemPropertyConfigString
+    StoreItemBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: StoreItemBulkDelete
+    StoreBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: StoreBulkDelete
+    TrialTextMode:
+      type: string
+      enum:
+      - start_free_trial
+      - try_free_for_n_days
+      title: TrialTextMode
+      description: An enumeration.
+    StoreSettings:
+      properties:
+        webhook_settings:
+          $ref: '#/components/schemas/StoreWebhookSettings'
+      type: object
+      title: StoreSettings
+    StoreType:
       type: string
       enum:
       - default
-      - skeleton
-      title: ItemViewOption
+      - special
+      - rotation
+      - limited_stock
+      - webhook
+      title: StoreType
       description: An enumeration.
-    ItemsCreate:
+    StoreItemBenefitType:
+      type: string
+      enum:
+      - base
+      - promotion
+      - user_promotion
+      - virtual_sku
+      - extra_promotion
+      title: StoreItemBenefitType
+      description: An enumeration.
+    NestedItemViewType:
+      type: string
+      enum:
+      - separated
+      title: NestedItemViewType
+      description: An enumeration.
+    ValidationError:
       properties:
-        items:
+        loc:
           items:
-            $ref: '#/components/schemas/StoreItemCreate'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          maxItems: 50
-          minItems: 1
-          title: Items
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - items
-      title: ItemsCreate
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    VCPriceSource:
+      type: string
+      enum:
+      - local_price
+      - base_price
+      title: VCPriceSource
+      description: An enumeration.
+    LootboxSettings:
+      properties:
+        groups:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+            discriminator:
+              propertyName: model_type
+              mapping:
+                LootboxGroup: '#/components/schemas/LootboxGroup'
+                LootboxNestedItem: '#/components/schemas/LootboxNestedItem'
+          type: array
+          title: Groups
+        claim_video_url:
+          type: string
+          title: Claim Video Url
+        claimed_video_url:
+          type: string
+          title: Claimed Video Url
+        claim_video_url_mov:
+          type: string
+          title: Claim Video Url Mov
+        claimed_video_url_mov:
+          type: string
+          title: Claimed Video Url Mov
+        view_type:
+          default: default
+          $ref: '#/components/schemas/LootboxViewType'
+        pity:
+          $ref: '#/components/schemas/PitySettings'
+      type: object
+      required:
+      - groups
+      title: LootboxSettings
+    LimitedStockSettings:
+      properties:
+        total_quantity:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Total Quantity
+        type:
+          $ref: '#/components/schemas/LimitedStockType'
+        start_calculation_at:
+          type: integer
+          title: Start Calculation At
+          nullable: true
+      type: object
+      required:
+      - total_quantity
+      - type
+      title: LimitedStockSettings
+    PityStep:
+      properties:
+        threshold:
+          type: integer
+          minimum: 1.0
+          title: Threshold
+        guaranteed_groups:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+          type: array
+          minItems: 1
+          title: Guaranteed Groups
+      type: object
+      required:
+      - threshold
+      - guaranteed_groups
+      title: PityStep
+    StoreItemBenefit:
+      properties:
+        type:
+          $ref: '#/components/schemas/StoreItemBenefitType'
+        discount_percent:
+          type: integer
+          title: Discount Percent
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+        reward_points_percent:
+          type: integer
+          title: Reward Points Percent
+        reward_points_fixed:
+          type: integer
+          title: Reward Points Fixed
+        bonus_item_percent:
+          type: integer
+          title: Bonus Item Percent
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+        store_promotion_id:
+          type: string
+          title: Store Promotion Id
+        loyalty_points_percent:
+          type: integer
+          title: Loyalty Points Percent
+        loyalty_points_fixed:
+          type: integer
+          title: Loyalty Points Fixed
+        reward_settings:
+          $ref: '#/components/schemas/ItemRewardSettings'
+        requires_payment_methods:
+          items:
+            type: string
+          type: array
+          title: Requires Payment Methods
+        requires_payment_method_save:
+          type: boolean
+          title: Requires Payment Method Save
+      type: object
+      required:
+      - type
+      title: StoreItemBenefit
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    StoreCardType:
+      type: string
+      enum:
+      - default
+      - featured
+      title: StoreCardType
+      description: An enumeration.
+    StoreRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the store, used for display purposes.
+          nullable: false
+        description:
+          type: string
+          title: Description
+          description: The description of the store, such as its purpose, features, or additional details.
+          nullable: false
+        key:
+          type: string
+          title: Key
+          description: The key of the store.
+          nullable: true
+        type:
+          description: The type of the store (e.g., special, rotating, limited stock).
+          nullable: false
+          $ref: '#/components/schemas/StoreType'
+        rotation_settings:
+          title: Rotation Settings
+          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
+          nullable: true
+          $ref: '#/components/schemas/RotationSettings'
+        limited_stock_settings:
+          title: Limited Stock Settings
+          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
+          nullable: true
+          $ref: '#/components/schemas/LimitedStockSettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
+          nullable: true
+        settings:
+          title: Settings
+          nullable: true
+          $ref: '#/components/schemas/StoreSettings'
+        id:
+          type: string
+          title: Id
+        current_purchase_count:
+          type: integer
+          title: Current Purchase Count
+      type: object
+      required:
+      - name
+      - description
+      - type
+      - id
+      title: StoreRead
+    SubscriptionRenewalType:
+      type: string
+      enum:
+      - auto
+      - no_renew
+      title: SubscriptionRenewalType
+      description: An enumeration.
     StoreItemRead:
       properties:
         discount_percent:
@@ -1603,15 +1839,43 @@ components:
       - item
       - store_id
       title: StoreItemRead
-    StoreItemPaymentSettings:
+    ItemPropertyRelationData:
       properties:
-        payment_method_ids:
-          items:
-            type: string
-          type: array
-          title: Payment Method Ids
+        value:
+          anyOf:
+          - type: number
+          - type: integer
+          - type: string
+          title: Value
       type: object
-      title: StoreItemPaymentSettings
+      title: ItemPropertyRelationData
+    ItemRarityRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: Name of the item rarity
+        color_background_badge:
+          type: string
+          title: Color Background Badge
+          description: Background color of the badge with this rarity
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - name
+      - id
+      title: ItemRarityRead
+    RequirementsMismatchBehavior:
+      type: string
+      enum:
+      - hide_from_store
+      - disable
+      - disable_and_show_description
+      title: RequirementsMismatchBehavior
+      description: An enumeration.
     ItemRead:
       properties:
         name:
@@ -1896,18 +2160,262 @@ components:
       - id
       - created_at
       title: ItemRead
-    PeriodType:
+    ItemViewOption:
       type: string
       enum:
-      - year
-      - month
-      - week
-      - day
-      - hour
-      - minute
-      - second
-      title: PeriodType
-    VirtualCurrencyRead:
+      - default
+      - skeleton
+      title: ItemViewOption
+      description: An enumeration.
+    OrderSourceType:
+      type: string
+      enum:
+      - s2s
+      - hub
+      - sdk
+      - checkout_link
+      title: OrderSourceType
+      description: An enumeration.
+    StoreCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the store, used for display purposes.
+          nullable: false
+        description:
+          type: string
+          title: Description
+          description: The description of the store, such as its purpose, features, or additional details.
+          nullable: false
+        key:
+          type: string
+          title: Key
+          description: The key of the store.
+          nullable: true
+        type:
+          description: The type of the store (e.g., special, rotating, limited stock).
+          nullable: false
+          $ref: '#/components/schemas/StoreType'
+        rotation_settings:
+          title: Rotation Settings
+          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
+          nullable: true
+          $ref: '#/components/schemas/RotationSettings'
+        limited_stock_settings:
+          title: Limited Stock Settings
+          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
+          nullable: true
+          $ref: '#/components/schemas/LimitedStockSettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
+          nullable: true
+        settings:
+          title: Settings
+          nullable: true
+          $ref: '#/components/schemas/StoreSettings'
+      type: object
+      required:
+      - name
+      - description
+      - type
+      title: StoreCreate
+    StoreItemBulkUpdate:
+      properties:
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          nullable: true
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          nullable: true
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: The user will receive a fixed quantity of the item.
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          nullable: true
+        name:
+          type: string
+          title: Name
+          nullable: true
+        description:
+          type: string
+          title: Description
+          nullable: true
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+          nullable: true
+        max_purchases:
+          type: integer
+          title: Max Purchases
+          nullable: true
+        global_max_purchases:
+          type: integer
+          title: Global Max Purchases
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        requirements_mismatch_behavior:
+          nullable: true
+          $ref: '#/components/schemas/RequirementsMismatchBehavior'
+        custom_badge:
+          type: string
+          maxLength: 100
+          title: Custom Badge
+          description: The custom badge for the item
+          nullable: true
+        start_at:
+          type: integer
+          title: Start At
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          nullable: true
+        min_amount:
+          type: integer
+          title: Min Amount
+          nullable: true
+        reward_points_percent:
+          type: number
+          title: Reward Points Percent
+          nullable: true
+        reward_points_fixed:
+          type: integer
+          title: Reward Points Fixed
+          nullable: true
+        loyalty_points_percent:
+          type: integer
+          title: Loyalty Points Percent
+          nullable: true
+        loyalty_points_fixed:
+          type: integer
+          title: Loyalty Points Fixed
+          nullable: true
+        reward_settings:
+          title: Reward Settings
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        payment_bound:
+          title: Payment Bound
+          nullable: true
+          $ref: '#/components/schemas/StoreItemPaymentSettings'
+        is_free_item:
+          type: boolean
+          title: Is Free Item
+        rotation_weight:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Rotation Weight
+          nullable: true
+        max_reward_points_percent:
+          type: integer
+          title: Max Reward Points Percent
+          nullable: true
+        max_purchases_period_type:
+          nullable: true
+          $ref: '#/components/schemas/PeriodType'
+        max_purchases_period_value:
+          type: integer
+          minimum: 0.0
+          title: Max Purchases Period Value
+          nullable: true
+        max_purchases_limit_type:
+          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value.
+          nullable: true
+          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
+        show_disabled_by_max_purchases:
+          type: boolean
+          title: Show Disabled By Max Purchases
+          nullable: true
+        card_type:
+          nullable: true
+          $ref: '#/components/schemas/StoreCardType'
+        show_first_on_category_list:
+          type: boolean
+          title: Show First On Category List
+          nullable: true
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          deprecated: true
+          nullable: true
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+          deprecated: true
+          nullable: true
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+          deprecated: true
+          nullable: true
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: The bonus settings for the item, including bonus items and their quantities.
+          nullable: true
+          $ref: '#/components/schemas/ItemBonusSettings'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for bonus badge
+          nullable: true
+        subscription_settings:
+          title: Subscription Settings
+          description: The subscription settings for the item
+          nullable: true
+          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
+        price:
+          type: integer
+          title: Price
+          nullable: true
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          nullable: true
+        price_template_id:
+          type: string
+          title: Price Template Id
+          nullable: true
+        quantity:
+          type: integer
+          maximum: 1.0e+18
+          minimum: 1.0
+          title: Quantity
+          nullable: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+      type: object
+      required:
+      - id
+      title: StoreItemBulkUpdate
+    aghanim__subscription_item__schemas__SubscriptionRead:
       properties:
         name:
           type: string
@@ -2091,32 +2599,46 @@ components:
           type: boolean
           title: Enable Reward Points Redemption
           description: Allows using Reward Points on purchase
-        vc_settings:
-          title: Vc Settings
-          description: The settings of the virtual currency
-          $ref: '#/components/schemas/VirtualCurrencySettings'
-        start_at:
-          type: integer
-          title: Start At
-          description: The timestamp of when the virtual currency becomes active
-        end_at:
-          type: integer
-          title: End At
-          description: The timestamp of when the virtual currency expires
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        meta:
+          type: object
+          title: Meta
         id:
           type: string
           title: Id
-          description: The unique identifier of the virtual currency
+          description: The unique identifier of the subscription
         model_type:
           type: string
           enum:
-          - VirtualCurrencyRead
+          - SubscriptionRead
           title: Model Type
-          default: VirtualCurrencyRead
+          default: SubscriptionRead
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the subscription was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the subscription was modified
         archived_at:
           type: number
           title: Archived At
-          description: The timestamp of when the virtual currency was archived
+          description: The timestamp of when the subscription was archived
+        comment:
+          type: string
+          maxLength: 255
+          title: Comment
+          description: Internal comment for this subscription
+        subscription_settings:
+          title: Subscription Settings
+          description: The settings of the subscription
+          $ref: '#/components/schemas/SubscriptionSettings'
       type: object
       required:
       - name
@@ -2125,26 +2647,461 @@ components:
       - type
       - is_stackable
       - is_currency
-      - vc_settings
       - id
-      title: VirtualCurrencyRead
-    Highlights:
+      - created_at
+      - subscription_settings
+      title: SubscriptionRead
+    ItemSource:
+      type: string
+      enum:
+      - order
+      - bonus
+      - bundle
+      - coupon
+      - lootbox
+      - free_item
+      - liveops
+      - daily_reward
+      - loyalty_reward
+      - progression_program
+      - rolling_offer
+      - pick_one_offer
+      title: ItemSource
+      description: An enumeration.
+    ItemType:
+      type: string
+      enum:
+      - item
+      - currency
+      - bundle
+      - lootbox
+      - subscription
+      - virtual_currency
+      title: ItemType
+      description: An enumeration.
+    LootboxGroup:
       properties:
-        title:
+        id:
           type: string
-          title: Title
+          title: Id
+        weight:
+          type: integer
+          maximum: 1000000.0
+          minimum: 0.0
+          title: Weight
+        name:
+          type: string
+          title: Name
+        nested_items:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroup'
+            - $ref: '#/components/schemas/LootboxNestedItem'
+          type: array
+          title: Nested Items
+        model_type:
+          type: string
+          enum:
+          - LootboxGroup
+          title: Model Type
+          default: LootboxGroup
+      type: object
+      required:
+      - id
+      - weight
+      - name
+      - nested_items
+      title: LootboxGroup
+    ItemBonus:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The ID of the bonus item that will be given to the user when they purchase this item.
+        sku:
+          type: string
+          title: SKU
+        quantity_fixed:
+          type: integer
+          title: Quantity Fixed
+          description: The fixed quantity of the bonus item
+          nullable: true
+        quantity_percent:
+          type: integer
+          minimum: 0.0
+          title: Quantity Percent
+          description: The user will receive a quantity equivalent to the set percentage of the price_after_discount_usd (in cents) of the purchased item.
+          nullable: true
+      type: object
+      required:
+      - id
+      title: ItemBonus
+    VirtualSKUStat:
+      properties:
+        all_count:
+          type: integer
+          title: All Count
+        purchase_count:
+          type: integer
+          title: Purchase Count
+      type: object
+      required:
+      - all_count
+      - purchase_count
+      title: VirtualSKUStat
+    LootboxNestedItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        weight:
+          type: integer
+          maximum: 1000000.0
+          minimum: 0.0
+          title: Weight
+        count:
+          type: integer
+          title: Count
+        sku:
+          type: string
+          title: SKU
+        model_type:
+          type: string
+          enum:
+          - LootboxNestedItem
+          title: Model Type
+          default: LootboxNestedItem
+      type: object
+      required:
+      - id
+      - weight
+      - count
+      - sku
+      title: LootboxNestedItem
+    StoreItemSubscriptionSettings:
+      properties:
+        cta_button_type:
+          $ref: '#/components/schemas/CTAButtonType'
+        cta_button_settings:
+          oneOf:
+          - $ref: '#/components/schemas/TrialSettings'
+          - $ref: '#/components/schemas/PriceViewSettings'
+          - $ref: '#/components/schemas/CTAButtonTextSettings'
+          title: Cta Button Settings
+          discriminator:
+            propertyName: model_type
+            mapping:
+              TrialSettings: '#/components/schemas/TrialSettings'
+              PriceViewSettings: '#/components/schemas/PriceViewSettings'
+              CTAButtonTextSettings: '#/components/schemas/CTAButtonTextSettings'
+        override_trial_days:
+          type: integer
+          minimum: 1.0
+          title: Override Trial Days
+          nullable: true
+        card_view_type:
+          description: How to display subscription plans in the store
+          default: one_card
+          $ref: '#/components/schemas/SubscriptionCardViewType'
+        supported_text:
+          description: Text under the CTA button
+          $ref: '#/components/schemas/CTASupportedText'
+        is_change_plan_allowed:
+          type: boolean
+          title: Is Change Plan Allowed
+          description: Whether changing the subscription plan is allowed
+          default: true
+      type: object
+      required:
+      - cta_button_type
+      - cta_button_settings
+      title: StoreItemSubscriptionSettings
+    TrialSettings:
+      properties:
+        model_type:
+          type: string
+          enum:
+          - TrialSettings
+          title: Model Type
+          default: TrialSettings
+        trial_text_mode:
+          $ref: '#/components/schemas/TrialTextMode'
+      type: object
+      title: TrialSettings
+    RotationType:
+      type: string
+      enum:
+      - random
+      - random_by_weight
+      - round_robin
+      title: RotationType
+      description: An enumeration.
+    SubscriptionOfferEligibility:
+      type: string
+      enum:
+      - new_acquisition
+      - returning
+      title: SubscriptionOfferEligibility
+      description: An enumeration.
+    StoreUpdate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the store, used for display purposes.
+          nullable: true
         description:
           type: string
           title: Description
-        items:
+          description: The description of the store, such as its purpose, features, or additional details.
+          nullable: true
+        key:
+          type: string
+          title: Key
+          description: The key of the store.
+          nullable: true
+        type:
+          description: The type of the store (e.g., special, rotating, limited stock).
+          nullable: true
+          $ref: '#/components/schemas/StoreType'
+        rotation_settings:
+          title: Rotation Settings
+          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
+          nullable: true
+          $ref: '#/components/schemas/RotationSettings'
+        limited_stock_settings:
+          title: Limited Stock Settings
+          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
+          nullable: true
+          $ref: '#/components/schemas/LimitedStockSettings'
+        settings:
+          title: Settings
+          nullable: true
+          $ref: '#/components/schemas/StoreSettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
+          nullable: true
+      type: object
+      title: StoreUpdate
+    StoreItemUpdate:
+      properties:
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          nullable: true
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          nullable: true
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: The user will receive a fixed quantity of the item.
+          nullable: true
+        position:
+          type: integer
+          title: Position
+          nullable: true
+        name:
+          type: string
+          title: Name
+          nullable: true
+        description:
+          type: string
+          title: Description
+          nullable: true
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+          nullable: true
+        max_purchases:
+          type: integer
+          title: Max Purchases
+          nullable: true
+        global_max_purchases:
+          type: integer
+          title: Global Max Purchases
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        requirements_mismatch_behavior:
+          nullable: true
+          $ref: '#/components/schemas/RequirementsMismatchBehavior'
+        custom_badge:
+          type: string
+          maxLength: 100
+          title: Custom Badge
+          description: The custom badge for the item
+          nullable: true
+        start_at:
+          type: integer
+          title: Start At
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          nullable: true
+        min_amount:
+          type: integer
+          title: Min Amount
+          nullable: true
+        reward_points_percent:
+          type: number
+          title: Reward Points Percent
+          nullable: true
+        reward_points_fixed:
+          type: integer
+          title: Reward Points Fixed
+          nullable: true
+        loyalty_points_percent:
+          type: integer
+          title: Loyalty Points Percent
+          nullable: true
+        loyalty_points_fixed:
+          type: integer
+          title: Loyalty Points Fixed
+          nullable: true
+        reward_settings:
+          title: Reward Settings
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        payment_bound:
+          title: Payment Bound
+          nullable: true
+          $ref: '#/components/schemas/StoreItemPaymentSettings'
+        is_free_item:
+          type: boolean
+          title: Is Free Item
+        rotation_weight:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Rotation Weight
+          nullable: true
+        max_reward_points_percent:
+          type: integer
+          title: Max Reward Points Percent
+          nullable: true
+        max_purchases_period_type:
+          nullable: true
+          $ref: '#/components/schemas/PeriodType'
+        max_purchases_period_value:
+          type: integer
+          minimum: 0.0
+          title: Max Purchases Period Value
+          nullable: true
+        max_purchases_limit_type:
+          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value.
+          nullable: true
+          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
+        show_disabled_by_max_purchases:
+          type: boolean
+          title: Show Disabled By Max Purchases
+          nullable: true
+        card_type:
+          nullable: true
+          $ref: '#/components/schemas/StoreCardType'
+        show_first_on_category_list:
+          type: boolean
+          title: Show First On Category List
+          nullable: true
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          deprecated: true
+          nullable: true
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+          deprecated: true
+          nullable: true
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+          deprecated: true
+          nullable: true
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: The bonus settings for the item, including bonus items and their quantities.
+          nullable: true
+          $ref: '#/components/schemas/ItemBonusSettings'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for bonus badge
+          nullable: true
+        subscription_settings:
+          title: Subscription Settings
+          description: The subscription settings for the item
+          nullable: true
+          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
+        price:
+          type: integer
+          title: Price
+          nullable: true
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          nullable: true
+        price_template_id:
+          type: string
+          title: Price Template Id
+          nullable: true
+        quantity:
+          type: integer
+          maximum: 1.0e+18
+          minimum: 1.0
+          title: Quantity
+          nullable: true
+      type: object
+      title: StoreItemUpdate
+    PriceViewMode:
+      type: string
+      enum:
+      - from_lowest_price
+      - specific_plan
+      title: PriceViewMode
+      description: An enumeration.
+    HTTPValidationError:
+      properties:
+        detail:
           items:
-            $ref: '#/components/schemas/HighlightItem'
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Items
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    StoreWebhookSettings:
+      properties:
+        webhook_id:
+          type: string
+          title: Webhook Id
+        cache_period_type:
+          $ref: '#/components/schemas/PeriodType'
+        cache_period_value:
+          type: integer
+          title: Cache Period Value
       type: object
       required:
-      - items
-      title: Highlights
+      - webhook_id
+      title: StoreWebhookSettings
     LimitedStockType:
       type: string
       enum:
@@ -2152,6 +3109,796 @@ components:
       - real_remainder
       title: LimitedStockType
       description: An enumeration.
+    ItemPropertyConfigNumber:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - number
+          title: Property Type
+          default: number
+      type: object
+      title: ItemPropertyConfigNumber
+    StoreReadStat:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the store, used for display purposes.
+          nullable: false
+        description:
+          type: string
+          title: Description
+          description: The description of the store, such as its purpose, features, or additional details.
+          nullable: false
+        key:
+          type: string
+          title: Key
+          description: The key of the store.
+          nullable: true
+        type:
+          description: The type of the store (e.g., special, rotating, limited stock).
+          nullable: false
+          $ref: '#/components/schemas/StoreType'
+        rotation_settings:
+          title: Rotation Settings
+          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
+          nullable: true
+          $ref: '#/components/schemas/RotationSettings'
+        limited_stock_settings:
+          title: Limited Stock Settings
+          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
+          nullable: true
+          $ref: '#/components/schemas/LimitedStockSettings'
+        start_at:
+          type: integer
+          title: Start At
+          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
+          nullable: true
+        settings:
+          title: Settings
+          nullable: true
+          $ref: '#/components/schemas/StoreSettings'
+        id:
+          type: string
+          title: Id
+        current_purchase_count:
+          type: integer
+          title: Current Purchase Count
+        item_count:
+          type: integer
+          title: Item Count
+      type: object
+      required:
+      - name
+      - description
+      - type
+      - id
+      - item_count
+      title: StoreReadStat
+    SubscriptionGraceMode:
+      type: string
+      enum:
+      - free_to_paid
+      - paid_to_paid
+      title: SubscriptionGraceMode
+      description: An enumeration.
+    VirtualCurrencySettings:
+      properties:
+        rate:
+          type: number
+          exclusiveMinimum: 0.0
+          title: Rate
+          default: 1.0
+        enabled_for_checkout:
+          type: boolean
+          title: Enabled For Checkout
+          default: false
+        reward_active:
+          type: boolean
+          title: Reward Active
+          default: false
+        reward_percentage:
+          type: number
+          minimum: 0.0
+          title: Reward Percentage
+          default: 0.0
+        excluded_sales_channels:
+          items:
+            $ref: '#/components/schemas/OrderSourceType'
+          type: array
+        price_source:
+          default: local_price
+          $ref: '#/components/schemas/VCPriceSource'
+        allow_non_secure_auth:
+          type: boolean
+          title: Allow Non Secure Auth
+          default: false
+      type: object
+      title: VirtualCurrencySettings
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    StoreItemCreate:
+      properties:
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          nullable: true
+        bonus_percent:
+          type: integer
+          title: Bonus Percent
+          nullable: true
+        bonus_fixed:
+          type: integer
+          title: Bonus Fixed
+          description: The user will receive a fixed quantity of the item.
+          nullable: true
+        position:
+          type: integer
+          title: Position
+        name:
+          type: string
+          title: Name
+          nullable: true
+        description:
+          type: string
+          title: Description
+          nullable: true
+        image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url
+          nullable: true
+        max_purchases:
+          type: integer
+          title: Max Purchases
+          description: The maximum number of purchases allowed for the item per user.
+          nullable: true
+        global_max_purchases:
+          type: integer
+          title: Global Max Purchases
+          description: The maximum number of purchases allowed for the item across all users.
+          nullable: true
+        requirements_expression:
+          title: Requirements Expression
+          description: Defines the rules by which an item is shown to the user
+          nullable: true
+          $ref: '#/components/schemas/Expression'
+        custom_badge:
+          type: string
+          maxLength: 100
+          title: Custom Badge
+          description: The custom badge of the item
+          nullable: true
+        campaign_id:
+          type: string
+          title: Campaign Id
+          nullable: true
+        user_campaign_id:
+          type: string
+          title: User Campaign Id
+          nullable: true
+        bond_user_id:
+          type: string
+          title: Bond User Id
+          nullable: true
+        start_at:
+          type: integer
+          title: Start At
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          nullable: true
+        min_amount:
+          type: integer
+          title: Min Amount
+          nullable: true
+        max_reward_points_percent:
+          type: integer
+          title: Max Reward Points Percent
+          nullable: true
+        reward_points_percent:
+          type: number
+          title: Reward Points Percent
+          description: Percentage of reward points for the item.
+          nullable: true
+        reward_points_fixed:
+          type: integer
+          title: Reward Points Fixed
+          description: Fixed reward points for the item.
+          nullable: true
+        loyalty_points_percent:
+          type: integer
+          title: Loyalty Points Percent
+          description: Percentage of loyalty points for the item.
+          nullable: true
+        loyalty_points_fixed:
+          type: integer
+          title: Loyalty Points Fixed
+          description: Fixed loyalty points for the item.
+          nullable: true
+        reward_settings:
+          title: Reward Settings
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        payment_bound:
+          title: Payment Bound
+          description: Payment settings for the item.
+          nullable: true
+          $ref: '#/components/schemas/StoreItemPaymentSettings'
+        is_free_item:
+          type: boolean
+          title: Is Free Item
+          default: false
+        rotation_weight:
+          type: integer
+          maximum: 1000.0
+          minimum: 0.0
+          title: Rotation Weight
+          nullable: true
+        max_purchases_period_type:
+          description: The period type for the max purchases limit. If not set, the limit is global and does not reset.
+          nullable: true
+          $ref: '#/components/schemas/PeriodType'
+        max_purchases_period_value:
+          type: integer
+          minimum: 0.0
+          title: Max Purchases Period Value
+          nullable: true
+        max_purchases_limit_type:
+          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value and last purchase date.
+          nullable: true
+          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
+        show_disabled_by_max_purchases:
+          type: boolean
+          title: Show Disabled By Max Purchases
+          description: Whether to show the item as disabled when max purchases limit is reached.
+          nullable: true
+        requirements_mismatch_behavior:
+          description: Define what happens when the requirements_expression return false for current user.
+          nullable: true
+          $ref: '#/components/schemas/RequirementsMismatchBehavior'
+        card_type:
+          description: The type of the card for the item, used for displaying in the store
+          nullable: true
+          $ref: '#/components/schemas/StoreCardType'
+        show_first_on_category_list:
+          type: boolean
+          title: Show First On Category List
+          description: Whether to show the item first on the category list
+          nullable: true
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          description: The ID of the bonus item that will be given to the user when they purchase this item.
+          deprecated: true
+          nullable: true
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+          deprecated: true
+          nullable: true
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+          deprecated: true
+          nullable: true
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: The bonus settings for the item, including bonus items and their quantities.
+          nullable: true
+          $ref: '#/components/schemas/ItemBonusSettings'
+        subscription_settings:
+          title: Subscription Settings
+          description: The subscription settings for the item
+          nullable: true
+          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for bonus badge
+          nullable: true
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+          nullable: true
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point
+          nullable: true
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+          nullable: true
+        quantity:
+          type: integer
+          maximum: 1.0e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          nullable: true
+        item_id:
+          type: string
+          title: Item Id
+      type: object
+      required:
+      - position
+      - item_id
+      title: StoreItemCreate
+    LootboxNestedItemRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the item
+        description:
+          type: string
+          title: Description
+          description: The description of the item
+        highlights:
+          title: Highlights
+          description: Localized benefit descriptions shown for the item
+          nullable: true
+          $ref: '#/components/schemas/Highlights'
+        price:
+          type: integer
+          title: Price
+          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
+        price_point:
+          type: integer
+          maximum: 5000000.0
+          exclusiveMinimum: 0.0
+          title: Price Point
+          description: The price point for local prices `DEPRECATED`
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        reward_points_price:
+          type: integer
+          title: Reward Points Price
+          description: The reward points price for local prices
+        currency:
+          description: The currency of the item
+          $ref: '#/components/schemas/Currency'
+        sku:
+          type: string
+          maxLength: 255
+          title: SKU
+          description: The SKU of the item
+          unique: true
+        image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url
+          description: The URL of the image for the item
+        image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Apple
+          description: The Apple-specific URL of the image for the item
+          deprecated: true
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the item
+        icon_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Icon Url Apple
+          description: The Apple-specific URL of the icon for the item
+          deprecated: true
+        image_url_featured:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Image Url Featured
+          description: The URL of the image for the item in the featured card
+        image_url_featured_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Image Url Featured Apple
+          description: The Apple-specific URL of the image for the item in the featured card
+          deprecated: true
+        background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Background Image Url
+          description: The URL of the background image for the item
+        background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Background Image Url Apple
+          description: The Apple-specific URL of the background image for the item
+          deprecated: true
+        background_image_color:
+          type: string
+          title: Background Image Color
+          description: The color of the background image for the item
+        featured_card_background_image_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Featured Card Background Image Url
+          description: The URL of the featured card background image for the item
+        featured_card_background_image_url_apple:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Featured Card Background Image Url Apple
+          description: The Apple-specific URL of the featured card background image for the item
+          deprecated: true
+        type:
+          description: The type of the item
+          $ref: '#/components/schemas/ItemType'
+        view_option:
+          description: Controls the store appearance of the item
+          default: default
+          $ref: '#/components/schemas/ItemViewOption'
+        quantity:
+          type: integer
+          maximum: 1.0e+18
+          minimum: 1.0
+          title: Quantity
+          description: The quantity of the item
+          default: 1
+        is_stackable:
+          type: boolean
+          title: Is Stackable
+          description: Whether the item is stackable
+        is_currency:
+          type: boolean
+          title: Is Currency
+          description: Whether the item is a currency.
+        position:
+          type: integer
+          title: Position
+          description: Position of the item in list
+        categories:
+          items:
+            type: string
+          type: array
+          title: Categories
+          description: The list of category IDs
+        duration:
+          type: integer
+          title: Duration
+          description: Item's in-game action in seconds
+        enable_reward_points_redemption:
+          type: boolean
+          title: Enable Reward Points Redemption
+          description: Allows using Reward Points on purchase
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: The child items of the bundle
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the item
+        properties:
+          items:
+            $ref: '#/components/schemas/ItemPropertyRelationRead'
+          type: array
+          title: Properties
+          description: The item properties
+        source:
+          default: order
+          $ref: '#/components/schemas/ItemSource'
+        rarity_id:
+          type: string
+          title: Rarity Id
+          description: The rarity id of the item
+        item_rarity:
+          $ref: '#/components/schemas/ItemRarityRead'
+        discount_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent for the item
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent for the item
+        is_custom:
+          type: boolean
+          title: Is Custom
+          default: false
+        created_at:
+          type: number
+          title: Created At
+          description: The timestamp of when the item was created
+        modified_at:
+          type: number
+          title: Modified At
+          description: The timestamp of when the item was modified
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp of when the item was archived
+        price_minor_unit:
+          type: integer
+          title: Price Minor Unit
+        price_decimal:
+          type: number
+          title: Price Decimal
+        fallback_item_id:
+          type: string
+          title: Fallback Item Id
+          description: The item that will be given as fallback if the main item can't be given to the player
+        fallback_item_quantity:
+          type: integer
+          title: Fallback Item Quantity
+          description: The quantity of the fallback item
+        meta:
+          type: object
+          title: Meta
+        model_type:
+          type: string
+          enum:
+          - PublicItemRead
+          title: Model Type
+          default: PublicItemRead
+        nested_items_read:
+          items:
+            $ref: '#/components/schemas/PublicItemRead'
+          type: array
+          title: Nested Items Read
+        fallback_item:
+          $ref: '#/components/schemas/PublicItemRead'
+        quantity_after_bonus:
+          type: integer
+          title: Quantity After Bonus
+        quantity_bonus_value:
+          type: integer
+          title: Quantity Bonus Value
+        is_system:
+          type: boolean
+          title: Is System
+          description: If true, this item will be skipped when sending webhooks
+          nullable: true
+        probability:
+          type: number
+          title: Probability
+          description: The probability of the item appearing
+        weight:
+          type: integer
+          title: Weight
+      type: object
+      required:
+      - name
+      - currency
+      - sku
+      - type
+      - is_stackable
+      - is_currency
+      - id
+      - created_at
+      - probability
+      - weight
+      title: LootboxNestedItemRead
+    StoreItemPaymentSettings:
+      properties:
+        payment_method_ids:
+          items:
+            type: string
+          type: array
+          title: Payment Method Ids
+      type: object
+      title: StoreItemPaymentSettings
+    LootboxGroupRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        weight:
+          type: integer
+          title: Weight
+        nested_items:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/LootboxGroupRead'
+            type: array
+          - items:
+              $ref: '#/components/schemas/LootboxNestedItemRead'
+            type: array
+          title: Nested Items
+      type: object
+      required:
+      - id
+      - name
+      - weight
+      - nested_items
+      title: LootboxGroupRead
+    ItemPropertyRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+          description: The name of the property
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the property
+        icon_url:
+          anyOf:
+          - type: string
+            maxLength: 65536
+            minLength: 1
+            format: uri
+          - type: string
+            enum:
+            - ''
+          title: Icon Url
+          description: The URL of the icon for the property
+        config:
+          oneOf:
+          - $ref: '#/components/schemas/ItemPropertyConfigRange'
+          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
+          - $ref: '#/components/schemas/ItemPropertyConfigString'
+          title: Config
+          description: The config of the property
+          discriminator:
+            propertyName: property_type
+            mapping:
+              range: '#/components/schemas/ItemPropertyConfigRange'
+              number: '#/components/schemas/ItemPropertyConfigNumber'
+              string: '#/components/schemas/ItemPropertyConfigString'
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the property
+      type: object
+      required:
+      - name
+      - config
+      - id
+      title: ItemPropertyRead
+    ItemPropertyConfigRange:
+      properties:
+        property_type:
+          type: string
+          enum:
+          - range
+          title: Property Type
+          default: range
+        max:
+          type: integer
+          title: Max
+        min:
+          type: integer
+          title: Min
+          default: 0
+      type: object
+      required:
+      - max
+      title: ItemPropertyConfigRange
+    SubscriptionPlanType:
+      type: string
+      enum:
+      - default
+      - special
+      title: SubscriptionPlanType
+      description: An enumeration.
+    RotationSettings:
+      properties:
+        count:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Count
+          description: Number of items to take for each rotation
+        period_value:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Period Value
+        period_type:
+          $ref: '#/components/schemas/PeriodType'
+        type:
+          $ref: '#/components/schemas/RotationType'
+        show_timer:
+          type: boolean
+          title: Show Timer
+          description: Determines whether to show the timer until the next rotation
+          nullable: true
+        global_rotation:
+          type: boolean
+          title: Global Rotation
+          description: Whether the rotation is global or per user.
+          nullable: true
+        last_global_rotated_at:
+          type: integer
+          title: Last Global Rotated At
+          description: Last global rotation timestamp
+          nullable: true
+        current_rotated_store_item_ids:
+          items:
+            type: string
+          type: array
+          title: Current Rotated Store Item Ids
+          description: Current visible store item ids
+          nullable: true
+      type: object
+      required:
+      - count
+      - period_value
+      - period_type
+      - type
+      title: RotationSettings
     UserStoreItem:
       properties:
         discount_percent:
@@ -2448,23 +4195,155 @@ components:
       - store_id
       - payment_numbers
       title: UserStoreItem
-    LootboxViewType:
-      type: string
-      enum:
-      - default
-      - roulette
-      title: LootboxViewType
-      description: An enumeration.
-    StoreType:
-      type: string
-      enum:
-      - default
-      - special
-      - rotation
-      - limited_stock
-      - webhook
-      title: StoreType
-      description: An enumeration.
+    SubscriptionPlan:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: The unique key of the plan
+        name:
+          type: string
+          title: Name
+          description: The display name of the plan
+        billing_cycle:
+          title: Billing Cycle
+          description: The billing cycle configuration
+          $ref: '#/components/schemas/SubscriptionBillingCycle'
+        renewal_type:
+          description: The renewal type of the plan
+          $ref: '#/components/schemas/SubscriptionRenewalType'
+        price:
+          type: integer
+          title: Price
+          description: The price in minor currency units
+        price_point:
+          type: integer
+          title: Price Point
+          description: The price point for local prices
+        price_template_id:
+          type: string
+          title: Price Template Id
+          description: The ID of the price template
+        currency:
+          description: The currency of the plan
+          default: USD
+          $ref: '#/components/schemas/Currency'
+        grace_period:
+          type: integer
+          title: Grace Period
+          description: The grace period in days before subscription is canceled
+        grace_mode:
+          description: The grace mode for payment transitions
+          $ref: '#/components/schemas/SubscriptionGraceMode'
+        trial_period:
+          type: integer
+          title: Trial Period
+          description: The trial period in days
+        account_lock_duration:
+          type: integer
+          title: Account Lock Duration
+          description: The duration in days to lock account after cancellation
+        change_payment_mode:
+          type: boolean
+          title: Change Payment Mode
+          description: Whether changing payment method is allowed
+        is_downgrade_supported:
+          type: boolean
+          title: Is Downgrade Supported
+          description: Whether downgrading to this plan is supported
+          default: false
+        is_pause_allowed:
+          type: boolean
+          title: Is Pause Allowed
+          description: Whether pausing the subscription is allowed
+          default: false
+        is_reactivation_allowed:
+          type: boolean
+          title: Is Reactivation Allowed
+          description: Whether reactivating the subscription is allowed
+          default: false
+        offers:
+          items:
+            $ref: '#/components/schemas/SubscriptionOffer'
+          type: array
+          title: Offers
+          description: The list of special offers for this plan
+        benefits:
+          items:
+            type: string
+          type: array
+          title: Benefits
+          description: The list of benefit descriptions for this plan
+        nested_items:
+          items:
+            $ref: '#/components/schemas/NestedItem'
+          type: array
+          title: Nested Items
+          description: Nested items references for this subscription plan
+        archived_at:
+          type: number
+          title: Archived At
+          description: The timestamp when the plan was archived
+        type:
+          description: The type of the plan
+          default: default
+          $ref: '#/components/schemas/SubscriptionPlanType'
+      type: object
+      required:
+      - key
+      - name
+      - billing_cycle
+      - renewal_type
+      title: SubscriptionPlan
+    SubscriptionSettings:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/SubscriptionPlan'
+          type: array
+          title: Plans
+          description: The subscription plans
+      type: object
+      title: SubscriptionSettings
+    SubscriptionOffer:
+      properties:
+        key:
+          type: string
+          title: Key
+          description: The unique key of the offer
+        name:
+          type: string
+          title: Name
+          description: The display name of the offer
+        description:
+          type: string
+          title: Description
+          description: The description of the offer
+        discount_percent:
+          type: integer
+          title: Discount Percent
+          description: The discount percentage for the offer
+        eligibility_rules:
+          items:
+            $ref: '#/components/schemas/SubscriptionOfferEligibility'
+          type: array
+          description: The list of eligibility rules for the offer
+        grace_extension:
+          type: integer
+          title: Grace Extension
+          description: The grace period extension in days
+        trial_extension:
+          type: integer
+          title: Trial Extension
+          description: The trial period extension in days
+        activation_limits:
+          type: integer
+          title: Activation Limits
+          description: The maximum number of times this offer can be activated
+      type: object
+      required:
+      - key
+      title: SubscriptionOffer
     PriceViewSettings:
       properties:
         model_type:
@@ -2485,1065 +4364,6 @@ components:
       required:
       - show_period
       title: PriceViewSettings
-    MathExpression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: MathExpression
-    ItemPropertyRead:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: The name of the property
-        description:
-          type: string
-          maxLength: 512
-          title: Description
-          description: The description of the property
-        icon_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Icon Url
-          description: The URL of the icon for the property
-        config:
-          oneOf:
-          - $ref: '#/components/schemas/ItemPropertyConfigRange'
-          - $ref: '#/components/schemas/ItemPropertyConfigNumber'
-          - $ref: '#/components/schemas/ItemPropertyConfigString'
-          title: Config
-          description: The config of the property
-          discriminator:
-            propertyName: property_type
-            mapping:
-              range: '#/components/schemas/ItemPropertyConfigRange'
-              number: '#/components/schemas/ItemPropertyConfigNumber'
-              string: '#/components/schemas/ItemPropertyConfigString'
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the property
-      type: object
-      required:
-      - name
-      - config
-      - id
-      title: ItemPropertyRead
-    VCPriceSource:
-      type: string
-      enum:
-      - local_price
-      - base_price
-      title: VCPriceSource
-      description: An enumeration.
-    StoreItemBulkDelete:
-      properties:
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - id
-      title: StoreItemBulkDelete
-    PublicItemRead:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the item
-        description:
-          type: string
-          title: Description
-          description: The description of the item
-        highlights:
-          title: Highlights
-          description: Localized benefit descriptions shown for the item
-          nullable: true
-          $ref: '#/components/schemas/Highlights'
-        price:
-          type: integer
-          title: Price
-          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
-        price_point:
-          type: integer
-          maximum: 5000000.0
-          exclusiveMinimum: 0.0
-          title: Price Point
-          description: The price point for local prices `DEPRECATED`
-        price_template_id:
-          type: string
-          title: Price Template Id
-          description: The ID of the price template
-        reward_points_price:
-          type: integer
-          title: Reward Points Price
-          description: The reward points price for local prices
-        currency:
-          description: The currency of the item
-          $ref: '#/components/schemas/Currency'
-        sku:
-          type: string
-          maxLength: 255
-          title: SKU
-          description: The SKU of the item
-          unique: true
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-          description: The URL of the image for the item
-        image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url Apple
-          description: The Apple-specific URL of the image for the item
-          deprecated: true
-        icon_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Icon Url
-          description: The URL of the icon for the item
-        icon_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Icon Url Apple
-          description: The Apple-specific URL of the icon for the item
-          deprecated: true
-        image_url_featured:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url Featured
-          description: The URL of the image for the item in the featured card
-        image_url_featured_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url Featured Apple
-          description: The Apple-specific URL of the image for the item in the featured card
-          deprecated: true
-        background_image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Background Image Url
-          description: The URL of the background image for the item
-        background_image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Background Image Url Apple
-          description: The Apple-specific URL of the background image for the item
-          deprecated: true
-        background_image_color:
-          type: string
-          title: Background Image Color
-          description: The color of the background image for the item
-        featured_card_background_image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Featured Card Background Image Url
-          description: The URL of the featured card background image for the item
-        featured_card_background_image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Featured Card Background Image Url Apple
-          description: The Apple-specific URL of the featured card background image for the item
-          deprecated: true
-        type:
-          description: The type of the item
-          $ref: '#/components/schemas/ItemType'
-        view_option:
-          description: Controls the store appearance of the item
-          default: default
-          $ref: '#/components/schemas/ItemViewOption'
-        quantity:
-          type: integer
-          maximum: 1.0e+18
-          minimum: 1.0
-          title: Quantity
-          description: The quantity of the item
-          default: 1
-        is_stackable:
-          type: boolean
-          title: Is Stackable
-          description: Whether the item is stackable
-        is_currency:
-          type: boolean
-          title: Is Currency
-          description: Whether the item is a currency.
-        position:
-          type: integer
-          title: Position
-          description: Position of the item in list
-        categories:
-          items:
-            type: string
-          type: array
-          title: Categories
-          description: The list of category IDs
-        duration:
-          type: integer
-          title: Duration
-          description: Item's in-game action in seconds
-        enable_reward_points_redemption:
-          type: boolean
-          title: Enable Reward Points Redemption
-          description: Allows using Reward Points on purchase
-        nested_items:
-          items:
-            $ref: '#/components/schemas/NestedItem'
-          type: array
-          title: Nested Items
-          description: The child items of the bundle
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the item
-        properties:
-          items:
-            $ref: '#/components/schemas/ItemPropertyRelationRead'
-          type: array
-          title: Properties
-          description: The item properties
-        source:
-          default: order
-          $ref: '#/components/schemas/ItemSource'
-        rarity_id:
-          type: string
-          title: Rarity Id
-          description: The rarity id of the item
-        item_rarity:
-          $ref: '#/components/schemas/ItemRarityRead'
-        discount_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent for the item
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent for the item
-        is_custom:
-          type: boolean
-          title: Is Custom
-          default: false
-        created_at:
-          type: number
-          title: Created At
-          description: The timestamp of when the item was created
-        modified_at:
-          type: number
-          title: Modified At
-          description: The timestamp of when the item was modified
-        archived_at:
-          type: number
-          title: Archived At
-          description: The timestamp of when the item was archived
-        price_minor_unit:
-          type: integer
-          title: Price Minor Unit
-        price_decimal:
-          type: number
-          title: Price Decimal
-        fallback_item_id:
-          type: string
-          title: Fallback Item Id
-          description: The item that will be given as fallback if the main item can't be given to the player
-        fallback_item_quantity:
-          type: integer
-          title: Fallback Item Quantity
-          description: The quantity of the fallback item
-        meta:
-          type: object
-          title: Meta
-        model_type:
-          type: string
-          enum:
-          - PublicItemRead
-          title: Model Type
-          default: PublicItemRead
-        nested_items_read:
-          items:
-            $ref: '#/components/schemas/PublicItemRead'
-          type: array
-          title: Nested Items Read
-        fallback_item:
-          $ref: '#/components/schemas/PublicItemRead'
-        quantity_after_bonus:
-          type: integer
-          title: Quantity After Bonus
-        quantity_bonus_value:
-          type: integer
-          title: Quantity Bonus Value
-        is_system:
-          type: boolean
-          title: Is System
-          description: If true, this item will be skipped when sending webhooks
-          nullable: true
-      type: object
-      required:
-      - name
-      - currency
-      - sku
-      - type
-      - is_stackable
-      - is_currency
-      - id
-      - created_at
-      title: PublicItemRead
-    RotationType:
-      type: string
-      enum:
-      - random
-      - random_by_weight
-      - round_robin
-      title: RotationType
-      description: An enumeration.
-    RequirementsMismatchBehavior:
-      type: string
-      enum:
-      - hide_from_store
-      - disable
-      - disable_and_show_description
-      title: RequirementsMismatchBehavior
-      description: An enumeration.
-    Token:
-      properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    StoreUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the store, used for display purposes.
-          nullable: true
-        description:
-          type: string
-          title: Description
-          description: The description of the store, such as its purpose, features, or additional details.
-          nullable: true
-        key:
-          type: string
-          title: Key
-          description: The key of the store.
-          nullable: true
-        type:
-          description: The type of the store (e.g., special, rotating, limited stock).
-          nullable: true
-          $ref: '#/components/schemas/StoreType'
-        rotation_settings:
-          title: Rotation Settings
-          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
-          nullable: true
-          $ref: '#/components/schemas/RotationSettings'
-        limited_stock_settings:
-          title: Limited Stock Settings
-          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
-          nullable: true
-          $ref: '#/components/schemas/LimitedStockSettings'
-        settings:
-          title: Settings
-          nullable: true
-          $ref: '#/components/schemas/StoreSettings'
-        start_at:
-          type: integer
-          title: Start At
-          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
-          nullable: true
-      type: object
-      title: StoreUpdate
-    LootboxGroup:
-      properties:
-        id:
-          type: string
-          title: Id
-        weight:
-          type: integer
-          maximum: 1000000.0
-          minimum: 0.0
-          title: Weight
-        name:
-          type: string
-          title: Name
-        nested_items:
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/LootboxGroup'
-            - $ref: '#/components/schemas/LootboxNestedItem'
-          type: array
-          title: Nested Items
-        model_type:
-          type: string
-          enum:
-          - LootboxGroup
-          title: Model Type
-          default: LootboxGroup
-      type: object
-      required:
-      - id
-      - weight
-      - name
-      - nested_items
-      title: LootboxGroup
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TrialSettings:
-      properties:
-        model_type:
-          type: string
-          enum:
-          - TrialSettings
-          title: Model Type
-          default: TrialSettings
-        trial_text_mode:
-          $ref: '#/components/schemas/TrialTextMode'
-      type: object
-      title: TrialSettings
-    TokenType:
-      type: string
-      enum:
-      - attribute
-      - custom_attribute
-      - event_attribute
-      - custom_event_attribute
-      - operator
-      - number
-      - date
-      - string
-      - boolean
-      - list
-      - variable
-      - virtual_currency
-      title: TokenType
-    StoreCardType:
-      type: string
-      enum:
-      - default
-      - featured
-      title: StoreCardType
-      description: An enumeration.
-    StoreItemSubscriptionSettings:
-      properties:
-        cta_button_type:
-          $ref: '#/components/schemas/CTAButtonType'
-        cta_button_settings:
-          oneOf:
-          - $ref: '#/components/schemas/TrialSettings'
-          - $ref: '#/components/schemas/PriceViewSettings'
-          - $ref: '#/components/schemas/CTAButtonTextSettings'
-          title: Cta Button Settings
-          discriminator:
-            propertyName: model_type
-            mapping:
-              TrialSettings: '#/components/schemas/TrialSettings'
-              PriceViewSettings: '#/components/schemas/PriceViewSettings'
-              CTAButtonTextSettings: '#/components/schemas/CTAButtonTextSettings'
-        override_trial_days:
-          type: integer
-          minimum: 1.0
-          title: Override Trial Days
-          nullable: true
-        card_view_type:
-          description: How to display subscription plans in the store
-          default: one_card
-          $ref: '#/components/schemas/SubscriptionCardViewType'
-        supported_text:
-          description: Text under the CTA button
-          $ref: '#/components/schemas/CTASupportedText'
-        is_change_plan_allowed:
-          type: boolean
-          title: Is Change Plan Allowed
-          description: Whether changing the subscription plan is allowed
-          default: true
-      type: object
-      required:
-      - cta_button_type
-      - cta_button_settings
-      title: StoreItemSubscriptionSettings
-    SubscriptionRenewalType:
-      type: string
-      enum:
-      - auto
-      - no_renew
-      title: SubscriptionRenewalType
-      description: An enumeration.
-    StoreReadStat:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the store, used for display purposes.
-          nullable: false
-        description:
-          type: string
-          title: Description
-          description: The description of the store, such as its purpose, features, or additional details.
-          nullable: false
-        key:
-          type: string
-          title: Key
-          description: The key of the store.
-          nullable: true
-        type:
-          description: The type of the store (e.g., special, rotating, limited stock).
-          nullable: false
-          $ref: '#/components/schemas/StoreType'
-        rotation_settings:
-          title: Rotation Settings
-          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
-          nullable: true
-          $ref: '#/components/schemas/RotationSettings'
-        limited_stock_settings:
-          title: Limited Stock Settings
-          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
-          nullable: true
-          $ref: '#/components/schemas/LimitedStockSettings'
-        start_at:
-          type: integer
-          title: Start At
-          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
-          nullable: true
-        settings:
-          title: Settings
-          nullable: true
-          $ref: '#/components/schemas/StoreSettings'
-        id:
-          type: string
-          title: Id
-        current_purchase_count:
-          type: integer
-          title: Current Purchase Count
-        item_count:
-          type: integer
-          title: Item Count
-      type: object
-      required:
-      - name
-      - description
-      - type
-      - id
-      - item_count
-      title: StoreReadStat
-    StoreCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the store, used for display purposes.
-          nullable: false
-        description:
-          type: string
-          title: Description
-          description: The description of the store, such as its purpose, features, or additional details.
-          nullable: false
-        key:
-          type: string
-          title: Key
-          description: The key of the store.
-          nullable: true
-        type:
-          description: The type of the store (e.g., special, rotating, limited stock).
-          nullable: false
-          $ref: '#/components/schemas/StoreType'
-        rotation_settings:
-          title: Rotation Settings
-          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
-          nullable: true
-          $ref: '#/components/schemas/RotationSettings'
-        limited_stock_settings:
-          title: Limited Stock Settings
-          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
-          nullable: true
-          $ref: '#/components/schemas/LimitedStockSettings'
-        start_at:
-          type: integer
-          title: Start At
-          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
-          nullable: true
-        settings:
-          title: Settings
-          nullable: true
-          $ref: '#/components/schemas/StoreSettings'
-      type: object
-      required:
-      - name
-      - description
-      - type
-      title: StoreCreate
-    CTASupportedText:
-      type: string
-      enum:
-      - default
-      - price_and_trial
-      - promotion
-      title: CTASupportedText
-      description: An enumeration.
-    VirtualSKUStat:
-      properties:
-        all_count:
-          type: integer
-          title: All Count
-        purchase_count:
-          type: integer
-          title: Purchase Count
-      type: object
-      required:
-      - all_count
-      - purchase_count
-      title: VirtualSKUStat
-    LootboxSettings:
-      properties:
-        groups:
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/LootboxGroup'
-            - $ref: '#/components/schemas/LootboxNestedItem'
-            discriminator:
-              propertyName: model_type
-              mapping:
-                LootboxGroup: '#/components/schemas/LootboxGroup'
-                LootboxNestedItem: '#/components/schemas/LootboxNestedItem'
-          type: array
-          title: Groups
-        claim_video_url:
-          type: string
-          title: Claim Video Url
-        claimed_video_url:
-          type: string
-          title: Claimed Video Url
-        claim_video_url_mov:
-          type: string
-          title: Claim Video Url Mov
-        claimed_video_url_mov:
-          type: string
-          title: Claimed Video Url Mov
-        view_type:
-          default: default
-          $ref: '#/components/schemas/LootboxViewType'
-        pity:
-          $ref: '#/components/schemas/PitySettings'
-      type: object
-      required:
-      - groups
-      title: LootboxSettings
-    SubscriptionBillingCycle:
-      properties:
-        period_type:
-          description: The type of billing period (year, month, week, day)
-          $ref: '#/components/schemas/PeriodType'
-        period_value:
-          type: integer
-          title: Period Value
-          description: The number of periods in a billing cycle
-      type: object
-      required:
-      - period_type
-      - period_value
-      title: SubscriptionBillingCycle
-    LootboxRead:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-          description: The name of the item
-        description:
-          type: string
-          maxLength: 512
-          title: Description
-          description: The description of the item
-          nullable: true
-        highlights:
-          title: Highlights
-          description: Localized benefit descriptions shown for the item
-          nullable: true
-          $ref: '#/components/schemas/Highlights'
-        price:
-          type: integer
-          title: Price
-          description: The price of the item in minor [currency units](https://docs.aghanim.com/currencies/). The system will automatically adjust this to the closest available price point. If you want to set a specific price point, use `price_template_id` instead.
-        price_point:
-          type: integer
-          maximum: 5000000.0
-          exclusiveMinimum: 0.0
-          title: Price Point
-          description: The price point for local prices `DEPRECATED`
-        price_template_id:
-          type: string
-          title: Price Template Id
-          description: The ID of the price template
-        reward_points_price:
-          type: integer
-          title: Reward Points Price
-          description: The reward points price for local prices
-        currency:
-          description: The currency of the item
-          $ref: '#/components/schemas/Currency'
-        sku:
-          type: string
-          maxLength: 255
-          title: SKU
-          description: The SKU of the item
-          unique: true
-        image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url
-          description: The URL of the image for the item
-        image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url Apple
-          description: The Apple-specific URL of the image for the item
-          deprecated: true
-        icon_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Icon Url
-          description: The URL of the icon for the item
-        icon_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Icon Url Apple
-          description: The Apple-specific URL of the icon for the item
-          deprecated: true
-        image_url_featured:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Image Url Featured
-          description: The URL of the image for the item in the featured card
-        image_url_featured_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url Featured Apple
-          description: The Apple-specific URL of the image for the item in the featured card
-          deprecated: true
-        background_image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Background Image Url
-          description: The URL of the background image for the item
-        background_image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Background Image Url Apple
-          description: The Apple-specific URL of the background image for the item
-          deprecated: true
-        background_image_color:
-          type: string
-          title: Background Image Color
-          description: The color of the background image for the item
-        featured_card_background_image_url:
-          anyOf:
-          - type: string
-            maxLength: 65536
-            minLength: 1
-            format: uri
-          - type: string
-            enum:
-            - ''
-          title: Featured Card Background Image Url
-          description: The URL of the featured card background image for the item
-        featured_card_background_image_url_apple:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Featured Card Background Image Url Apple
-          description: The Apple-specific URL of the featured card background image for the item
-          deprecated: true
-        type:
-          description: The type of the item
-          $ref: '#/components/schemas/ItemType'
-        view_option:
-          description: Controls the store appearance of the item
-          default: default
-          $ref: '#/components/schemas/ItemViewOption'
-        quantity:
-          type: integer
-          maximum: 1.0e+18
-          minimum: 1.0
-          title: Quantity
-          description: The quantity of the item
-          default: 1
-        is_stackable:
-          type: boolean
-          title: Is Stackable
-          description: Whether the item is stackable
-        is_currency:
-          type: boolean
-          title: Is Currency
-          description: Whether the item is a currency.
-        position:
-          type: integer
-          title: Position
-          description: Position of the item in list
-        categories:
-          items:
-            type: string
-          type: array
-          title: Categories
-          description: The list of category IDs
-        duration:
-          type: integer
-          title: Duration
-          description: Item's in-game action in seconds
-        enable_reward_points_redemption:
-          type: boolean
-          title: Enable Reward Points Redemption
-          description: Allows using Reward Points on purchase
-        lootbox_settings:
-          title: Lootbox Settings
-          description: The settings of the lootbox
-          $ref: '#/components/schemas/LootboxSettings'
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the lootbox
-        model_type:
-          type: string
-          enum:
-          - LootboxRead
-          title: Model Type
-          default: LootboxRead
-        groups:
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/LootboxGroupRead'
-            - $ref: '#/components/schemas/LootboxNestedItemRead'
-          type: array
-          title: Groups
-          description: Groups with nested elements that can be dropped
-        archived_at:
-          type: number
-          title: Archived At
-          description: The timestamp of when the lootbox was archived
-        comment:
-          type: string
-          title: Comment
-          description: Internal comment for this item
-      type: object
-      required:
-      - name
-      - currency
-      - sku
-      - type
-      - is_stackable
-      - is_currency
-      - lootbox_settings
-      - id
-      title: LootboxRead
-    ItemRewardSettings:
-      properties:
-        available:
-          items:
-            $ref: '#/components/schemas/VCRewardConfig'
-          type: array
-          title: Available
-      type: object
-      required:
-      - available
-      title: ItemRewardSettings
-    CTAButtonTextType:
-      type: string
-      enum:
-      - activate
-      - subscribe
-      - start_now
-      - select_plan
-      title: CTAButtonTextType
-      description: An enumeration.
-    ItemBonusSettings:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/ItemBonus'
-          type: array
-          title: Items
-        start_at:
-          type: integer
-          title: Start At
-        end_at:
-          type: integer
-          title: End At
-      type: object
-      required:
-      - items
-      title: ItemBonusSettings
-    StoreRead:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the store, used for display purposes.
-          nullable: false
-        description:
-          type: string
-          title: Description
-          description: The description of the store, such as its purpose, features, or additional details.
-          nullable: false
-        key:
-          type: string
-          title: Key
-          description: The key of the store.
-          nullable: true
-        type:
-          description: The type of the store (e.g., special, rotating, limited stock).
-          nullable: false
-          $ref: '#/components/schemas/StoreType'
-        rotation_settings:
-          title: Rotation Settings
-          description: The configuration options for the rotating store type, such as how often the assortment is refreshed.
-          nullable: true
-          $ref: '#/components/schemas/RotationSettings'
-        limited_stock_settings:
-          title: Limited Stock Settings
-          description: The configuration options for the limited stock store type, including purchase limits or stock availability rules.
-          nullable: true
-          $ref: '#/components/schemas/LimitedStockSettings'
-        start_at:
-          type: integer
-          title: Start At
-          description: The start time of the store in Unix timestamp (seconds) when it becomes available to users.
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end time of the store in Unix timestamp (seconds) when it closes and is no longer accessible.
-          nullable: true
-        settings:
-          title: Settings
-          nullable: true
-          $ref: '#/components/schemas/StoreSettings'
-        id:
-          type: string
-          title: Id
-        current_purchase_count:
-          type: integer
-          title: Current Purchase Count
-      type: object
-      required:
-      - name
-      - description
-      - type
-      - id
-      title: StoreRead
     CTAButtonTextSettings:
       properties:
         model_type:
@@ -3558,43 +4378,242 @@ components:
       required:
       - text
       title: CTAButtonTextSettings
-    ItemPropertyConfigString:
+    Expression:
       properties:
-        property_type:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    LootboxViewType:
+      type: string
+      enum:
+      - default
+      - roulette
+      title: LootboxViewType
+      description: An enumeration.
+    VCRewardConfig:
+      properties:
+        type:
           type: string
           enum:
-          - string
-          title: Property Type
-          default: string
-      type: object
-      title: ItemPropertyConfigString
-    LootboxGroupRead:
-      properties:
-        id:
-          type: string
-          title: Id
+          - virtual_currency
+          title: Type
+          default: virtual_currency
         name:
           type: string
           title: Name
-        weight:
+        virtual_currency_id:
+          type: string
+          title: Virtual Currency Id
+        virtual_currency_sku:
+          type: string
+          title: Virtual Currency SKU
+        reward_percent:
+          type: number
+          title: Reward Percent
+        reward_fixed:
           type: integer
-          title: Weight
-        nested_items:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/LootboxGroupRead'
-            type: array
-          - items:
-              $ref: '#/components/schemas/LootboxNestedItemRead'
-            type: array
-          title: Nested Items
+          title: Reward Fixed
       type: object
       required:
-      - id
-      - name
-      - weight
-      - nested_items
-      title: LootboxGroupRead
+      - virtual_currency_id
+      title: VCRewardConfig
+    Currency:
+      type: string
+      enum:
+      - USD
+      - EUR
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - UYU
+      - UZS
+      - VED
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZWG
+      - ZWL
+      - RP
+      - VC
+      title: Currency
+    MaxPurchaseLimitPeriodType:
+      type: string
+      enum:
+      - global
+      - personal
+      title: MaxPurchaseLimitPeriodType
+      description: An enumeration.
+    Highlights:
+      properties:
+        title:
+          type: string
+          title: Title
+        description:
+          type: string
+          title: Description
+        items:
+          items:
+            $ref: '#/components/schemas/HighlightItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Highlights
     VirtualStoreItemUser:
       properties:
         discount_percent:
@@ -3892,347 +4911,129 @@ components:
       - store_id
       - player_id
       title: VirtualStoreItemUser
-    Expression:
+    SubscriptionBillingCycle:
       properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
-      type: object
-      title: Expression
-    LimitedStockSettings:
-      properties:
-        total_quantity:
+        period_type:
+          description: The type of billing period (year, month, week, day)
+          $ref: '#/components/schemas/PeriodType'
+        period_value:
           type: integer
-          exclusiveMinimum: 0.0
-          title: Total Quantity
-        type:
-          $ref: '#/components/schemas/LimitedStockType'
-        start_calculation_at:
-          type: integer
-          title: Start Calculation At
-          nullable: true
+          title: Period Value
+          description: The number of periods in a billing cycle
       type: object
       required:
-      - total_quantity
-      - type
-      title: LimitedStockSettings
-    ItemPropertyConfigRange:
+      - period_type
+      - period_value
+      title: SubscriptionBillingCycle
+    SubscriptionCardViewType:
+      type: string
+      enum:
+      - one_card
+      - separate_cards
+      title: SubscriptionCardViewType
+      description: An enumeration.
+    CTAButtonTextType:
+      type: string
+      enum:
+      - activate
+      - subscribe
+      - start_now
+      - select_plan
+      title: CTAButtonTextType
+      description: An enumeration.
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
+    PitySettings:
       properties:
-        property_type:
-          type: string
-          enum:
-          - range
-          title: Property Type
-          default: range
-        max:
-          type: integer
-          title: Max
-        min:
-          type: integer
-          title: Min
-          default: 0
+        steps:
+          items:
+            $ref: '#/components/schemas/PityStep'
+          type: array
+          minItems: 1
+          title: Steps
+        repeat_last:
+          type: boolean
+          title: Repeat Last
+          default: true
       type: object
       required:
-      - max
-      title: ItemPropertyConfigRange
-    StoreItemUpdate:
+      - steps
+      title: PitySettings
+    NestedItem:
       properties:
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          nullable: true
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          nullable: true
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: The user will receive a fixed quantity of the item.
-          nullable: true
-        position:
-          type: integer
-          title: Position
-          nullable: true
-        name:
+        id:
           type: string
-          title: Name
-          nullable: true
-        description:
+          title: Id
+        count:
+          type: integer
+          title: Count
+        sku:
           type: string
-          title: Description
-          nullable: true
+          title: SKU
+        is_featured:
+          type: boolean
+          title: Is Featured
+        meta:
+          type: object
+          title: Meta
         image_url:
           type: string
           maxLength: 65536
           minLength: 1
           format: uri
           title: Image Url
-          nullable: true
-        max_purchases:
-          type: integer
-          title: Max Purchases
-          nullable: true
-        global_max_purchases:
-          type: integer
-          title: Global Max Purchases
-          nullable: true
-        requirements_expression:
-          title: Requirements Expression
-          nullable: true
-          $ref: '#/components/schemas/Expression'
-        requirements_mismatch_behavior:
-          nullable: true
-          $ref: '#/components/schemas/RequirementsMismatchBehavior'
-        custom_badge:
-          type: string
-          maxLength: 100
-          title: Custom Badge
-          description: The custom badge for the item
-          nullable: true
-        start_at:
-          type: integer
-          title: Start At
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          nullable: true
-        min_amount:
-          type: integer
-          title: Min Amount
-          nullable: true
-        reward_points_percent:
-          type: number
-          title: Reward Points Percent
-          nullable: true
-        reward_points_fixed:
-          type: integer
-          title: Reward Points Fixed
-          nullable: true
-        loyalty_points_percent:
-          type: integer
-          title: Loyalty Points Percent
-          nullable: true
-        loyalty_points_fixed:
-          type: integer
-          title: Loyalty Points Fixed
-          nullable: true
-        reward_settings:
-          title: Reward Settings
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        payment_bound:
-          title: Payment Bound
-          nullable: true
-          $ref: '#/components/schemas/StoreItemPaymentSettings'
-        is_free_item:
-          type: boolean
-          title: Is Free Item
-        rotation_weight:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Rotation Weight
-          nullable: true
-        max_reward_points_percent:
-          type: integer
-          title: Max Reward Points Percent
-          nullable: true
-        max_purchases_period_type:
-          nullable: true
-          $ref: '#/components/schemas/PeriodType'
-        max_purchases_period_value:
-          type: integer
-          minimum: 0.0
-          title: Max Purchases Period Value
-          nullable: true
-        max_purchases_limit_type:
-          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value.
-          nullable: true
-          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
-        show_disabled_by_max_purchases:
-          type: boolean
-          title: Show Disabled By Max Purchases
-          nullable: true
-        card_type:
-          nullable: true
-          $ref: '#/components/schemas/StoreCardType'
-        show_first_on_category_list:
-          type: boolean
-          title: Show First On Category List
-          nullable: true
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          deprecated: true
-          nullable: true
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-          deprecated: true
-          nullable: true
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-          deprecated: true
-          nullable: true
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: The bonus settings for the item, including bonus items and their quantities.
-          nullable: true
-          $ref: '#/components/schemas/ItemBonusSettings'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for bonus badge
-          nullable: true
-        subscription_settings:
-          title: Subscription Settings
-          description: The subscription settings for the item
-          nullable: true
-          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
-        price:
-          type: integer
-          title: Price
-          nullable: true
-        price_point:
-          type: integer
-          maximum: 5000000.0
-          exclusiveMinimum: 0.0
-          title: Price Point
-          nullable: true
-        price_template_id:
-          type: string
-          title: Price Template Id
-          nullable: true
-        quantity:
-          type: integer
-          maximum: 1.0e+18
-          minimum: 1.0
-          title: Quantity
-          nullable: true
+        view_type:
+          $ref: '#/components/schemas/NestedItemViewType'
       type: object
-      title: StoreItemUpdate
-    VCRewardConfig:
+      title: NestedItem
+    HighlightItem:
       properties:
-        type:
+        image_url:
           type: string
-          enum:
-          - virtual_currency
-          title: Type
-          default: virtual_currency
+          title: Image Url
         name:
           type: string
           title: Name
-        virtual_currency_id:
+        description:
           type: string
-          title: Virtual Currency Id
-        virtual_currency_sku:
-          type: string
-          title: Virtual Currency SKU
-        reward_percent:
-          type: number
-          title: Reward Percent
-        reward_fixed:
-          type: integer
-          title: Reward Fixed
+          title: Description
       type: object
-      required:
-      - virtual_currency_id
-      title: VCRewardConfig
-    PityStep:
-      properties:
-        threshold:
-          type: integer
-          minimum: 1.0
-          title: Threshold
-        guaranteed_groups:
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/LootboxGroup'
-            - $ref: '#/components/schemas/LootboxNestedItem'
-          type: array
-          minItems: 1
-          title: Guaranteed Groups
-      type: object
-      required:
-      - threshold
-      - guaranteed_groups
-      title: PityStep
-    RotationSettings:
-      properties:
-        count:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Count
-          description: Number of items to take for each rotation
-        period_value:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Period Value
-        period_type:
-          $ref: '#/components/schemas/PeriodType'
-        type:
-          $ref: '#/components/schemas/RotationType'
-        show_timer:
-          type: boolean
-          title: Show Timer
-          description: Determines whether to show the timer until the next rotation
-          nullable: true
-        global_rotation:
-          type: boolean
-          title: Global Rotation
-          description: Whether the rotation is global or per user.
-          nullable: true
-        last_global_rotated_at:
-          type: integer
-          title: Last Global Rotated At
-          description: Last global rotation timestamp
-          nullable: true
-        current_rotated_store_item_ids:
-          items:
-            type: string
-          type: array
-          title: Current Rotated Store Item Ids
-          description: Current visible store item ids
-          nullable: true
-      type: object
-      required:
-      - count
-      - period_value
-      - period_type
-      - type
-      title: RotationSettings
-    StoreBulkDelete:
-      properties:
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - id
-      title: StoreBulkDelete
-    LootboxNestedItemRead:
+      title: HighlightItem
+    CTASupportedText:
+      type: string
+      enum:
+      - default
+      - price_and_trial
+      - promotion
+      title: CTASupportedText
+      description: An enumeration.
+    LootboxRead:
       properties:
         name:
           type: string
+          maxLength: 255
           title: Name
           description: The name of the item
         description:
           type: string
+          maxLength: 512
           title: Description
           description: The description of the item
+          nullable: true
         highlights:
           title: Highlights
           description: Localized benefit descriptions shown for the item
@@ -4404,106 +5205,36 @@ components:
           type: boolean
           title: Enable Reward Points Redemption
           description: Allows using Reward Points on purchase
-        nested_items:
-          items:
-            $ref: '#/components/schemas/NestedItem'
-          type: array
-          title: Nested Items
-          description: The child items of the bundle
+        lootbox_settings:
+          title: Lootbox Settings
+          description: The settings of the lootbox
+          $ref: '#/components/schemas/LootboxSettings'
         id:
           type: string
           title: Id
-          description: The unique identifier of the item
-        properties:
-          items:
-            $ref: '#/components/schemas/ItemPropertyRelationRead'
-          type: array
-          title: Properties
-          description: The item properties
-        source:
-          default: order
-          $ref: '#/components/schemas/ItemSource'
-        rarity_id:
-          type: string
-          title: Rarity Id
-          description: The rarity id of the item
-        item_rarity:
-          $ref: '#/components/schemas/ItemRarityRead'
-        discount_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent for the item
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent for the item
-        is_custom:
-          type: boolean
-          title: Is Custom
-          default: false
-        created_at:
-          type: number
-          title: Created At
-          description: The timestamp of when the item was created
-        modified_at:
-          type: number
-          title: Modified At
-          description: The timestamp of when the item was modified
-        archived_at:
-          type: number
-          title: Archived At
-          description: The timestamp of when the item was archived
-        price_minor_unit:
-          type: integer
-          title: Price Minor Unit
-        price_decimal:
-          type: number
-          title: Price Decimal
-        fallback_item_id:
-          type: string
-          title: Fallback Item Id
-          description: The item that will be given as fallback if the main item can't be given to the player
-        fallback_item_quantity:
-          type: integer
-          title: Fallback Item Quantity
-          description: The quantity of the fallback item
-        meta:
-          type: object
-          title: Meta
+          description: The unique identifier of the lootbox
         model_type:
           type: string
           enum:
-          - PublicItemRead
+          - LootboxRead
           title: Model Type
-          default: PublicItemRead
-        nested_items_read:
+          default: LootboxRead
+        groups:
           items:
-            $ref: '#/components/schemas/PublicItemRead'
+            anyOf:
+            - $ref: '#/components/schemas/LootboxGroupRead'
+            - $ref: '#/components/schemas/LootboxNestedItemRead'
           type: array
-          title: Nested Items Read
-        fallback_item:
-          $ref: '#/components/schemas/PublicItemRead'
-        quantity_after_bonus:
-          type: integer
-          title: Quantity After Bonus
-        quantity_bonus_value:
-          type: integer
-          title: Quantity Bonus Value
-        is_system:
-          type: boolean
-          title: Is System
-          description: If true, this item will be skipped when sending webhooks
-          nullable: true
-        probability:
+          title: Groups
+          description: Groups with nested elements that can be dropped
+        archived_at:
           type: number
-          title: Probability
-          description: The probability of the item appearing
-        weight:
-          type: integer
-          title: Weight
+          title: Archived At
+          description: The timestamp of when the lootbox was archived
+        comment:
+          type: string
+          title: Comment
+          description: Internal comment for this item
       type: object
       required:
       - name
@@ -4512,740 +5243,9 @@ components:
       - type
       - is_stackable
       - is_currency
+      - lootbox_settings
       - id
-      - created_at
-      - probability
-      - weight
-      title: LootboxNestedItemRead
-    SubscriptionSettings:
-      properties:
-        plans:
-          items:
-            $ref: '#/components/schemas/SubscriptionPlan'
-          type: array
-          title: Plans
-          description: The subscription plans
-      type: object
-      title: SubscriptionSettings
-    OrderSourceType:
-      type: string
-      enum:
-      - s2s
-      - hub
-      - sdk
-      - checkout_link
-      title: OrderSourceType
-      description: An enumeration.
-    ItemSource:
-      type: string
-      enum:
-      - order
-      - bonus
-      - bundle
-      - coupon
-      - lootbox
-      - free_item
-      - liveops
-      - daily_reward
-      - loyalty_reward
-      - progression_program
-      - rolling_offer
-      - pick_one_offer
-      title: ItemSource
-      description: An enumeration.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CTAButtonType:
-      type: string
-      enum:
-      - text
-      - price
-      - trial
-      title: CTAButtonType
-      description: An enumeration.
-    SubscriptionCardViewType:
-      type: string
-      enum:
-      - one_card
-      - separate_cards
-      title: SubscriptionCardViewType
-      description: An enumeration.
-    ItemPropertyConfigNumber:
-      properties:
-        property_type:
-          type: string
-          enum:
-          - number
-          title: Property Type
-          default: number
-      type: object
-      title: ItemPropertyConfigNumber
-    VirtualCurrencySettings:
-      properties:
-        rate:
-          type: number
-          exclusiveMinimum: 0.0
-          title: Rate
-          default: 1.0
-        enabled_for_checkout:
-          type: boolean
-          title: Enabled For Checkout
-          default: false
-        reward_active:
-          type: boolean
-          title: Reward Active
-          default: false
-        reward_percentage:
-          type: number
-          minimum: 0.0
-          title: Reward Percentage
-          default: 0.0
-        excluded_sales_channels:
-          items:
-            $ref: '#/components/schemas/OrderSourceType'
-          type: array
-        price_source:
-          default: local_price
-          $ref: '#/components/schemas/VCPriceSource'
-        allow_non_secure_auth:
-          type: boolean
-          title: Allow Non Secure Auth
-          default: false
-      type: object
-      title: VirtualCurrencySettings
-    StoreWebhookSettings:
-      properties:
-        webhook_id:
-          type: string
-          title: Webhook Id
-        cache_period_type:
-          $ref: '#/components/schemas/PeriodType'
-        cache_period_value:
-          type: integer
-          title: Cache Period Value
-      type: object
-      required:
-      - webhook_id
-      title: StoreWebhookSettings
-    LootboxNestedItem:
-      properties:
-        id:
-          type: string
-          title: Id
-        weight:
-          type: integer
-          maximum: 1000000.0
-          minimum: 0.0
-          title: Weight
-        count:
-          type: integer
-          title: Count
-        sku:
-          type: string
-          title: SKU
-        model_type:
-          type: string
-          enum:
-          - LootboxNestedItem
-          title: Model Type
-          default: LootboxNestedItem
-      type: object
-      required:
-      - id
-      - weight
-      - count
-      - sku
-      title: LootboxNestedItem
-    Currency:
-      type: string
-      enum:
-      - USD
-      - EUR
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHF
-      - CLP
-      - CNY
-      - COP
-      - CRC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JMD
-      - JOD
-      - JPY
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KRW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLE
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - UYU
-      - UZS
-      - VED
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XCD
-      - XCG
-      - XOF
-      - XPF
-      - YER
-      - ZAR
-      - ZMW
-      - ZWG
-      - ZWL
-      - RP
-      - VC
-      title: Currency
-    PitySettings:
-      properties:
-        steps:
-          items:
-            $ref: '#/components/schemas/PityStep'
-          type: array
-          minItems: 1
-          title: Steps
-        repeat_last:
-          type: boolean
-          title: Repeat Last
-          default: true
-      type: object
-      required:
-      - steps
-      title: PitySettings
-    StoreItemBenefitType:
-      type: string
-      enum:
-      - base
-      - promotion
-      - user_promotion
-      - virtual_sku
-      - extra_promotion
-      title: StoreItemBenefitType
-      description: An enumeration.
-    StoreSettings:
-      properties:
-        webhook_settings:
-          $ref: '#/components/schemas/StoreWebhookSettings'
-      type: object
-      title: StoreSettings
-    ItemPropertyRelationRead:
-      properties:
-        property_id:
-          type: string
-          title: Property Id
-        data:
-          $ref: '#/components/schemas/ItemPropertyRelationData'
-        position:
-          type: integer
-          title: Position
-        id:
-          type: string
-          title: Id
-        item_id:
-          type: string
-          title: Item Id
-        item_property:
-          $ref: '#/components/schemas/ItemPropertyRead'
-      type: object
-      required:
-      - property_id
-      - position
-      - id
-      - item_id
-      - item_property
-      title: ItemPropertyRelationRead
-    PriceViewMode:
-      type: string
-      enum:
-      - from_lowest_price
-      - specific_plan
-      title: PriceViewMode
-      description: An enumeration.
-    StoreItemBulkUpdate:
-      properties:
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          nullable: true
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-          nullable: true
-        bonus_fixed:
-          type: integer
-          title: Bonus Fixed
-          description: The user will receive a fixed quantity of the item.
-          nullable: true
-        position:
-          type: integer
-          title: Position
-          nullable: true
-        name:
-          type: string
-          title: Name
-          nullable: true
-        description:
-          type: string
-          title: Description
-          nullable: true
-        image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Image Url
-          nullable: true
-        max_purchases:
-          type: integer
-          title: Max Purchases
-          nullable: true
-        global_max_purchases:
-          type: integer
-          title: Global Max Purchases
-          nullable: true
-        requirements_expression:
-          title: Requirements Expression
-          nullable: true
-          $ref: '#/components/schemas/Expression'
-        requirements_mismatch_behavior:
-          nullable: true
-          $ref: '#/components/schemas/RequirementsMismatchBehavior'
-        custom_badge:
-          type: string
-          maxLength: 100
-          title: Custom Badge
-          description: The custom badge for the item
-          nullable: true
-        start_at:
-          type: integer
-          title: Start At
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          nullable: true
-        min_amount:
-          type: integer
-          title: Min Amount
-          nullable: true
-        reward_points_percent:
-          type: number
-          title: Reward Points Percent
-          nullable: true
-        reward_points_fixed:
-          type: integer
-          title: Reward Points Fixed
-          nullable: true
-        loyalty_points_percent:
-          type: integer
-          title: Loyalty Points Percent
-          nullable: true
-        loyalty_points_fixed:
-          type: integer
-          title: Loyalty Points Fixed
-          nullable: true
-        reward_settings:
-          title: Reward Settings
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        payment_bound:
-          title: Payment Bound
-          nullable: true
-          $ref: '#/components/schemas/StoreItemPaymentSettings'
-        is_free_item:
-          type: boolean
-          title: Is Free Item
-        rotation_weight:
-          type: integer
-          maximum: 1000.0
-          minimum: 0.0
-          title: Rotation Weight
-          nullable: true
-        max_reward_points_percent:
-          type: integer
-          title: Max Reward Points Percent
-          nullable: true
-        max_purchases_period_type:
-          nullable: true
-          $ref: '#/components/schemas/PeriodType'
-        max_purchases_period_value:
-          type: integer
-          minimum: 0.0
-          title: Max Purchases Period Value
-          nullable: true
-        max_purchases_limit_type:
-          description: For 'global' limit all users will have the same timer based on max_purchases_period_value.For 'personal' limit each user will have their own timer based on max_purchases_period_value.
-          nullable: true
-          $ref: '#/components/schemas/MaxPurchaseLimitPeriodType'
-        show_disabled_by_max_purchases:
-          type: boolean
-          title: Show Disabled By Max Purchases
-          nullable: true
-        card_type:
-          nullable: true
-          $ref: '#/components/schemas/StoreCardType'
-        show_first_on_category_list:
-          type: boolean
-          title: Show First On Category List
-          nullable: true
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          deprecated: true
-          nullable: true
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-          deprecated: true
-          nullable: true
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-          deprecated: true
-          nullable: true
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: The bonus settings for the item, including bonus items and their quantities.
-          nullable: true
-          $ref: '#/components/schemas/ItemBonusSettings'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for bonus badge
-          nullable: true
-        subscription_settings:
-          title: Subscription Settings
-          description: The subscription settings for the item
-          nullable: true
-          $ref: '#/components/schemas/StoreItemSubscriptionSettings'
-        price:
-          type: integer
-          title: Price
-          nullable: true
-        price_point:
-          type: integer
-          maximum: 5000000.0
-          exclusiveMinimum: 0.0
-          title: Price Point
-          nullable: true
-        price_template_id:
-          type: string
-          title: Price Template Id
-          nullable: true
-        quantity:
-          type: integer
-          maximum: 1.0e+18
-          minimum: 1.0
-          title: Quantity
-          nullable: true
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the item
-      type: object
-      required:
-      - id
-      title: StoreItemBulkUpdate
-    SubscriptionOfferEligibility:
-      type: string
-      enum:
-      - new_acquisition
-      - returning
-      title: SubscriptionOfferEligibility
-      description: An enumeration.
-    SubscriptionGraceMode:
-      type: string
-      enum:
-      - free_to_paid
-      - paid_to_paid
-      title: SubscriptionGraceMode
-      description: An enumeration.
-    NestedItemViewType:
-      type: string
-      enum:
-      - separated
-      title: NestedItemViewType
-      description: An enumeration.
-    SubscriptionOffer:
-      properties:
-        key:
-          type: string
-          title: Key
-          description: The unique key of the offer
-        name:
-          type: string
-          title: Name
-          description: The display name of the offer
-        description:
-          type: string
-          title: Description
-          description: The description of the offer
-        discount_percent:
-          type: integer
-          title: Discount Percent
-          description: The discount percentage for the offer
-        eligibility_rules:
-          items:
-            $ref: '#/components/schemas/SubscriptionOfferEligibility'
-          type: array
-          description: The list of eligibility rules for the offer
-        grace_extension:
-          type: integer
-          title: Grace Extension
-          description: The grace period extension in days
-        trial_extension:
-          type: integer
-          title: Trial Extension
-          description: The trial period extension in days
-        activation_limits:
-          type: integer
-          title: Activation Limits
-          description: The maximum number of times this offer can be activated
-      type: object
-      required:
-      - key
-      title: SubscriptionOffer
-    HighlightItem:
-      properties:
-        image_url:
-          type: string
-          title: Image Url
-        name:
-          type: string
-          title: Name
-        description:
-          type: string
-          title: Description
-      type: object
-      title: HighlightItem
-    ItemBonus:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The ID of the bonus item that will be given to the user when they purchase this item.
-        sku:
-          type: string
-          title: SKU
-        quantity_fixed:
-          type: integer
-          title: Quantity Fixed
-          description: The fixed quantity of the bonus item
-          nullable: true
-        quantity_percent:
-          type: integer
-          minimum: 0.0
-          title: Quantity Percent
-          description: The user will receive a quantity equivalent to the set percentage of the price_after_discount_usd (in cents) of the purchased item.
-          nullable: true
-      type: object
-      required:
-      - id
-      title: ItemBonus
-    ItemPropertyRelationData:
-      properties:
-        value:
-          anyOf:
-          - type: number
-          - type: integer
-          - type: string
-          title: Value
-      type: object
-      title: ItemPropertyRelationData
-    StoreItemBenefit:
-      properties:
-        type:
-          $ref: '#/components/schemas/StoreItemBenefitType'
-        discount_percent:
-          type: integer
-          title: Discount Percent
-        bonus_percent:
-          type: integer
-          title: Bonus Percent
-        reward_points_percent:
-          type: integer
-          title: Reward Points Percent
-        reward_points_fixed:
-          type: integer
-          title: Reward Points Fixed
-        bonus_item_percent:
-          type: integer
-          title: Bonus Item Percent
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-        store_promotion_id:
-          type: string
-          title: Store Promotion Id
-        loyalty_points_percent:
-          type: integer
-          title: Loyalty Points Percent
-        loyalty_points_fixed:
-          type: integer
-          title: Loyalty Points Fixed
-        reward_settings:
-          $ref: '#/components/schemas/ItemRewardSettings'
-        requires_payment_methods:
-          items:
-            type: string
-          type: array
-          title: Requires Payment Methods
-        requires_payment_method_save:
-          type: boolean
-          title: Requires Payment Method Save
-      type: object
-      required:
-      - type
-      title: StoreItemBenefit
+      title: LootboxRead
   securitySchemes:
     HTTPBearer:
       type: http

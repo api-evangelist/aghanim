@@ -235,126 +235,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    AchievementRead:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 1
-          title: Name
-          description: The name of the achievement
-        description:
-          type: string
-          maxLength: 512
-          title: Description
-          description: The description of the achievement
-        image_url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Image Url
-          description: The URL of the image for the achievement
-        type:
-          anyOf:
-          - $ref: '#/components/schemas/AchievementType'
-          - type: string
-          title: Type
-          description: The type of the achievement
-        position:
-          type: integer
-          title: Position
-          description: The position of the achievement in the list
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: The unique identifier of the achievement
-      type: object
-      required:
-      - name
-      - description
-      - image_url
-      - type
-      - position
-      - id
-      title: AchievementRead
-    AchievementType:
-      type: string
-      enum:
-      - first_visit
-      - first_purchase
-      - regular_visit
-      title: AchievementType
-    AchievementBulkUpdate:
-      properties:
-        name:
-          title: Name
-          description: The name of the achievement
-          type: string
-          maxLength: 255
-          minLength: 1
-        description:
-          title: Description
-          description: The description of the achievement
-          type: string
-          maxLength: 512
-        image_url:
-          title: Image Url
-          description: The URL of the image for the achievement
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-        type:
-          anyOf:
-          - $ref: '#/components/schemas/AchievementType'
-          - type: string
-          title: Type
-          description: The type of the achievement
-        position:
-          title: Position
-          description: The position of the achievement in the list
-          type: integer
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-          description: The unique identifier of the achievement
-      type: object
-      required:
-      - id
-      title: AchievementBulkUpdate
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     AchievementCreate:
       properties:
         name:
@@ -425,6 +305,110 @@ components:
           type: integer
       type: object
       title: AchievementUpdate
+    AchievementRead:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          title: Name
+          description: The name of the achievement
+        description:
+          type: string
+          maxLength: 512
+          title: Description
+          description: The description of the achievement
+        image_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Image Url
+          description: The URL of the image for the achievement
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          type: integer
+          title: Position
+          description: The position of the achievement in the list
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the achievement
+      type: object
+      required:
+      - name
+      - description
+      - image_url
+      - type
+      - position
+      - id
+      title: AchievementRead
+    AchievementBulkUpdate:
+      properties:
+        name:
+          title: Name
+          description: The name of the achievement
+          type: string
+          maxLength: 255
+          minLength: 1
+        description:
+          title: Description
+          description: The description of the achievement
+          type: string
+          maxLength: 512
+        image_url:
+          title: Image Url
+          description: The URL of the image for the achievement
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+        type:
+          anyOf:
+          - $ref: '#/components/schemas/AchievementType'
+          - type: string
+          title: Type
+          description: The type of the achievement
+        position:
+          title: Position
+          description: The position of the achievement in the list
+          type: integer
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+          description: The unique identifier of the achievement
+      type: object
+      required:
+      - id
+      title: AchievementBulkUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     AchievementUnlockRequest:
       properties:
         player_id:
@@ -435,6 +419,22 @@ components:
       required:
       - player_id
       title: AchievementUnlockRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AchievementType:
+      type: string
+      enum:
+      - first_visit
+      - first_purchase
+      - regular_visit
+      title: AchievementType
   securitySchemes:
     HTTPBearer:
       type: http

@@ -154,27 +154,53 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
+    Plan:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        key:
           type: string
-          title: Message
-        type:
+          title: Key
+          description: Plan unique key within subscription.
+        name:
           type: string
-          title: Error Type
+          title: Name
+          description: Plan display name.
+        offer:
+          title: Offer
+          description: Offer applied to the plan. Null if no offer is applied.
+          $ref: '#/components/schemas/Offer'
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - key
+      - name
+      title: Plan
+    ReactivatedSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Resulting subscription ID.
+        status:
+          description: Resulting subscription status.
+          $ref: '#/components/schemas/SubscriptionStatus'
+      type: object
+      required:
+      - id
+      - status
+      title: ReactivatedSubscription
+    SubscriptionStatus:
+      type: string
+      enum:
+      - trial
+      - active
+      - grace
+      - canceled
+      - locked
+      - ended
+      - expired
+      - paused
+      - pending
+      title: SubscriptionStatus
+      description: An enumeration.
     Offer:
       properties:
         key:
@@ -240,20 +266,27 @@ components:
       - created_at
       - plan
       title: SubscriptionRead
-    SubscriptionStatus:
-      type: string
-      enum:
-      - trial
-      - active
-      - grace
-      - canceled
-      - locked
-      - ended
-      - expired
-      - paused
-      - pending
-      title: SubscriptionStatus
-      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -263,39 +296,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    Plan:
-      properties:
-        key:
-          type: string
-          title: Key
-          description: Plan unique key within subscription.
-        name:
-          type: string
-          title: Name
-          description: Plan display name.
-        offer:
-          title: Offer
-          description: Offer applied to the plan. Null if no offer is applied.
-          $ref: '#/components/schemas/Offer'
-      type: object
-      required:
-      - key
-      - name
-      title: Plan
-    ReactivatedSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Resulting subscription ID.
-        status:
-          description: Resulting subscription status.
-          $ref: '#/components/schemas/SubscriptionStatus'
-      type: object
-      required:
-      - id
-      - status
-      title: ReactivatedSubscription
   securitySchemes:
     HTTPBearer:
       type: http

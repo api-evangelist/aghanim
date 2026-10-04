@@ -231,207 +231,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    WebhookCreate:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-          nullable: true
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-          default: true
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-          default: true
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable send player attributes in context
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
-          nullable: true
-      type: object
-      required:
-      - events
-      - url
-      - method
-      title: WebhookCreate
-    WebhookRedacted:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-          nullable: true
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-          default: true
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-          default: true
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable send player attributes in context
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
-          nullable: true
-        secret_redacted:
-          type: string
-          title: Secret Redacted
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the webhook.
-        game_id:
-          type: string
-          title: Game Id
-          description: The unique identifier of the game.
-      type: object
-      required:
-      - events
-      - url
-      - method
-      - secret_redacted
-      - id
-      - game_id
-      title: WebhookRedacted
-    WebhookMethod:
-      type: string
-      enum:
-      - GET
-      - POST
-      title: WebhookMethod
-      description: An enumeration.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    WebhookRevealed:
-      properties:
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEventType'
-          type: array
-          description: The list of events that trigger the webhook.
-        url:
-          type: string
-          title: Url
-          description: The URL where the webhook will be sent.
-        description:
-          type: string
-          title: Description
-          description: The description of a webhook.
-          nullable: true
-        method:
-          description: The HTTP method used to send the webhook.
-          $ref: '#/components/schemas/WebhookMethod'
-        enabled:
-          type: boolean
-          title: Enabled
-          description: The enabled status of the webhook.
-          default: true
-        enabled_logs:
-          type: boolean
-          title: Enabled Logs
-          description: The enabled logs of the webhook.
-          default: true
-        player_context_enabled:
-          type: boolean
-          title: Player Context Enabled
-          description: Enable send player attributes in context
-          nullable: true
-        batch_mode:
-          type: boolean
-          title: Batch Mode
-          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
-          nullable: true
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the webhook.
-        game_id:
-          type: string
-          title: Game Id
-          description: The unique identifier of the game.
-        secret:
-          type: string
-          title: Secret
-          description: The secret used to sign the webhook.
-      type: object
-      required:
-      - events
-      - url
-      - method
-      - id
-      - game_id
-      - secret
-      title: WebhookRevealed
     WebhookEventType:
       type: string
       enum:
@@ -521,6 +320,207 @@ components:
           description: Enable batch delivery mode.
       type: object
       title: WebhookUpdate
+    WebhookRedacted:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+        secret_redacted:
+          type: string
+          title: Secret Redacted
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the webhook.
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game.
+      type: object
+      required:
+      - events
+      - url
+      - method
+      - secret_redacted
+      - id
+      - game_id
+      title: WebhookRedacted
+    WebhookRevealed:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the webhook.
+        game_id:
+          type: string
+          title: Game Id
+          description: The unique identifier of the game.
+        secret:
+          type: string
+          title: Secret
+          description: The secret used to sign the webhook.
+      type: object
+      required:
+      - events
+      - url
+      - method
+      - id
+      - game_id
+      - secret
+      title: WebhookRevealed
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WebhookCreate:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+          type: array
+          description: The list of events that trigger the webhook.
+        url:
+          type: string
+          title: Url
+          description: The URL where the webhook will be sent.
+        description:
+          type: string
+          title: Description
+          description: The description of a webhook.
+          nullable: true
+        method:
+          description: The HTTP method used to send the webhook.
+          $ref: '#/components/schemas/WebhookMethod'
+        enabled:
+          type: boolean
+          title: Enabled
+          description: The enabled status of the webhook.
+          default: true
+        enabled_logs:
+          type: boolean
+          title: Enabled Logs
+          description: The enabled logs of the webhook.
+          default: true
+        player_context_enabled:
+          type: boolean
+          title: Player Context Enabled
+          description: Enable send player attributes in context
+          nullable: true
+        batch_mode:
+          type: boolean
+          title: Batch Mode
+          description: Enable batch delivery [mode](https://docs.aghanim.com/webhooks/batching).
+          nullable: true
+      type: object
+      required:
+      - events
+      - url
+      - method
+      title: WebhookCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WebhookMethod:
+      type: string
+      enum:
+      - GET
+      - POST
+      title: WebhookMethod
+      description: An enumeration.
   securitySchemes:
     HTTPBearer:
       type: http

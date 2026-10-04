@@ -41,6 +41,24 @@ paths:
       - HTTPBearer: []
 components:
   schemas:
+    GDPRDataRemovalRequest:
+      properties:
+        email:
+          title: Email
+          description: The email of the user to remove data for
+          type: string
+          format: email
+        user_id:
+          title: User Id
+          description: The user ID in the Aghanim system to remove data for
+          type: string
+          maxLength: 32
+        player_id:
+          title: Player Id
+          description: The player ID to remove data for
+          type: string
+      type: object
+      title: GDPRDataRemovalRequest
     ValidationError:
       properties:
         loc:
@@ -62,24 +80,6 @@ components:
       - msg
       - type
       title: ValidationError
-    GDPRDataRemovalRequest:
-      properties:
-        email:
-          title: Email
-          description: The email of the user to remove data for
-          type: string
-          format: email
-        user_id:
-          title: User Id
-          description: The user ID in the Aghanim system to remove data for
-          type: string
-          maxLength: 32
-        player_id:
-          title: Player Id
-          description: The player ID to remove data for
-          type: string
-      type: object
-      title: GDPRDataRemovalRequest
     HTTPValidationError:
       properties:
         detail:

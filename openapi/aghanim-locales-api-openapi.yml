@@ -171,27 +171,66 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
+    LocaleStatus:
+      type: string
+      enum:
+      - clean
+      - translating
+      - synchronization
+      - fuzzy
+      title: LocaleStatus
+    LocaleStats:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
+        total:
+          type: integer
+          title: Total
+          default: 0
+        done:
+          type: integer
+          title: Done
+          default: 0
+      type: object
+      title: LocaleStats
+    LocaleCreate:
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+        published_at:
+          title: Published At
+          type: integer
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - locale
+      title: LocaleCreate
+    LocaleRead:
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+        published_at:
+          title: Published At
+          type: integer
+        id:
+          type: string
+          maxLength: 32
+          title: Id
+        stats:
+          $ref: '#/components/schemas/LocaleStats'
+        status:
+          $ref: '#/components/schemas/LocaleStatus'
+        modified_at:
+          title: Modified At
+          type: integer
+      type: object
+      required:
+      - locale
+      - id
+      - stats
+      - status
+      title: LocaleRead
+    LocaleUpdate:
+      properties: {}
+      type: object
+      title: LocaleUpdate
     Locale:
       type: string
       enum:
@@ -222,6 +261,27 @@ components:
       - zh-Hant
       title: Locale
       description: Language codes according to ISO 639-1.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -231,66 +291,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    LocaleUpdate:
-      properties: {}
-      type: object
-      title: LocaleUpdate
-    LocaleRead:
-      properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        published_at:
-          title: Published At
-          type: integer
-        id:
-          type: string
-          maxLength: 32
-          title: Id
-        stats:
-          $ref: '#/components/schemas/LocaleStats'
-        status:
-          $ref: '#/components/schemas/LocaleStatus'
-        modified_at:
-          title: Modified At
-          type: integer
-      type: object
-      required:
-      - locale
-      - id
-      - stats
-      - status
-      title: LocaleRead
-    LocaleCreate:
-      properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        published_at:
-          title: Published At
-          type: integer
-      type: object
-      required:
-      - locale
-      title: LocaleCreate
-    LocaleStatus:
-      type: string
-      enum:
-      - clean
-      - translating
-      - synchronization
-      - fuzzy
-      title: LocaleStatus
-    LocaleStats:
-      properties:
-        total:
-          type: integer
-          title: Total
-          default: 0
-        done:
-          type: integer
-          title: Done
-          default: 0
-      type: object
-      title: LocaleStats
   securitySchemes:
     HTTPBearer:
       type: http

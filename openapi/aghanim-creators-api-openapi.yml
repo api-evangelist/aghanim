@@ -245,282 +245,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    CreatorAnnotation:
-      properties:
-        note:
-          type: string
-          maxLength: 2000
-          title: Note
-        display_name:
-          type: string
-          maxLength: 120
-          title: Display Name
-      type: object
-      title: CreatorAnnotation
-    SocialPerformanceMetricsRead:
-      properties:
-        views:
-          title: Views
-          type: integer
-        likes:
-          title: Likes
-          type: integer
-        comments:
-          title: Comments
-          type: integer
-      type: object
-      required:
-      - views
-      - likes
-      - comments
-      title: SocialPerformanceMetricsRead
-    SocialChannelRead:
-      properties:
-        followers:
-          title: Followers
-          type: integer
-        total_views:
-          title: Total Views
-          type: integer
-        total_content_count:
-          title: Total Content Count
-          type: integer
-      type: object
-      required:
-      - followers
-      - total_views
-      - total_content_count
-      title: SocialChannelRead
-    SocialPerformanceSnapshotRead:
-      properties:
-        content_url:
-          type: string
-          title: Content Url
-        title:
-          title: Title
-          type: string
-        thumbnail_url:
-          title: Thumbnail Url
-          type: string
-        published_at:
-          type: string
-          format: date-time
-          title: Published At
-        taken_at:
-          type: string
-          format: date-time
-          title: Taken At
-        window_days:
-          type: integer
-          title: Window Days
-        metrics:
-          $ref: '#/components/schemas/SocialPerformanceMetricsRead'
-      type: object
-      required:
-      - content_url
-      - title
-      - thumbnail_url
-      - published_at
-      - taken_at
-      - window_days
-      - metrics
-      title: SocialPerformanceSnapshotRead
-    SocialContentItemRead:
-      properties:
-        url:
-          type: string
-          title: Url
-        title:
-          title: Title
-          type: string
-        thumbnail_url:
-          title: Thumbnail Url
-          type: string
-        published_at:
-          type: string
-          format: date-time
-          title: Published At
-        views:
-          title: Views
-          type: integer
-        likes:
-          title: Likes
-          type: integer
-        comments:
-          title: Comments
-          type: integer
-      type: object
-      required:
-      - url
-      - title
-      - thumbnail_url
-      - published_at
-      - views
-      - likes
-      - comments
-      title: SocialContentItemRead
-    CreatorUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-        email:
-          type: string
-          title: Email
-        avatar_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Avatar Url
-        extra_terms_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Extra Terms Url
-        extra_terms_text:
-          type: string
-          title: Extra Terms Text
-        social_medias:
-          items:
-            $ref: '#/components/schemas/CreatorSocial'
-          type: array
-          title: Social Medias
-        creator_tier_group_id:
-          type: string
-          title: Creator Tier Group Id
-          description: New tier group to assign the creator to.
-        revenue_share_override_enabled:
-          type: boolean
-          title: Revenue Share Override Enabled
-          description: When true, the creator's revenue share is fixed at `revenue_share_override_bps` and ignores tier rates.
-        revenue_share_override_bps:
-          type: integer
-          maximum: 10000.0
-          minimum: 0.0
-          title: Revenue Share Override Bps
-          description: Override revenue share in basis points; required when enabling the override.
-      type: object
-      title: CreatorUpdate
-    UnitedStates:
+    CreatorSocialPlatform:
       type: string
       enum:
-      - US-AL
-      - US-MS
-      - US-NE
-      - US-PR
-      title: UnitedStates
-      description: An enumeration.
-    CreatorSocial:
-      properties:
-        url:
-          type: string
-          title: Url
-        platform:
-          $ref: '#/components/schemas/CreatorSocialPlatform'
-      type: object
-      required:
-      - url
-      title: CreatorSocial
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    CreatorTermsRead:
-      properties:
-        id:
-          type: string
-          title: Id
-        accepted_at:
-          type: integer
-          title: Accepted At
-        date_of_birth:
-          type: string
-          format: date
-          title: Date Of Birth
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-        state:
-          $ref: '#/components/schemas/UnitedStates'
-        age:
-          type: integer
-          title: Age
-      type: object
-      required:
-      - id
-      - accepted_at
-      title: CreatorTermsRead
-    CreatorCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        email:
-          type: string
-          title: Email
-        avatar_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Avatar Url
-        extra_terms_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Extra Terms Url
-        extra_terms_text:
-          type: string
-          title: Extra Terms Text
-        social_medias:
-          items:
-            $ref: '#/components/schemas/CreatorSocial'
-          type: array
-          title: Social Medias
-        creator_tier_group_id:
-          type: string
-          title: Creator Tier Group Id
-          description: Tier group to assign the creator to on creation, if any.
-        coupon_code:
-          type: string
-          maxLength: 20
-          title: Coupon Code
-          description: Override for the auto-generated promo code. If omitted, the code is derived from the creator's name.
-      type: object
-      required:
-      - name
-      - email
-      title: CreatorCreate
+      - tiktok
+      - youtube
+      - instagram
+      - threads
+      - x_twitter
+      - facebook
+      - reddit
+      - twitch
+      - other
+      title: CreatorSocialPlatform
     CreatorSocialAccountRead:
       properties:
         platform:
@@ -555,53 +292,52 @@ components:
       - content
       - performance
       title: CreatorSocialAccountRead
-    SyncStatus:
-      type: string
-      enum:
-      - pending
-      - ok
-      - error
-      title: SyncStatus
-    CreatorSocialPlatform:
-      type: string
-      enum:
-      - tiktok
-      - youtube
-      - instagram
-      - threads
-      - x_twitter
-      - facebook
-      - reddit
-      - twitch
-      - other
-      title: CreatorSocialPlatform
-    PaginatedResponse_list_aghanim.creator.schemas.CreatorRead__:
+    CreatorAnnotation:
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CreatorRead'
-          type: array
-          title: Data
-        total:
+        note:
+          type: string
+          maxLength: 2000
+          title: Note
+        display_name:
+          type: string
+          maxLength: 120
+          title: Display Name
+      type: object
+      title: CreatorAnnotation
+    SocialContentItemRead:
+      properties:
+        url:
+          type: string
+          title: Url
+        title:
+          title: Title
+          type: string
+        thumbnail_url:
+          title: Thumbnail Url
+          type: string
+        published_at:
+          type: string
+          format: date-time
+          title: Published At
+        views:
+          title: Views
           type: integer
-          title: Total
-        limit:
+        likes:
+          title: Likes
           type: integer
-          title: Limit
-        offset:
+        comments:
+          title: Comments
           type: integer
-          title: Offset
-        has_next:
-          type: boolean
-          description: Indicates if there are more items to fetch.
       type: object
       required:
-      - data
-      - total
-      - limit
-      - offset
-      - has_next
-      title: PaginatedResponse[list[aghanim.creator.schemas.CreatorRead]]
+      - url
+      - title
+      - thumbnail_url
+      - published_at
+      - views
+      - likes
+      - comments
+      title: SocialContentItemRead
     CreatorRead:
       properties:
         name:
@@ -674,6 +410,270 @@ components:
       - email
       - id
       title: CreatorRead
+    CreatorSocial:
+      properties:
+        url:
+          type: string
+          title: Url
+        platform:
+          $ref: '#/components/schemas/CreatorSocialPlatform'
+      type: object
+      required:
+      - url
+      title: CreatorSocial
+    CreatorTermsRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        accepted_at:
+          type: integer
+          title: Accepted At
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+        state:
+          $ref: '#/components/schemas/UnitedStates'
+        age:
+          type: integer
+          title: Age
+      type: object
+      required:
+      - id
+      - accepted_at
+      title: CreatorTermsRead
+    SocialChannelRead:
+      properties:
+        followers:
+          title: Followers
+          type: integer
+        total_views:
+          title: Total Views
+          type: integer
+        total_content_count:
+          title: Total Content Count
+          type: integer
+      type: object
+      required:
+      - followers
+      - total_views
+      - total_content_count
+      title: SocialChannelRead
+    SyncStatus:
+      type: string
+      enum:
+      - pending
+      - ok
+      - error
+      title: SyncStatus
+    CreatorUpdate:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        avatar_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Avatar Url
+        extra_terms_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Extra Terms Url
+        extra_terms_text:
+          type: string
+          title: Extra Terms Text
+        social_medias:
+          items:
+            $ref: '#/components/schemas/CreatorSocial'
+          type: array
+          title: Social Medias
+        creator_tier_group_id:
+          type: string
+          title: Creator Tier Group Id
+          description: New tier group to assign the creator to.
+        revenue_share_override_enabled:
+          type: boolean
+          title: Revenue Share Override Enabled
+          description: When true, the creator's revenue share is fixed at `revenue_share_override_bps` and ignores tier rates.
+        revenue_share_override_bps:
+          type: integer
+          maximum: 10000.0
+          minimum: 0.0
+          title: Revenue Share Override Bps
+          description: Override revenue share in basis points; required when enabling the override.
+      type: object
+      title: CreatorUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    SocialPerformanceSnapshotRead:
+      properties:
+        content_url:
+          type: string
+          title: Content Url
+        title:
+          title: Title
+          type: string
+        thumbnail_url:
+          title: Thumbnail Url
+          type: string
+        published_at:
+          type: string
+          format: date-time
+          title: Published At
+        taken_at:
+          type: string
+          format: date-time
+          title: Taken At
+        window_days:
+          type: integer
+          title: Window Days
+        metrics:
+          $ref: '#/components/schemas/SocialPerformanceMetricsRead'
+      type: object
+      required:
+      - content_url
+      - title
+      - thumbnail_url
+      - published_at
+      - taken_at
+      - window_days
+      - metrics
+      title: SocialPerformanceSnapshotRead
+    SocialPerformanceMetricsRead:
+      properties:
+        views:
+          title: Views
+          type: integer
+        likes:
+          title: Likes
+          type: integer
+        comments:
+          title: Comments
+          type: integer
+      type: object
+      required:
+      - views
+      - likes
+      - comments
+      title: SocialPerformanceMetricsRead
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UnitedStates:
+      type: string
+      enum:
+      - US-AL
+      - US-MS
+      - US-NE
+      - US-PR
+      title: UnitedStates
+      description: An enumeration.
+    PaginatedResponse_list_aghanim.creator.schemas.CreatorRead__:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CreatorRead'
+          type: array
+          title: Data
+        total:
+          type: integer
+          title: Total
+        limit:
+          type: integer
+          title: Limit
+        offset:
+          type: integer
+          title: Offset
+        has_next:
+          type: boolean
+          description: Indicates if there are more items to fetch.
+      type: object
+      required:
+      - data
+      - total
+      - limit
+      - offset
+      - has_next
+      title: PaginatedResponse[list[aghanim.creator.schemas.CreatorRead]]
+    CreatorCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        avatar_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Avatar Url
+        extra_terms_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Extra Terms Url
+        extra_terms_text:
+          type: string
+          title: Extra Terms Text
+        social_medias:
+          items:
+            $ref: '#/components/schemas/CreatorSocial'
+          type: array
+          title: Social Medias
+        creator_tier_group_id:
+          type: string
+          title: Creator Tier Group Id
+          description: Tier group to assign the creator to on creation, if any.
+        coupon_code:
+          type: string
+          maxLength: 20
+          title: Coupon Code
+          description: Override for the auto-generated promo code. If omitted, the code is derived from the creator's name.
+      type: object
+      required:
+      - name
+      - email
+      title: CreatorCreate
   securitySchemes:
     HTTPBearer:
       type: http

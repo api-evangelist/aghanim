@@ -71,27 +71,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     PricePointsResponse:
       properties:
         context:
@@ -116,6 +95,25 @@ components:
       - android
       - other
       title: Platform
+    PricePointsContext:
+      properties:
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+          description: The country code for price localization
+        base_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The base currency used for pricing
+        local_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The local currency for the player's region
+      type: object
+      required:
+      - country
+      - base_currency
+      - local_currency
+      title: PricePointsContext
     Locale:
       type: string
       enum:
@@ -146,6 +144,27 @@ components:
       - zh-Hant
       title: Locale
       description: Language codes according to ISO 639-1.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     PriceAmount:
       properties:
         amount:
@@ -170,6 +189,24 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    PricePoint:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: ID of the price template associated with this price point
+        base_price:
+          $ref: '#/components/schemas/PriceAmount'
+          description: Base price
+        local_price:
+          $ref: '#/components/schemas/LocalPriceAmount'
+          description: Localized price
+      type: object
+      required:
+      - id
+      - base_price
+      - local_price
+      title: PricePoint
     Currency:
       type: string
       enum:
@@ -334,25 +371,6 @@ components:
       - RP
       - VC
       title: Currency
-    PricePointsContext:
-      properties:
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-          description: The country code for price localization
-        base_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The base currency used for pricing
-        local_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The local currency for the player's region
-      type: object
-      required:
-      - country
-      - base_currency
-      - local_currency
-      title: PricePointsContext
     LocalPriceAmount:
       properties:
         amount:
@@ -373,24 +391,6 @@ components:
       - amount_decimal
       - display
       title: LocalPriceAmount
-    PricePoint:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: ID of the price template associated with this price point
-        base_price:
-          $ref: '#/components/schemas/PriceAmount'
-          description: Base price
-        local_price:
-          $ref: '#/components/schemas/LocalPriceAmount'
-          description: Localized price
-      type: object
-      required:
-      - id
-      - base_price
-      - local_price
-      title: PricePoint
   securitySchemes:
     HTTPBearer:
       type: http

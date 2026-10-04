@@ -324,6 +324,16 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    OfferType:
+      type: string
+      enum:
+      - sequential
+      - rolling
+      - range
+      - pick_one
+      - piggy_bank
+      title: OfferType
+      description: An enumeration.
     ValidationError:
       properties:
         loc:
@@ -345,791 +355,6 @@ components:
       - msg
       - type
       title: ValidationError
-    StorePromotionUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the promotion
-        start_at:
-          type: integer
-          title: Start At
-          description: The start date of the promotion in seconds when the promotion starts to be applied
-        end_at:
-          type: integer
-          title: End At
-          description: The end date of the promotion in seconds when the promotion ends to be applied
-        discount_percent:
-          type: integer
-          maximum: 99.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent of the promotion
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent of the promotion for a stackable items
-        max_purchase_count:
-          type: integer
-          title: Max Purchase Count
-          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
-        max_purchase_count_per_user:
-          type: integer
-          title: Max Purchase Count Per User
-          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
-        reward_points_percent:
-          type: number
-          maximum: 100.0
-          minimum: 0.0
-          title: Reward Points Percent
-          description: The rewards points percent of the promotion
-        reward_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Reward Points Fixed
-          description: The fixed rewards points points amount
-        loyalty_points_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Loyalty Points Percent
-          description: The loyalty points percent of the promotion
-        loyalty_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Loyalty Points Fixed
-          description: The fixed loyalty points amount
-        reward_settings:
-          title: Reward Settings
-          description: Abstract reward settings for the promotion
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        exclude_items_for_reward_points:
-          type: boolean
-          title: Exclude Items For Reward Points
-          description: Turn off discount benefit for items that can be purchased with reward points
-        store_ids:
-          items:
-            type: string
-          type: array
-          title: Store Ids
-          description: Store ids that the promotion is applied to
-        item_ids:
-          items:
-            type: string
-          type: array
-          title: Item Ids
-          description: Item ids that the promotion is applied to
-        category_ids:
-          items:
-            type: string
-          type: array
-          title: Category Ids
-          description: Category ids that the promotion is applied to
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: Bonus items settings for the promotion
-          $ref: '#/components/schemas/ItemBonusSettings'
-        item_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Background Image Url
-          description: Background image URL to override item background during the promotion
-          nullable: true
-        item_featured_card_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Featured Card Background Image Url
-          description: Featured card background image URL to override item featured card background during the promotion
-          nullable: true
-        active:
-          type: boolean
-          title: Active
-          description: Allows to enable or disable the promotion
-        archived_at:
-          type: integer
-          title: Archived At
-          description: The date when the promotion is archived in seconds
-        requirements_expression:
-          title: Requirements Expression
-          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
-          $ref: '#/components/schemas/Expression'
-        payment_limits:
-          title: Payment Limits
-          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
-          $ref: '#/components/schemas/PromotionPaymentLimits'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for store items bonus badge during the promotion
-        custom_badge:
-          type: string
-          title: Custom Badge
-          description: Custom text to override store items custom badge during the promotion
-        apply_to_free_items:
-          type: boolean
-          title: Apply To Free Items
-          description: Whether the promotion should be applied to free items
-        offers:
-          title: Offers
-          description: Offers that the promotion is applied to
-          $ref: '#/components/schemas/StorePromotionOffers'
-      type: object
-      title: StorePromotionUpdate
-    StorePromotionBulkUpdate:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the promotion
-        start_at:
-          type: integer
-          title: Start At
-          description: The start date of the promotion in seconds when the promotion starts to be applied
-        end_at:
-          type: integer
-          title: End At
-          description: The end date of the promotion in seconds when the promotion ends to be applied
-        discount_percent:
-          type: integer
-          maximum: 99.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent of the promotion
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent of the promotion for a stackable items
-        max_purchase_count:
-          type: integer
-          title: Max Purchase Count
-          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
-        max_purchase_count_per_user:
-          type: integer
-          title: Max Purchase Count Per User
-          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
-        reward_points_percent:
-          type: number
-          maximum: 100.0
-          minimum: 0.0
-          title: Reward Points Percent
-          description: The rewards points percent of the promotion
-        reward_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Reward Points Fixed
-          description: The fixed rewards points points amount
-        loyalty_points_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Loyalty Points Percent
-          description: The loyalty points percent of the promotion
-        loyalty_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Loyalty Points Fixed
-          description: The fixed loyalty points amount
-        reward_settings:
-          title: Reward Settings
-          description: Abstract reward settings for the promotion
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        exclude_items_for_reward_points:
-          type: boolean
-          title: Exclude Items For Reward Points
-          description: Turn off discount benefit for items that can be purchased with reward points
-        store_ids:
-          items:
-            type: string
-          type: array
-          title: Store Ids
-          description: Store ids that the promotion is applied to
-        item_ids:
-          items:
-            type: string
-          type: array
-          title: Item Ids
-          description: Item ids that the promotion is applied to
-        category_ids:
-          items:
-            type: string
-          type: array
-          title: Category Ids
-          description: Category ids that the promotion is applied to
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: Bonus items settings for the promotion
-          $ref: '#/components/schemas/ItemBonusSettings'
-        item_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Background Image Url
-          description: Background image URL to override item background during the promotion
-          nullable: true
-        item_featured_card_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Featured Card Background Image Url
-          description: Featured card background image URL to override item featured card background during the promotion
-          nullable: true
-        active:
-          type: boolean
-          title: Active
-          description: Allows to enable or disable the promotion
-        archived_at:
-          type: integer
-          title: Archived At
-          description: The date when the promotion is archived in seconds
-        requirements_expression:
-          title: Requirements Expression
-          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
-          $ref: '#/components/schemas/Expression'
-        payment_limits:
-          title: Payment Limits
-          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
-          $ref: '#/components/schemas/PromotionPaymentLimits'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for store items bonus badge during the promotion
-        custom_badge:
-          type: string
-          title: Custom Badge
-          description: Custom text to override store items custom badge during the promotion
-        apply_to_free_items:
-          type: boolean
-          title: Apply To Free Items
-          description: Whether the promotion should be applied to free items
-        offers:
-          title: Offers
-          description: Offers that the promotion is applied to
-          $ref: '#/components/schemas/StorePromotionOffers'
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - id
-      title: StorePromotionBulkUpdate
-    OfferType:
-      type: string
-      enum:
-      - sequential
-      - rolling
-      - range
-      - pick_one
-      - piggy_bank
-      title: OfferType
-      description: An enumeration.
-    StorePromotionCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the promotion
-        start_at:
-          type: integer
-          title: Start At
-          description: The start date of the promotion in seconds when the promotion starts to be applied
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end date of the promotion in seconds when the promotion ends to be applied
-          nullable: true
-        discount_percent:
-          type: integer
-          maximum: 99.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent of the promotion
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent of the promotion for a stackable items
-        max_purchase_count:
-          type: integer
-          title: Max Purchase Count
-          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
-        max_purchase_count_per_user:
-          type: integer
-          title: Max Purchase Count Per User
-          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
-        reward_points_percent:
-          type: number
-          maximum: 100.0
-          minimum: 0.0
-          title: Reward Points Percent
-          description: The rewards points percent of the promotion
-        reward_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Reward Points Fixed
-          description: The fixed rewards points amount
-        loyalty_points_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Loyalty Points Percent
-          description: The loyalty points percent of the promotion
-        loyalty_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Loyalty Points Fixed
-          description: The fixed loyalty points amount
-        reward_settings:
-          title: Reward Settings
-          description: Abstract reward settings for the promotion
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        store_ids:
-          items:
-            type: string
-          type: array
-          title: Store Ids
-          description: Store ids that the promotion is applied to
-        item_ids:
-          items:
-            type: string
-          type: array
-          title: Item Ids
-          description: Item ids that the promotion is applied to
-        category_ids:
-          items:
-            type: string
-          type: array
-          title: Category Ids
-          description: Category ids that the promotion is applied to
-        exclude_items_for_reward_points:
-          type: boolean
-          title: Exclude Items For Reward Points
-          description: Turn off discount benefit for items that can be purchased with reward points
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: Bonus items settings for the promotion
-          $ref: '#/components/schemas/ItemBonusSettings'
-        item_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Background Image Url
-          description: Background image URL to override item background during the promotion
-          nullable: true
-        item_featured_card_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Featured Card Background Image Url
-          description: Featured card background image URL to override item featured card background during the promotion
-          nullable: true
-        active:
-          type: boolean
-          title: Active
-          description: Allows to enable or disable the promotion
-        archived_at:
-          type: integer
-          title: Archived At
-          description: The date when the promotion is archived in seconds
-        requirements_expression:
-          title: Requirements Expression
-          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
-          $ref: '#/components/schemas/Expression'
-        payment_limits:
-          title: Payment Limits
-          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
-          $ref: '#/components/schemas/PromotionPaymentLimits'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for store items bonus badge during the promotion
-        custom_badge:
-          type: string
-          title: Custom Badge
-          description: Custom text to override store items custom badge during the promotion
-        apply_to_free_items:
-          type: boolean
-          title: Apply To Free Items
-          description: Whether the promotion should be applied to free items
-        offers:
-          title: Offers
-          description: Offers that the promotion is applied to
-          $ref: '#/components/schemas/StorePromotionOffers'
-      type: object
-      title: StorePromotionCreate
-    PromotionPaymentLimits:
-      properties:
-        requires_payment_methods:
-          items:
-            type: string
-          type: array
-          title: Requires Payment Methods
-        requires_payment_method_save:
-          type: boolean
-          title: Requires Payment Method Save
-      type: object
-      title: PromotionPaymentLimits
-    ItemRewardSettings:
-      properties:
-        available:
-          items:
-            $ref: '#/components/schemas/VCRewardConfig'
-          type: array
-          title: Available
-      type: object
-      required:
-      - available
-      title: ItemRewardSettings
-    Token:
-      properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    ItemBonusSettings:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/ItemBonus'
-          type: array
-          title: Items
-        start_at:
-          type: integer
-          title: Start At
-        end_at:
-          type: integer
-          title: End At
-      type: object
-      required:
-      - items
-      title: ItemBonusSettings
-    StorePromotionOffers:
-      properties:
-        offers:
-          items:
-            $ref: '#/components/schemas/StorePromotionOffer'
-          type: array
-          maxItems: 100
-          minItems: 1
-          title: Offers
-      type: object
-      required:
-      - offers
-      title: StorePromotionOffers
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Expression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
-      type: object
-      title: Expression
-    TokenType:
-      type: string
-      enum:
-      - attribute
-      - custom_attribute
-      - event_attribute
-      - custom_event_attribute
-      - operator
-      - number
-      - date
-      - string
-      - boolean
-      - list
-      - variable
-      - virtual_currency
-      title: TokenType
-    StorePromotionRead:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the promotion
-        start_at:
-          type: integer
-          title: Start At
-          description: The start date of the promotion in seconds when the promotion starts to be applied
-          nullable: true
-        end_at:
-          type: integer
-          title: End At
-          description: The end date of the promotion in seconds when the promotion ends to be applied
-          nullable: true
-        discount_percent:
-          type: integer
-          maximum: 99.0
-          minimum: 0.0
-          title: Discount Percent
-          description: The discount percent of the promotion
-        bonus_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Percent
-          description: The bonus percent of the promotion for a stackable items
-        max_purchase_count:
-          type: integer
-          title: Max Purchase Count
-          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
-        max_purchase_count_per_user:
-          type: integer
-          title: Max Purchase Count Per User
-          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
-        reward_points_percent:
-          type: number
-          maximum: 100.0
-          minimum: 0.0
-          title: Reward Points Percent
-          description: The rewards points percent of the promotion
-        reward_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Reward Points Fixed
-          description: The fixed rewards points amount
-        loyalty_points_percent:
-          type: integer
-          maximum: 100.0
-          minimum: 0.0
-          title: Loyalty Points Percent
-          description: The loyalty points percent of the promotion
-        loyalty_points_fixed:
-          type: integer
-          minimum: 1.0
-          title: Loyalty Points Fixed
-          description: The fixed loyalty points amount
-        reward_settings:
-          title: Reward Settings
-          description: Abstract reward settings for the promotion
-          nullable: true
-          $ref: '#/components/schemas/ItemRewardSettings'
-        store_ids:
-          items:
-            type: string
-          type: array
-          title: Store Ids
-          description: Store ids that the promotion is applied to
-        item_ids:
-          items:
-            type: string
-          type: array
-          title: Item Ids
-          description: Item ids that the promotion is applied to
-        category_ids:
-          items:
-            type: string
-          type: array
-          title: Category Ids
-          description: Category ids that the promotion is applied to
-        exclude_items_for_reward_points:
-          type: boolean
-          title: Exclude Items For Reward Points
-          description: Turn off discount benefit for items that can be purchased with reward points
-        bonus_item_percent:
-          type: integer
-          minimum: 0.0
-          title: Bonus Item Percent
-          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_id:
-          type: string
-          title: Bonus Item Id
-          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
-        bonus_item_quantity:
-          type: integer
-          title: Bonus Item Quantity
-          description: The fixed quantity of the bonus item
-        bonus_items_settings:
-          title: Bonus Items Settings
-          description: Bonus items settings for the promotion
-          $ref: '#/components/schemas/ItemBonusSettings'
-        item_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Background Image Url
-          description: Background image URL to override item background during the promotion
-          nullable: true
-        item_featured_card_background_image_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Item Featured Card Background Image Url
-          description: Featured card background image URL to override item featured card background during the promotion
-          nullable: true
-        active:
-          type: boolean
-          title: Active
-          description: Allows to enable or disable the promotion
-        archived_at:
-          type: integer
-          title: Archived At
-          description: The date when the promotion is archived in seconds
-        requirements_expression:
-          title: Requirements Expression
-          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
-          $ref: '#/components/schemas/Expression'
-        payment_limits:
-          title: Payment Limits
-          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
-          $ref: '#/components/schemas/PromotionPaymentLimits'
-        bonus_badge:
-          type: string
-          title: Bonus Badge
-          description: Custom text for store items bonus badge during the promotion
-        custom_badge:
-          type: string
-          title: Custom Badge
-          description: Custom text to override store items custom badge during the promotion
-        apply_to_free_items:
-          type: boolean
-          title: Apply To Free Items
-          description: Whether the promotion should be applied to free items
-        offers:
-          title: Offers
-          description: Offers that the promotion is applied to
-          $ref: '#/components/schemas/StorePromotionOffers'
-        id:
-          type: string
-          title: Id
-        created_at:
-          type: integer
-          title: Created At
-        current_purchase_count:
-          type: integer
-          title: Current Purchase Count
-        user_id:
-          type: string
-          title: User Id
-        campaign_id:
-          type: string
-          title: Campaign Id
-        user_campaign_id:
-          type: string
-          title: User Campaign Id
-      type: object
-      required:
-      - id
-      - created_at
-      - current_purchase_count
-      title: StorePromotionRead
-    VCRewardConfig:
-      properties:
-        type:
-          type: string
-          enum:
-          - virtual_currency
-          title: Type
-          default: virtual_currency
-        name:
-          type: string
-          title: Name
-        virtual_currency_id:
-          type: string
-          title: Virtual Currency Id
-        virtual_currency_sku:
-          type: string
-          title: Virtual Currency SKU
-        reward_percent:
-          type: number
-          title: Reward Percent
-        reward_fixed:
-          type: integer
-          title: Reward Fixed
-      type: object
-      required:
-      - virtual_currency_id
-      title: VCRewardConfig
-    StorePromotionOffer:
-      properties:
-        type:
-          $ref: '#/components/schemas/OfferType'
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - type
-      - id
-      title: StorePromotionOffer
-    ResourceState:
-      type: string
-      enum:
-      - active
-      - archived
-      title: ResourceState
-      description: An enumeration.
     UserStorePromotionRead:
       properties:
         name:
@@ -1303,6 +528,350 @@ components:
       - created_at
       - current_purchase_count
       title: UserStorePromotionRead
+    StorePromotionRead:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the promotion
+        start_at:
+          type: integer
+          title: Start At
+          description: The start date of the promotion in seconds when the promotion starts to be applied
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end date of the promotion in seconds when the promotion ends to be applied
+          nullable: true
+        discount_percent:
+          type: integer
+          maximum: 99.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent of the promotion
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent of the promotion for a stackable items
+        max_purchase_count:
+          type: integer
+          title: Max Purchase Count
+          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
+        max_purchase_count_per_user:
+          type: integer
+          title: Max Purchase Count Per User
+          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
+        reward_points_percent:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward Points Percent
+          description: The rewards points percent of the promotion
+        reward_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Reward Points Fixed
+          description: The fixed rewards points amount
+        loyalty_points_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Loyalty Points Percent
+          description: The loyalty points percent of the promotion
+        loyalty_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Loyalty Points Fixed
+          description: The fixed loyalty points amount
+        reward_settings:
+          title: Reward Settings
+          description: Abstract reward settings for the promotion
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        store_ids:
+          items:
+            type: string
+          type: array
+          title: Store Ids
+          description: Store ids that the promotion is applied to
+        item_ids:
+          items:
+            type: string
+          type: array
+          title: Item Ids
+          description: Item ids that the promotion is applied to
+        category_ids:
+          items:
+            type: string
+          type: array
+          title: Category Ids
+          description: Category ids that the promotion is applied to
+        exclude_items_for_reward_points:
+          type: boolean
+          title: Exclude Items For Reward Points
+          description: Turn off discount benefit for items that can be purchased with reward points
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: Bonus items settings for the promotion
+          $ref: '#/components/schemas/ItemBonusSettings'
+        item_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Background Image Url
+          description: Background image URL to override item background during the promotion
+          nullable: true
+        item_featured_card_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Featured Card Background Image Url
+          description: Featured card background image URL to override item featured card background during the promotion
+          nullable: true
+        active:
+          type: boolean
+          title: Active
+          description: Allows to enable or disable the promotion
+        archived_at:
+          type: integer
+          title: Archived At
+          description: The date when the promotion is archived in seconds
+        requirements_expression:
+          title: Requirements Expression
+          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
+          $ref: '#/components/schemas/Expression'
+        payment_limits:
+          title: Payment Limits
+          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
+          $ref: '#/components/schemas/PromotionPaymentLimits'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for store items bonus badge during the promotion
+        custom_badge:
+          type: string
+          title: Custom Badge
+          description: Custom text to override store items custom badge during the promotion
+        apply_to_free_items:
+          type: boolean
+          title: Apply To Free Items
+          description: Whether the promotion should be applied to free items
+        offers:
+          title: Offers
+          description: Offers that the promotion is applied to
+          $ref: '#/components/schemas/StorePromotionOffers'
+        id:
+          type: string
+          title: Id
+        created_at:
+          type: integer
+          title: Created At
+        current_purchase_count:
+          type: integer
+          title: Current Purchase Count
+        user_id:
+          type: string
+          title: User Id
+        campaign_id:
+          type: string
+          title: Campaign Id
+        user_campaign_id:
+          type: string
+          title: User Campaign Id
+      type: object
+      required:
+      - id
+      - created_at
+      - current_purchase_count
+      title: StorePromotionRead
+    StorePromotionBulkUpdate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the promotion
+        start_at:
+          type: integer
+          title: Start At
+          description: The start date of the promotion in seconds when the promotion starts to be applied
+        end_at:
+          type: integer
+          title: End At
+          description: The end date of the promotion in seconds when the promotion ends to be applied
+        discount_percent:
+          type: integer
+          maximum: 99.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent of the promotion
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent of the promotion for a stackable items
+        max_purchase_count:
+          type: integer
+          title: Max Purchase Count
+          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
+        max_purchase_count_per_user:
+          type: integer
+          title: Max Purchase Count Per User
+          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
+        reward_points_percent:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward Points Percent
+          description: The rewards points percent of the promotion
+        reward_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Reward Points Fixed
+          description: The fixed rewards points points amount
+        loyalty_points_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Loyalty Points Percent
+          description: The loyalty points percent of the promotion
+        loyalty_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Loyalty Points Fixed
+          description: The fixed loyalty points amount
+        reward_settings:
+          title: Reward Settings
+          description: Abstract reward settings for the promotion
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        exclude_items_for_reward_points:
+          type: boolean
+          title: Exclude Items For Reward Points
+          description: Turn off discount benefit for items that can be purchased with reward points
+        store_ids:
+          items:
+            type: string
+          type: array
+          title: Store Ids
+          description: Store ids that the promotion is applied to
+        item_ids:
+          items:
+            type: string
+          type: array
+          title: Item Ids
+          description: Item ids that the promotion is applied to
+        category_ids:
+          items:
+            type: string
+          type: array
+          title: Category Ids
+          description: Category ids that the promotion is applied to
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: Bonus items settings for the promotion
+          $ref: '#/components/schemas/ItemBonusSettings'
+        item_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Background Image Url
+          description: Background image URL to override item background during the promotion
+          nullable: true
+        item_featured_card_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Featured Card Background Image Url
+          description: Featured card background image URL to override item featured card background during the promotion
+          nullable: true
+        active:
+          type: boolean
+          title: Active
+          description: Allows to enable or disable the promotion
+        archived_at:
+          type: integer
+          title: Archived At
+          description: The date when the promotion is archived in seconds
+        requirements_expression:
+          title: Requirements Expression
+          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
+          $ref: '#/components/schemas/Expression'
+        payment_limits:
+          title: Payment Limits
+          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
+          $ref: '#/components/schemas/PromotionPaymentLimits'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for store items bonus badge during the promotion
+        custom_badge:
+          type: string
+          title: Custom Badge
+          description: Custom text to override store items custom badge during the promotion
+        apply_to_free_items:
+          type: boolean
+          title: Apply To Free Items
+          description: Whether the promotion should be applied to free items
+        offers:
+          title: Offers
+          description: Offers that the promotion is applied to
+          $ref: '#/components/schemas/StorePromotionOffers'
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: StorePromotionBulkUpdate
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
+    ResourceState:
+      type: string
+      enum:
+      - active
+      - archived
+      title: ResourceState
+      description: An enumeration.
     ItemBonus:
       properties:
         id:
@@ -1327,6 +896,437 @@ components:
       required:
       - id
       title: ItemBonus
+    StorePromotionOffers:
+      properties:
+        offers:
+          items:
+            $ref: '#/components/schemas/StorePromotionOffer'
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Offers
+      type: object
+      required:
+      - offers
+      title: StorePromotionOffers
+    StorePromotionUpdate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the promotion
+        start_at:
+          type: integer
+          title: Start At
+          description: The start date of the promotion in seconds when the promotion starts to be applied
+        end_at:
+          type: integer
+          title: End At
+          description: The end date of the promotion in seconds when the promotion ends to be applied
+        discount_percent:
+          type: integer
+          maximum: 99.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent of the promotion
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent of the promotion for a stackable items
+        max_purchase_count:
+          type: integer
+          title: Max Purchase Count
+          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
+        max_purchase_count_per_user:
+          type: integer
+          title: Max Purchase Count Per User
+          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
+        reward_points_percent:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward Points Percent
+          description: The rewards points percent of the promotion
+        reward_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Reward Points Fixed
+          description: The fixed rewards points points amount
+        loyalty_points_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Loyalty Points Percent
+          description: The loyalty points percent of the promotion
+        loyalty_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Loyalty Points Fixed
+          description: The fixed loyalty points amount
+        reward_settings:
+          title: Reward Settings
+          description: Abstract reward settings for the promotion
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        exclude_items_for_reward_points:
+          type: boolean
+          title: Exclude Items For Reward Points
+          description: Turn off discount benefit for items that can be purchased with reward points
+        store_ids:
+          items:
+            type: string
+          type: array
+          title: Store Ids
+          description: Store ids that the promotion is applied to
+        item_ids:
+          items:
+            type: string
+          type: array
+          title: Item Ids
+          description: Item ids that the promotion is applied to
+        category_ids:
+          items:
+            type: string
+          type: array
+          title: Category Ids
+          description: Category ids that the promotion is applied to
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: Bonus items settings for the promotion
+          $ref: '#/components/schemas/ItemBonusSettings'
+        item_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Background Image Url
+          description: Background image URL to override item background during the promotion
+          nullable: true
+        item_featured_card_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Featured Card Background Image Url
+          description: Featured card background image URL to override item featured card background during the promotion
+          nullable: true
+        active:
+          type: boolean
+          title: Active
+          description: Allows to enable or disable the promotion
+        archived_at:
+          type: integer
+          title: Archived At
+          description: The date when the promotion is archived in seconds
+        requirements_expression:
+          title: Requirements Expression
+          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
+          $ref: '#/components/schemas/Expression'
+        payment_limits:
+          title: Payment Limits
+          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
+          $ref: '#/components/schemas/PromotionPaymentLimits'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for store items bonus badge during the promotion
+        custom_badge:
+          type: string
+          title: Custom Badge
+          description: Custom text to override store items custom badge during the promotion
+        apply_to_free_items:
+          type: boolean
+          title: Apply To Free Items
+          description: Whether the promotion should be applied to free items
+        offers:
+          title: Offers
+          description: Offers that the promotion is applied to
+          $ref: '#/components/schemas/StorePromotionOffers'
+      type: object
+      title: StorePromotionUpdate
+    ItemRewardSettings:
+      properties:
+        available:
+          items:
+            $ref: '#/components/schemas/VCRewardConfig'
+          type: array
+          title: Available
+      type: object
+      required:
+      - available
+      title: ItemRewardSettings
+    ItemBonusSettings:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ItemBonus'
+          type: array
+          title: Items
+        start_at:
+          type: integer
+          title: Start At
+        end_at:
+          type: integer
+          title: End At
+      type: object
+      required:
+      - items
+      title: ItemBonusSettings
+    StorePromotionOffer:
+      properties:
+        type:
+          $ref: '#/components/schemas/OfferType'
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - type
+      - id
+      title: StorePromotionOffer
+    PromotionPaymentLimits:
+      properties:
+        requires_payment_methods:
+          items:
+            type: string
+          type: array
+          title: Requires Payment Methods
+        requires_payment_method_save:
+          type: boolean
+          title: Requires Payment Method Save
+      type: object
+      title: PromotionPaymentLimits
+    StorePromotionCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the promotion
+        start_at:
+          type: integer
+          title: Start At
+          description: The start date of the promotion in seconds when the promotion starts to be applied
+          nullable: true
+        end_at:
+          type: integer
+          title: End At
+          description: The end date of the promotion in seconds when the promotion ends to be applied
+          nullable: true
+        discount_percent:
+          type: integer
+          maximum: 99.0
+          minimum: 0.0
+          title: Discount Percent
+          description: The discount percent of the promotion
+        bonus_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Percent
+          description: The bonus percent of the promotion for a stackable items
+        max_purchase_count:
+          type: integer
+          title: Max Purchase Count
+          description: The maximum purchase count of the promotion. If the user exceeds this count, the promotion will not be applied.
+        max_purchase_count_per_user:
+          type: integer
+          title: Max Purchase Count Per User
+          description: The maximum purchase count per user. If the user exceeds this count, the promotion will not be applied. This setting is mutually exclusive with 'max_purchase_count'
+        reward_points_percent:
+          type: number
+          maximum: 100.0
+          minimum: 0.0
+          title: Reward Points Percent
+          description: The rewards points percent of the promotion
+        reward_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Reward Points Fixed
+          description: The fixed rewards points amount
+        loyalty_points_percent:
+          type: integer
+          maximum: 100.0
+          minimum: 0.0
+          title: Loyalty Points Percent
+          description: The loyalty points percent of the promotion
+        loyalty_points_fixed:
+          type: integer
+          minimum: 1.0
+          title: Loyalty Points Fixed
+          description: The fixed loyalty points amount
+        reward_settings:
+          title: Reward Settings
+          description: Abstract reward settings for the promotion
+          nullable: true
+          $ref: '#/components/schemas/ItemRewardSettings'
+        store_ids:
+          items:
+            type: string
+          type: array
+          title: Store Ids
+          description: Store ids that the promotion is applied to
+        item_ids:
+          items:
+            type: string
+          type: array
+          title: Item Ids
+          description: Item ids that the promotion is applied to
+        category_ids:
+          items:
+            type: string
+          type: array
+          title: Category Ids
+          description: Category ids that the promotion is applied to
+        exclude_items_for_reward_points:
+          type: boolean
+          title: Exclude Items For Reward Points
+          description: Turn off discount benefit for items that can be purchased with reward points
+        bonus_item_percent:
+          type: integer
+          minimum: 0.0
+          title: Bonus Item Percent
+          description: The user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_id:
+          type: string
+          title: Bonus Item Id
+          description: The item ID that the user will receive a quantity equivalent to the set percentage of the total USD (in cents) purchase.
+        bonus_item_quantity:
+          type: integer
+          title: Bonus Item Quantity
+          description: The fixed quantity of the bonus item
+        bonus_items_settings:
+          title: Bonus Items Settings
+          description: Bonus items settings for the promotion
+          $ref: '#/components/schemas/ItemBonusSettings'
+        item_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Background Image Url
+          description: Background image URL to override item background during the promotion
+          nullable: true
+        item_featured_card_background_image_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Item Featured Card Background Image Url
+          description: Featured card background image URL to override item featured card background during the promotion
+          nullable: true
+        active:
+          type: boolean
+          title: Active
+          description: Allows to enable or disable the promotion
+        archived_at:
+          type: integer
+          title: Archived At
+          description: The date when the promotion is archived in seconds
+        requirements_expression:
+          title: Requirements Expression
+          description: Defines the conditions under which the promotion is applied. Only applicable for authenticated users.
+          $ref: '#/components/schemas/Expression'
+        payment_limits:
+          title: Payment Limits
+          description: Defines the payment methods limits for the promotion. If it set benefits shown only on checkout page
+          $ref: '#/components/schemas/PromotionPaymentLimits'
+        bonus_badge:
+          type: string
+          title: Bonus Badge
+          description: Custom text for store items bonus badge during the promotion
+        custom_badge:
+          type: string
+          title: Custom Badge
+          description: Custom text to override store items custom badge during the promotion
+        apply_to_free_items:
+          type: boolean
+          title: Apply To Free Items
+          description: Whether the promotion should be applied to free items
+        offers:
+          title: Offers
+          description: Offers that the promotion is applied to
+          $ref: '#/components/schemas/StorePromotionOffers'
+      type: object
+      title: StorePromotionCreate
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
+    VCRewardConfig:
+      properties:
+        type:
+          type: string
+          enum:
+          - virtual_currency
+          title: Type
+          default: virtual_currency
+        name:
+          type: string
+          title: Name
+        virtual_currency_id:
+          type: string
+          title: Virtual Currency Id
+        virtual_currency_sku:
+          type: string
+          title: Virtual Currency SKU
+        reward_percent:
+          type: number
+          title: Reward Percent
+        reward_fixed:
+          type: integer
+          title: Reward Fixed
+      type: object
+      required:
+      - virtual_currency_id
+      title: VCRewardConfig
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TokenType:
+      type: string
+      enum:
+      - attribute
+      - custom_attribute
+      - event_attribute
+      - custom_event_attribute
+      - operator
+      - number
+      - date
+      - string
+      - boolean
+      - list
+      - variable
+      - virtual_currency
+      title: TokenType
     MathExpression:
       properties:
         tokens:

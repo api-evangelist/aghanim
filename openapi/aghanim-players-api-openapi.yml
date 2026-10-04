@@ -172,120 +172,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
-    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
-      properties:
-        amount:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Amount
-          description: The amount of loyalty points to issue.
-      type: object
-      required:
-      - amount
-      title: IssueLoyaltyPointsRequest
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
-    PeriodPurchaseStat:
-      properties:
-        start_calc_at:
-          type: integer
-          title: Start Calc At
-        ltv:
-          type: integer
-          title: Ltv
-      type: object
-      required:
-      - start_calc_at
-      - ltv
-      title: PeriodPurchaseStat
-    MarketingConsent:
-      properties:
-        email:
-          $ref: '#/components/schemas/EmailConsent'
-      type: object
-      title: MarketingConsent
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    PlayerRead:
-      properties:
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the user.
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique player ID of the user.
-        loyalty_points:
-          type: integer
-          title: Loyalty Points
-          description: The amount of loyalty points the player has.
-      type: object
-      required:
-      - id
-      - player_id
-      title: PlayerRead
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     UserUpdate:
       properties:
         name:
@@ -337,22 +223,17 @@ components:
           type: object
       type: object
       title: UserUpdate
-    DevtodevDeviceIdV2:
-      properties:
-        deviceId:
-          title: Deviceid
-          type: string
-        devtodevId:
-          title: Devtodevid
-          type: integer
-        userId:
-          title: Userid
-          type: string
-        advertisingId:
-          title: Advertisingid
-          type: string
-      type: object
-      title: DevtodevDeviceId
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
     PersistentPlayerAttributes:
       properties:
         level:
@@ -498,16 +379,40 @@ components:
           type: object
       type: object
       title: PersistentPlayerAttributes
-    EmailConsent:
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
+    PeriodPurchaseStat:
       properties:
-        granted_at:
-          title: Granted At
+        start_calc_at:
           type: integer
-        revoked_at:
-          title: Revoked At
+          title: Start Calc At
+        ltv:
           type: integer
+          title: Ltv
       type: object
-      title: EmailConsent
+      required:
+      - start_calc_at
+      - ltv
+      title: PeriodPurchaseStat
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
     PlayerAttributes:
       properties:
         level:
@@ -607,27 +512,122 @@ components:
           description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
       type: object
       title: PlayerAttributes
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
-    DevtodevDeviceId:
+    DevtodevDeviceIdV2:
       properties:
         deviceId:
-          type: string
           title: Deviceid
+          type: string
         devtodevId:
-          type: integer
           title: Devtodevid
+          type: integer
         userId:
-          type: string
           title: Userid
-        advertisingId:
           type: string
+        advertisingId:
           title: Advertisingid
+          type: string
       type: object
       title: DevtodevDeviceId
+    PlayerRead:
+      properties:
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user.
+        loyalty_points:
+          type: integer
+          title: Loyalty Points
+          description: The amount of loyalty points the player has.
+      type: object
+      required:
+      - id
+      - player_id
+      title: PlayerRead
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue.
+      type: object
+      required:
+      - amount
+      title: IssueLoyaltyPointsRequest
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MarketingConsent:
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailConsent'
+      type: object
+      title: MarketingConsent
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    EmailConsent:
+      properties:
+        granted_at:
+          title: Granted At
+          type: integer
+        revoked_at:
+          title: Revoked At
+          type: integer
+      type: object
+      title: EmailConsent
     VirtualCurrencyShort:
       properties:
         sku:

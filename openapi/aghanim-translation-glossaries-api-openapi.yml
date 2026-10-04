@@ -192,27 +192,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     InfinitePaginatedResponse_TranslationGlossaryRead_:
       properties:
         data:
@@ -231,29 +210,6 @@ components:
       - data
       - has_more
       title: InfinitePaginatedResponse[TranslationGlossaryRead]
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TranslationGlossaryUpdate:
-      properties:
-        term:
-          title: Term
-          description: The glossary term
-          type: string
-          maxLength: 255
-        translation:
-          title: Translation
-          description: The translation of the glossary term
-          type: string
-          maxLength: 255
-      type: object
-      title: TranslationGlossaryUpdate
     TranslationGlossaryCreate:
       properties:
         locale_id:
@@ -277,6 +233,50 @@ components:
       - term
       - translation
       title: TranslationGlossaryCreate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TranslationGlossaryUpdate:
+      properties:
+        term:
+          title: Term
+          description: The glossary term
+          type: string
+          maxLength: 255
+        translation:
+          title: Translation
+          description: The translation of the glossary term
+          type: string
+          maxLength: 255
+      type: object
+      title: TranslationGlossaryUpdate
     TranslationGlossaryRead:
       properties:
         locale_id:

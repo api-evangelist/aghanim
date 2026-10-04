@@ -178,27 +178,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     AuthenticateRequest:
       properties:
         token:
@@ -209,6 +188,11 @@ components:
       required:
       - token
       title: AuthenticateRequest
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
     Marketplace:
       type: string
       enum:
@@ -220,36 +204,6 @@ components:
       - one_store
       - galaxy_store
       title: Marketplace
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
-    UserRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the user.
-        name:
-          type: string
-          title: Name
-          description: The name of the user.
-        avatar_url:
-          type: string
-          title: Avatar Url
-          description: The avatar URL of the user.
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique player ID of the user. If the user is not linked to a player, this field will be null.
-      type: object
-      required:
-      - id
-      title: UserRead
     LinkPlayerRequest:
       properties:
         player_id:
@@ -260,27 +214,6 @@ components:
       required:
       - player_id
       title: LinkPlayerRequest
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    LoginResponse:
-      properties:
-        authorization_url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Authorization Url
-          description: The URL to authenticate the user on the Game Hub.
-      type: object
-      required:
-      - authorization_url
-      title: LoginResponse
     LoginRequest:
       properties:
         player_id:
@@ -303,6 +236,105 @@ components:
       required:
       - player_id
       title: LoginRequest
+    DevtodevDeviceId:
+      properties:
+        deviceId:
+          type: string
+          title: Deviceid
+        devtodevId:
+          type: integer
+          title: Devtodevid
+        userId:
+          type: string
+          title: Userid
+        advertisingId:
+          type: string
+          title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    LoginResponse:
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Authorization Url
+          description: The URL to authenticate the user on the Game Hub.
+      type: object
+      required:
+      - authorization_url
+      title: LoginResponse
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    DeviceType:
+      type: string
+      enum:
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PlayerInfoV1:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The player's name.
+        avatar_url:
+          type: string
+          title: Avatar Url
+          description: The player's avatar URL.
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          additionalProperties:
+            anyOf:
+            - type: boolean
+            - type: integer
+            - type: number
+            - type: string
+            - items:
+                anyOf:
+                - type: boolean
+                - type: integer
+                - type: number
+                - type: string
+              type: array
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+      type: object
+      title: PlayerInfo
     HTTPValidationError:
       properties:
         detail:
@@ -411,60 +443,28 @@ components:
           description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
       type: object
       title: PlayerAttributes
-    PlayerTag:
-      type: string
-      enum:
-      - tester
-      title: PlayerTag
-    PlayerInfoV1:
+    UserRead:
       properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
         name:
           type: string
           title: Name
-          description: The player's name.
+          description: The name of the user.
         avatar_url:
           type: string
           title: Avatar Url
-          description: The player's avatar URL.
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          additionalProperties:
-            anyOf:
-            - type: boolean
-            - type: integer
-            - type: number
-            - type: string
-            - items:
-                anyOf:
-                - type: boolean
-                - type: integer
-                - type: number
-                - type: string
-              type: array
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
+          description: The avatar URL of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user. If the user is not linked to a player, this field will be null.
       type: object
-      title: PlayerInfo
-    DevtodevDeviceId:
-      properties:
-        deviceId:
-          type: string
-          title: Deviceid
-        devtodevId:
-          type: integer
-          title: Devtodevid
-        userId:
-          type: string
-          title: Userid
-        advertisingId:
-          type: string
-          title: Advertisingid
-      type: object
-      title: DevtodevDeviceId
+      required:
+      - id
+      title: UserRead
   securitySchemes:
     HTTPBearer:
       type: http
