@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.aghanim.com/openapi.json",
+ "requested_url": "https://docs.aghanim.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 1099538,
+ "sha256": "019d44e7a5e683fe20acdd834a5878e54fdf8c38b387a182222bb3d6673fc5c4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.907), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
