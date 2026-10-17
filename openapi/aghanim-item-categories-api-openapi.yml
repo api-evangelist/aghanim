@@ -226,55 +226,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    Token:
+    HTTPValidationError:
       properties:
-        type:
-          $ref: '#/components/schemas/TokenType'
-        value:
-          title: Value
-      type: object
-      required:
-      - type
-      title: Token
-    StoreCategoryRenderType:
-      type: string
-      enum:
-      - default
-      - carousel
-      title: StoreCategoryRenderType
-      description: An enumeration.
-    StoreCategoryRenderOptions:
-      properties:
-        delay:
-          type: integer
-          title: Delay
-        loop:
-          type: boolean
-          title: Loop
-        autoplay:
-          type: boolean
-          title: Autoplay
-        show_dots:
-          type: boolean
-          title: Show Dots
-        display_type:
-          $ref: '#/components/schemas/CarouselDisplayType'
-      type: object
-      title: StoreCategoryRenderOptions
-    Expression:
-      properties:
-        tokens:
+        detail:
           items:
-            $ref: '#/components/schemas/Token'
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Tokens
-        variables:
-          items:
-            $ref: '#/components/schemas/MathExpression'
-          type: array
-          title: Variables
+          title: Detail
       type: object
-      title: Expression
+      title: HTTPValidationError
     TokenType:
       type: string
       enum:
@@ -291,20 +251,6 @@ components:
       - variable
       - virtual_currency
       title: TokenType
-    StoreCategoryDividerPosition:
-      type: string
-      enum:
-      - top
-      - bottom
-      title: StoreCategoryDividerPosition
-      description: An enumeration.
-    StoreCategoryDividerType:
-      type: string
-      enum:
-      - image
-      - mask
-      title: StoreCategoryDividerType
-      description: An enumeration.
     ItemCategoryRead:
       properties:
         name:
@@ -363,6 +309,30 @@ components:
       - position
       - id
       title: ItemCategoryRead
+    MathExpression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: MathExpression
+    Token:
+      properties:
+        type:
+          $ref: '#/components/schemas/TokenType'
+        value:
+          title: Value
+      type: object
+      required:
+      - type
+      title: Token
     BackgroundSize:
       type: string
       enum:
@@ -370,6 +340,74 @@ components:
       - repeat
       - cover
       title: BackgroundSize
+      description: An enumeration.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    StoreCategoryRenderOptions:
+      properties:
+        delay:
+          type: integer
+          title: Delay
+        loop:
+          type: boolean
+          title: Loop
+        autoplay:
+          type: boolean
+          title: Autoplay
+        show_dots:
+          type: boolean
+          title: Show Dots
+        display_type:
+          $ref: '#/components/schemas/CarouselDisplayType'
+      type: object
+      title: StoreCategoryRenderOptions
+    StoreCategoryRenderType:
+      type: string
+      enum:
+      - default
+      - carousel
+      title: StoreCategoryRenderType
+      description: An enumeration.
+    StoreCategoryDividerPosition:
+      type: string
+      enum:
+      - top
+      - bottom
+      title: StoreCategoryDividerPosition
+      description: An enumeration.
+    CarouselDisplayType:
+      type: string
+      enum:
+      - default
+      - compact
+      - alone
+      title: CarouselDisplayType
+      description: An enumeration.
+    StoreCategoryDividerType:
+      type: string
+      enum:
+      - image
+      - mask
+      title: StoreCategoryDividerType
       description: An enumeration.
     ItemCategoryUpdate:
       properties:
@@ -429,6 +467,15 @@ components:
           $ref: '#/components/schemas/StoreCategoryRenderOptions'
       type: object
       title: ItemCategoryUpdate
+    ItemCategoryBulkDelete:
+      properties:
+        id:
+          type: string
+          title: Id
+      type: object
+      required:
+      - id
+      title: ItemCategoryBulkDelete
     ItemCategoryCreate:
       properties:
         name:
@@ -492,6 +539,20 @@ components:
       - name
       - position
       title: ItemCategoryCreate
+    Expression:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+          title: Tokens
+        variables:
+          items:
+            $ref: '#/components/schemas/MathExpression'
+          type: array
+          title: Variables
+      type: object
+      title: Expression
     ItemCategoryBulkUpdate:
       properties:
         name:
@@ -555,67 +616,6 @@ components:
       required:
       - id
       title: ItemCategoryBulkUpdate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ItemCategoryBulkDelete:
-      properties:
-        id:
-          type: string
-          title: Id
-      type: object
-      required:
-      - id
-      title: ItemCategoryBulkDelete
-    CarouselDisplayType:
-      type: string
-      enum:
-      - default
-      - compact
-      - alone
-      title: CarouselDisplayType
-      description: An enumeration.
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    MathExpression:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/Token'
-          type: array
-          title: Tokens
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: MathExpression
   securitySchemes:
     HTTPBearer:
       type: http

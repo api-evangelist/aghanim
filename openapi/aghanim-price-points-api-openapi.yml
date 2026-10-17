@@ -71,115 +71,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PricePointsResponse:
-      properties:
-        context:
-          $ref: '#/components/schemas/PricePointsContext'
-          description: The context information for the price points
-        price_points:
-          items:
-            $ref: '#/components/schemas/PricePoint'
-          type: array
-          title: Price Points
-          description: The list of available price points
-      type: object
-      required:
-      - context
-      - price_points
-      title: PricePointsResponse
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
-    PricePointsContext:
-      properties:
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-          description: The country code for price localization
-        base_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The base currency used for pricing
-        local_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The local currency for the player's region
-      type: object
-      required:
-      - country
-      - base_currency
-      - local_currency
-      title: PricePointsContext
-    Locale:
-      type: string
-      enum:
-      - cs
-      - de
-      - en
-      - es
-      - fr
-      - fr-CA
-      - hi
-      - id
-      - it
-      - ja
-      - ko
-      - ms
-      - nl
-      - 'no'
-      - pl
-      - pt
-      - pt-BR
-      - ru
-      - sv
-      - th
-      - tr
-      - uk
-      - vi
-      - zh
-      - zh-Hant
-      title: Locale
-      description: Language codes according to ISO 639-1.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    PriceAmount:
-      properties:
-        amount:
-          type: integer
-          title: Amount
-          description: Price amount in minor currency units
-        amount_decimal:
-          type: number
-          title: Amount Decimal
-          description: Price amount in major currency units
-      type: object
-      required:
-      - amount
-      - amount_decimal
-      title: PriceAmount
     HTTPValidationError:
       properties:
         detail:
@@ -189,24 +80,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    PricePoint:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: ID of the price template associated with this price point
-        base_price:
-          $ref: '#/components/schemas/PriceAmount'
-          description: Base price
-        local_price:
-          $ref: '#/components/schemas/LocalPriceAmount'
-          description: Localized price
-      type: object
-      required:
-      - id
-      - base_price
-      - local_price
-      title: PricePoint
     Currency:
       type: string
       enum:
@@ -371,6 +244,57 @@ components:
       - RP
       - VC
       title: Currency
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Locale:
+      type: string
+      enum:
+      - cs
+      - de
+      - en
+      - es
+      - fr
+      - fr-CA
+      - hi
+      - id
+      - it
+      - ja
+      - ko
+      - ms
+      - nl
+      - 'no'
+      - pl
+      - pt
+      - pt-BR
+      - ru
+      - sv
+      - th
+      - tr
+      - uk
+      - vi
+      - zh
+      - zh-Hant
+      title: Locale
+      description: Language codes according to ISO 639-1.
     LocalPriceAmount:
       properties:
         amount:
@@ -391,6 +315,82 @@ components:
       - amount_decimal
       - display
       title: LocalPriceAmount
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    PriceAmount:
+      properties:
+        amount:
+          type: integer
+          title: Amount
+          description: Price amount in minor currency units
+        amount_decimal:
+          type: number
+          title: Amount Decimal
+          description: Price amount in major currency units
+      type: object
+      required:
+      - amount
+      - amount_decimal
+      title: PriceAmount
+    PricePointsContext:
+      properties:
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+          description: The country code for price localization
+        base_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The base currency used for pricing
+        local_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The local currency for the player's region
+      type: object
+      required:
+      - country
+      - base_currency
+      - local_currency
+      title: PricePointsContext
+    PricePointsResponse:
+      properties:
+        context:
+          $ref: '#/components/schemas/PricePointsContext'
+          description: The context information for the price points
+        price_points:
+          items:
+            $ref: '#/components/schemas/PricePoint'
+          type: array
+          title: Price Points
+          description: The list of available price points
+      type: object
+      required:
+      - context
+      - price_points
+      title: PricePointsResponse
+    PricePoint:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: ID of the price template associated with this price point
+        base_price:
+          $ref: '#/components/schemas/PriceAmount'
+          description: Base price
+        local_price:
+          $ref: '#/components/schemas/LocalPriceAmount'
+          description: Localized price
+      type: object
+      required:
+      - id
+      - base_price
+      - local_price
+      title: PricePoint
   securitySchemes:
     HTTPBearer:
       type: http

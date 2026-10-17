@@ -192,6 +192,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     InfinitePaginatedResponse_TranslationGlossaryRead_:
       properties:
         data:
@@ -210,73 +219,6 @@ components:
       - data
       - has_more
       title: InfinitePaginatedResponse[TranslationGlossaryRead]
-    TranslationGlossaryCreate:
-      properties:
-        locale_id:
-          type: string
-          maxLength: 32
-          title: Locale Id
-          description: The unique identifier of the locale
-        term:
-          type: string
-          maxLength: 255
-          title: Term
-          description: The glossary term
-        translation:
-          type: string
-          maxLength: 255
-          title: Translation
-          description: The translation of the glossary term
-      type: object
-      required:
-      - locale_id
-      - term
-      - translation
-      title: TranslationGlossaryCreate
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TranslationGlossaryUpdate:
-      properties:
-        term:
-          title: Term
-          description: The glossary term
-          type: string
-          maxLength: 255
-        translation:
-          title: Translation
-          description: The translation of the glossary term
-          type: string
-          maxLength: 255
-      type: object
-      title: TranslationGlossaryUpdate
     TranslationGlossaryRead:
       properties:
         locale_id:
@@ -306,6 +248,64 @@ components:
       - translation
       - id
       title: TranslationGlossaryRead
+    TranslationGlossaryUpdate:
+      properties:
+        term:
+          title: Term
+          description: The glossary term
+          type: string
+          maxLength: 255
+        translation:
+          title: Translation
+          description: The translation of the glossary term
+          type: string
+          maxLength: 255
+      type: object
+      title: TranslationGlossaryUpdate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    TranslationGlossaryCreate:
+      properties:
+        locale_id:
+          type: string
+          maxLength: 32
+          title: Locale Id
+          description: The unique identifier of the locale
+        term:
+          type: string
+          maxLength: 255
+          title: Term
+          description: The glossary term
+        translation:
+          type: string
+          maxLength: 255
+          title: Translation
+          description: The translation of the glossary term
+      type: object
+      required:
+      - locale_id
+      - term
+      - translation
+      title: TranslationGlossaryCreate
   securitySchemes:
     HTTPBearer:
       type: http

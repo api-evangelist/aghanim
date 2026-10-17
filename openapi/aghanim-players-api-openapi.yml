@@ -172,68 +172,19 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    UserUpdate:
+    VirtualCurrencyShort:
       properties:
-        name:
-          title: Name
+        sku:
           type: string
-        email:
-          title: Email
-          type: string
-        country:
-          title: Country
-          type: string
-          pattern: ^[A-Z]{2}$
-        banned:
-          title: Banned
-          type: boolean
-        banned_reason:
-          title: Banned Reason
-          type: string
-        avatar_url:
-          title: Avatar Url
-          type: string
-        attributes:
-          $ref: '#/components/schemas/PersistentPlayerAttributes'
-        custom_attributes:
-          title: Custom Attributes
-          additionalProperties: true
-          type: object
-        segments:
-          title: Segments
-          items:
-            type: string
-          type: array
-        creator_program_id:
-          title: Creator Program Id
-          type: string
-          maxLength: 32
-        registration_marketplace:
-          $ref: '#/components/schemas/Marketplace'
-        balances:
-          title: Balances
-          items:
-            $ref: '#/components/schemas/VirtualCurrencyShort'
-          type: array
-        marketing_consent:
-          $ref: '#/components/schemas/MarketingConsent'
-        custom_attributes_from_deeplink:
-          title: Custom Attributes From Deeplink
-          additionalProperties: true
-          type: object
+          title: SKU
+        quantity:
+          type: integer
+          title: Quantity
       type: object
-      title: UserUpdate
-    Marketplace:
-      type: string
-      enum:
-      - none
-      - app_store
-      - google_play
-      - aghanim
-      - other
-      - one_store
-      - galaxy_store
-      title: Marketplace
+      required:
+      - sku
+      - quantity
+      title: VirtualCurrencyShort
     PersistentPlayerAttributes:
       properties:
         level:
@@ -379,11 +330,80 @@ components:
           type: object
       type: object
       title: PersistentPlayerAttributes
-    PlayerTag:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UserUpdate:
+      properties:
+        name:
+          title: Name
+          type: string
+        email:
+          title: Email
+          type: string
+        country:
+          title: Country
+          type: string
+          pattern: ^[A-Z]{2}$
+        banned:
+          title: Banned
+          type: boolean
+        banned_reason:
+          title: Banned Reason
+          type: string
+        avatar_url:
+          title: Avatar Url
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PersistentPlayerAttributes'
+        custom_attributes:
+          title: Custom Attributes
+          additionalProperties: true
+          type: object
+        segments:
+          title: Segments
+          items:
+            type: string
+          type: array
+        creator_program_id:
+          title: Creator Program Id
+          type: string
+          maxLength: 32
+        registration_marketplace:
+          $ref: '#/components/schemas/Marketplace'
+        balances:
+          title: Balances
+          items:
+            $ref: '#/components/schemas/VirtualCurrencyShort'
+          type: array
+        marketing_consent:
+          $ref: '#/components/schemas/MarketingConsent'
+        custom_attributes_from_deeplink:
+          title: Custom Attributes From Deeplink
+          additionalProperties: true
+          type: object
+      type: object
+      title: UserUpdate
+    MarketingConsent:
+      properties:
+        email:
+          $ref: '#/components/schemas/EmailConsent'
+      type: object
+      title: MarketingConsent
+    DeviceType:
       type: string
       enum:
-      - tester
-      title: PlayerTag
+      - Apple
+      - Android
+      - Unknown
+      - Other
+      title: DeviceType
     PeriodPurchaseStat:
       properties:
         start_calc_at:
@@ -397,6 +417,59 @@ components:
       - start_calc_at
       - ltv
       title: PeriodPurchaseStat
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    PlayerTag:
+      type: string
+      enum:
+      - tester
+      title: PlayerTag
+    PlayerRead:
+      properties:
+        attributes:
+          title: Attributes
+          description: The player's attributes.
+          $ref: '#/components/schemas/PlayerAttributes'
+        custom_attributes:
+          type: object
+          title: Custom Attributes
+          description: The player's custom attributes.
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the user.
+        player_id:
+          type: string
+          title: Player Id
+          description: The unique player ID of the user.
+        loyalty_points:
+          type: integer
+          title: Loyalty Points
+          description: The amount of loyalty points the player has.
+      type: object
+      required:
+      - id
+      - player_id
+      title: PlayerRead
     DevtodevDeviceId:
       properties:
         deviceId:
@@ -411,6 +484,52 @@ components:
         advertisingId:
           type: string
           title: Advertisingid
+      type: object
+      title: DevtodevDeviceId
+    Marketplace:
+      type: string
+      enum:
+      - none
+      - app_store
+      - google_play
+      - aghanim
+      - other
+      - one_store
+      - galaxy_store
+      title: Marketplace
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
+    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
+      properties:
+        amount:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Amount
+          description: The amount of loyalty points to issue.
+      type: object
+      required:
+      - amount
+      title: IssueLoyaltyPointsRequest
+    DevtodevDeviceIdV2:
+      properties:
+        deviceId:
+          title: Deviceid
+          type: string
+        devtodevId:
+          title: Devtodevid
+          type: integer
+        userId:
+          title: Userid
+          type: string
+        advertisingId:
+          title: Advertisingid
+          type: string
       type: object
       title: DevtodevDeviceId
     PlayerAttributes:
@@ -512,112 +631,6 @@ components:
           description: Partner-set GA4 cross-device `user_id`; falls back to `User.player_id` when unset.
       type: object
       title: PlayerAttributes
-    DevtodevDeviceIdV2:
-      properties:
-        deviceId:
-          title: Deviceid
-          type: string
-        devtodevId:
-          title: Devtodevid
-          type: integer
-        userId:
-          title: Userid
-          type: string
-        advertisingId:
-          title: Advertisingid
-          type: string
-      type: object
-      title: DevtodevDeviceId
-    PlayerRead:
-      properties:
-        attributes:
-          title: Attributes
-          description: The player's attributes.
-          $ref: '#/components/schemas/PlayerAttributes'
-        custom_attributes:
-          type: object
-          title: Custom Attributes
-          description: The player's custom attributes.
-        id:
-          type: string
-          title: Id
-          description: The unique identifier of the user.
-        player_id:
-          type: string
-          title: Player Id
-          description: The unique player ID of the user.
-        loyalty_points:
-          type: integer
-          title: Loyalty Points
-          description: The amount of loyalty points the player has.
-      type: object
-      required:
-      - id
-      - player_id
-      title: PlayerRead
-    DeviceType:
-      type: string
-      enum:
-      - Apple
-      - Android
-      - Unknown
-      - Other
-      title: DeviceType
-    aghanim__s2s__player__schemas__IssueLoyaltyPointsRequest:
-      properties:
-        amount:
-          type: integer
-          exclusiveMinimum: 0.0
-          title: Amount
-          description: The amount of loyalty points to issue.
-      type: object
-      required:
-      - amount
-      title: IssueLoyaltyPointsRequest
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    MarketingConsent:
-      properties:
-        email:
-          $ref: '#/components/schemas/EmailConsent'
-      type: object
-      title: MarketingConsent
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
     EmailConsent:
       properties:
         granted_at:
@@ -628,19 +641,6 @@ components:
           type: integer
       type: object
       title: EmailConsent
-    VirtualCurrencyShort:
-      properties:
-        sku:
-          type: string
-          title: SKU
-        quantity:
-          type: integer
-          title: Quantity
-      type: object
-      required:
-      - sku
-      - quantity
-      title: VirtualCurrencyShort
   securitySchemes:
     HTTPBearer:
       type: http

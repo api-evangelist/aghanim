@@ -182,151 +182,16 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    PriceTemplateCreate:
+    HTTPValidationError:
       properties:
-        key:
-          title: Key
-          description: Unique key for the price template
-          type: string
-        name:
-          type: string
-          title: Name
-          description: Name of the price template
-        price:
-          type: integer
-          title: Price
-          description: Price point used to derive pricing details
-        category:
-          $ref: '#/components/schemas/PriceCategory'
-          description: Category of the price template (e.g., none or platform)
-        customs:
+        detail:
           items:
-            $ref: '#/components/schemas/Price'
+            $ref: '#/components/schemas/ValidationError'
           type: array
-          title: Customs
-          description: List of price customizations overwriting platform suggested prices
+          title: Detail
       type: object
-      required:
-      - name
-      - price
-      - category
-      - customs
-      title: PriceTemplateCreate
-    PriceCategory:
-      type: string
-      enum:
-      - none
-      - platform
-      title: PriceCategory
-    Country:
-      type: string
-      enum:
-      - VA
-      - MM
-      - PE
-      - DK
-      - PY
-      - SV
-      - US
-      - SI
-      - SG
-      - CZ
-      - KE
-      - JP
-      - KR
-      - NZ
-      - KZ
-      - AE
-      - IQ
-      - AU
-      - CL
-      - QA
-      - NL
-      - IN
-      - GE
-      - EE
-      - BM
-      - AT
-      - VN
-      - LI
-      - KW
-      - TC
-      - BR
-      - PL
-      - MY
-      - HK
-      - MC
-      - VG
-      - GI
-      - SE
-      - EG
-      - GH
-      - CH
-      - LK
-      - SA
-      - SM
-      - PK
-      - DE
-      - TW
-      - LU
-      - BO
-      - FM
-      - CA
-      - SK
-      - LT
-      - FR
-      - KY
-      - LV
-      - CY
-      - MX
-      - RO
-      - TZ
-      - HU
-      - PH
-      - MO
-      - FI
-      - RS
-      - EC
-      - IE
-      - ID
-      - OM
-      - BD
-      - PA
-      - UA
-      - ZA
-      - ES
-      - PT
-      - 'NO'
-      - NG
-      - TH
-      - IL
-      - GB
-      - JO
-      - IT
-      - BG
-      - TR
-      - BH
-      - CR
-      - MA
-      - HR
-      - GR
-      - KH
-      - CO
-      - BE
-      - DZ
-      - CN
-      - AD
-      - AL
-      - BA
-      - IS
-      - MD
-      - ME
-      - MK
-      - MT
-      - RU
-      - AR
-      title: Country
-    PriceTemplateRead:
+      title: HTTPValidationError
+    PriceTemplateShort:
       properties:
         key:
           title: Key
@@ -361,12 +226,6 @@ components:
           title: Modified At
           description: Timestamp (in epoch seconds) when the template was last modified
           type: integer
-        prices:
-          items:
-            $ref: '#/components/schemas/TemplatePrice'
-          type: array
-          title: Prices
-          description: List of prices derived from the template
       type: object
       required:
       - name
@@ -374,8 +233,7 @@ components:
       - category
       - id
       - created_at
-      - prices
-      title: PriceTemplateRead
+      title: PriceTemplateShort
     Currency:
       type: string
       enum:
@@ -540,14 +398,6 @@ components:
       - RP
       - VC
       title: Currency
-    Platform:
-      type: string
-      enum:
-      - any
-      - ios
-      - android
-      - other
-      title: Platform
     TemplatePrice:
       properties:
         country:
@@ -573,26 +423,114 @@ components:
       - price
       - is_custom
       title: TemplatePrice
-    Price:
-      properties:
-        country:
-          $ref: '#/components/schemas/Country'
-        currency:
-          $ref: '#/components/schemas/Currency'
-        platform:
-          $ref: '#/components/schemas/Platform'
-        price:
-          type: integer
-          maximum: 1000000000000.0
-          minimum: 0.0
-          title: Price
-      type: object
-      required:
-      - country
-      - currency
-      - platform
-      - price
-      title: Price
+    Country:
+      type: string
+      enum:
+      - VA
+      - MM
+      - PE
+      - DK
+      - PY
+      - SV
+      - US
+      - SI
+      - SG
+      - CZ
+      - KE
+      - JP
+      - KR
+      - NZ
+      - KZ
+      - AE
+      - IQ
+      - AU
+      - CL
+      - QA
+      - NL
+      - IN
+      - GE
+      - EE
+      - BM
+      - AT
+      - VN
+      - LI
+      - KW
+      - TC
+      - BR
+      - PL
+      - MY
+      - HK
+      - MC
+      - VG
+      - GI
+      - SE
+      - EG
+      - GH
+      - CH
+      - LK
+      - SA
+      - SM
+      - PK
+      - DE
+      - TW
+      - LU
+      - BO
+      - FM
+      - CA
+      - SK
+      - LT
+      - FR
+      - KY
+      - LV
+      - CY
+      - MX
+      - RO
+      - TZ
+      - HU
+      - PH
+      - MO
+      - FI
+      - RS
+      - EC
+      - IE
+      - ID
+      - OM
+      - BD
+      - PA
+      - UA
+      - ZA
+      - ES
+      - PT
+      - 'NO'
+      - NG
+      - TH
+      - IL
+      - GB
+      - JO
+      - IT
+      - BG
+      - TR
+      - BH
+      - CR
+      - MA
+      - HR
+      - GR
+      - KH
+      - CO
+      - BE
+      - DZ
+      - CN
+      - AD
+      - AL
+      - BA
+      - IS
+      - MD
+      - ME
+      - MK
+      - MT
+      - RU
+      - AR
+      title: Country
     ValidationError:
       properties:
         loc:
@@ -614,16 +552,43 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
+    PriceTemplateCreate:
       properties:
-        detail:
+        key:
+          title: Key
+          description: Unique key for the price template
+          type: string
+        name:
+          type: string
+          title: Name
+          description: Name of the price template
+        price:
+          type: integer
+          title: Price
+          description: Price point used to derive pricing details
+        category:
+          $ref: '#/components/schemas/PriceCategory'
+          description: Category of the price template (e.g., none or platform)
+        customs:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/Price'
           type: array
-          title: Detail
+          title: Customs
+          description: List of price customizations overwriting platform suggested prices
       type: object
-      title: HTTPValidationError
-    PriceTemplateShort:
+      required:
+      - name
+      - price
+      - category
+      - customs
+      title: PriceTemplateCreate
+    PriceCategory:
+      type: string
+      enum:
+      - none
+      - platform
+      title: PriceCategory
+    PriceTemplateRead:
       properties:
         key:
           title: Key
@@ -658,6 +623,12 @@ components:
           title: Modified At
           description: Timestamp (in epoch seconds) when the template was last modified
           type: integer
+        prices:
+          items:
+            $ref: '#/components/schemas/TemplatePrice'
+          type: array
+          title: Prices
+          description: List of prices derived from the template
       type: object
       required:
       - name
@@ -665,7 +636,16 @@ components:
       - category
       - id
       - created_at
-      title: PriceTemplateShort
+      - prices
+      title: PriceTemplateRead
+    Platform:
+      type: string
+      enum:
+      - any
+      - ios
+      - android
+      - other
+      title: Platform
     PriceTemplateUpdate:
       properties:
         key:
@@ -691,6 +671,26 @@ components:
           type: array
       type: object
       title: PriceTemplateUpdate
+    Price:
+      properties:
+        country:
+          $ref: '#/components/schemas/Country'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        price:
+          type: integer
+          maximum: 1000000000000.0
+          minimum: 0.0
+          title: Price
+      type: object
+      required:
+      - country
+      - currency
+      - platform
+      - price
+      title: Price
     InfinitePaginatedResponse_PriceTemplateShort_:
       properties:
         data:

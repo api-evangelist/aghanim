@@ -245,70 +245,46 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    CreatorSocialPlatform:
-      type: string
-      enum:
-      - tiktok
-      - youtube
-      - instagram
-      - threads
-      - x_twitter
-      - facebook
-      - reddit
-      - twitch
-      - other
-      title: CreatorSocialPlatform
-    CreatorSocialAccountRead:
+    CreatorTermsRead:
       properties:
-        platform:
-          $ref: '#/components/schemas/CreatorSocialPlatform'
-        handle:
+        id:
           type: string
-          title: Handle
-        sync_status:
-          $ref: '#/components/schemas/SyncStatus'
-        synced_at:
-          title: Synced At
-          type: number
-        channel:
-          $ref: '#/components/schemas/SocialChannelRead'
-        content:
-          items:
-            $ref: '#/components/schemas/SocialContentItemRead'
-          type: array
-          title: Content
-        performance:
-          items:
-            $ref: '#/components/schemas/SocialPerformanceSnapshotRead'
-          type: array
-          title: Performance
+          title: Id
+        accepted_at:
+          type: integer
+          title: Accepted At
+        date_of_birth:
+          type: string
+          format: date
+          title: Date Of Birth
+        country:
+          type: string
+          pattern: ^[A-Z]{2}$
+          title: Country
+        state:
+          $ref: '#/components/schemas/UnitedStates'
+        age:
+          type: integer
+          title: Age
       type: object
       required:
-      - platform
-      - handle
-      - sync_status
-      - synced_at
-      - channel
-      - content
-      - performance
-      title: CreatorSocialAccountRead
-    CreatorAnnotation:
+      - id
+      - accepted_at
+      title: CreatorTermsRead
+    HTTPValidationError:
       properties:
-        note:
-          type: string
-          maxLength: 2000
-          title: Note
-        display_name:
-          type: string
-          maxLength: 120
-          title: Display Name
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
       type: object
-      title: CreatorAnnotation
-    SocialContentItemRead:
+      title: HTTPValidationError
+    SocialPerformanceSnapshotRead:
       properties:
-        url:
+        content_url:
           type: string
-          title: Url
+          title: Content Url
         title:
           title: Title
           type: string
@@ -319,6 +295,27 @@ components:
           type: string
           format: date-time
           title: Published At
+        taken_at:
+          type: string
+          format: date-time
+          title: Taken At
+        window_days:
+          type: integer
+          title: Window Days
+        metrics:
+          $ref: '#/components/schemas/SocialPerformanceMetricsRead'
+      type: object
+      required:
+      - content_url
+      - title
+      - thumbnail_url
+      - published_at
+      - taken_at
+      - window_days
+      - metrics
+      title: SocialPerformanceSnapshotRead
+    SocialPerformanceMetricsRead:
+      properties:
         views:
           title: Views
           type: integer
@@ -330,14 +327,10 @@ components:
           type: integer
       type: object
       required:
-      - url
-      - title
-      - thumbnail_url
-      - published_at
       - views
       - likes
       - comments
-      title: SocialContentItemRead
+      title: SocialPerformanceMetricsRead
     CreatorRead:
       properties:
         name:
@@ -410,6 +403,19 @@ components:
       - email
       - id
       title: CreatorRead
+    CreatorSocialPlatform:
+      type: string
+      enum:
+      - tiktok
+      - youtube
+      - instagram
+      - threads
+      - x_twitter
+      - facebook
+      - reddit
+      - twitch
+      - other
+      title: CreatorSocialPlatform
     CreatorSocial:
       properties:
         url:
@@ -421,32 +427,164 @@ components:
       required:
       - url
       title: CreatorSocial
-    CreatorTermsRead:
+    ValidationError:
       properties:
-        id:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Id
-        accepted_at:
-          type: integer
-          title: Accepted At
-        date_of_birth:
+          title: Message
+        type:
           type: string
-          format: date
-          title: Date Of Birth
-        country:
-          type: string
-          pattern: ^[A-Z]{2}$
-          title: Country
-        state:
-          $ref: '#/components/schemas/UnitedStates'
-        age:
-          type: integer
-          title: Age
+          title: Error Type
       type: object
       required:
-      - id
-      - accepted_at
-      title: CreatorTermsRead
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CreatorCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        avatar_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Avatar Url
+        extra_terms_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Extra Terms Url
+        extra_terms_text:
+          type: string
+          title: Extra Terms Text
+        social_medias:
+          items:
+            $ref: '#/components/schemas/CreatorSocial'
+          type: array
+          title: Social Medias
+        creator_tier_group_id:
+          type: string
+          title: Creator Tier Group Id
+          description: Tier group to assign the creator to on creation, if any.
+        coupon_code:
+          type: string
+          maxLength: 20
+          title: Coupon Code
+          description: Override for the auto-generated promo code. If omitted, the code is derived from the creator's name.
+      type: object
+      required:
+      - name
+      - email
+      title: CreatorCreate
+    SocialContentItemRead:
+      properties:
+        url:
+          type: string
+          title: Url
+        title:
+          title: Title
+          type: string
+        thumbnail_url:
+          title: Thumbnail Url
+          type: string
+        published_at:
+          type: string
+          format: date-time
+          title: Published At
+        views:
+          title: Views
+          type: integer
+        likes:
+          title: Likes
+          type: integer
+        comments:
+          title: Comments
+          type: integer
+      type: object
+      required:
+      - url
+      - title
+      - thumbnail_url
+      - published_at
+      - views
+      - likes
+      - comments
+      title: SocialContentItemRead
+    PaginatedResponse_list_aghanim.creator.schemas.CreatorRead__:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CreatorRead'
+          type: array
+          title: Data
+        total:
+          type: integer
+          title: Total
+        limit:
+          type: integer
+          title: Limit
+        offset:
+          type: integer
+          title: Offset
+        has_next:
+          type: boolean
+          description: Indicates if there are more items to fetch.
+      type: object
+      required:
+      - data
+      - total
+      - limit
+      - offset
+      - has_next
+      title: PaginatedResponse[list[aghanim.creator.schemas.CreatorRead]]
+    CreatorSocialAccountRead:
+      properties:
+        platform:
+          $ref: '#/components/schemas/CreatorSocialPlatform'
+        handle:
+          type: string
+          title: Handle
+        sync_status:
+          $ref: '#/components/schemas/SyncStatus'
+        synced_at:
+          title: Synced At
+          type: number
+        channel:
+          $ref: '#/components/schemas/SocialChannelRead'
+        content:
+          items:
+            $ref: '#/components/schemas/SocialContentItemRead'
+          type: array
+          title: Content
+        performance:
+          items:
+            $ref: '#/components/schemas/SocialPerformanceSnapshotRead'
+          type: array
+          title: Performance
+      type: object
+      required:
+      - platform
+      - handle
+      - sync_status
+      - synced_at
+      - channel
+      - content
+      - performance
+      title: CreatorSocialAccountRead
     SocialChannelRead:
       properties:
         followers:
@@ -464,13 +602,6 @@ components:
       - total_views
       - total_content_count
       title: SocialChannelRead
-    SyncStatus:
-      type: string
-      enum:
-      - pending
-      - ok
-      - error
-      title: SyncStatus
     CreatorUpdate:
       properties:
         name:
@@ -515,87 +646,18 @@ components:
           description: Override revenue share in basis points; required when enabling the override.
       type: object
       title: CreatorUpdate
-    ValidationError:
+    CreatorAnnotation:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        note:
           type: string
-          title: Message
-        type:
+          maxLength: 2000
+          title: Note
+        display_name:
           type: string
-          title: Error Type
+          maxLength: 120
+          title: Display Name
       type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    SocialPerformanceSnapshotRead:
-      properties:
-        content_url:
-          type: string
-          title: Content Url
-        title:
-          title: Title
-          type: string
-        thumbnail_url:
-          title: Thumbnail Url
-          type: string
-        published_at:
-          type: string
-          format: date-time
-          title: Published At
-        taken_at:
-          type: string
-          format: date-time
-          title: Taken At
-        window_days:
-          type: integer
-          title: Window Days
-        metrics:
-          $ref: '#/components/schemas/SocialPerformanceMetricsRead'
-      type: object
-      required:
-      - content_url
-      - title
-      - thumbnail_url
-      - published_at
-      - taken_at
-      - window_days
-      - metrics
-      title: SocialPerformanceSnapshotRead
-    SocialPerformanceMetricsRead:
-      properties:
-        views:
-          title: Views
-          type: integer
-        likes:
-          title: Likes
-          type: integer
-        comments:
-          title: Comments
-          type: integer
-      type: object
-      required:
-      - views
-      - likes
-      - comments
-      title: SocialPerformanceMetricsRead
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
+      title: CreatorAnnotation
     UnitedStates:
       type: string
       enum:
@@ -605,75 +667,13 @@ components:
       - US-PR
       title: UnitedStates
       description: An enumeration.
-    PaginatedResponse_list_aghanim.creator.schemas.CreatorRead__:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CreatorRead'
-          type: array
-          title: Data
-        total:
-          type: integer
-          title: Total
-        limit:
-          type: integer
-          title: Limit
-        offset:
-          type: integer
-          title: Offset
-        has_next:
-          type: boolean
-          description: Indicates if there are more items to fetch.
-      type: object
-      required:
-      - data
-      - total
-      - limit
-      - offset
-      - has_next
-      title: PaginatedResponse[list[aghanim.creator.schemas.CreatorRead]]
-    CreatorCreate:
-      properties:
-        name:
-          type: string
-          title: Name
-        email:
-          type: string
-          title: Email
-        avatar_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Avatar Url
-        extra_terms_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Extra Terms Url
-        extra_terms_text:
-          type: string
-          title: Extra Terms Text
-        social_medias:
-          items:
-            $ref: '#/components/schemas/CreatorSocial'
-          type: array
-          title: Social Medias
-        creator_tier_group_id:
-          type: string
-          title: Creator Tier Group Id
-          description: Tier group to assign the creator to on creation, if any.
-        coupon_code:
-          type: string
-          maxLength: 20
-          title: Coupon Code
-          description: Override for the auto-generated promo code. If omitted, the code is derived from the creator's name.
-      type: object
-      required:
-      - name
-      - email
-      title: CreatorCreate
+    SyncStatus:
+      type: string
+      enum:
+      - pending
+      - ok
+      - error
+      title: SyncStatus
   securitySchemes:
     HTTPBearer:
       type: http
