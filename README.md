@@ -64,6 +64,176 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aghanim is a direct-to-consumer enablement platform for mobile games (game hubs, web shops, Merchant-of-Record payments, LiveOps). Surfaced as an a16z portfolio company and enriched from Aghanim's public developer surface: OpenAPI 3.1 Server-to-Server API (170 operations), webhook event catalog, sandbox test data, SDKs, and derived governance artifacts.
+Aghanim is a direct-to-consumer (DTC) enablement platform for mobile games, founded in 2023 by former Xsolla executives. It lets studios launch web-based game hubs and web shops that sell virtual goods, currency packs, battle passes, and subscriptions outside the app stores, and acts as a Merchant of Record — handling worldwide payments, tax compliance, fraud, and chargebacks across 200+ territories. Its Server-to-Server API (170 operations) and webhook surface cover catalog/stores, items, orders, players, coupons, promotions, achievements, leaderboards, daily rewards, LiveOps campaigns, segmentation, creators, news, pages, and loyalty programs, with Unity and Android checkout SDKs for the prebuilt checkout page. Added to the API Evangelist network from the a16z portfolio and enriched from Aghanim's public developer surface.
 
-Source: portfolio company of [a16z](https://github.com/api-evangelist/a16z)
+**Areas:** Company · Mobile Games · Game Publishing · Direct to Consumer · Payments · Merchant of Record · Web Shop · LiveOps · Fintech · Gaming
+
+## Aghanim on APIs.io
+
+Everything profiled for Aghanim is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aghanim/](https://apis.io/providers/aghanim/)** — or go straight to one of the APIs or properties below.
+
+### APIs (27)
+
+- [Aghanim Achievements API](https://apis.io/apis/aghanim/aghanim-achievements-api/) — The Achievements API from Aghanim — 3 operation(s) for achievements.
+- [Aghanim Coupons API](https://apis.io/apis/aghanim/aghanim-coupons-api/) — The Coupons API from Aghanim — 3 operation(s) for coupons.
+- [Aghanim Creators API](https://apis.io/apis/aghanim/aghanim-creators-api/) — The Creators API from Aghanim — 4 operation(s) for creators.
+- [Aghanim Daily Rewards API](https://apis.io/apis/aghanim/aghanim-daily-rewards-api/) — The Daily Rewards API from Aghanim — 3 operation(s) for daily rewards.
+- [Aghanim GDPR Requests API](https://apis.io/apis/aghanim/aghanim-gdpr-requests-api/) — The GDPR Requests API from Aghanim — 1 operation(s) for gdpr requests.
+- [Aghanim Item Categories API](https://apis.io/apis/aghanim/aghanim-item-categories-api/) — The Item Categories API from Aghanim — 2 operation(s) for item categories.
+- [Aghanim Items API](https://apis.io/apis/aghanim/aghanim-items-api/) — The Items API from Aghanim — 3 operation(s) for items.
+- [Aghanim Leaderboards API](https://apis.io/apis/aghanim/aghanim-leaderboards-api/) — The Leaderboards API from Aghanim — 5 operation(s) for leaderboards.
+- [Aghanim LiveOps API](https://apis.io/apis/aghanim/aghanim-liveops-api/) — The LiveOps API from Aghanim — 5 operation(s) for liveops.
+- [Aghanim Locales API](https://apis.io/apis/aghanim/aghanim-locales-api/) — The Locales API from Aghanim — 2 operation(s) for locales.
+- [Aghanim Loyalty Program API](https://apis.io/apis/aghanim/aghanim-loyalty-program-api/) — The Loyalty Program API from Aghanim — 4 operation(s) for loyalty program.
+- [Aghanim News API](https://apis.io/apis/aghanim/aghanim-news-api/) — The News API from Aghanim — 2 operation(s) for news.
+- [Aghanim Orders API](https://apis.io/apis/aghanim/aghanim-orders-api/) — The Orders API from Aghanim — 4 operation(s) for orders.
+- [Aghanim Pages API](https://apis.io/apis/aghanim/aghanim-pages-api/) — The Pages API from Aghanim — 3 operation(s) for pages.
+- [Aghanim Payments API](https://apis.io/apis/aghanim/aghanim-payments-api/) — The Payments API from Aghanim — 1 operation(s) for payments.
+- [Aghanim Players API](https://apis.io/apis/aghanim/aghanim-players-api/) — The Players API from Aghanim — 4 operation(s) for players.
+- [Aghanim Players' Marketing Consents API](https://apis.io/apis/aghanim/aghanim-players-marketing-consents-api/) — The Players' Marketing Consents API from Aghanim — 2 operation(s) for players' marketing consents.
+- [Aghanim Players' Subscriptions API](https://apis.io/apis/aghanim/aghanim-players-subscriptions-api/) — The Players' Subscriptions API from Aghanim — 3 operation(s) for players' subscriptions.
+- [Aghanim Price Points API](https://apis.io/apis/aghanim/aghanim-price-points-api/) — The Price Points API from Aghanim — 1 operation(s) for price points.
+- [Aghanim Price Templates API](https://apis.io/apis/aghanim/aghanim-price-templates-api/) — The Price Templates API from Aghanim — 2 operation(s) for price templates.
+- [Aghanim Segmentation API](https://apis.io/apis/aghanim/aghanim-segmentation-api/) — The Segmentation API from Aghanim — 5 operation(s) for segmentation.
+- [Aghanim Store Promotions API](https://apis.io/apis/aghanim/aghanim-store-promotions-api/) — The Store Promotions API from Aghanim — 5 operation(s) for store promotions.
+- [Aghanim Stores API](https://apis.io/apis/aghanim/aghanim-stores-api/) — The Stores API from Aghanim — 11 operation(s) for stores.
+- [Aghanim Translation Glossaries API](https://apis.io/apis/aghanim/aghanim-translation-glossaries-api/) — The Translation Glossaries API from Aghanim — 2 operation(s) for translation glossaries.
+- [Aghanim Users API](https://apis.io/apis/aghanim/aghanim-users-api/) — The Users API from Aghanim — 5 operation(s) for users.
+- [Aghanim Videos API](https://apis.io/apis/aghanim/aghanim-videos-api/) — The Videos API from Aghanim — 2 operation(s) for videos.
+- [Aghanim Webhooks API](https://apis.io/apis/aghanim/aghanim-webhooks-api/) — The Webhooks API from Aghanim — 4 operation(s) for webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Aghanim Webhooks](https://apis.io/asyncapis/aghanim/aghanim-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [aghanim](https://apis.io/servers/aghanim/aghanim/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Aghanim Agentic Access](https://apis.io/agentic-access/aghanim/aghanim-agentic-access/)
+
+#### Collections (27)
+
+Postman and Open Collection request collections.
+
+- [Aghanim Server-to-Server Achievements API](https://apis.io/collections/aghanim/open-aghanim-achievements-api/)
+- [Aghanim Server-to-Server Achievements Coupons API](https://apis.io/collections/aghanim/open-aghanim-coupons-api/)
+- [Aghanim Server-to-Server Achievements Creators API](https://apis.io/collections/aghanim/open-aghanim-creators-api/)
+- [Aghanim Server-to-Server Achievements Daily Rewards API](https://apis.io/collections/aghanim/open-aghanim-daily-rewards-api/)
+- [Aghanim Server-to-Server Achievements GDPR Requests API](https://apis.io/collections/aghanim/open-aghanim-gdpr-requests-api/)
+- [Aghanim Server-to-Server Achievements Item Categories API](https://apis.io/collections/aghanim/open-aghanim-item-categories-api/)
+- [Aghanim Server-to-Server Achievements Items API](https://apis.io/collections/aghanim/open-aghanim-items-api/)
+- [Aghanim Server-to-Server Achievements Leaderboards API](https://apis.io/collections/aghanim/open-aghanim-leaderboards-api/)
+- [Aghanim Server-to-Server Achievements LiveOps API](https://apis.io/collections/aghanim/open-aghanim-liveops-api/)
+- [Aghanim Server-to-Server Achievements Locales API](https://apis.io/collections/aghanim/open-aghanim-locales-api/)
+- [Aghanim Server-to-Server Achievements Loyalty Program API](https://apis.io/collections/aghanim/open-aghanim-loyalty-program-api/)
+- [Aghanim Server-to-Server Achievements News API](https://apis.io/collections/aghanim/open-aghanim-news-api/)
+- [Aghanim Server-to-Server Achievements Orders API](https://apis.io/collections/aghanim/open-aghanim-orders-api/)
+- [Aghanim Server-to-Server Achievements Pages API](https://apis.io/collections/aghanim/open-aghanim-pages-api/)
+- [Aghanim Server-to-Server Achievements Payments API](https://apis.io/collections/aghanim/open-aghanim-payments-api/)
+- [Aghanim Server-to-Server Achievements Players API](https://apis.io/collections/aghanim/open-aghanim-players-api/)
+- [Aghanim Server-to-Server Achievements Players' Marketing Consents API](https://apis.io/collections/aghanim/open-aghanim-players-marketing-consents-api/)
+- [Aghanim Server-to-Server Achievements Players' Subscriptions API](https://apis.io/collections/aghanim/open-aghanim-players-subscriptions-api/)
+- [Aghanim Server-to-Server Achievements Price Points API](https://apis.io/collections/aghanim/open-aghanim-price-points-api/)
+- [Aghanim Server-to-Server Achievements Price Templates API](https://apis.io/collections/aghanim/open-aghanim-price-templates-api/)
+- [Aghanim Server-to-Server Achievements Segmentation API](https://apis.io/collections/aghanim/open-aghanim-segmentation-api/)
+- [Aghanim Server-to-Server Achievements Store Promotions API](https://apis.io/collections/aghanim/open-aghanim-store-promotions-api/)
+- [Aghanim Server-to-Server Achievements Stores API](https://apis.io/collections/aghanim/open-aghanim-stores-api/)
+- [Aghanim Server-to-Server Achievements Translation Glossaries API](https://apis.io/collections/aghanim/open-aghanim-translation-glossaries-api/)
+- [Aghanim Server-to-Server Achievements Users API](https://apis.io/collections/aghanim/open-aghanim-users-api/)
+- …and 2 more published on APIs.io
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Aghanim Openapi Overlay](https://apis.io/overlays/aghanim/aghanim-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aghanim Authentication](https://apis.io/security/aghanim/aghanim-authentication/)
+- [Aghanim Domain Security](https://apis.io/security/aghanim/aghanim-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.aghanim.com/)
+- [Documentation](https://docs.aghanim.com/)
+- [Getting started](https://docs.aghanim.com/getting-started/)
+- [API reference](https://docs.aghanim.com/api-reference/)
+- [Sign up](https://dashboard.aghanim.com/onboarding)
+- [Support](https://support.aghanim.com/en_US/general)
+- [Blog](https://blog.aghanim.com)
+- [Terms of service](https://aghanim.com/general-service)
+- [Privacy policy](https://aghanim.com/privacy)
+- [Status](https://status.aghanim.com)
+
+## API Evangelist rating
+
+**Kin Score 46.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 62.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 21.1 |
+
+**Agent readiness 37.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | verified |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aghanim/](https://apis.io/providers/aghanim/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aghanim: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aghanim/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
