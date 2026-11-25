@@ -161,6 +161,12 @@ OpenAPI overlays, including conversational phrasing for each operation.
 
 - [Aghanim Openapi Overlay](https://apis.io/overlays/aghanim/aghanim-openapi-overlay/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Aghanim API Rules](https://apis.io/rules/aghanim/aghanim-rules/)
+
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
@@ -185,18 +191,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 46.3** — developing · rubric 0.25.0 · scored 2026-10-23
+**Kin Score 50.7** — developing · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 73.2 |
-| Contract quality | 62.3 |
-| Contract governance | 4.5 |
-| Operational transparency | 15.8 |
+| Contract quality | 68.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 19.0 |
 | Developer ergonomics | 73.2 |
-| Access clarity | 21.1 |
+| Access clarity | 29.8 |
 
-**Agent readiness 37.6** — agent-ready
+**Agent readiness 36.8** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -221,8 +227,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Agentic Commerce | — |
 | Pagination Ratio | partial |
 | Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 22.3** — Payments
+**Regulatory alignment 17.0** — Payments
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aghanim/](https://apis.io/providers/aghanim/).
 
